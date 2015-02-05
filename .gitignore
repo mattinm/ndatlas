@@ -5,6 +5,7 @@
 *.bak
 *.swp
 *.tmp
+*.log
 
 ##
 # VIRTUALENV
