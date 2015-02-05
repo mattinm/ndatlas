@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var shpjs = require('shpjs');
 var homeConfig = require(__dirname + '/utils/HomeConfig');
 var app = express();
 app.set('view engine', 'jade'); // declare we're going to use jade
