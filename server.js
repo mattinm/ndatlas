@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var homeConfig = require(__dirname + '/utils/HomeConfig');
 var app = express();
 app.set('view engine', 'jade'); // declare we're going to use jade
 app.set('views', __dirname + '/views'); // tell express which directory our jade templates (views) will be in
@@ -8,7 +9,8 @@ app.use(express.static(__dirname + '/public')); // tell express which directory 
 // these are the routes
 app.get('/', function (req, res) {
     res.render('home', {    // use res.render to tell express what template to use, in this case it will render "home" and pass the following object for the template to use
-        'title': 'ND@125'
+        'title': 'ND@125',
+        'data': homeConfig
     });
 });
 
