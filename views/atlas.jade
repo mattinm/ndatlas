@@ -4,12 +4,11 @@ block title
     =title
 
 block css
-    link(href="/css/home.css", rel="stylesheet")
+    link(href="/css/atlas.css", rel="stylesheet")
 
 block main
     div(class="main-content")
         h1(class="bold", style="margin-bottom: 50px;") ND@125
-        a(href="/chapters/one", class="btn btn-default btn-large") Explore Chapter One
         - for (var i = 0, n = data.intro.length; i < n; i++)
             - var cur = data.intro[i]
             div(class="intro-div")
@@ -32,4 +31,4 @@ block main
             img(src="/images/nd_atlas_group2.jpg")
 
 block js
-    script(src="/js/home.js")
+    script(src="/js/atlas.js")
