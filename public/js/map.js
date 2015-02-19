@@ -1,5 +1,9 @@
+$('#map,#narrative').css({
+    'height': $(window).height()-50
+});
+
 shp("/maps/nd_counties.zip").then(function(data) {
-    var map = L.map('map').setView([47, -100], 6.5);
+    var map = L.map('map').setView([47, -97.5], 7.5);
     var myStyle = {
         "color": "#ff0000",
         "weight": 5,
@@ -19,3 +23,18 @@ shp("/maps/nd_counties.zip").then(function(data) {
     console.log(data.features);
 });
 
+
+
+
+$('#slider').click(function() {
+    if ($(this).hasClass('expanded')) {
+        $('#narrative').animate({width: 70});
+        $(this).removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
+        $('#content').hide();
+    }
+    else {
+        $('#content').show();
+        $('#narrative').animate({width: 700});
+        $(this).addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
+    }
+});

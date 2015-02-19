@@ -18,7 +18,9 @@ app.get('/', function (req, res) {
 
 app.get('/map', function (req, res) {
     res.render('map', {    // use res.render to tell express what template to use, in this case it will render home.jade and pass the following object for the template to use
-        'title': 'Map'
+        'title': 'Map',
+        'data': chapters,
+        'edit': req.query.edit
     });
 });
 

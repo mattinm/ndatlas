@@ -1,15 +1,72 @@
 extends master
 
+mixin addChapter(i, o, k)
+    li
+        a(href="/chapters/#{k}")= (i+1)+'. '+o.title
+
 block title
     =title
 
 block css
-    link(href="/css/atlas.css", rel="stylesheet")
+    link(href="/css/map.css", rel="stylesheet")
     link(rel="stylesheet", href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+    
+block navbar
+    nav(class="navbar navbar-default navbar-fixed-top")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-collapse")
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+                a(class="navbar-brand", href="#") ND@125
+            div(class="collapse navbar-collapse")
+                ul(class="nav navbar-nav")
+                    li(class="dropdown")
+                        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false")
+                            |Chapters 
+                            span(class="caret")
+                        ul(class="dropdown-menu", role="menu")
+                            - var keys = Object.keys(data)
+                            - for (var i = 0, n = keys.length; i < n; i++)
+                                +addChapter(i, data[keys[i]], keys[i])
+                    li
+                        a(href="/map") Atlas
+                ul(class="nav navbar-nav navbar-right")
 
-block main
-    div(id="map", style="width: 600px; height: 400px;")
-
+block body
+    div(id="map", style="width: 100%;")
+    div(id="narrative")
+        div(id="slider", style="display: inline-block; vertical-align: top; width: 60px;padding: 510px 10px;", class="expanded")
+            i(class="glyphicon glyphicon-chevron-right", style="font-size: 48px;")
+        div(id="content", style="display: inline-block; vertical-align: top; width: 600px; padding: 15px;")
+            - if (!edit)
+                h1
+                    b Narrative Title
+                br
+                div Content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+                br
+                br
+                content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+                br
+                br
+                content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+            - else
+                input(type="text", value="Narrative Title", style="width: 100%; font-size: 24px; font-weight: bold;")
+                br
+                br
+                textarea(style="width: 100%; height: 1000px;")
+                    |Content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+                    |<br>
+                    |<br>
+                    |content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+                    |<br>
+                    |<br>
+                    |content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here content here
+                div(style="padding-top: 10px;")
+                    i(class="glyphicon glyphicon-ok",style="font-size: 32px;float: right; cursor: pointer;")
+                    i(class="glyphicon glyphicon-remove", style="font-size: 32px; float: right; padding-right: 10px; cursor: pointer;")
+                
 block js
     script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
     script(src="/js/shp.min.js")
