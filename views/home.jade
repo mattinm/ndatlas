@@ -8,44 +8,23 @@ block body
         div(class="container")
             h1 Welcome to nd@125!
             div(style="text-align: right; margin-top: 50px;")
-                a(href="/stories/#{stories.titles[0].toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-')}")
+                a(href="/stories/#{stories[0].slug}")
                     span(style="color:#282828; font-size: 32pt; font-weight: bold;")
                         |Start Exploring
                         i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
 
 block main
     div(class="row")
-        div(class="col-lg-4")
-            h2(style="font-weight: bold;") The Cat in the Hat
-            div The sun did not shine. It was too wet to play. So we sat in the house all that cold, cold, wet day. I sat there with sally. We sat there, we two. And I said, 'how I wish we had something to do!' Too wet to go out and too cold to play ball. So we sat in the house. We did nothing at all.
-            div The sun did not shine. It was too wet to play. So we sat in the house all that cold, cold, wet day. I sat there with sally. We sat there, we two. And I said, 'how I wish we had something to do!' Too wet to go out and too cold to play ball. So we sat in the house. We did nothing at all.
-            div The sun did not shine. It was too wet to play. So we sat in the house all that cold, cold, wet day. I sat there with sally. We sat there, we two. And I said, 'how I wish we had something to do!' Too wet to go out and too cold to play ball. So we sat in the house. We did nothing at all.
-            div(style="text-align: right;")
-                a(href="#")
-                    span(style="color: #006600; font-size: 16pt; font-weight: bold;")
-                        |Explore More
-                        i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")
-        div(class="col-lg-4")
-            h2(style="font-weight: bold;") Green Eggs and Ham
-            div I do not like them in a house. I do not like them with a mouse. I do not like them here or there. I do not like them anywhere. I do not like green eggs and ham. I do not like them, Sam-I-Am.
-            div I do not like them in a house. I do not like them with a mouse. I do not like them here or there. I do not like them anywhere. I do not like green eggs and ham. I do not like them, Sam-I-Am.
-            div I do not like them in a house. I do not like them with a mouse. I do not like them here or there. I do not like them anywhere. I do not like green eggs and ham. I do not like them, Sam-I-Am.
-            div(style="text-align: right;")
-                a(href="#")
-                    span(style="color: #006600; font-size: 16pt; font-weight: bold;")
-                        |Explore More
-                        i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")
-        div(class="col-lg-4")
-            h2(style="font-weight: bold;") Oh, the Places You'll Go
-            div You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose. You're on your own. And you know what you know. And YOU are the one who'll decide where to go...
-            div You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose. You're on your own. And you know what you know. And YOU are the one who'll decide where to go...
-            div You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose. You're on your own. And you know what you know. And YOU are the one who'll decide where to go...
-            div You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose. You're on your own. And you know what you know. And YOU are the one who'll decide where to go...
-            div(style="text-align: right;")
-                a(href="#")
-                    span(style="color: #006600; font-size: 16pt; font-weight: bold;")
-                        |Explore More
-                        i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")
+        - for (var i = 0, n = stories.length; i < n; i++)
+            div(class="col-lg-4")
+                h2(style="font-weight: bold;")= stories[i].title
+                - for (var j = 0; j < 3; j++)
+                    div= stories[i].content
+                div(style="text-align: right;")
+                    a(href="#{stories[i].slug}")
+                        span(style="color: #006600; font-size: 16pt; font-weight: bold;")
+                            |Explore More
+                            i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")
     hr
     footer
         |Geography | 701-777-4246
