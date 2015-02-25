@@ -2,13 +2,35 @@ var express = require('express');
 var parser = require('body-parser');
 var shp = require('shpjs');
 var app = express();
-var stories = require(__dirname+'/utils/StoriesData');
+var stories = [];
 var slug_to_story_map = {};
 
-for (var i = 0, n = stories.length; i < n; i++) {
-    stories[i].slug = stories[i].title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
-    slug_to_story_map[stories[i].slug] = i;
-}
+var nosql = require('nosql').load(__dirname+'/database.nosql');
+nosql.on('load', function() {
+    var map = function(doc) {
+        return doc;
+    };
+
+    var callback = function(selected) {
+        var i = 0;
+        selected.forEach(function(o) {
+            o.slug = o.title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
+            slug_to_story_map[o.slug] = i++;
+            stories.push(o);
+        });
+    };
+
+    nosql.all(map, callback); 
+});
+
+//      // call after load of DB
+//      nosql.insert(object, [fnCallback]);
+//      nosql.insert(array, fnCallback);
+//
+//      nosql.all(fnMap, fnCallback)
+//      nosql.one(fnMap, fnCallback)
+//      nosql.top(max, fnMap, fnCallback)
+//      nosql.each(fnCallback)
 
 app.set('view engine', 'jade');
 app.set('views', __dirname+'/views');
