@@ -43,3 +43,4 @@ Desktop.ini
 # Node.js
 ##
 node_modules/
+database.nosql
