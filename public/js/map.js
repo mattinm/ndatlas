@@ -19,7 +19,7 @@ var opts = {
     className: 'spinner', // The CSS class to assign to the spinner
     zIndex: 2e9, // The z-index (defaults to 2000000000)
     top: '50%', // Top position relative to parent
-    left: '25%' // Left position relative to parent
+    left: '30%' // Left position relative to parent
 };
 var target = document.getElementById('map');
 var spinner = new Spinner(opts).spin(target);
@@ -30,7 +30,7 @@ var worker = cw(function(base,cb){
 });
 
 //worker can be called multiple times
-worker.data(cw.makeUrl('/maps/nd_counties.zip')).then(function(data){
+worker.data(cw.makeUrl('/maps/nd_counties/nd_2010_county_data')).then(function(data){
     spinner.stop();
     var map = L.map('map').setView([47, -97.5], 7.5);
     var myStyle = {
