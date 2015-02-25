@@ -6,6 +6,7 @@
     "shpjs": "*",
     "body-parser": "*",
     "express": "*",
-    "jade": "*"
+    "jade": "*",
+    "tinymce": "*"
   }
 }

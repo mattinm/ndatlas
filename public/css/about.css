@@ -1,0 +1,16 @@
+body {
+  background-image: linear-gradient(#006600, #222222);
+}
+main {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.main-content {
+    background-color: #ffffff;
+    padding: 15px;
+}
+.intro-div,.group-photo {
+    margin-top: 50px;
+}
+.group-div {
+    margin-top: 30px;
+}

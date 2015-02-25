@@ -1,20 +1,39 @@
+mixin AddStory(title)
+    li
+        a(href="/stories/#{title.toLowerCase().replace(/[^a-z]+/g, '').replace(/ +/g, '-')}")= title
+
 doctype html
 html(lang="en")
     head
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1")
-        title
-            block title
-        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
+        title!= title
+        link(href="/css/bootstrap.min.css", rel="stylesheet")
         link(href="/css/bootstrap-theme.min.css", rel="stylesheet")
         link(href="/css/master.css", rel="stylesheet")
         block css
     body
-        block navbar
+        nav(class="navbar navbar-inverse navbar-fixed-top")
+            div(class="container")
+                div(class="navbar-header")
+                    button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-collapse")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                        span(class="icon-bar")
+                    a(class="navbar-brand", href="#") nd@125
+                div(class="collapse navbar-collapse")
+                    ul(class="nav navbar-nav")
+                        li(class="dropdown")
+                            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Stories
+                                span(class="caret")
+                            ul(class="dropdown-menu")
+                                - for (var i = 0, n = stories.titles.length; i < n; i++)
+                                    +AddStory(stories.titles[i])
+                    ul(class="nav navbar-nav navbar-right")
         block body
         main(class="container")
             block main
-        script(src="/js/jquery-2.1.3.min.js")
+        script(src="/js/jquery.min.js")
         script(src="/js/bootstrap.min.js")
         script(src="/js/master.js")
         block js
