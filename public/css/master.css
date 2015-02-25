@@ -15,3 +15,7 @@ h1 {
 body {
     margin-top: 50px;
 }
+a.disabled {
+    color: #555555 !important;
+    cursor: not-allowed;
+}

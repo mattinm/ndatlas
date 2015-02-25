@@ -54,13 +54,15 @@ worker.data(cw.makeUrl('/maps/nd_counties/nd_2010_county_data')).then(function(d
 
 $('#slider').click(function() {
     if ($(this).hasClass('expanded')) {
-        $('#narrative').animate({width: 70});
-        $(this).removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
-        $('#content').hide();
+        $('#story').fadeOut(function() {
+            $('#narrative').animate({width: 70});
+            $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
+        });
     }
     else {
-        $('#content').show();
-        $('#narrative').animate({width: 700});
-        $(this).addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
+        $('#narrative').animate({width: 700}, function() {
+            $('#slider').addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
+            $('#story').fadeIn();
+        });
     }
 });

@@ -16,6 +16,7 @@ app.use(express.static(__dirname+'/public'));
 
 app.get('/', function (req, res) {
     res.render('home', {
+        'title': 'nd@125',
         'stories': stories
     });
 });
@@ -25,6 +26,7 @@ app.get('/stories/:title', function (req, res) {
     var story = stories[i];
     
     res.render(story.type, {
+        'title': story.title+' &ndash; nd@125',
         'story': story,
         'stories': stories,
         'index': i
