@@ -1,59 +1,30 @@
 extends master
 
-//
-    mixin addChapter(i, o, k)
-        li
-            a(href="/chapters/#{k}")= (i+1)+'. '+o.title
+block css
+    link(href="/css/text.css", rel="stylesheet")
 
-    block title
-        !=title
+block body
+    div(class="jumbotron", style="padding: 50px 0;")
+        div(class="container")
+            h1(id="title")= story.title
+            - if (index >= 0 && index < stories.length-1)
+                div(style="text-align: right; margin-top: 25px;")
+                    a(href="/stories/#{stories[index+1].slug}")
+                        h3(style="color:#282828; font-weight: bold;")
+                            ='Next: '+stories[index+1].title
+                            i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
 
-    block css
-        link(href="/css/chapter.css", rel="stylesheet")
-        
-    block navbar
-        nav(class="navbar navbar-default navbar-fixed-top")
-            div(class="container-fluid")
-                div(class="navbar-header")
-                    button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-collapse")
-                        span(class="icon-bar")
-                        span(class="icon-bar")
-                        span(class="icon-bar")
-                    a(class="navbar-brand", href="#") ND@125
-                div(class="collapse navbar-collapse")
-                    ul(class="nav navbar-nav")
-                        li(class="dropdown")
-                            a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-expanded="false")
-                                |Chapters 
-                                span(class="caret")
-                            ul(class="dropdown-menu", role="menu")
-                                - var keys = Object.keys(data)
-                                - for (var i = 0, n = keys.length; i < n; i++)
-                                    +addChapter(i, data[keys[i]], keys[i])
-                        li
-                            a(href="/map") Atlas
-                    ul(class="nav navbar-nav navbar-right")
-                        - var prev, next, keys = Object.keys(data)
-                        - for (var i = 0, n = keys.length; i < n; i++)
-                            - if (keys[i] === chapter)
-                                - prev = keys[i-1]
-                                - next = keys[i+1]
-                                - break
-                        - if (prev)
-                            li
-                                a(href="/chapters/#{prev}") Previous Chapter
-                        - if (next)
-                            li
-                                a(href="/chapters/#{next}") Next Chapter
+    div(class="container")
+        div(id="content")
+            - for (var i = 0; i < 20; i++)
+                div(class="section")= story.content
+        hr
+        footer
+            |Geography | 701-777-4246
+            br
+            |O'Kelly Hall 152 | 221 Centennial Drive Stop 9020, Grand Forks, ND, 58202
+            div(style="margin-top: 50px; text-align: center;") © 2015 University of North Dakota
+  
 
-    block main
-        div(class="main-content")
-            h1(class="bold", style="margin-bottom: 50px;")!= title
-            - for (var i = 0, n = data[chapter].sections.length; i < n; i++)
-                - var cur = data[chapter].sections[i]
-                div(class="section-div")
-                    h2(class="into-title")= cur.title
-                    div(class="intro-content")= cur.content 
-
-    block js
-        script(src="/js/chapter.js")
+block js
+    script(src="/js/text.js")

@@ -16,8 +16,6 @@ nosql.on('load', function() {
             slug_to_story_map[o.slug] = i++;
             stories.push(o);
         });
-        
-        console.log(stories);
     }); 
 });
 
@@ -45,7 +43,7 @@ app.get('/', function (req, res) {
 app.get('/stories/:title', function (req, res) {
     var i = slug_to_story_map[req.params.title];
     var story = stories[i];
-    console.log(story.type);
+
     res.render(story.type, {
         'title': story.title+' &ndash; nd@125',
         'story': story,

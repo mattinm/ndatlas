@@ -1,5 +1,15 @@
-$('#map,#narrative').css({
-    'height': $(window).height()-50
+function resizeNarrative() {
+    $('#map,#narrative').css({
+        'height': $(window).height()-50
+    });
+}
+resizeNarrative();
+
+var resizeTimeout = -1;
+
+$(window).resize(function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(resizeNarrative, 500);
 });
 
 // insert spinner for now
