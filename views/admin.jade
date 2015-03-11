@@ -1,0 +1,57 @@
+extends master
+
+mixin AddRow(story)
+    tr
+        td= story.index
+        td= story.title
+        td
+            i(class="glyphicon glyphicon-eye-open")
+            i(class="glyphicon glyphicon-pencil")
+            i(class="glyphicon glyphicon-remove")
+
+block css
+    link(href="/css/admin.css", rel="stylesheet")
+
+block navitem
+    li(class="active")
+        a(href="/admin") Admin
+
+block main
+    h1 Stories
+    table(class="table table-striped")
+        thead
+            tr
+                th #
+                th Title
+                th Actions
+        tbody
+            - for (var i = 0, n = stories.length; i < n; i++)
+                - stories[i].index = i+1
+                +AddRow(stories[i])
+    button(type="button", class="btn btn-default", id="new_story") New Story
+    div(class="modal fade", id="modal")
+        div(class="modal-dialog modal-lg")
+            div(class="modal-content")
+                div(class="modal-header")
+                    button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h1(class="modal-title") New Story
+                div(class="modal-body")
+                    h5(style="color:#777;font-weight:bold;margin-bottom:3px;") Story Title
+                    input(type="text", class="form-control", id="story_title")
+                    br
+                    h2 Sections
+                    div(id="sections")
+                        h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Title
+                        input(type="text", class="form-control")
+                        h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Content
+                        textarea(class="form-control")
+                    div(style="margin-top: 20px; text-align:right;")
+                        button(type="button", class="btn btn-default btn-sm", id="new_section") New Section
+                div(class="modal-footer")
+                    button(type="button", class="btn btn-default btn-lg", id="create_story") Create Story
+                
+block js
+    script
+        |var mi = #{stories.length};
+     script(src="/js/admin.js")

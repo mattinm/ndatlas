@@ -52,4 +52,11 @@ app.get('/stories/:title', function (req, res) {
     });
 });
 
+app.get('/admin', function (req, res) {
+    res.render('admin', {
+        'title': 'Admin &ndash; nd@125',
+        'stories': stories
+    });
+});
+
 app.listen(8005, '127.0.0.1');
