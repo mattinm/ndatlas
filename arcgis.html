@@ -10,16 +10,38 @@
 
         <!-- Basic styling -->
         <style type="text/css">
-            html, body, #mapDiv {
+            html, body, #content {
                 padding: 0;
                 margin: 0;
                 height: 100%;
+                width: 100%;
+            }
+
+            #rightPane {
+                width: 20%;
+                float: right;
+            }
+
+            #mapDiv {
+                height: 100%;
+                float: left;
+                width: 80%;
+            }
+
+            #legendDiv {
+                height: 100%;
+                background-color: #DCA;
             }
         </style>
     </head>
 
     <body class="claro">
-        <div id="mapDiv"></div>
+        <div id="content">
+            <div id="rightPane">
+                <div id="legendDiv"></div>
+            </div>
+            <div id="mapDiv"></div>
+        </div>
 
         <!-- ESRI js -->
         <script src="http://js.arcgis.com/3.12/"></script>
@@ -27,15 +49,30 @@
         <!-- Create the map -->
         <script type="text/javascript">
             var map;
-            require(["esri/map", "dojo/domReady!"], function(Map) {
+            require([
+                "esri/map",
+                "esri/dijit/Legend",
+                "esri/dijit/Scalebar",
+                "dojo/domReady!"
+            ], function(Map, Scalebar) {
                 map = new Map("mapDiv", {
                     center: [-100.0, 47.0],
-                    zoom: 7,
-                    basemap: "streets"
+                    zoom: 7/*,
+                    basemap: "topo"*/
                     });
 
-                var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/FortBerthold/Fort_Berthold_Map_Service/MapServer");
+                var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
                 map.addLayer(layer);
+
+                var scalebar = new Scalebar({
+                    map: map,
+                    scalebarUnit: "dual"
+                });
+
+                var legend = new esri.dijit.Legend({
+                    map: map
+                }, "legendDiv");
+                legend.startup();
              });
         </script>
     </body>
