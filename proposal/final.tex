@@ -43,7 +43,7 @@ Email: michael.marti@my.und.edu
 % add the abstract
 \begin{abstract}
 
-HERE IS WHERE THE ABSTRACT GOES.
+As North Dakota approaches its 125\textsuperscript{th} anniversary of statehood, there is a wealth of demographic, economic, and social data available relating to the diverse religious, ethnic, and social groups of North Dakota. However, this data is scattered across many fields, including anthropology, history, religious studies, sociology, and American Indian studies, without any single source location to view multiple narratives from the many fields. Creating a content management system that allows students from these various fields to create digital interactive maps and graphs with accompanying narratives will allow students and the general public to learn about multiple aspects of North Dakota, creating connections between the multiple disciplines that may not have been apparent otherwise. By using a content management system that is integrated with common technologies used to create physical atlases, AtlasCMS allows the content managers to reuse created content, greatly simplifying the process of creating interesting and interactive online maps.
 
 \end{abstract}
 
@@ -51,8 +51,6 @@ HERE IS WHERE THE ABSTRACT GOES.
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-
-As North Dakota approaches its 125\textsuperscript{th} anniversary of statehood, there is a wealth of demographic, economic, and social data available relating to the diverse religious, ethnic, and social groups of North Dakota. However, this data is scattered across many fields, including anthropology, history, religious studies, sociology, and American Indian studies, without any single source location to view multiple narratives from the many fields. Creating interactive maps and graphs with accompanying narratives across these disciplines will allow students and the general public to learn about multiple aspects of North Dakota, creating connections between the multiple disciplines that may not have been apparent otherwise.
 
 There are several examples of interactive atlases or maps online, each with their own unique set of features. For example, Atlas of the Historical Geography of the United States~\cite{us-historical-atlas-2014} utilizes static images as maps, while allowing hiding of the legend, narrative, and table of contents, while also incorporating a slider and animation functionality for year-on-year map changes.  The historical geography atlas is an excellent example of an interactive atlas, but struggles with dynamic data because of its use of static images. For a further evaluation of more online atlases, please see the Related Works section of this paper.
 
@@ -99,7 +97,15 @@ Content managers can then log into the admin portal and add, delete, or modify p
 \section{Implementation}
 This section is still in development. Current documentation pending to change.
 
+Originally, development for AtlasCMS started as an extension of DjangoCMS, a content management system written in Django, a Python framework. However, given the time-constraints and unfamiliarity with writing modules in DjangoCMS, it was decided that creating a basic CMS from the ground up using more familiar frameworks would allow for a faster and more consistent development experience. Therefore, Node.js, a JavaScript package manager, is used to integrate several JavaScript packages into AtlasCMS, including a basic web server, database APIs, and templating system.
 
+One of the primary concerns during development was ensuring that the content managers would be able to reuse resources they have already created using ArcGIS, a common geographic data creation tool. During early development, the idea of converting the ArcGIS data to the open source GeoJSON standard was tested. However, during the conversion, only the basic geometric shapes and user-defined variables for the shapes were retained, removing extremely important features such as symbology for legends and colors to distinguish shapes. To use GeoJSON from ArcGIS data would require the content manager to upload the ArcGIS data and then edit the GeoJSON, in a tool that would have to be developed and integrated into AtlasCMS, creating a sizable increase in work load and adding error potential to the content.
+
+To avoid have content managers reenter data in GeoJSON format that has already been created in ArcGIS, it was decided to use connections from AtlasCMS to ArcGIS Server to render the maps. ArcGIS Server is a standalone ArcGIS project that allows content managers to upload their ArcGIS data, with all defined layers, symbology, and legends, to be rendered by the server. External sources, such as AtlasCMS, can then send requests to ArcGIS Server using the JavaScript ArcGIS API to embed the map, including any layer filtering, on webpages. Using ArcGIS Server to render the maps simplifies the process for content developers who are already using ArcGIS dramatically; however, this is an additional cost that must be incurred, and developing support for GeoJSON is a future goal of AtlasCMS to allow it to be used in more projects.
+
+Here we will discuss how we went about allowing the user to create map-narrative key points, and how we used those to filter the layers on the map with the narrative (and vice versa). This feature hasn't been fully implemented and will be added for the final draft.
+
+Here we will discuss the authentication system in place, including basic access control and content management features. This feature hasn't been fully implemented and will be added for the final draft.
 
 Here would be the high-level use-case diagram describing the system in full. Will be added for the final draft.
 
@@ -115,6 +121,14 @@ While AtlasCMS is custom made for a situation in which an ArcGIS server is avail
 
 \section{Conclusion}
 Conclusion pending.
+
+\section{TODO}
+
+\begin{enumerate}
+\item Expand the Introduction
+\item Add additional citations for the different APIs, frameworks, and programs used
+\item Complete the Implementation, Results, and Conclusion sections
+\end{enumerate}
 
 \bibliographystyle{IEEEtran.bst}
 \bibliography{IEEEabrv, ./references.bib}
