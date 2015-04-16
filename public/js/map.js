@@ -5,6 +5,11 @@ function resizeNarrative() {
 }
 resizeNarrative();
 
+function resetLoadingLocation() {
+    $("#loading").css("left", ($("#mapDiv").width() - $("#narrative").width()) / 2);
+}
+resetLoadingLocation();
+
 var resizeTimeout = -1;
 
 $(window).resize(function() {
@@ -12,67 +17,108 @@ $(window).resize(function() {
     resizeTimeout = setTimeout(resizeNarrative, 500);
 });
 
-// insert spinner for now
-var opts = {
-    lines: 13, // The number of lines to draw
-    length: 20, // The length of each line
-    width: 10, // The line thickness
-    radius: 30, // The radius of the inner circle
-    corners: 1, // Corner roundness (0..1)
-    rotate: 0, // The rotation offset
-    direction: 1, // 1: clockwise, -1: counterclockwise
-    color: '#000', // #rgb or #rrggbb or array of colors
-    speed: 1, // Rounds per second
-    trail: 60, // Afterglow percentage
-    shadow: false, // Whether to render a shadow
-    hwaccel: false, // Whether to use hardware acceleration
-    className: 'spinner', // The CSS class to assign to the spinner
-    zIndex: 2e9, // The z-index (defaults to 2000000000)
-    top: '50%', // Top position relative to parent
-    left: '30%' // Left position relative to parent
-};
-var target = document.getElementById('map');
-var spinner = new Spinner(opts).spin(target);
+var map, layer, dynamicLayers;
+var visible = [2, 3];
 
-var worker = cw(function(base,cb){
-    importScripts('/js/shp.min.js');
-    shp(base).then(cb);
+require([
+    "esri/map",
+    "esri/dijit/Legend",
+    "esri/dijit/Scalebar"
+], function(Map, Legend, Scalebar) {
+    console.log($("#loading").css('left'));
+    map = new Map("mapDiv", {
+        center: [-100.0, 47.0],
+        zoom: 7/*,
+        basemap: "topo"*/
+    });
+
+    layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
+    layer.setDisableClientCaching(true);
+    layer.setVisibleLayers(visible);
+
+    // add the layer info on load
+    layer.on("load", function(e) {
+        // populate our visible array
+        dynamicLayers = e.target.createDynamicLayerInfosFromLayerInfos();
+
+
+        /*
+        $("#toggleDiv").html("<ul>");
+        $.each(layer.layerInfos, function(index, obj) {
+            $("#toggleDiv").append(
+                '<li><input type="checkbox" ' +
+                'id="layerId' + obj.id + '" ' +
+                'name="layerId' + obj.id + '" ' +
+                'value="' + obj.name + '"' +
+                ($.inArray(obj.id, visible) != -1 ? ' checked' : '') + '>' +
+                obj.name + '</li>');
+
+            $("#layerId" + obj.id).click(function() {
+                ToggleLayer(obj.id, this.checked);
+            });
+        });
+        $("#toggleDiv").append("</ul>");
+        */
+    });
+
+    // hide the loading icon when the dynamic layer finishes updating
+    layer.on("update-end", hideLoading);
+    //layer.on("update-start", showLoading);
+
+    // add the layer to the map
+    map.addLayer(layer);
+
+    var scalebar = new Scalebar({
+        map: map,
+        scalebarUnit: "dual"
+    });
+
+    var legend = new Legend({
+        map: map
+    }, "legendDiv");
+    //legend.startup();
 });
 
-//worker can be called multiple times
-worker.data(cw.makeUrl('/maps/nd_counties/nd_2010_county_data')).then(function(data){
-    spinner.stop();
-    var map = L.map('map').setView([47, -97.5], 7.5);
-    var myStyle = {
-        "color": "#ff0000",
-        "weight": 5,
-        "opacity": 0.65
-    };
-  
-    function onEachFeature(feature, layer) {
-        if (feature.properties && feature.properties.NAME) {
-            layer.bindPopup(feature.properties.NAME);
+function ToggleLayer(id, isVisible) {
+    console.log("ID: " + id + " is " + (isVisible ? "" : "NOT ") + "visible.");
+    showLoading();
+
+    dynamicLayers[id].visible = isVisible;
+    if (layer.supportsDynamicLayers) {
+        layer.setDynamicLayerInfos(dynamicLayers);
+    } else {
+        if (isVisible) {
+            visible.push(id);
+        } else {
+            visible.splice(visible.indexOf(id), 1);
         }
+        console.log(visible);
+        layer.setVisibleLayers(visible);
+        console.log(layer);
     }
+}
 
-    L.geoJson(data.features, {
-        style: myStyle,
-        onEachFeature: onEachFeature
-    }).addTo(map);
-    console.log(data.features);
-});
+function hideLoading() {
+    $("#loadingDiv").hide();
+}
+
+function showLoading() {
+    $("#loadingDiv").show();
+}
 
 $('#slider').click(function() {
     if ($(this).hasClass('expanded')) {
         $('#story').fadeOut(function() {
             $('#narrative').animate({width: 70});
             $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
+            resetLoadingLocation();
         });
     }
     else {
-        $('#narrative').animate({width: 700}, function() {
+        $('#narrative').animate({width: 460}, function() {
             $('#slider').addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
             $('#story').fadeIn();
+            resetLoadingLocation();
         });
     }
 });

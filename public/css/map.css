@@ -2,11 +2,15 @@ body {
     margin-top: 50px;
     margin-bottom: 0;
 }
+body, html {
+    width: 100%;
+    height: 100%;
+}
 #narrative {
     position: fixed;
     top: 50px;
     right: 0;
-    width: 700px;
+    width: 460px;
     z-index: 1000;
     background-color: #f6f6f6;
     -webkit-box-shadow: 10px 0 5px 10px #aaa;
@@ -32,33 +36,18 @@ body {
     max-width: 600px;
     font-size: 14pt;
 }
-
-            html, body, #content {
-                padding: 0;
-                margin: 0;
-                height: 100%;
-                width: 100%;
-            }
-
-            #rightPane {
-                width: 20%;
-                float: right;
-            }
-
-            #map {
-                height: 100%;
-                float: left;
-                width: 80%;
-                background: #FFF;
-            }
-
-            #loadingDiv {
-                height: inherit;
-                background:#7f7f7f;
-                background:rgba(0,0,0,0.5);
-            }
-
-            #legendDiv {
-                height: 100%;
-                background-color: #DCA;
-            }
+#map {
+    height: 100%;
+    float: left;
+    width: 80%;
+    background: #FFF;
+}
+#loadingDiv {
+    height: inherit;
+    background:#7f7f7f;
+    background:rgba(0,0,0,0.5);
+}
+#legendDiv {
+    height: 100%;
+    background-color: #DCA;
+}

@@ -1,16 +1,18 @@
 extends master
 
 block css
-    link(rel="stylesheet", href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+    link(rel="stylesheet", href="http://js.arcgis.com/3.12/esri/css/esri.css")
     link(href="/css/map.css", rel="stylesheet")
 
 
 block body
-    div(id="map", style="width: 100%;")
+    div(id="mapDiv", style="height:100%; margin-top:50px")
+        div(id="loadingDiv", style="height: inherit; background:rgba(0,0,0,0.5);")
+            img(src="/images/loading.gif", id="loading", style="position: relative;top: 50%;left: 300px;")
     div(id="narrative") 
-        div(id="slider", style="display: inline-block; vertical-align: top; width: 60px;padding: 510px 10px;", class="expanded")
+        div(id="slider", style="display: inline-block; vertical-align: top; width: 60px;padding: 310px 10px;", class="expanded")
             i(class="glyphicon glyphicon-chevron-right", style="font-size: 48px;")
-        div(id="story", style="display: inline-block; vertical-align: top; width: 600px; padding: 15px;")
+        div(id="story", style="display: inline-block; vertical-align: top; width: 400px; padding: 15px;")
             h2(id="title", style="font-weight: bold; padding-bottom: 15px;")= story.title
             div(id="content")
                 - for (var i = 0; i < story.sections.length; i++)
@@ -24,10 +26,5 @@ block body
                         div(style="margin-top: 50px; text-align: center;") © 2015 University of North Dakota
         
 block js
-    script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
-    script(src="/js/spin.min.js")
-    script(src="/js/catiline.js")
-    script(src="/js/shp.min.js")
+    script(src="http://js.arcgis.com/3.12/")
     script(src="/js/map.js")
-    
-
