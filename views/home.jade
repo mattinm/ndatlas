@@ -18,8 +18,7 @@ block main
         - for (var i = 0, n = stories.length; i < n; i++)
             div(class="col-lg-4")
                 h2(style="font-weight: bold;")= stories[i].title
-                - for (var j = 0; j < 3; j++)
-                    div= stories[i].content
+                div= stories[i].sections[0].content
                 div(style="text-align: right;")
                     a(href="/stories/#{stories[i].slug}")
                         span(style="color: #006600; font-size: 16pt; font-weight: bold;")
