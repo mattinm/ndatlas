@@ -21,7 +21,7 @@ body, html {
     height: 100%;
    }
    
-   #story{overflow-y: scroll;}
+#story{overflow-y: scroll;}
 #slider {
     cursor: pointer;
     }
@@ -37,6 +37,7 @@ body, html {
     font-size: 14pt;
 }
 #map {
+    margin-top: 50px;
     height: 100%;
     float: left;
     width: 80%;

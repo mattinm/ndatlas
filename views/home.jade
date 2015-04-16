@@ -7,11 +7,12 @@ block body
     div(class="jumbotron")
         div(class="container")
             h1 Welcome to nd@125!
-            div(style="text-align: right; margin-top: 50px;")
-                a(href="/stories/#{stories[0].slug}")
-                    span(style="color:#282828; font-size: 32pt; font-weight: bold;")
-                        |Start Exploring
-                        i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
+            - if (stories[0])
+                div(style="text-align: right; margin-top: 50px;")
+                    a(href="/stories/#{stories[0].slug}")
+                        span(style="color:#282828; font-size: 32pt; font-weight: bold;")
+                            |Start Exploring
+                            i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
 
 block main
     div(class="row")

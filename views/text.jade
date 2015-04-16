@@ -18,11 +18,12 @@ block body
         div(id="content")
             - for (var i = 0; i < story.sections.length; i++)
                 div(class="section")!= story.sections[i].content.replace(/{{cite:(\d+)}}/g, function(match, p1) { return '<a href="#" data-toggle="tooltip" title="'+story.citations[p1-1]+'">['+p1+']</a>'; })
-        div(id="bibliography", style="margin-top: 50px;")
-            h2
-                b Bibliography
-            - for (var i = 0; i < story.bibliography.length; i++)
-                div(class="section")!= story.bibliography[i]
+        - if (story.bibliography)
+            div(id="bibliography", style="margin-top: 50px;")
+                h2
+                    b Bibliography
+                - for (var i = 0; i < story.bibliography.length; i++)
+                    div(class="section")!= story.bibliography[i]
         hr
         footer
             |Geography | 701-777-4246
