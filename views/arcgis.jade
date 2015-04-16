@@ -1,0 +1,18 @@
+extends master
+
+block css
+    link(rel="stylesheet", href="http://js.arcgis.com/3.12/esri/css/esri.css")
+    link(href="/css/arcgis.css", rel="stylesheet")
+
+
+block body
+    div(id="content")
+        div(id="rightPane")
+            div(id="toggleDiv")
+        div(id="mapDiv")
+            div(id="loadingDiv")
+                img(src="/images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%")
+        
+block js
+    script(src="http://js.arcgis.com/3.12/")
+    script(src="/js/arcgis.js")
