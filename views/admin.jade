@@ -7,7 +7,7 @@ mixin AddRow(story)
         td
             i(class="glyphicon glyphicon-eye-open")
             i(class="glyphicon glyphicon-pencil")
-            i(class="glyphicon glyphicon-remove")
+            i(class="glyphicon glyphicon-remove", data-index="#{story.index-1}")
 
 block css
     link(href="/css/admin.css", rel="stylesheet")
@@ -43,11 +43,17 @@ block main
                     h2 Sections
                     div(id="sections")
                         h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Title
-                        input(type="text", class="form-control")
+                        input(type="text", class="form-control section-title")
                         h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Content
-                        textarea(class="form-control")
+                        textarea(class="form-control section-content")
                     div(style="margin-top: 20px; text-align:right;")
                         button(type="button", class="btn btn-default btn-sm", id="new_section") New Section
+                    br
+                    h2 Inline Citations
+                    div(id="citations")
+                        input(type="text", class="form-control citation")
+                    div(style="margin-top: 20px; text-align:right;")
+                        button(type="button", class="btn btn-default btn-sm", id="new_citation") New Citation
                 div(class="modal-footer")
                     button(type="button", class="btn btn-default btn-lg", id="create_story") Create Story
                 
