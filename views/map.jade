@@ -7,18 +7,21 @@ block css
 
 block body
     div(id="map", style="width: 100%;")
-    div(id="narrative")
+    div(id="narrative") 
         div(id="slider", style="display: inline-block; vertical-align: top; width: 60px;padding: 510px 10px;", class="expanded")
             i(class="glyphicon glyphicon-chevron-right", style="font-size: 48px;")
         div(id="story", style="display: inline-block; vertical-align: top; width: 600px; padding: 15px;")
-            h2(id="title")= story.title
-            div(id="content")= story.content
-            hr
-            footer
-                |Geography | 701-777-4246
-                br
-                |O'Kelly Hall 152 | 221 Centennial Drive Stop 9020, Grand Forks, ND, 58202
-                div(style="margin-top: 50px; text-align: center;") © 2015 University of North Dakota
+            h2(id="title", style="font-weight: bold; padding-bottom: 15px;")= story.title
+            div(id="content")
+                - for (var i = 0; i < story.sections.length; i++)
+                    div(class="section")!= story.sections[i].content.replace(/{{cite:(\d+)}}/g, function(match, p1) { return '<a href="#" data-toggle="tooltip" data-placement="left" title="'+story.citations[p1-1]+'">['+p1+']</a>'; })
+                div(style="margin: 50px 0;")
+                    hr
+                    div
+                        |Geography | 701-777-4246
+                        br
+                        |O'Kelly Hall 152 | 221 Centennial Drive Stop 9020, Grand Forks, ND, 58202
+                        div(style="margin-top: 50px; text-align: center;") © 2015 University of North Dakota
         
 block js
     script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
@@ -26,3 +29,5 @@ block js
     script(src="/js/catiline.js")
     script(src="/js/shp.min.js")
     script(src="/js/map.js")
+    
+

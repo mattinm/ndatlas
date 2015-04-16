@@ -1,5 +1,5 @@
 function resizeNarrative() {
-    $('#map,#narrative').css({
+    $('#map,#narrative,#story,#map').css({
         'height': $(window).height()-50
     });
 }
@@ -75,4 +75,10 @@ $('#slider').click(function() {
             $('#story').fadeIn();
         });
     }
+});
+
+
+
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
 });

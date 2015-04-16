@@ -70,5 +70,68 @@ nosql.on('load', function() {
             'Tweton, Jerome D. Jelliff, Theodore. North Dakota: The Heritage of a People, (Fargo: North Dakota Institute for Regional Studies, 1976)',
             'Wemett, W.M. The Story of the Flickertail State, (Valley City; W. M. Wemett, 1923)'
         ]
+    },
+{
+        'title': 'The Depression',
+        'type': 'map',
+        'sections': [{
+            'content': 'The war was now over. Celebrations occurred across the nation as troops poured back into the country. The 1920s were poised to be a decade of elegance and abundance. North Dakota also rejoiced as their boys came home. Farmers were ready to continue to feed the world and enjoy the high demands that were expected of them but it was not to be so. The end of the World War One marked a sharp downturn for the state. While the rest of the country enjoyed parties and luxuries courtesy of easy to obtain credit North Dakotans were already in a deep recession, only to be dragged down even further when the stock market finally crashed. This Depression lasting more than 20 years nearly ruined the state.'
+        },
+        {
+            'content': 'When Europe produced an abundance of grain the year following the end of the war and other countries continue to export wheat to remaining European buyers, farmers came face to face with an abundance of wheat in a highly competitive market.{{cite:1}} When the price controls were removed the flooded market crashed. Prices went from an average of $2.35 a bushel in 1919 down to $1.01 in 1921. Unfortunately, in that perfect storm the North Dakotans couldn\'t just cut their losses and run. Everything they owned, as a result of the rapid expansion, was tied to the banks. The very land and way of life that these immigrants had traveled to attain was now hanging by a thread. All the state could do was try to break even by continuing to produce larger and larger amounts of wheat.'
+        },
+        {
+            'content': 'To cash in on high wheat prices during the war years many farmers cultivate as much land as possible. As a result demand for acreage coupled with wartime inflation temporarily pushed land prices higher. In 1910 a farmer could purchase land for $26 per acre. By 1920 that price had risen to $35 and that was for land that was left over: an increase of about $160 by today’s standards.{{cite:2}} Without proper understanding of basic sustainable agricultural methods or second thoughts to the fertility of the soil, cost of seed or cost of increased labor, farmers bought up huge tracts of land for inflated prices. Easily obtained credit fueled the new investments. After all, it was national policy to put more acres under the plow.'
+        },
+        {
+            'content': 'Many farmers “preferred to keep their original purchase encumbered in order to have money to buy additional lands.”{{cite:3}} Many of these loans were taken out with interest rates in excess of 8%. By 1916 the region’s interest rates on short term loans (loans due back in 3 to 12 months) were the highest in the nation at 10.75%.{{cite:4}} With this kind of debt load any misfortune in this house of cards could cause collapse: drought, flood, hail, locust, price drop or even a family illness. The Federal Farm Loan Act of 1916 capped interest rates at 6% but by the time it was enacted most of the damage was already done.{{cite:5}}'
+        },
+        {
+            'content': 'Accompanying the increase in loans to buy up more land was an increase in homestead farm mortgages and an increase in non-owner tenants. In 1910 half of the farms in North Dakota were mortgaged by their owners. By 1920 that rate had swollen to 71%.{{cite:6}} The mortgage debt in North Dakota more than doubled during the period of 1910-1919 in sync with national efforts to ramp up wartime production. Starting at $48,000,000 the debt ballooned to $108,000,000 by the end of the decade.{{cite:7}} Farms operated by tenants increased by 12% over decade as well, from 14% to 26%.{{cite:8}} In some cases, owners were away fighting the war. In many others, absentee owners brought in outsiders or non-land owners to farm the soil and cash in on the short term opportunity.'
+        },
+        {
+            'content': 'When the price bubble finally burst the financial disaster nearly ruined the state. Sudden deflation crashed land prices. The total value of farm property dropped by one-third, the shattering losses were estimated to be over half a billion dollars. In order to build and maintain the infrastructure that had been built during the war years total property taxes collected rose 250%, from $11,000,000 in 1912 to $27,000,000 in 1922. The heavy tax burden coupled with the declining value of farm land pushed many North Dakotans further into debt and ultimately bankruptcy.'
+        },
+        {
+            'content': 'If this were not enough the decade following the 20’s would prove to be even worse. The 20’s had been characterized by the popping of the economic bubble that brought the state to its knees, the 30’s was the kick while they were down. Wheat prices fell lower than anyone thought possible, only 37 cents per bushel.{{cite:9}} With prices at all-time lows North Dakotans had to continue to plant large quantities of wheat to try to pay their debts. This over production with under consumption was a vicious cycle that forced prices down further.'
+        },
+        {
+            'content': 'To add to the economic cycle that crippled the state the 30’s suffered from natural abnormalities the state had never experienced before. Mother Nature turned on the state pushing the spirits of the people even lower. Drought set in, strangling the life out of the state. In 1933 the state only received 13.5 inches of rain, the fourth driest on record.{{cite:10}} The following year a scant 9.5 inches of precipitation, the driest year recorded up to that time.{{cite:11}} There was a small reprieve from the drought in 1935 but 1936 was even drier with only 8.8 of rain. Hearty as the wheat plant is the drought severely stunted the growth making life harder for the state.'
+        },
+        {
+            'content': ' Temperatures soared to extremes on both ends of the spectrum. Reaching 100 degrees became a normal part of summer life in the state. 1936 proved to be the climax of these temperature variations recording not only the hottest day on record in the state to that point but also the coldest. Mid February the town of Parshall recorded their actual temperature at -60°F, not including wind chill.{{cite:12}} In contrast Steele only a few months later in July recorded their temperature at 121°F.{{cite:13}}'
+        },
+        {
+            'content': 'With the strong winds of North Dakota coupling with these extreme temperatures made most agricultural practices in the area nearly impossible. The hot dry weather dried out the soil and was swept away by the winds, creating dust storms destroying crops. The heat and dust storms also wreaked havoc on the cattle ranches in the western end of the state. Ranchers struggled to keep their herds hydrated and fed. Many cattle simply dropped dead from inhalation of dust, suffocating from the very air around them. If your herd made it through the summer months to the winter a whole new set of challenges arose. Food became more and more difficult to find. With the growing season decimated the state wasn’t able to save enough food to feed themselves let alone herds of livestock. Many ranchers sold their herds off only retaining their prized breeding stock feeding them whatever they could find.'
+        },
+        {
+            'content': 'The capstone to the destruction of the state was the grasshoppers. Pembina and Adams counties were the first to be hit in 1931.{{cite:14}} The grasshopper plague continued to spiral out of control. What little the farmers could grow was devoured by swarms of insects. In Killdeer grasshoppers piled up four inches deep, blanketing the town.{{cite:15}} In another instance the town of Mott had to turn on their street lamps in the middle of the day because the swarm of grasshoppers had blotted out the sun. This shadow was cast all over the state.'
+        },
+        {
+            'content': 'The economic system had collapsed and even Mother Nature had turned its back on the state. The Great Depression caused havoc across the US but drought, plague, and weather combined to make North Dakota particularly unbearable. Spirits were low, the weather the worse and many saw no way out. Yet a light was at the end of the tunnel. With another World War soon on the way North Dakota would reclaim its rightful place as wheat providers to the United States. '
+        }],
+        'citations': [
+            'Saloutos, ”The Spring-Wheat Farmer in a Maturing Economy 1870-1920” 184.',
+            'Robinson, History of North Dakota, 369.',
+            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 177.',
+            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 178.',
+            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 179.',
+            'Robinson, History of North Dakota, 369',
+            'IBID',
+            'IBID',
+            'Tweton, Jerome. North Dakota: The Heritage of a People, (Fargo: North Dakota Institute for Regional Studies, 1976) 155',
+            'Robinson, History of North Dakota, 38',
+            'IBD',
+            'Robinson, History of North Dakota, 399',
+            'Robinson, History of North Dakota, 398 ',
+            'IBID',
+            'Tweton, Jerome. North Dakota: The Heritage of a People. 155'
+        ],
+        'bibliography': [
+            'Saloutos, Theodore. "The Spring-Wheat Farmer in a Maturing Economy 1870-1920." The Journal of Economic History 6: 173-190. http://www.jstor.org/stable/2113082 (accessed May 1, 2014).',
+            'Robinson, Elwyn B. History of North Dakota, (Fargo: North Dakota Institute for Regional Studies, 1995)',
+            'Tweton, Jerome. North Dakota: The Heritage of a People, (Fargo: North Dakota Institute for Regional Studies, 1976)',
+            'World War I on the Home Front, (Films for the Humanities and Sciences. DVD, 2006)'
+        ]
     }]);
 });
