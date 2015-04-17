@@ -5,6 +5,64 @@
  */
 var nosql = require('nosql').load(__dirname+'/database.nosql');
 
+/** TODO: My thoughts on data structure, will make graph.
+
+Basic breakdown:
+
+CHAPTER 1 (wide-reaching, such as religion, immigration, etc)
+    STORY 1 (specific story relating to the chapter, i.e. population through time, etc)
+        SECTION 1 (i.e. part of the narrative, related to a year)
+        ...
+        SECTION N
+    ...
+    STORY N
+CHAPTER N
+
+{
+    'chapters': [   // array for all the chapters in the atlas
+        {
+            'slug': 'slug',     // slug for the URL
+            'name': 'name',     // full name of the chapter
+            'blurb': 'blurb',   // short blurb to put on the front-page or elsewhere
+            'img': 'name'       // name of an image to use (if we want to implement)
+            'stories': [        // array for all of the stories that make up this chapter
+                {
+                    'slug': 'slug',     // slug for the URL
+                    'name': 'name',     // full name of the story
+                    'map': 'url',       // URL for the ArcGIS map
+                    'citations': [      // array of all citations used in the narrative
+                        'citation',     // text for the citation
+                        ...
+                    ],
+                    'bibliography': [   // array of all bibliography elements in the narrative
+                        'bibliography', // text for the bibliography element
+                        ...
+                    ],
+                    'sections': [       // array for all the narrative sections
+                        {
+                            'start_year': 'int',    // starting year for scrolling
+                            'end_year': 'int,       // ending year for scrolling  
+                            'title': 'title',       // title for this section
+                            'content': 'content'    // actual content for this section (paragraphs)
+                        }
+                        ...
+                    ]
+                }
+            ]
+        }
+        ...
+    ]
+}
+
+We can pull the scrollbar information directly from the map to generate it on-the-fly. Then, when someone
+ticks to a new year, we'll go through the sections and look for which section it belongs to, scrolling
+automatically to it (if needed) and updating the map. I'm using a start/end system for the sections so
+sections that cover a wide range (i.e. 1920 - 1950, the WWI/II years) can be on the same narrative, while
+still allowing the user to go through the years. If title is blank, we wouldn't push one, creating seemless
+content.
+
+*/
+
 nosql.on('load', function() {
     nosql.insert(
     [{
