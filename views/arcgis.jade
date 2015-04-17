@@ -14,5 +14,7 @@ block body
                 img(src="/images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%")
         
 block js
-    script(src="http://js.arcgis.com/3.12/")
+    script.
+        arcmapurl="#{mapurl}";
+    script(src="http://js.arcgis.com/3.13/")
     script(src="/js/arcgis.js")

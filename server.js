@@ -50,6 +50,13 @@ app.get('/arcgis', function (req, res) {
     });
 });
 
+app.get('/toggle', function (req, res) {
+    res.render('arcgis', {
+        'stories': stories,
+        'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer'
+    });
+});
+
 app.get('/stories/:title', function (req, res) {
     var i = slug_to_story_map[req.params.title];
     var story = stories[i];

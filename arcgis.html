@@ -49,9 +49,9 @@
                 <div id="toggleDiv"></div>
             </div>
             <div id="mapDiv">
-                <div id="loadingDiv">
+                <!--<div id="loadingDiv">
                     <img src="public/images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%">
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -63,7 +63,7 @@
         <!-- Create the map -->
         <script type="text/javascript">
             var map, layer, dynamicLayers;
-            var visible = [2, 3];
+            var visible = [1];
 
             require([
                 "esri/map",
@@ -72,11 +72,11 @@
             ], function(Map, Legend, Scalebar) {
                 map = new Map("mapDiv", {
                     center: [-100.0, 47.0],
-                    zoom: 7/*,
+                    zoom: 6/*,
                     basemap: "topo"*/
                     });
 
-                layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
+                layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer");
                 layer.setDisableClientCaching(true);
                 layer.setVisibleLayers(visible);
 
