@@ -6,12 +6,12 @@ block css
 block body
     div(class="jumbotron", style="padding: 50px 0;")
         div(class="container")
-            h1(id="title")= story.title
-            - if (index >= 0 && index < stories.length-1)
+            h1(id="title")= story.name ? story.name : chapter.name
+            - if (next)
                 div(style="text-align: right; margin-top: 25px;")
-                    a(href="/stories/#{stories[index+1].slug}")
+                    a(href="/chapter/#{next.slug}")
                         h3(style="color:#282828; font-weight: bold;")
-                            ='Next: '+stories[index+1].title
+                            ='Next: '+next.name
                             i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
 
     div(class="container")

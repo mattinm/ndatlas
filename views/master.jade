@@ -1,6 +1,6 @@
-mixin AddStory(story, active)
+mixin AddStory(chapter, active)
     li
-        a(href="/stories/#{story.slug}", style="#{active ? 'font-weight: bold;' : ''}")= story.title
+        a(href="/chapter/#{chapter.slug}", style="#{active ? 'font-weight: bold;' : ''}")= chapter.name
 
 doctype html
 html(lang="en")
@@ -24,27 +24,25 @@ html(lang="en")
                 div(class="collapse navbar-collapse")
                     ul(class="nav navbar-nav")
                         li(class="dropdown")
-                            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Stories
+                            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Chapters
                                 span(class="caret")
                             ul(class="dropdown-menu")
-                                - for (var i = 0, n = stories.length; i < n; i++)
-                                    +AddStory(stories[i], index >= 0 ? index === i ? 1 : 0 : 0)
+                                - for (var i = 0, n = chapters.length; i < n; i++)
+                                    +AddStory(chapters[i], chapters[i] === chapter ? 1 : 0)
                         li
                             a(href="/admin") Admin
                         block navitem
                     ul(class="nav navbar-nav navbar-right")
-                        - if (index >= 0 && index > 0)
-                            li
-                                a(href="#{stories[index-1].slug}") Previous Story
-                        - else if (index >= 0)
-                            li
+                        li
+                            - if (previous)
+                                a(href="#{previous.slug}") Previous Story
+                            - else
                                 a(href="/#", class="disabled") Previous Story
-                        - if (index >= 0 && index < stories.length-1)
-                            li
-                                a(href="#{stories[index+1].slug}") Next Story
-                        - else if (index >= 0)
-                            li
-                                a(href="/#", class="disabled") Next Story
+                        li
+                            - if (next)
+                                a(href="#{next.slug}") Next Story
+                            - else
+                                a(href="/#", class="disabled") Next Story                                
         block body
         main(class="container")
             block main

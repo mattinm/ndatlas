@@ -7,21 +7,21 @@ block body
     div(class="jumbotron")
         div(class="container")
             h1 Welcome to nd@125!
-            - if (stories[0])
+            - if (chapters[0])
                 div(style="text-align: right; margin-top: 50px;")
-                    a(href="/stories/#{stories[0].slug}")
+                    a(href="/chapters/#{chapters[0].slug}")
                         span(style="color:#282828; font-size: 32pt; font-weight: bold;")
                             |Start Exploring
                             i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
 
 block main
     div(class="row")
-        - for (var i = 0, n = stories.length; i < n; i++)
+        - for (var i = 0, n = chapters.length; i < n; i++)
             div(class="col-lg-4")
-                h2(style="font-weight: bold;")= stories[i].title
-                div= stories[i].sections[0].content
+                h2(style="font-weight: bold;")= chapters[i].name
+                div= chapters[i].blurb
                 div(style="text-align: right;")
-                    a(href="/stories/#{stories[i].slug}")
+                    a(href="/chapter/#{chapters[i].slug}")
                         span(style="color: #006600; font-size: 16pt; font-weight: bold;")
                             |Explore More
                             i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")

@@ -3,10 +3,23 @@ var parser = require('body-parser');
 var shp = require('shpjs');
 var nosql = require('nosql').load(__dirname+'/database.nosql');
 var app = express();
-var stories = [];
-var slug_to_story_map = {};
+var chapters = [];
 var selected = [];
+var order = [];
 
+nosql.on('load', function() {
+    nosql.all(function(a) {
+        selected.push(a);
+        return a; 
+    }, function() {
+        selected.forEach(function(o) {
+            chapters.push(o);
+            order.push(o.slug);
+        });
+    });
+});
+
+/*
 nosql.on('load', function() {
     nosql.all(function(a) {
         selected.push(a);
@@ -16,10 +29,11 @@ nosql.on('load', function() {
         selected.forEach(function(o) {
             o.slug = o.title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
             slug_to_story_map[o.slug] = i++;
-            stories.push(o);
+            chapters.push(o);
         });
     }); 
 });
+*/
 
 // call after load of DB
 /*
@@ -39,46 +53,65 @@ app.use(express.static(__dirname+'/public'));
 app.get('/', function (req, res) {
     res.render('home', {
         'title': 'nd@125',
-        'stories': stories
-    });
-});
-
-app.get('/arcgis', function (req, res) {
-    res.render('arcgis', {
-        'stories': stories,
-        'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer'
+        'chapters': chapters
     });
 });
 
 app.get('/toggle', function (req, res) {
     res.render('arcgis', {
-        'stories': stories,
-        'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer'
+        'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        'chapters': chapters
     });
 });
 
-app.get('/stories/:title', function (req, res) {
-    var i = slug_to_story_map[req.params.title];
-    var story = stories[i];
+app.get('/chapter/:chapter', function (req, res) {
+    chapter = null;
+    story = null;
+    previous = null;
+    next = null;
+
+    // find the correct current, next, and previous chapters
+    for (var i = 0; i < chapters.length; ++i) {
+        chapter = chapters[i];
+
+        if (chapter.slug == req.params.chapter) {
+            story = chapter.stories[0];
+            if (i < (chapters.length - 1)) {
+                next = chapters[i+1];
+            }
+
+            break;
+        }
+
+        previous = chapter;
+    }
+
+    // see if we 404
+    if (!chapter || !story) {
+        res.status(404).end('Not found.')
+    }
 
     res.render(story.type, {
-        'title': story.title+' &ndash; nd@125',
+        'title': story.name ? story.name : chapter.name + ' &ndash; nd@125',
+        'chapter': chapter,
         'story': story,
-        'stories': stories,
-        'index': i
+        'next': next,
+        'previous': previous,
+        'chapters': chapters,
     });
 });
 
 app.get('/admin', function (req, res) {
     res.render('admin', {
         'title': 'Admin &ndash; nd@125',
-        'stories': stories
+        'chapters': chapters
     });
 });
 
+/*
 app.post('/api/:action', function(req, res) {
     if (req.params.action === 'delete') {
-        delete slug_to_story_map[stories[parseInt(req.body.index)]];
+        delete slug_to_story_map[chapters[parseInt(req.body.index)]];
         
         var ii = parseInt(req.body.index);
         var s = Object.keys(slug_to_story_map);
@@ -87,16 +120,17 @@ app.post('/api/:action', function(req, res) {
             if (slug_to_story_map[s[i]] > ii) slug_to_story_map[s[i]] = slug_to_story_map[s[i]] - 1;
         }
         
-        stories.splice(parseInt(req.body.index), 1);
+        chapters.splice(parseInt(req.body.index), 1);
         res.send('1');
     }
     else if (req.params.action === 'create') {
         var data = req.body.data;
         
         data.slug = data.title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
-        stories.push(data);
-        slug_to_story_map[data.slug] = stories.length-1;
+        chapters.push(data);
+        slug_to_story_map[data.slug] = chapters.length-1;
     }
 });
+*/
 
 app.listen(8005, '127.0.0.1');

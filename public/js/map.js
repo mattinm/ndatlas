@@ -32,7 +32,7 @@ require([
         basemap: "topo"*/
     });
 
-    layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
+    layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapurl);
     layer.setDisableClientCaching(true);
     layer.setVisibleLayers(visible);
 
