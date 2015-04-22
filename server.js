@@ -17,7 +17,7 @@ nosql.on('load', function() {
             order.push(o.slug);
         });
     });
-});
+}); 
 
 /*
 nosql.on('load', function() {
@@ -53,6 +53,9 @@ app.use(express.static(__dirname+'/public'));
 app.get('/', function (req, res) {
     res.render('home', {
         'title': 'nd@125',
+        'chapter': null,
+        'previous': null,
+        'next': null,
         'chapters': chapters
     });
 });

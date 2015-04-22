@@ -13,7 +13,7 @@ html(lang="en")
         link(href="/css/master.css", rel="stylesheet")
         block css
     body
-        nav(class="navbar navbar-inverse navbar-fixed-top")
+        nav(class="navbar navbar-und navbar-fixed-top")
             div(class="container")
                 div(class="navbar-header")
                     button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-collapse")
@@ -36,12 +36,12 @@ html(lang="en")
                         li
                             - if (previous)
                                 a(href="#{previous.slug}") Previous Story
-                            - else
+                            - else if (chapter)
                                 a(href="/#", class="disabled") Previous Story
                         li
                             - if (next)
                                 a(href="#{next.slug}") Next Story
-                            - else
+                            - else if (chapter)
                                 a(href="/#", class="disabled") Next Story                                
         block body
         main(class="container")

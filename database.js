@@ -29,10 +29,12 @@ CHAPTER N
                 {
                     'slug': 'slug',     // slug for the URL (if not defined, this is the index)
                     'name': 'name',     // full name of the story (if not defined, this is the index)
-                    'map': 'url',       // URL for the ArcGIS map
+                    'map': {            // info for the ArcGIS map
+                        'url': 'url'
+                    },
                     'type': 'type',     // type of the story (text or map)
                     'title': 'title',   // title on popup when user clicks
-                    'text': 'text',     // text on popup when user clicks 
+                    'text': 'text',     // text on popup when user clicks, 
                     'citations': [      // array of all citations used in the narrative
                         'citation',     // text for the citation
                         ...
