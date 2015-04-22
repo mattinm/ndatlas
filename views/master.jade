@@ -46,6 +46,29 @@ html(lang="en")
         block body
         main(class="container")
             block main
+        footer(class="container")
+            block footer
+            div(class="col-xs-12 col-sm-6 col-md-4 footer-left-block")
+                p
+                    b Geography Department
+                    br
+                    b 701.777.4246
+                p(class="address")
+                    |O'Kelly Hall, Room 152
+                    br
+                    |221 Centennial Drive, Stop 9020
+                    br
+                    |Grand Forks, ND 58202-9020
+            div(class="col-xs-12 col-sm-6 col-md-4 col-md-push-4 footer-right-block")
+                p
+                    b Right-aligned text
+                    br
+                    | This is a right-aligned text block
+                    br
+                    | For some content
+            div(class="col-xs-12 col-sm-12 col-md-4 col-md-pull-4 footer-center-block")
+                p
+                    b © 2015 University of North Dakota
         script(src="/js/jquery.min.js")
         script(src="/js/bootstrap.min.js")
         script(src="/js/master.js")
