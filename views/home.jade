@@ -5,51 +5,40 @@ block css
 
 block body
     div(class="jumbotron")
-        div(class="container")
-            h1 Welcome to nd@125!
-            - if (chapters[0])
-                div(style="text-align: right; margin-top: 50px;")
-                    a(href="/chapters/#{chapters[0].slug}")
-                        span(style="color:#282828; font-size: 32pt; font-weight: bold;")
-                            |Start Exploring
-                            i(class="glyphicon glyphicon-chevron-right", style="top: 5px;")
+        div(class="container text-center")
+            h2 Explore 125 Years of ND History
+            img(class="img-responsive img-rounded center-block", src="/images/nd_feature_1.png", alt="North Dakota")
+            - if (chapters)
+                a(class="btn btn-default btn-lg", href="/chapter/#{chapters[0].slug}")
+                    |Explore 
+                    i(class="glyphicon glyphicon-chevron-right")
 
 block main
-    div(class="row")
-        div(class="col-lg-12")
-            h1(class="page-header") Explore 125 Years of ND History
-        div(class="col-md-9 col-sm-8")
-            p
-                |This is some more information about this atlas.
-        div(class="col-md-3 col-sm-4")
-            a(class="btn btn-default", href="#")
-                |Explore
-                i(class="glyphicon glyphicon-chevron-right")
-
-    div(class="row")
-        div(class="col-lg-12")
-                    h1(class="page-header") Chapters
-        - for (var i = 0, n = chapters.length; i < n; i++)
-            div(class="col-lg-4 col-sm-6")
-                div(class="panel panel-default")
-                    div(class="panel-heading")
-                        h4= chapters[i].name
-                    div(class="panel-body")
-                        p= chapters[i].blurb
-                    div(class="panel-footer text-right")
-                        a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
-                            |Explore 
-                            i(class="glyphicon glyphicon-chevron-right")
-            div(class="col-lg-4 col-sm-6")
-                div(class="panel panel-default")
-                    div(class="panel-heading")
-                        h4= chapters[i].name
-                    div(class="panel-body")
-                        p= chapters[i].blurb
-                    div(class="panel-footer text-right")
-                        a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
-                            |Explore 
-                            i(class="glyphicon glyphicon-chevron-right")
+    - if (chapters)
+        div(class="row")
+            div(class="col-lg-12")
+                        h1(class="page-header") Chapters
+            - for (var i = 0, n = chapters.length; i < n; i++)
+                div(class="col-lg-4 col-sm-6")
+                    div(class="panel panel-default")
+                        div(class="panel-heading")
+                            h4= chapters[i].name
+                        div(class="panel-body")
+                            p= chapters[i].blurb
+                        div(class="panel-footer text-right")
+                            a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
+                                |Explore 
+                                i(class="glyphicon glyphicon-chevron-right")
+                div(class="col-lg-4 col-sm-6")
+                    div(class="panel panel-default")
+                        div(class="panel-heading")
+                            h4= chapters[i].name
+                        div(class="panel-body")
+                            p= chapters[i].blurb
+                        div(class="panel-footer text-right")
+                            a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
+                                |Explore 
+                                i(class="glyphicon glyphicon-chevron-right")
     div(class="row")
         div(class="col-lg-12")
             h1(class="page-header") About
@@ -57,8 +46,19 @@ block main
             img(class="img-responsive img-rounded center-block", src="/images/nd_atlas_group2.jpg", alt="Group photo of ND Atlas project members")
     hr
     footer
-        |Geography | 701-777-4246
-        br
-        |O'Kelly Hall 152 | 221 Centennial Drive Stop 9020, Grand Forks, ND, 58202
-        div(style="margin-top: 50px; text-align: center;") © 2015 University of North Dakota
+        div(class="container")
+            div(class="col-xs-12")
+                p
+                    b Geography Department
+                    br
+                    b 701.777.4246
+                p(class="address")
+                    |O'Kelly Hall, Room 152
+                    br
+                    |221 Centennial Drive, Stop 9020
+                    br
+                    |Grand Forks, ND 58202-9020
+            div(class="col-xs-12 text-center")
+                p
+                    b © 2015 University of North Dakota
 

@@ -2,13 +2,26 @@
     font-weight: bold;
 }
 .jumbotron {
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+.jumbotron .btn {
+    margin-top: 15px;
+}
+p.address {
+    font-size: .85em;
+}
+hr, .page-header {
+    border-color: #E5E5E5;
+}
+/*/.jumbotron {
     background-color: #006600;
     padding: 100px 0;
-}
-.jumbotron h1 {
+}/*/
+/*/.jumbotron h1 {
     color: #eeeeee;
     font-weight: bold;
-}
+}/*/
 /*/h1 {
     margin: 0;
 }/**/
