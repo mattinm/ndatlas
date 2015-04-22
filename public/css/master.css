@@ -9,15 +9,22 @@
     color: #eeeeee;
     font-weight: bold;
 }
-h1 {
+/*/h1 {
     margin: 0;
-}
-body {
+}/**/
+/**/body {
     margin: 50px 0;
-}
+}/**/
 a.disabled {
     color: #555555 !important;
     cursor: not-allowed;
+}
+@media (min-width: 768px) {
+    .panel-body {
+        min-height: 320px;
+        height: 320px;
+        overflow-y: hidden;
+    }
 }
 
 /* UND-style navbar */

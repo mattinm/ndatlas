@@ -16,15 +16,45 @@ block body
 
 block main
     div(class="row")
+        div(class="col-lg-12")
+            h1(class="page-header") Explore 125 Years of ND History
+        div(class="col-md-9 col-sm-8")
+            p
+                |This is some more information about this atlas.
+        div(class="col-md-3 col-sm-4")
+            a(class="btn btn-default", href="#")
+                |Explore
+                i(class="glyphicon glyphicon-chevron-right")
+
+    div(class="row")
+        div(class="col-lg-12")
+                    h1(class="page-header") Chapters
         - for (var i = 0, n = chapters.length; i < n; i++)
-            div(class="col-lg-4")
-                h2(style="font-weight: bold;")= chapters[i].name
-                div= chapters[i].blurb
-                div(style="text-align: right;")
-                    a(href="/chapter/#{chapters[i].slug}")
-                        span(style="color: #006600; font-size: 16pt; font-weight: bold;")
-                            |Explore More
-                            i(class="glyphicon glyphicon-chevron-right", style="top: 2px;")
+            div(class="col-lg-4 col-sm-6")
+                div(class="panel panel-default")
+                    div(class="panel-heading")
+                        h4= chapters[i].name
+                    div(class="panel-body")
+                        p= chapters[i].blurb
+                    div(class="panel-footer text-right")
+                        a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
+                            |Explore 
+                            i(class="glyphicon glyphicon-chevron-right")
+            div(class="col-lg-4 col-sm-6")
+                div(class="panel panel-default")
+                    div(class="panel-heading")
+                        h4= chapters[i].name
+                    div(class="panel-body")
+                        p= chapters[i].blurb
+                    div(class="panel-footer text-right")
+                        a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
+                            |Explore 
+                            i(class="glyphicon glyphicon-chevron-right")
+    div(class="row")
+        div(class="col-lg-12")
+            h1(class="page-header") About
+        div(class="col-xs-12")
+            img(class="img-responsive img-rounded center-block", src="/images/nd_atlas_group2.jpg", alt="Group photo of ND Atlas project members")
     hr
     footer
         |Geography | 701-777-4246
