@@ -42,10 +42,17 @@ a.disabled {
     padding-top: 15px;
     margin-top: 5px;
 }
+.btn-social-icon {
+    margin: 0 1px;
+}
 @media (max-width: 767px) {
     .footer-center-block, .footer-left-block, .footer-right-block {
         text-align: center;
     } 
+    .footer-right-block {
+        padding-top: 15px;
+        margin-top: 5px;
+    }
 }
 @media (min-width: 768px) {
     .panel-body {
@@ -61,11 +68,14 @@ a.disabled {
     }
     .footer-right-block {
         text-align: right;
+        border-top: none;
     }
 }
 @media (min-width: 992px) {
     .footer-center-block {
         border-top: none;
+        padding-top: 0;
+        margin-top: 0;
     }
 }
 
