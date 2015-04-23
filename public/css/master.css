@@ -39,18 +39,17 @@ a.disabled {
     cursor: not-allowed;
 }
 .footer-center-block {
-    border-top: 1px solid #eeeeee;
-    padding-top: 15px;
-    margin-top: 5px;
+    text-align: center;
+    font-size: 12px;
 }
 .btn-social-icon {
     margin: 0 1px;
 }
 @media (max-width: 767px) {
-    .footer-center-block, .footer-left-block, .footer-right-block {
+    .footer-left-block, .footer-right-block {
         text-align: center;
     } 
-    .footer-right-block {
+    .footer-right-block, .footer-center-block {
         padding-top: 15px;
         margin-top: 5px;
     }
@@ -68,20 +67,12 @@ a.disabled {
     .footer-left-block {
         text-align: left;
     }
-    .footer-center-block {
-        text-align: center;
-    }
     .footer-right-block {
         text-align: right;
         border-top: none;
     }
 }
 @media (min-width: 992px) {
-    .footer-center-block {
-        border-top: none;
-        padding-top: 0;
-        margin-top: 0;
-    }
 }
 
 /* UND-style navbar */
