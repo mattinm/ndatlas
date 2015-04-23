@@ -32,6 +32,7 @@ footer {
 }/**/
 /**/body {
     margin: 50px 0;
+    margin-bottom: 0;
 }/**/
 a.disabled {
     color: #555555 !important;
