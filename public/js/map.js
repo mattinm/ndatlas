@@ -18,7 +18,7 @@ $(window).resize(function() {
 });
 
 var map, layer, dynamicLayers;
-var visible = [2, 3];
+var visible = [1];
 
 require([
     "esri/map",
@@ -27,7 +27,7 @@ require([
 ], function(Map, Legend, Scalebar) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
-        center: [-100.0, 47.0],
+        center: [-100.27, 47.29]/*,
         zoom: 7/*,
         basemap: "topo"*/
     });

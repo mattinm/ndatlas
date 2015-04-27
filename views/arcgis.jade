@@ -6,12 +6,13 @@ block css
 
 
 block body
-    div(id="content")
-        div(id="rightPane")
+    div(class="row", style="height:100%")
+        div(class="col-xs-12 col-sm-9 col-md-10", style="height:100%")
+            div(id="mapDiv", style="height:100%")
+                div(id="loadingDiv")
+                    img(src="/images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%")
+        div(class="hidden-xs col-sm-3 col-md-2", style="height:100%")
             div(id="toggleDiv")
-        div(id="mapDiv")
-            div(id="loadingDiv")
-                img(src="/images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%")
         
 block js
     script.

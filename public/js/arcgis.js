@@ -11,11 +11,12 @@ require([
     "esri/InfoTemplate",
     //"esri/dijit/Legend",
     "esri/dijit/Scalebar",
+    "esri/geometry/Point",
     "esri/tasks/query"
-], function(Color, /*Legend,*/ Map, InfoTemplate, Scalebar) {
+], function(Color, /*Legend,*/ Map, InfoTemplate, Scalebar, Point) {
     // create the map
-    map = new Map("mapDiv", {
-        center: [-100.0, 47.0],
+    map = new Map("mapDiv", {/*
+        center: [-100.27, 47.29]/*,
         zoom: 7/*,
         basemap: "topo"*/
     });
@@ -54,6 +55,7 @@ require([
 
     // add the layer to the map
     map.addLayer(layer);
+    //map.centerAt(new Point(-100.27, 47.29));
 
     var scalebar = new Scalebar({
         map: map,

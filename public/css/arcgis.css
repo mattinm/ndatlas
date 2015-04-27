@@ -1,11 +1,12 @@
-body {
+/*body {
     margin-top: 50px;
     margin-bottom: 0;
-}
-html, body, #content {
+}*/
+html, body {
     height: 100%;
     width: 100%;
 }
+/*
 #rightPane {
     width: 20%;
     float: right;
@@ -16,6 +17,7 @@ html, body, #content {
     width: 80%;
     background: #FFF;
 }
+*/
 #loadingDiv {
     height: inherit;
     background:#7f7f7f;

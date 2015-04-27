@@ -7,59 +7,89 @@
 
         <!-- ESRI css -->
         <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Basic styling -->
         <style type="text/css">
-            html, body, #content {
+            html, body {
                 padding: 0;
                 margin: 0;
-                height: 100%;
-                width: 100%;
+                min-height: 100%
             }
 
-            #rightPane {
-                width: 20%;
-                float: right;
+            header {
+                height: 40px;
+                background-color: red;
+            }
+
+            .mainBody {
+                position: absolute;
+                top: 40px;
+                bottom: 40px;
+                width:100%;
+            }
+
+            footer {
+                height: 40px;
+                background-color: blue;
+                
+                position: absolute;
+                bottom: 0;
+                width:100%;
             }
 
             #mapDiv {
-                height: 100%;
-                float: left;
-                width: 80%;
-            }
-
-            #legendDiv {
-                height: 100%;
-                background-color: #DCA;
+                min-height: 100%;
+                width: 100%;
             }
         </style>
     </head>
 
-    <body class="claro">
-        <div id="content">
-            <div id="rightPane">
-                <div id="legendDiv"></div>
+    <body>
+        <div id="wrapper">
+            <header>Header</header>
+            <div class="mainBody">
+                <div id="mapDiv"></div>
             </div>
-            <div id="mapDiv"></div>
+            <footer>Footer</footer>
         </div>
 
         <!-- ESRI js -->
         <script src="http://js.arcgis.com/3.12/"></script>
+        <script src="js/jquery.min.js"></script>
 
         <!-- Create the map -->
         <script type="text/javascript">
             var map;
             require([
                 "esri/map",
-                "esri/dijit/Legend",
+                "esri/layers/ArcGISTiledMapServiceLayer",
                 "esri/dijit/Scalebar",
                 "dojo/domReady!"
-            ], function(Map, Scalebar) {
+            ], function(Map, ArcGISTiledMapServiceLayer, Scalebar) {
+                // keep within ND
+                var ext = new esri.geometry.Extent({
+                    "xmin": -11732778.0,
+                    "ymin": 5584030.0,
+                    "xmax": -10632085.0,
+                    "ymax": 6317826.0,
+                    "spatialReference": {
+                        "wkid": 102100
+                    }
+                });
+
                 map = new Map("mapDiv", {
-                    center: [-100.0, 47.0],
-                    zoom: 7/*,
-                    basemap: "topo"*/
-                    });
+                    center: [-100.425, 47],
+                    zoom: 7,
+                    extent: ext
+                });
+
+                // add the basemap
+                var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
+                    opacity: 0.0,
+                    showAttribution: false
+                });  
+                map.addLayer(streets); 
 
                 var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
                 map.addLayer(layer);
@@ -69,10 +99,11 @@
                     scalebarUnit: "dual"
                 });
 
+                /*
                 var legend = new esri.dijit.Legend({
                     map: map
                 }, "legendDiv");
-                legend.startup();
+                legend.startup();*/
              });
         </script>
     </body>
