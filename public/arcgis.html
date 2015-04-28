@@ -8,6 +8,21 @@
         <!-- ESRI css -->
         <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/jquery.nouislider.min.css">
+        <link rel="stylesheet" href="css/jquery.nouislider.pips.min.css">
+
+        <!-- Simulate database data -->
+        <script type="text/javascript">
+var backgroundLayers = [];
+var togglableLayers = [
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+];
+
+// Create a new date from a string, return as a timestamp.
+function timestamp(str) {
+    return new Date(str).getTime();   
+}
+        </script>
 
         <!-- Basic styling -->
         <style type="text/css">
@@ -25,13 +40,12 @@
             .mainBody {
                 position: absolute;
                 top: 40px;
-                bottom: 40px;
+                bottom: 68px;
                 width:100%;
             }
 
             footer {
-                height: 40px;
-                background-color: blue;
+                height: 68px;
                 
                 position: absolute;
                 bottom: 0;
@@ -51,12 +65,15 @@
             <div class="mainBody">
                 <div id="mapDiv"></div>
             </div>
-            <footer>Footer</footer>
+            <footer>
+                <div id="toggleSlider"></div>
+            </footer>
         </div>
 
         <!-- ESRI js -->
         <script src="http://js.arcgis.com/3.12/"></script>
         <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.nouislider.all.min.js"></script>
 
         <!-- Create the map -->
         <script type="text/javascript">
@@ -91,12 +108,33 @@
                 });  
                 map.addLayer(streets); 
 
-                var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/NDView/NDView/MapServer");
+                var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer");
                 map.addLayer(layer);
 
                 var scalebar = new Scalebar({
                     map: map,
                     scalebarUnit: "dual"
+                });
+
+                // create our slider
+                layer.on("load", function(e) {
+                    // print out some stuff
+                    console.log(parseInt(layer.layerInfos[togglableLayers[0]].name));
+                    console.log(parseInt(layer.layerInfos[togglableLayers[togglableLayers.length-1]].name));
+
+                    $("#toggleSlider").noUiSlider({
+                        start: parseInt(layer.layerInfos[togglableLayers[0]].name),
+                        range: {
+                            min: parseInt(layer.layerInfos[togglableLayers[0]].name),
+                            max: parseInt(layer.layerInfos[togglableLayers[togglableLayers.length-1]].name)
+                        }
+                    });
+
+                    $('#toggleSlider').noUiSlider_pips({
+                        mode: 'values',
+                        values: [parseInt(layer.layerInfos[togglableLayers[0]].name), parseInt(layer.layerInfos[togglableLayers[togglableLayers.length-1]].name)],
+                        density: 4
+                    });
                 });
 
                 /*
