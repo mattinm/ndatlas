@@ -20,7 +20,7 @@ block body
                 div(id="content")
                     - for (var i = 0; i < story.sections.length; i++)
                         div(class="section")!= story.sections[i].content.replace(/{{cite:(\d+)}}/g, function(match, p1) { return '<a href="#" data-toggle="tooltip" data-placement="left" title="'+story.citations[p1-1]+'">['+p1+']</a>'; })
-                    footer
+                    div(id="main-footer")
                         div(class="col-sm-12", style="text-align: center;")
                             p
                                 b Geography Department
@@ -54,6 +54,8 @@ block body
                                 b © 2015 University of North Dakota
     div(id="mapFooter")
         div(id="toggleSlider")
+
+block contentwrapper
 block footer
                     
 block js
