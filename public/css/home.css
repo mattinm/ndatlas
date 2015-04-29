@@ -30,6 +30,10 @@
     text-align: center;
     color: #FFF;
 }
+#welcome-header h1 {
+    font-weight: 100;
+    font-size: 58px;
+}
 
 #welcome-details {
 	background-color: #FFF;
