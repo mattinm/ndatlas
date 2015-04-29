@@ -17,15 +17,18 @@ $(window).resize(function() {
     resizeTimeout = setTimeout(resizeNarrative, 500);
 });
 
-var map, layer;
+var map, layer, symbol, infoTemplate, query;
 var visible = [];
+var firstSet = true;
 
 require([
+    "esri/Color",
     "esri/map",
+    "esri/InfoTemplate",
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/dijit/Legend",
     "esri/dijit/Scalebar"
-], function(Map, ArcGISTiledMapServiceLayer, Legend, Scalebar) {
+], function(Color, Map, InfoTemplate, ArcGISTiledMapServiceLayer, Legend, Scalebar) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
         center: [-100.425, 47],
@@ -80,6 +83,13 @@ require([
 
         // create a function for when the slider value is set
         $('#toggleSlider').on('set', function() {
+            if (!firstSet) {
+                map.graphics.clear();
+            } else {
+                firstSet = false;
+            }
+            map.infoWindow.hide();
+            map.infoWindow.clearFeatures();
             showLoading();
 
             // prepare our layers for filtering
@@ -89,13 +99,7 @@ require([
             });
 
             // find the index of this layer
-            val = $('#toggleSlider').val();
-            for (i = 0; i < values.length; ++i) {
-                if (val == values[i]) {
-                    currentLayers.push(togglableLayers[i]);
-                    break;
-                }
-            }
+            currentLayers.push(getCurrentLayer());
 
             // show the visible layers
             layer.setVisibleLayers(currentLayers);
@@ -121,9 +125,44 @@ require([
     //    map: map
     //}, "legendDiv");
     //legend.startup();
+
+    //Listen for click event on the map, when the user clicks on the map call executeQueryTask function.
+    dojo.connect(map, "onClick", executeQueryTask);
+
+    //Can listen for onComplete event to process results or can use the callback option in the queryTask.execute method.
+    //dojo.connect(queryTask, "onComplete", showResults);
+
+    //build query filter
+    query = new esri.tasks.Query();
+    query.returnGeometry = true;
+    query.outFields = ["*"];
+
+    symbol = new esri.symbol.SimpleFillSymbol(
+        esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+        new esri.symbol.SimpleLineSymbol(
+            esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
+            new dojo.Color([255,0,0]), 2),
+            new dojo.Color([255,255,0,0.5]
+    ));
 });
 
+function getCurrentLayer() {
+    // find the index of this layer
+    val = $('#toggleSlider').val();
+    for (i = 0; i < values.length; ++i) {
+        if (val == values[i]) {
+            return togglableLayers[i];
+        }
+    }
+
+    return 0;
+}
+
 function ToggleLayer(id) {
+    map.graphics.clear();
+    map.infoWindow.hide();
+    map.infoWindow.clearFeatures();
+
     showLoading();
 }
 
@@ -156,7 +195,44 @@ $('#slider').click(function() {
     }
 });
 
+function executeQueryTask(evt) {
+    //onClick event returns the evt point where the user clicked on the map.
+    //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
+    //set query geometry = to evt.mapPoint Geometry
+    query.geometry = evt.mapPoint;
 
+    //Execute task and call showResults on completion
+    //build query task
+    if ($('#toggleSlider').val()) {
+        console.log("Executing task: " + mapUrl + "/" + getCurrentLayer());
+        queryTask = new esri.tasks.QueryTask(mapUrl + "/" + getCurrentLayer());
+        queryTask.execute(query, showResults);
+    }
+}
+
+function showResults(featureSet) {
+    //remove all graphics on the maps graphics layer
+    map.graphics.clear();
+    //map.infoWindow.hide();
+    //map.infoWindow.clearFeatures();
+
+    //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
+    dojo.forEach(featureSet.features, function(feature) {
+        var graphic = feature;
+        graphic.setSymbol(symbol);
+
+        //Set the infoTemplate.
+        //All ${attributeName} will be substituted with the attribute value for current feature.
+        infoTemplate = new esri.InfoTemplate(
+            infoTitle,
+            infoText
+        );
+        graphic.setInfoTemplate(infoTemplate);
+
+        //Add graphic to the map graphics layer.
+        map.graphics.add(graphic);
+    });
+}
 
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();

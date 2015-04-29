@@ -82,8 +82,8 @@ var chapter1 = {
             'backgroundLayers': [],
             'toggleableLayers': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
         },
-        'title': 'Population for ${YEAR}',
-        'text': 'Test text, please ignore',
+        'title': 'Population for ${NAME}, ${YEAR}',
+        'text': '${*}',
         'citations': [
             'Robinson, Elwyn B. History of North Dakota, (Fargo: North Dakota Institute for Regional Studies, 1995), 134',
             'Robinson, Elwyn B. History of North Dakota, 135',
@@ -159,8 +159,8 @@ var chapter2 = {
             'toggleableLayers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         },
         'type': 'map',
-        'title': 'Population for ${YEAR}',
-        'text': 'Test text, please ignore',
+        'title': 'Ancestry for ${NAME}, ${YEAR}',
+        'text': '${*}',
         'sections': [{
             'start_year': '1920',
             'end_year': '1920',

@@ -61,6 +61,8 @@ block js
         mapUrl="#{story.map.url}";
         backgroundLayers=[#{story.map.backgroundLayers}];
         togglableLayers=[#{story.map.toggleableLayers}];
+        infoTitle="#{story.title}"
+        infoText="#{story.text}"
     script(src="http://js.arcgis.com/3.12/")
     script(src="/js/jquery.nouislider.all.min.js")
     script(src="/js/map.js")
