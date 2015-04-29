@@ -1,3 +1,6 @@
+body, html {
+    /*font-size: 12px;*/
+}
 .navbar-brand {
     font-weight: bold;
 }
@@ -14,15 +17,25 @@ p.address {
 hr, .page-header {
     border-color: #E5E5E5;
 }
-footer {
+#main-footer {
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid #e5e5e5;
 }
 
-body {
-    margin: 50px 0;
+#content-wrapper {
+    position: absolute;
+    top: 54px;
+    bottom: 0px;
+    width: 100%;
+    height: calc(100% - 54px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
 }
+
 a.disabled {
     color: #005500 !important;
     cursor: not-allowed;
@@ -42,7 +55,7 @@ a.disabled {
         padding-top: 15px;
         margin-top: 5px;
     }
-    footer {
+    #main-footer {
         margin-top: 20px;
         padding-top: 10px;
     }
@@ -66,7 +79,8 @@ a.disabled {
 
 /* UND-style navbar */
 .navbar-und {
-    background-image: linear-gradient(to bottom, #009900 0px, #006600 100%)
+    background-image: linear-gradient(to bottom, #009900 0px, #006600 100%);
+    border-bottom: 3px solid #E6E6E6;
 }
 .navbar-und .navbar-brand {
     color: #eee;

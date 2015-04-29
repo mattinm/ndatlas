@@ -3,35 +3,159 @@ extends master
 block css
     link(href="/css/home.css", rel="stylesheet")
 
-block body
-    div(class="jumbotron")
-        div(class="container text-center")
-            h3(style="margin: 25px 0;")
-                b 125 Years of North Dakota History
-            img(class="img-responsive img-rounded center-block", src="/images/nd_feature_1.png", alt="North Dakota")
-            - if (chapters)
-                a(class="btn btn-default btn-lg", href="/chapter/#{chapters[0].slug}")
-                    |Start Exploring
-                    i(class="glyphicon glyphicon-chevron-right")
-
 block main
-    - if (chapters)
-        div(class="row")
-            div(class="col-lg-12")
-                        h1(class="page-header") Chapters
-            - for (var i = 0, n = chapters.length; i < n; i++)
-                div(class="col-lg-4 col-sm-6")
-                    div(class="panel panel-default")
-                        div(class="panel-heading")
-                            h4= chapters[i].name
-                        div(class="panel-body")
-                            p= chapters[i].blurb
-                        div(class="panel-footer text-right")
-                            a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
-                                |Explore 
-                                i(class="glyphicon glyphicon-chevron-right")
-    div(class="row")
-        div(class="col-lg-12")
-            h1(class="page-header") About
-        div(class="col-xs-12")
-            img(class="img-responsive img-rounded center-block", src="/images/nd_atlas_group2.jpg", alt="Group photo of ND Atlas project members")
+    div(id="welcome")
+        div(id="welcome-header", class="green")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-12")
+                        h1 North Dakota Atlas
+                        h2 Explore the 125 year history of North Dakota.
+                        div(class="buttons")
+                            a(id="btn-get-started", class="btn btn-xlg btn-primary", href="/chapter/#{chapters[0].slug}")
+                                |GET STARTED
+
+        div(id="welcome-details")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-4 info")
+                        i(class="fa fa-map-marker lead-icon")
+                        h3 About
+                        p Here is some about information
+                        p(class="more")
+                            a(href="#about-section")
+                                |Read More 
+                                i(class="fa fa-angle-right")
+                    div(class="col-md-4 info")
+                        i(class="fa fa-graduation-cap lead-icon")
+                        h3 Making Of
+                        p Here is some about information
+                        p(class="more")
+                            a(href="#making-section")
+                                |Making of the Atlas 
+                                i(class="fa fa-angle-right")
+                    div(class="col-md-4 info")
+                        i(class="fa fa-circle-o lead-icon")
+                        h3 Team
+                        p Here is some about information
+                        p(class="more")
+                            a(href="#team-section")
+                                |Meet the Team 
+                                i(class="fa fa-angle-right")
+
+    - if (false && chapters)
+        div(id="chapters", class="container")
+            div(class="row")
+                div(class="col-lg-12")
+                            h1(class="page-header") Chapters
+                - for (var i = 0, n = chapters.length; i < n; i++)
+                    div(class="col-lg-4 col-sm-6")
+                        div(class="panel panel-default")
+                            div(class="panel-heading")
+                                h4= chapters[i].name
+                            div(class="panel-body")
+                                p= chapters[i].blurb
+                            div(class="panel-footer text-right")
+                                a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
+                                    |Explore 
+                                    i(class="glyphicon glyphicon-chevron-right")
+                                    
+    div(id="about")
+        div(class="section section-quote")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        blockquote
+                            |"This is a quote about the project from someone well respected."
+                            footer
+                                |Someone well respected, USA
+        div(id="about-section", class="section")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        h1 About
+                        p
+                            |The North Dakota Online Atlas, led by the University of North Dakota's Department of Geography in collaboration with the Departments of American Indian Studies, Anthropology, Computer Science, History, Integrated Studies, Religious Studies, and Visual Arts, is an interdisciplinary collaborative project that seeks to develop an online atlas of North Dakota as part of the celebration of the state's 125 years of statehood (November 2, 2014). 
+                        p
+                            |The project is led by Dr. Michael Niedzielski (Geography) and by Dr. Tami Carmichael (Integrated Studies) with support from Dr. Debbie Storrs, Dean of the College of Arts and Sciences and  Michael Jacobs, former publisher of the Grand Forks Herald.
+                        h3 Purpose
+                        p
+                            |The purpose of the atlas is to engage an interdisciplinary group of students in experiential and collaborative learning to map demographic, economic, and social changes across the state, interpreting such changes, and disseminating findings in a digital format. The atlas will provide several benefits:
+                            ul
+                                li It will be an important resource for policy makers, community members, and K-12 colleagues and students.
+                                li It will expand students' educational experiences through experiential and collaborative learning with significant community engagement and impact.
+                                li It will provide a tangible product for public consumption to increase participation of the public as informed citizens.
+
+    div(id="making")
+        div(class="section section-quote")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        blockquote
+                            |"This is a quote about the project from someone well respected."
+                            footer
+                                |Someone well respected, USA
+        div(id="making-section", class="section")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        h1 Making of the Atlas
+                        p
+                            |In the first year of this project during Fall 2014, four groups were formed combining students from Dr. Niedzielski's GEOG471 Cartography & Visualization course and students from six participating departments under A&S499 Interdisciplinary Practicum. During the first year of the project (2014-2015), there are four groups, each with 2 students from A&S499 and 2-4 students from GEOG471. Each group is responsible for telling the story of a chosen theme through maps, graphs and narratives. Two other groups are working on the technical and artistic design of the interactive atlas. Specifically, the four themes are:
+
+                        h3 Population change in North Dakota
+                        p(class="theme-description")
+                            |We are studying North Dakota's population over time. We are gathering census data from statehood to the present. Maps that show population by county will be created for each census. When viewed together the maps will show the evolution of the state as its population pushed westward and concentrates into cities. Our narratives will focus on explaining the reasons behind major fluxes in North Dakota's population.
+                        p(class="theme-member")
+                            ul                           
+                                li Faculty mentor: Dr. Kimberly Porter (History)
+                                li Students from A&S499: MacIan Campbell
+                                li Students from GEOG471: Dylan Babiracki, Luke Belanus, Robert Schneider
+
+                        h3 Ethnic change in North Dakota
+                        p(class="theme-description")
+                            |We are interested in looking at the ethnic and cultural history of the state of North Dakota using numerous secondary resources on the history of the state and conducting interviews with residents that have had family here for multiple generations. We hope to create a visual and interpretive map that can be accessed by anyone who is interested in learning about the rich cultural history of North Dakota.
+                        p(class="theme-member")
+                            ul                           
+                                li Faculty mentor: Dr. Ann Reed (Anthropology)
+                                li Students from A&S499: Cheyenne Paris, Patrick Sprague
+                                li Students from GEOG471: Caitlin Hartig, Jay Sandeen, Matthew Linn, Liesbeth Richards
+
+                        h3 Boundary changes of Native American Lands in North Dakota
+                        p(class="theme-description")
+                            |We intend to give a represent of the American Indian population of North Dakota in this project. It is our intention to represent every "locally" stationed tribe in North Dakota and give a brief description of their cultures. We are specifically starting with treaties, reservations, and trust lands in an effort to narrate how historical events have shaped our state over time. These will be shown in the form of maps that change throughout time.
+                        p(class="theme-member")
+                            ul                           
+                                li Faculty mentor: Dr. Sebastian Braun (American Indian Studies)
+                                li Students from A&S499: Amber Bouret, Sashay Schettler
+                                li Students from GEOG471: Steven Demmerly, Jacob Vandervest, Spencer Tolliver
+
+                        h3 Religious affiliation change in North Dakota
+                        p(class="theme-description")
+                            |Kathryn and Luke are writing narratives to accompany maps that emphasize the rich religious history of our state. Kathryn is examining the rise of Pentecostalism while Luke is focusing on Anabaptist groups, particularly the Hutterite Colonies and their unique religious identity. Together, they are also working on a narrative to show, describe and explain the overall make up of religious affiliation.
+                        p(class="theme-member")
+                            ul                           
+                                li Faculty mentor: Dr. David Lawrence (Philosophy and Religion)
+                                li Students from A&S499: Kathryn Kester, Lucas Moen
+                                li Students from GEOG471: Lisa Pimentel, Karl Bauer
+
+    div(id="team")
+        div(class="section section-quote")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        blockquote
+                            |"This is a quote about the project from someone well respected."
+                            footer
+                                |Someone well respected, USA
+        div(id="team-section", class="section")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8 col-md-offset-2")
+                        h1 Meet the Team
+                        p
+                            |Here's the team that put together this great atlas.
+
+                div(class="row")
+                    div(class="col-xs-12")
+                        img(class="img-responsive img-rounded center-block", src="/images/nd_atlas_group2.jpg", alt="Group photo of ND Atlas project members")
