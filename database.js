@@ -112,10 +112,10 @@ var chapter1 = {
             'content': ' By 1870 Minneapolis had become the biggest milling city in the United States. Using new technology the millers had found a way to create a better product. Producing spring wheat flour the bran (which was very brittle) breaks into small pieces and become very hard to sift out of the product.{{cite:1}} This made spring wheat flour less desirable then the easier to sift winter wheat, therefore making it less profitable. The millers from Minneapolis discovered a way to eliminate the bran issue by importing specialized porcelain rollers instead of milling stones that crushed wheat in a more controlled uniform fashion.{{cite:2}} This way the wheat could be crushed without completely shattering the bran.'
         },
         {
-            'content': ' Armed with this new technology and the power produced by St. Anthony’s Falls Minneapolis expanded exponentially. Mills were being built even though a large majority of wheat in Minnesota and Wisconsin (mostly winter wheat) was already promised to other milling hubs such as Chicago and Milwaukee.{{cite:3}} Mills at times were forced to shut down due to lack of wheat. This problem needed to be addressed and the millers turned to the Dakota Territory.'
+            'content': ' Armed with this new technology and the power produced by St. Anthony\'s Falls Minneapolis expanded exponentially. Mills were being built even though a large majority of wheat in Minnesota and Wisconsin (mostly winter wheat) was already promised to other milling hubs such as Chicago and Milwaukee.{{cite:3}} Mills at times were forced to shut down due to lack of wheat. This problem needed to be addressed and the millers turned to the Dakota Territory.'
         },
         {
-            'content': ' The Dakota Territory was very isolated from the rest of the US for most of the 1800s. It wasn’t until 1870 that the first tracks of the Northern Pacific Railroad were laid down in the state. The Northern Pacific was designed to connect the Twin Cities with the rich wheat lands of the Dakotas, as well as to the Pacific Ocean at Seattle.{{cite:4}} When the project was commissioned the company received a vast land grant to finance the creation of the tracks. 40 miles of land was awarded on either side of the proposed tracks, a total area that equates to 1.5X the size of North Dakota itself.{{cite:5}} Stock holders had the option to exchange stock holdings for land that was equal to the land of the stock.'
+            'content': ' The Dakota Territory was very isolated from the rest of the US for most of the 1800s. It wasn\'t until 1870 that the first tracks of the Northern Pacific Railroad were laid down in the state. The Northern Pacific was designed to connect the Twin Cities with the rich wheat lands of the Dakotas, as well as to the Pacific Ocean at Seattle.{{cite:4}} When the project was commissioned the company received a vast land grant to finance the creation of the tracks. 40 miles of land was awarded on either side of the proposed tracks, a total area that equates to 1.5X the size of North Dakota itself.{{cite:5}} Stock holders had the option to exchange stock holdings for land that was equal to the land of the stock.'
         },
         {
             'content': 'Many holders decided to act on this option and acquired huge tracts of land that became known as Bonanza Farms. These farms took up tens of thousands of square acres and employed large work crews to handle such large tracts of land. Theses farms flourished during the 1870s and became increasingly profitable. The large amounts of wheat produced were sent down to Minneapolis which increased their growth. This symbiotic relationship fueled the state until the Bonanza farms were seen to be too powerful and were broken up by proprietors before the turn of the century.{{cite:6}}'
@@ -164,13 +164,13 @@ var chapter2 = {
             'start_year': '1922',
             'end_year': '1922',
             'title': '1922',
-            'content': 'To cash in on high wheat prices during the war years many farmers cultivate as much land as possible. As a result demand for acreage coupled with wartime inflation temporarily pushed land prices higher. In 1910 a farmer could purchase land for $26 per acre. By 1920 that price had risen to $35 and that was for land that was left over: an increase of about $160 by today’s standards.{{cite:2}} Without proper understanding of basic sustainable agricultural methods or second thoughts to the fertility of the soil, cost of seed or cost of increased labor, farmers bought up huge tracts of land for inflated prices. Easily obtained credit fueled the new investments. After all, it was national policy to put more acres under the plow.'
+            'content': 'To cash in on high wheat prices during the war years many farmers cultivate as much land as possible. As a result demand for acreage coupled with wartime inflation temporarily pushed land prices higher. In 1910 a farmer could purchase land for $26 per acre. By 1920 that price had risen to $35 and that was for land that was left over: an increase of about $160 by today\'s standards.{{cite:2}} Without proper understanding of basic sustainable agricultural methods or second thoughts to the fertility of the soil, cost of seed or cost of increased labor, farmers bought up huge tracts of land for inflated prices. Easily obtained credit fueled the new investments. After all, it was national policy to put more acres under the plow.'
         },
         {
             'start_year': '1923',
             'end_year': '1923',
             'title': '1923',
-            'content': 'Many farmers “preferred to keep their original purchase encumbered in order to have money to buy additional lands.”{{cite:3}} Many of these loans were taken out with interest rates in excess of 8%. By 1916 the region’s interest rates on short term loans (loans due back in 3 to 12 months) were the highest in the nation at 10.75%.{{cite:4}} With this kind of debt load any misfortune in this house of cards could cause collapse: drought, flood, hail, locust, price drop or even a family illness. The Federal Farm Loan Act of 1916 capped interest rates at 6% but by the time it was enacted most of the damage was already done.{{cite:5}}'
+            'content': 'Many farmers "preferred to keep their original purchase encumbered in order to have money to buy additional lands."{{cite:3}} Many of these loans were taken out with interest rates in excess of 8%. By 1916 the region\'s interest rates on short term loans (loans due back in 3 to 12 months) were the highest in the nation at 10.75%.{{cite:4}} With this kind of debt load any misfortune in this house of cards could cause collapse: drought, flood, hail, locust, price drop or even a family illness. The Federal Farm Loan Act of 1916 capped interest rates at 6% but by the time it was enacted most of the damage was already done.{{cite:5}}'
         },
         {
             'start_year': '1924',
@@ -188,25 +188,25 @@ var chapter2 = {
             'start_year': '1925',
             'end_year': '1925',
             'title': '1925',
-            'content': 'If this were not enough the decade following the 20’s would prove to be even worse. The 20’s had been characterized by the popping of the economic bubble that brought the state to its knees, the 30’s was the kick while they were down. Wheat prices fell lower than anyone thought possible, only 37 cents per bushel.{{cite:9}} With prices at all-time lows North Dakotans had to continue to plant large quantities of wheat to try to pay their debts. This over production with under consumption was a vicious cycle that forced prices down further.'
+            'content': 'If this were not enough the decade following the 20\'s would prove to be even worse. The 20\'s had been characterized by the popping of the economic bubble that brought the state to its knees, the 30\'s was the kick while they were down. Wheat prices fell lower than anyone thought possible, only 37 cents per bushel.{{cite:9}} With prices at all-time lows North Dakotans had to continue to plant large quantities of wheat to try to pay their debts. This over production with under consumption was a vicious cycle that forced prices down further.'
         },
         {
             'start_year': '1926',
             'end_year': '1926',
             'title': '1926',
-            'content': 'To add to the economic cycle that crippled the state the 30’s suffered from natural abnormalities the state had never experienced before. Mother Nature turned on the state pushing the spirits of the people even lower. Drought set in, strangling the life out of the state. In 1933 the state only received 13.5 inches of rain, the fourth driest on record.{{cite:10}} The following year a scant 9.5 inches of precipitation, the driest year recorded up to that time.{{cite:11}} There was a small reprieve from the drought in 1935 but 1936 was even drier with only 8.8 of rain. Hearty as the wheat plant is the drought severely stunted the growth making life harder for the state.'
+            'content': 'To add to the economic cycle that crippled the state the 30\'s suffered from natural abnormalities the state had never experienced before. Mother Nature turned on the state pushing the spirits of the people even lower. Drought set in, strangling the life out of the state. In 1933 the state only received 13.5 inches of rain, the fourth driest on record.{{cite:10}} The following year a scant 9.5 inches of precipitation, the driest year recorded up to that time.{{cite:11}} There was a small reprieve from the drought in 1935 but 1936 was even drier with only 8.8 of rain. Hearty as the wheat plant is the drought severely stunted the growth making life harder for the state.'
         },
         {
             'start_year': '1927',
             'end_year': '1927',
             'title': '1927',
-            'content': ' Temperatures soared to extremes on both ends of the spectrum. Reaching 100 degrees became a normal part of summer life in the state. 1936 proved to be the climax of these temperature variations recording not only the hottest day on record in the state to that point but also the coldest. Mid February the town of Parshall recorded their actual temperature at -60°F, not including wind chill.{{cite:12}} In contrast Steele only a few months later in July recorded their temperature at 121°F.{{cite:13}}'
+            'content': ' Temperatures soared to extremes on both ends of the spectrum. Reaching 100 degrees became a normal part of summer life in the state. 1936 proved to be the climax of these temperature variations recording not only the hottest day on record in the state to that point but also the coldest. Mid February the town of Parshall recorded their actual temperature at -60F, not including wind chill.{{cite:12}} In contrast Steele only a few months later in July recorded their temperature at 121F.{{cite:13}}'
         },
         {
             'start_year': '1928',
             'end_year': '1928',
             'title': '1928',
-            'content': 'With the strong winds of North Dakota coupling with these extreme temperatures made most agricultural practices in the area nearly impossible. The hot dry weather dried out the soil and was swept away by the winds, creating dust storms destroying crops. The heat and dust storms also wreaked havoc on the cattle ranches in the western end of the state. Ranchers struggled to keep their herds hydrated and fed. Many cattle simply dropped dead from inhalation of dust, suffocating from the very air around them. If your herd made it through the summer months to the winter a whole new set of challenges arose. Food became more and more difficult to find. With the growing season decimated the state wasn’t able to save enough food to feed themselves let alone herds of livestock. Many ranchers sold their herds off only retaining their prized breeding stock feeding them whatever they could find.'
+            'content': 'With the strong winds of North Dakota coupling with these extreme temperatures made most agricultural practices in the area nearly impossible. The hot dry weather dried out the soil and was swept away by the winds, creating dust storms destroying crops. The heat and dust storms also wreaked havoc on the cattle ranches in the western end of the state. Ranchers struggled to keep their herds hydrated and fed. Many cattle simply dropped dead from inhalation of dust, suffocating from the very air around them. If your herd made it through the summer months to the winter a whole new set of challenges arose. Food became more and more difficult to find. With the growing season decimated the state wasn\'t able to save enough food to feed themselves let alone herds of livestock. Many ranchers sold their herds off only retaining their prized breeding stock feeding them whatever they could find.'
         },
         {
             'start_year': '1929',
@@ -221,11 +221,11 @@ var chapter2 = {
             'content': 'The economic system had collapsed and even Mother Nature had turned its back on the state. The Great Depression caused havoc across the US but drought, plague, and weather combined to make North Dakota particularly unbearable. Spirits were low, the weather the worse and many saw no way out. Yet a light was at the end of the tunnel. With another World War soon on the way North Dakota would reclaim its rightful place as wheat providers to the United States. '
         }],
         'citations': [
-            'Saloutos, ”The Spring-Wheat Farmer in a Maturing Economy 1870-1920” 184.',
+            'Saloutos, "The Spring-Wheat Farmer in a Maturing Economy 1870-1920" 184.',
             'Robinson, History of North Dakota, 369.',
-            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 177.',
-            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 178.',
-            'Saloutos, “The Spring-Wheat Farmer in a Maturing Economy 1870-1920”, 179.',
+            'Saloutos, "The Spring-Wheat Farmer in a Maturing Economy 1870-1920", 177.',
+            'Saloutos, "The Spring-Wheat Farmer in a Maturing Economy 1870-1920", 178.',
+            'Saloutos, "The Spring-Wheat Farmer in a Maturing Economy 1870-1920", 179.',
             'Robinson, History of North Dakota, 369',
             'IBID',
             'IBID',

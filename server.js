@@ -19,21 +19,6 @@ nosql.on('load', function() {
     });
 }); 
 
-/*
-nosql.on('load', function() {
-    nosql.all(function(a) {
-        selected.push(a);
-        return a;
-    }, function() {
-        var i = 0;
-        selected.forEach(function(o) {
-            o.slug = o.title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
-            slug_to_story_map[o.slug] = i++;
-            chapters.push(o);
-        });
-    }); 
-});
-*/
 
 // call after load of DB
 /*
@@ -45,10 +30,14 @@ nosql.top(max, fnMap, fnCallback)
 nosql.each(fnCallback)
 */
 
+
+
 app.use(parser());
 app.set('view engine', 'jade');
 app.set('views', __dirname+'/views');
 app.use(express.static(__dirname+'/public'));
+
+app.locals.pretty = true;
 
 app.get('/', function (req, res) {
     res.render('home', {
@@ -107,33 +96,67 @@ app.get('/chapter/:chapter', function (req, res) {
 app.get('/admin', function (req, res) {
     res.render('admin', {
         'title': 'Admin &ndash; nd@125',
-        'chapters': chapters
+        'chapters': chapters,
+        'safe': JSON.stringify(chapters)
     });
 });
 
-/*
 app.post('/api/:action', function(req, res) {
     if (req.params.action === 'delete') {
-        delete slug_to_story_map[chapters[parseInt(req.body.index)]];
+        var deleted = false;
         
-        var ii = parseInt(req.body.index);
-        var s = Object.keys(slug_to_story_map);
-        
-        for (var i = 0, n = s.length; i < n; i++) {
-            if (slug_to_story_map[s[i]] > ii) slug_to_story_map[s[i]] = slug_to_story_map[s[i]] - 1;
+        for (var i = 0, n = chapters.length; i < n; i++) {
+            if (chapters[i].index === parseInt(req.body.index)) {
+                chapters.splice(i, 1);
+                deleted = true;
+                break;
+            }
         }
         
-        chapters.splice(parseInt(req.body.index), 1);
-        res.send('1');
+        res.json({'success': deleted});
+    }
+    else if (req.params.action === 'save') {
+        for (var i = 0, n = chapters.length; i < n; i++) {
+            if (chapters[i].index === parseInt(req.body.index)) {
+                chapters[i].name = req.body.name,
+                chapters[i].stories[0].sections = req.body.sections;
+                chapters[i].stories[0].citations = req.body.citations || [];
+                chapters[i].stories[0].bibliography = req.body.bibliography || [];
+                
+                res.send('asd');
+                
+                break;
+            }
+        }
     }
     else if (req.params.action === 'create') {
-        var data = req.body.data;
+        var index = -1;
         
-        data.slug = data.title.toLowerCase().replace(/[^a-z ]+/g, '').replace(/ +/g, '-');
-        chapters.push(data);
-        slug_to_story_map[data.slug] = chapters.length-1;
+        for (var i = 0, n = chapters.length; i < n; i++) {
+            if (chapters[i].index > index) index = chapters[i].index;
+        }
+        
+        index++;
+        
+        chapters.push({
+            'slug': req.body.name.toLowerCase().replace(/[^a-z0-9 ]+/g, '').replace(/ +/g, '-'),
+            'name': req.body.name,
+            'blurb': 'Default blurb text.',
+            'stories': [{
+                'type': 'text',
+                'citations': req.body.citations || [],
+                'bibliography': req.body.bibliography || [],
+                'sections': req.body.sections || []
+            }],
+            'index': index
+        });
+        
+        res.json({
+            'index': index,
+            'name': req.body.name
+        });
     }
 });
-*/
 
 app.listen(8005, '127.0.0.1');
+

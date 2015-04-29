@@ -6,11 +6,12 @@ block css
 block body
     div(class="jumbotron")
         div(class="container text-center")
-            h2 Explore 125 Years of ND History
+            h3(style="margin: 25px 0;")
+                b 125 Years of North Dakota History
             img(class="img-responsive img-rounded center-block", src="/images/nd_feature_1.png", alt="North Dakota")
             - if (chapters)
                 a(class="btn btn-default btn-lg", href="/chapter/#{chapters[0].slug}")
-                    |Explore 
+                    |Start Exploring
                     i(class="glyphicon glyphicon-chevron-right")
 
 block main
@@ -29,21 +30,8 @@ block main
                             a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
                                 |Explore 
                                 i(class="glyphicon glyphicon-chevron-right")
-                div(class="col-lg-4 col-sm-6")
-                    div(class="panel panel-default")
-                        div(class="panel-heading")
-                            h4= chapters[i].name
-                        div(class="panel-body")
-                            p= chapters[i].blurb
-                        div(class="panel-footer text-right")
-                            a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
-                                |Explore 
-                                i(class="glyphicon glyphicon-chevron-right")
     div(class="row")
         div(class="col-lg-12")
             h1(class="page-header") About
         div(class="col-xs-12")
             img(class="img-responsive img-rounded center-block", src="/images/nd_atlas_group2.jpg", alt="Group photo of ND Atlas project members")
-
-block footer
-

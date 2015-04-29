@@ -3,21 +3,18 @@ extends master
 mixin AddRow(story)
     tr
         td= story.index
-        td= story.title
+        td= story.name
         td
-            i(class="glyphicon glyphicon-eye-open")
-            i(class="glyphicon glyphicon-pencil")
-            i(class="glyphicon glyphicon-remove", data-index="#{story.index-1}")
+            button(type="button", class="btn btn-default btn-xs edit", style="width: 50px;", data-index="#{story.index}")
+                b Edit
+            button(type="button", class="btn btn-default btn-xs delete", style="width: 50px; margin-left: 10px;", data-index="#{story.index}")
+                b Delete
 
 block css
     link(href="/css/admin.css", rel="stylesheet")
 
-block navitem
-    li(class="active")
-        a(href="/admin") Admin
-
 block main
-    h1 Stories
+    h1 Chapters
     table(class="table table-striped")
         thead
             tr
@@ -25,39 +22,40 @@ block main
                 th Title
                 th Actions
         tbody
-            - for (var i = 0, n = stories.length; i < n; i++)
-                - stories[i].index = i+1
-                +AddRow(stories[i])
-    button(type="button", class="btn btn-default", id="new_story") New Story
+            - for (var i = 0, n = chapters.length; i < n; i++)
+                - chapters[i].index = i+1
+                +AddRow(chapters[i])
+    button(type="button", class="btn btn-default", id="new_chapter") New Chapter
     div(class="modal fade", id="modal")
         div(class="modal-dialog modal-lg")
             div(class="modal-content")
                 div(class="modal-header")
                     button(type="button", class="close", data-dismiss="modal", aria-label="Close")
                         span(aria-hidden="true") &times;
-                    h1(class="modal-title") New Story
+                    h1(class="modal-title") New Chapter
                 div(class="modal-body")
-                    h5(style="color:#777;font-weight:bold;margin-bottom:3px;") Story Title
-                    input(type="text", class="form-control", id="story_title")
+                    h5(style="color:#777;font-weight:bold;margin-bottom:3px;") Chapter Name
+                    input(type="text", class="form-control", id="chapter_name")
                     br
                     h2 Sections
                     div(id="sections")
-                        h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Title
-                        input(type="text", class="form-control section-title")
-                        h5(style="color:#777;font-weight:bold;margin-bottom: 3px;") Section Content
-                        textarea(class="form-control section-content")
                     div(style="margin-top: 20px; text-align:right;")
                         button(type="button", class="btn btn-default btn-sm", id="new_section") New Section
                     br
                     h2 Inline Citations
                     div(id="citations")
-                        input(type="text", class="form-control citation")
                     div(style="margin-top: 20px; text-align:right;")
                         button(type="button", class="btn btn-default btn-sm", id="new_citation") New Citation
+                    h2 Bibliography
+                    div(id="bibliography")
+                    div(style="margin-top: 20px; text-align:right;")
+                        button(type="button", class="btn btn-default btn-sm", id="new_bibliography") New Bibliography
                 div(class="modal-footer")
-                    button(type="button", class="btn btn-default btn-lg", id="create_story") Create Story
-                
+                    button(type="button", class="btn btn-default btn-lg", id="create_chapter", style="display: none") Create Chapter
+                    button(type="button", class="btn btn-default btn-lg", id="save_chapter", style="display: none") Save Chapter
+                    
 block js
+    script(src="/js/admin.js")
     script
-        |var mi = #{stories.length};
-     script(src="/js/admin.js")
+        |var chapters = !{safe}
+        

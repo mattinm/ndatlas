@@ -2,10 +2,7 @@ body {
     margin-top: 50px;
     margin-bottom: 0;
 }
-body, html {
-    width: 100%;
-    height: 100%;
-}
+
 #narrative {
     position: fixed;
     top: 50px;
@@ -52,3 +49,16 @@ body, html {
     height: 100%;
     background-color: #DCA;
 }
+
+
+    .footer-left-block, .footer-right-block {
+        text-align: center;
+    } 
+    .footer-right-block, .footer-center-block {
+        padding-top: 15px;
+        margin-top: 5px;
+    }
+    footer {
+        margin-top: 20px;
+        padding-top: 10px;
+    }

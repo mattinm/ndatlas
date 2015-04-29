@@ -1,5 +1,5 @@
 function resizeNarrative() {
-    $('#map,#narrative,#story,#map').css({
+    $('#map,#narrative,#story,#map,body,html,#loadingDiv').css({
         'height': $(window).height()-50
     });
 }
@@ -109,7 +109,7 @@ function showLoading() {
 $('#slider').click(function() {
     if ($(this).hasClass('expanded')) {
         $('#story').fadeOut(function() {
-            $('#narrative').animate({width: 70});
+            $('#narrative').animate({width: 45});
             $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
             resetLoadingLocation();
         });
