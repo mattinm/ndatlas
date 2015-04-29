@@ -18,22 +18,9 @@ hr, .page-header {
     border-color: #E5E5E5;
 }
 #main-footer {
-    margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid #e5e5e5;
-}
-
-#content-wrapper {
-    position: absolute;
-    top: 54px;
-    bottom: 0px;
-    width: 100%;
-    height: calc(100% - 54px);
-    overflow-x: hidden;
-    overflow-y: scroll;
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0s;
+    background-color: #ececec;
 }
 
 a.disabled {

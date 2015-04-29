@@ -1,6 +1,21 @@
 .col-lg-4 > div:nth-child(n+1) {
     margin-top: 10px;
 }
+#content-wrapper {
+    position: fixed;
+    top: 54px;
+    bottom: 0px;
+    width: 100%;
+    height: calc(100% - 54px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+    background-image: url("/images/nd_background.jpg");
+    z-index: -1;
+}
+
 #welcome {
     width: 100%;
 }
