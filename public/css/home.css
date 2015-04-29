@@ -25,7 +25,7 @@
 }
 
 #welcome-header {
-    background-color: rgba(110,196,124,0.8);
+    background-color: rgba(110,196,124,0.75);
     padding: 80px 0px;
     text-align: center;
     color: #FFF;
@@ -63,7 +63,7 @@
     background-color: #FFF;
 }
 .section-quote {
-    background-color: rgba(93, 92, 93, 0.6);
+    background-color: rgba(93, 92, 93, 0.75);
     color: #FFF;
     padding: 100px 0px;
     text-align: center;

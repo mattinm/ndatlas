@@ -16,33 +16,32 @@ block main
                             a(id="btn-get-started", class="btn btn-xlg btn-primary", href="/chapter/#{chapters[0].slug}")
                                 |GET STARTED
 
-        div(id="welcome-details")
-            div(class="container")
-                div(class="row")
-                    div(class="col-md-4 info")
-                        i(class="fa fa-map-marker lead-icon")
-                        h3 About
-                        p Here is some about information
-                        p(class="more")
-                            a(href="#about-section")
-                                |Read More 
-                                i(class="fa fa-angle-right")
-                    div(class="col-md-4 info")
-                        i(class="fa fa-graduation-cap lead-icon")
-                        h3 Making Of
-                        p Here is some about information
-                        p(class="more")
-                            a(href="#making-section")
-                                |Making of the Atlas 
-                                i(class="fa fa-angle-right")
-                    div(class="col-md-4 info")
-                        i(class="fa fa-circle-o lead-icon")
-                        h3 Team
-                        p Here is some about information
-                        p(class="more")
-                            a(href="#team-section")
-                                |Meet the Team 
-                                i(class="fa fa-angle-right")
+        div(id="welcome-details", class="container-fluid")
+            div(class="row")
+                div(class="col-md-4 info")
+                    i(class="fa fa-map-marker lead-icon")
+                    h3 About
+                    p Here is some about information
+                    p(class="more")
+                        a(href="#about-section")
+                            |Read More 
+                            i(class="fa fa-angle-right")
+                div(class="col-md-4 info")
+                    i(class="fa fa-graduation-cap lead-icon")
+                    h3 Making Of
+                    p Here is some about information
+                    p(class="more")
+                        a(href="#making-section")
+                            |Making of the Atlas 
+                            i(class="fa fa-angle-right")
+                div(class="col-md-4 info")
+                    i(class="fa fa-circle-o lead-icon")
+                    h3 Team
+                    p Here is some about information
+                    p(class="more")
+                        a(href="#team-section")
+                            |Meet the Team 
+                            i(class="fa fa-angle-right")
 
     - if (false && chapters)
         div(id="chapters", class="container")
