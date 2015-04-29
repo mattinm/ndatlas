@@ -63,7 +63,10 @@ body {
 #toggleSlider {
     margin: 0 20px;
 }
-
+#main-footer {
+    margin-top: 15px;
+    background-color: inherit;
+}
 
 .footer-left-block, .footer-right-block {
     text-align: center;
