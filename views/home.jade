@@ -4,6 +4,7 @@ block css
     link(href="/css/home.css", rel="stylesheet")
 
 block main
+    div(id="content-wrapper")
     div(id="welcome")
         div(id="welcome-header", class="green")
             div(class="container")
@@ -59,7 +60,7 @@ block main
                                 a(class="btn btn-default", href="/chapter/#{chapters[i].slug}")
                                     |Explore 
                                     i(class="glyphicon glyphicon-chevron-right")
-                                    
+
     div(id="about")
         div(class="section section-quote")
             div(class="container")
