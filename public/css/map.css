@@ -41,24 +41,38 @@ body {
     background: #FFF;
 }
 #loadingDiv {
-    height: inherit;
+    height: 100%;
+    width: 100%;
     background:#7f7f7f;
     background:rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    z-index: 100;
 }
 #legendDiv {
     height: 100%;
     background-color: #DCA;
 }
+#mapFooter {
+    height: 70px;    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 460px;
+}
+#toggleSlider {
+    margin: 0 20px;
+}
 
 
-    .footer-left-block, .footer-right-block {
-        text-align: center;
-    } 
-    .footer-right-block, .footer-center-block {
-        padding-top: 15px;
-        margin-top: 5px;
-    }
-    footer {
-        margin-top: 20px;
-        padding-top: 10px;
-    }
+.footer-left-block, .footer-right-block {
+    text-align: center;
+} 
+.footer-right-block, .footer-center-block {
+    padding-top: 15px;
+    margin-top: 5px;
+}
+footer {
+    margin-top: 20px;
+    padding-top: 10px;
+}

@@ -30,7 +30,9 @@ CHAPTER N
                     'slug': 'slug',     // slug for the URL (if not defined, this is the index)
                     'name': 'name',     // full name of the story (if not defined, this is the index)
                     'map': {            // info for the ArcGIS map
-                        'url': 'url'
+                        'url': 'url',
+                        'backgroundLayers': [],
+                        'toggleableLayers': []
                     },
                     'type': 'type',     // type of the story (text or map)
                     'title': 'title',   // title on popup when user clicks
@@ -74,7 +76,14 @@ var chapter1 = {
     'name': 'Making of the State',
     'blurb': 'Most of what would become the Dakota Territory was originally purchased in 1803 from the French. Although the Louisiana Purchase opened up the west for Americans much of the northern areas of the purchase were left untouched for nearly a half a century. The land that would become North Dakota were left to fur traders and native tribes but the soon to be North Dakota would experience massive changes in a short period of time and propel itself on the course to statehood. There were two major factors that launched North Dakota on the track to statehood, the milling industry in Minneapolis and the construction of the Northern Pacific railroad through the state.',
     'stories': [{
-        'type': 'text',
+        'type': 'map',
+        'map': {
+            'url': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'backgroundLayers': [],
+            'toggleableLayers': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+        },
+        'title': 'Population for ${YEAR}',
+        'text': 'Test text, please ignore',
         'citations': [
             'Robinson, Elwyn B. History of North Dakota, (Fargo: North Dakota Institute for Regional Studies, 1995), 134',
             'Robinson, Elwyn B. History of North Dakota, 135',
@@ -144,7 +153,11 @@ var chapter2 = {
     'name': 'The Depression',
     'blurb': 'The war was now over. Celebrations occurred across the nation as troops poured back into the country. The 1920s were poised to be a decade of elegance and abundance. North Dakota also rejoiced as their boys came home. Farmers were ready to continue to feed the world and enjoy the high demands that were expected of them but it was not to be so. The end of the World War One marked a sharp downturn for the state. While the rest of the country enjoyed parties and luxuries courtesy of easy to obtain credit North Dakotans were already in a deep recession, only to be dragged down even further when the stock market finally crashed. This Depression lasting more than 20 years nearly ruined the state.',
     'stories': [{
-        'map': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        'map': {
+            'url': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'backgroundLayers': [],
+            'toggleableLayers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        },
         'type': 'map',
         'title': 'Population for ${YEAR}',
         'text': 'Test text, please ignore',
