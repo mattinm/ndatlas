@@ -20,15 +20,15 @@ $(window).resize(function() {
 var map, layer, symbol, infoTemplate, query;
 var visible = [];
 var firstSet = true;
+var oldLayer = 0;
 
 require([
     "esri/Color",
     "esri/map",
+    "esri/dijit/Scalebar",
     "esri/InfoTemplate",
-    "esri/layers/ArcGISTiledMapServiceLayer",
-    "esri/dijit/Legend",
-    "esri/dijit/Scalebar"
-], function(Color, Map, InfoTemplate, ArcGISTiledMapServiceLayer, Legend, Scalebar) {
+    "esri/layers/ArcGISTiledMapServiceLayer"
+], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
         center: [-100.425, 47],
@@ -37,11 +37,13 @@ require([
     });
 
     // add the basemap
+    /*
     var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
         opacity: 0.0,
         showAttribution: false
     });  
     map.addLayer(streets); 
+    */
 
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
     //layer.setDisableClientCaching(true);
@@ -103,10 +105,29 @@ require([
 
             // show the visible layers
             layer.setVisibleLayers(currentLayers);
+            
+            // see if we should scroll to a new layer
+            for (var iYear = 0; iYear < startYears.length; ++iYear) {
+                if (startYears[iYear] <= $(this).val()) {
+                    if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
+                        // jump to new content
+                        console.log("Jump to: " + iYear);
+                        oldLayer = iYear;
+                        break;
+                    }
+                }
+            }
+            
+            // remove all styling from legendDiv
+            $("#legendDiv").attr("style", "");
         });
 
         // set as the current layer
+        oldLayer = 0;
         $('#toggleSlider').val(min);
+        
+        layer.setScaleRange(0, 0);
+        layer.setVisibility(true);
     });
 
     // hide the loading icon when the dynamic layer finishes updating
@@ -121,10 +142,12 @@ require([
         scalebarUnit: "dual"
     });
 
-    //var legend = new Legend({
-    //    map: map
-    //}, "legendDiv");
-    //legend.startup();
+    /*
+    var legend = new Legend({
+        map: map
+    }, "legendDiv");
+    legend.startup();
+    */
 
     //Listen for click event on the map, when the user clicks on the map call executeQueryTask function.
     dojo.connect(map, "onClick", executeQueryTask);
@@ -200,6 +223,7 @@ function executeQueryTask(evt) {
     //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
     //set query geometry = to evt.mapPoint Geometry
     query.geometry = evt.mapPoint;
+    console.log("CLICK");
 
     //Execute task and call showResults on completion
     //build query task

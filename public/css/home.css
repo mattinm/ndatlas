@@ -13,6 +13,8 @@
     visibility: visible;
     transition-delay: 0s;
     background-image: url("/images/nd_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     z-index: -1;
 }
 

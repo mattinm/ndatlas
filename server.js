@@ -3,7 +3,7 @@ var parser = require('body-parser');
 var shp = require('shpjs');
 var nosql = require('nosql').load(__dirname+'/database.nosql');
 var app = express();
-var chapters = [];
+var themes = [];
 var selected = [];
 var order = [];
 
@@ -13,24 +13,11 @@ nosql.on('load', function() {
         return a; 
     }, function() {
         selected.forEach(function(o) {
-            chapters.push(o);
+            themes.push(o);
             order.push(o.slug);
         });
     });
-}); 
-
-
-// call after load of DB
-/*
-nosql.insert(object, [fnCallback]);
-nosql.insert(array, fnCallback);
-nosql.all(fnMap, fnCallback)
-nosql.one(fnMap, fnCallback)
-nosql.top(max, fnMap, fnCallback)
-nosql.each(fnCallback)
-*/
-
-
+});
 
 app.use(parser());
 app.set('view engine', 'jade');
@@ -41,58 +28,127 @@ app.locals.pretty = true;
 
 app.get('/', function (req, res) {
     res.render('home', {
-        'title': 'nd@125',
-        'chapter': null,
+        'title': 'North Dakota Atlas',
+        'theme': null,
         'previous': null,
         'next': null,
-        'chapters': chapters
+        'themes': themes
     });
 });
 
+/**
 app.get('/toggle', function (req, res) {
     res.render('arcgis', {
         'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'chapters': chapters
     });
 });
+**/
 
-app.get('/chapter/:chapter', function (req, res) {
-    chapter = null;
-    story = null;
-    previous = null;
-    next = null;
+app.get('/themes/:theme', function (req, res) {
+    var theme = null;
 
-    // find the correct current, next, and previous chapters
-    for (var i = 0; i < chapters.length; ++i) {
-        chapter = chapters[i];
+    // find the theme and first chapter
+    for (var i = 0; i < themes.length; ++i) {
+        theme = themes[i];
 
-        if (chapter.slug == req.params.chapter) {
-            story = chapter.stories[0];
-            if (i < (chapters.length - 1)) {
-                next = chapters[i+1];
-            }
-
-            break;
+        if (theme.slug == req.params.theme) {
+            res.redirect('/themes/' + theme.slug + '/' + theme.chapters[0].slug);
         }
-
-        previous = chapter;
     }
 
     // see if we 404
-    if (!chapter || !story) {
-        res.status(404).end('Not found.')
-    }
-
-    res.render(story.type, {
-        'title': story.name ? story.name : chapter.name + ' &ndash; nd@125',
-        'chapter': chapter,
-        'story': story,
-        'next': next,
-        'previous': previous,
-        'chapters': chapters,
-    });
+    res.status(404).end('Theme not found.');
 });
 
+app.get('/themes/:theme/:chapter', function(req, res) {
+    var theme = null;
+    var chapter = null;
+    var previousChapter = null;
+    var nextChapter = null;
+    var foundChapter = false;
+    var previousTheme = null;
+    var nextTheme = null;
+
+    // find the theme and corresponding chapter
+    for (var i = 0; i < themes.length; ++i) {
+        theme = themes[i];
+
+        if (theme.slug == req.params.theme) {
+            for (var j = 0; !foundChapter && j < theme.chapters.length; ++j) {
+                chapter = theme.chapters[j];
+                
+                if (chapter.slug == req.params.chapter) {
+                    foundChapter = true;
+                    
+                    // see if we have a next chapter
+                    if (j < (theme.chapters.length - 1)) {
+                        nextChapter = theme.chapters[j+1];
+                    }
+                    
+                    // done looping
+                    break;
+                }
+                
+                // keep track of our previous chapter
+                previousChapter = chapter;
+            }
+            
+            // 404 if we didn't find the chapter
+            if (!foundChapter) {
+                res.status(404).end('Chapter not found.');
+            }
+            
+            // see if we have another theme
+            if (i < (themes.length-1)) {
+                nextTheme = theme[i+1];
+            }
+            
+            // done looping
+            break;
+        }
+        
+        // keep track of our previous theme
+        previousTheme = theme;
+    }
+    
+    var data = {
+        'theme': theme,
+        'chapter': chapter,
+        'title': chapter.name,
+        'previousChapter': previousChapter,
+        'nextChapter': nextChapter,
+        'previousTheme': previousTheme,
+        'nextTheme': nextTheme,
+        'themes': themes
+    }
+    
+    if (chapter.type == 'text') {
+        res.render('text', data);
+    } else if (chapter.type == 'map') {
+        // key up our start and end years array
+        data['startYears'] = [];
+        data['endYears'] = [];
+        
+        // only add things for which we have a start and end year for all objects
+        for (var i = 0; i < chapter.stories.length; ++i) {
+            if ('start_year' in chapter.stories[i] && 'end_year' in chapter.stories[i]) {
+                data['startYears'].push(chapter.stories[i].start_year);
+                data['endYears'].push(chapter.stories[i].end_year);
+            } else {
+                data['startYears'] = [];
+                data['endYears'] = [];
+                break;
+            }
+        }
+        
+        res.render('map', data);
+    } else {
+        res.status(404).end('Unknown chapter type.');
+    }
+});
+
+/**
 app.get('/admin', function (req, res) {
     res.render('admin', {
         'title': 'Admin &ndash; nd@125',
@@ -157,6 +213,6 @@ app.post('/api/:action', function(req, res) {
         });
     }
 });
+**/
 
-app.listen(8005, '127.0.0.1');
-
+app.listen(process.env.PORT, process.env.IP);

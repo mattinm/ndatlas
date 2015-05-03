@@ -15,23 +15,18 @@ body {
 } 
 #content {
     margin-top: 10px;
-    height: 100%;
-   }
+}
    
 #story{overflow-y: scroll;}
 #slider {
     cursor: pointer;
     }
     
-.section {
-    font-size: 14pt;
-}
 .section:nth-child(n+2) {
     margin-top: 15px;
 }
 .tooltip-inner {
     max-width: 600px;
-    font-size: 14pt;
 }
 #map {
     margin-top: 50px;
@@ -39,6 +34,18 @@ body {
     float: left;
     width: 80%;
     background: #FFF;
+}
+#legendDiv {
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    max-width: 400px;
+    bottom: 0;
+    right: 410px;
+    background-color: rgba(0,0,0,.5);
+    color: #FFF;
+    z-index: 2;
 }
 #loadingDiv {
     height: 100%;
@@ -48,10 +55,6 @@ body {
     position: absolute;
     top: 0;
     z-index: 100;
-}
-#legendDiv {
-    height: 100%;
-    background-color: #DCA;
 }
 #mapFooter {
     height: 70px;    

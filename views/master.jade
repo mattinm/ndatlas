@@ -1,6 +1,6 @@
-mixin AddStory(chapter, active)
+mixin AddTheme(theme, active)
     li
-        a(href="/chapter/#{chapter.slug}", style="#{active ? 'font-weight: bold;' : ''}")= chapter.name
+        a(href="/themes/#{theme.slug}", style="#{active ? 'font-weight: bold;' : ''}")= theme.name
 
 doctype html
 html(lang="en")
@@ -32,11 +32,11 @@ html(lang="en")
                         li
                             a(href="/#team-section") Team
                         li(class="dropdown")
-                            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Chapters
+                            a(href="#", class="dropdown-toggle", data-toggle="dropdown") Themes
                                 span(class="caret")
                             ul(class="dropdown-menu")
-                                - for (var i = 0, n = chapters.length; i < n; i++)
-                                    +AddStory(chapters[i], chapters[i] === chapter && !/Admin/.test(title) ? 1 : 0)
+                                - for (var i = 0, n = themes.length; i < n; i++)
+                                    +AddTheme(themes[i], themes[i] === theme ? 1 : 0)
                         block navitem
                     - if (!/Admin/.test(title))
                         ul(class="nav navbar-nav navbar-right")
