@@ -80,7 +80,7 @@ body {
     margin: 0 5px;
 }
 
-#legendTable > tr > td {
+#legendTable td {
     padding: 0 2px;
 }
 #loadingDiv {
