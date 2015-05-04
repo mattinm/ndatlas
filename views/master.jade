@@ -41,15 +41,15 @@ html(lang="en")
                     - if (!/Admin/.test(title))
                         ul(class="nav navbar-nav navbar-right")
                             li
-                                - if (previous)
-                                    a(href="#{previous.slug}") Previous Story
+                                - if (previousTheme)
+                                    a(href="/themes/#{previousTheme.slug}") Previous Theme
                                 - else if (chapter)
-                                    a(href="/#", class="disabled") Previous Story
+                                    a(href="/#", class="disabled") Previous Theme
                             li
-                                - if (next)
-                                    a(href="#{next.slug}") Next Story
+                                - if (nextTheme)
+                                    a(href="/themes/#{nextTheme.slug}") Next Theme
                                 - else if (chapter)
-                                    a(href="/#", class="disabled") Next Story                                
+                                    a(href="/#", class="disabled") Next Theme                                
         block body
             block main
             block footer

@@ -111,8 +111,11 @@ require([
                 if (startYears[iYear] <= $(this).val()) {
                     if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
                         // jump to new content
-                        console.log("Jump to: " + iYear);
                         oldLayer = iYear;
+                        console.log("Offset: " + $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54);
+                        $('#story').animate({
+			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
+		                }, 'slow');
                         break;
                     }
                 }
@@ -120,6 +123,42 @@ require([
             
             // remove all styling from legendDiv
             $("#legendDiv").attr("style", "");
+            
+            // hardcode in the legend
+            // TODO: unhardcode
+            if (backgroundLayers[0] == 1) {
+                $("#legendTable").html('\
+                    <tr>\
+                        <td><i class="fa fa-circle" style="color: #FFC0CB"></i></td>\
+                        <td>1 dot = 3 Norwegians</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-circle" style="color: #00F"></td>\
+                        <td>1 dot = 3 Germans</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-circle" style="color: #0F0"></td>\
+                        <td>1 dot = 3 Russians</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-circle" style="color: #000"></td>\
+                        <td>Major city</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-square" style="color: #00CED1"></td>\
+                        <td>Water body</td>\
+                    </tr>\
+                ');
+            } else {
+                $("#legendTable").html('\
+                    <tr>\
+                        <td><i class="fa fa-circle" style="color: #F00"></td>\
+                        <td>1 dot = 100 people</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-circle" style="color: #000"></td>\
+                        <td>Major city</td>\
+                    </tr><tr>\
+                        <td><i class="fa fa-square" style="color: #00CED1"></td>\
+                        <td>Water body</td>\
+                    </tr>\
+                ');
+            }
         });
 
         // set as the current layer
@@ -203,7 +242,10 @@ $('#slider').click(function() {
     if ($(this).hasClass('expanded')) {
         $('#story').fadeOut(function() {
             $('#narrative').animate({width: 45});
-            $('#mapFooter').animate({right: 45});
+            $('#mapWrapper').animate({right: 45}, function() {
+                map.resize(true);
+                map.reposition(true);
+            });
             $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
             resetLoadingLocation();
         });
@@ -212,7 +254,10 @@ $('#slider').click(function() {
         $('#narrative').animate({width: 460}, function() {
             $('#slider').addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
             $('#story').fadeIn();
-            $('#mapFooter').animate({right: 460});
+            $('#mapWrapper').animate({right: 460}, function() {
+                map.resize(true);
+                map.reposition(true);
+            });
             resetLoadingLocation();
         });
     }
