@@ -101,7 +101,7 @@ app.get('/themes/:theme/:chapter', function(req, res) {
             
             // see if we have another theme
             if (i < (themes.length-1)) {
-                nextTheme = theme[i+1];
+                nextTheme = themes[i+1];
             }
             
             // done looping

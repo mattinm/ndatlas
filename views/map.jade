@@ -8,10 +8,16 @@ block css
 
 
 block body
-    div(id="mainBody", style="position:absolute; top:50px; bottom:70px; right: 45px; left: 0")
-        div(id="mapDiv", style="height:100%; width: 100%")
-            div(id="loadingDiv")
-                img(src="/images/loading.gif", id="loading", style="position: relative;top: 50%;left: 300px;")
+    div(id="mainBody")
+        div(id="mapWrapper")
+            div(id="mapDiv")
+                div(id="legendDiv")
+                    h3 Legend
+                    table(id="legendTable")
+                div(id="loadingDiv")
+                    img(src="/images/loading.gif", id="loading", style="position: relative;top: 50%;left: 300px;")
+            div(id="mapFooter")
+                div(id="toggleSlider")
         div(id="narrative") 
             div(id="slider", style="display: inline-block; vertical-align: top; width: 40px;padding: 310px 5px;", class="expanded")
                 i(class="glyphicon glyphicon-chevron-right", style="font-size: 24pt;")
@@ -54,8 +60,6 @@ block body
                             img(class="center-block hidden-md hidden-lg img-responsive", src="/images/und_logo_compact.png", alt="University of North Dakota compact flame logo")
                         p
                             b © 2015 University of North Dakota
-    div(id="mapFooter")
-        div(id="toggleSlider")
 
 block footer
                     
