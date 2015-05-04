@@ -123,42 +123,6 @@ require([
             
             // remove all styling from legendDiv
             $("#legendDiv").attr("style", "");
-            
-            // hardcode in the legend
-            // TODO: unhardcode
-            if (backgroundLayers[0] == 1) {
-                $("#legendTable").html('\
-                    <tr>\
-                        <td><i class="fa fa-circle" style="color: #FFC0CB"></i></td>\
-                        <td>1 dot = 3 Norwegians</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-circle" style="color: #00F"></td>\
-                        <td>1 dot = 3 Germans</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-circle" style="color: #0F0"></td>\
-                        <td>1 dot = 3 Russians</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-circle" style="color: #000"></td>\
-                        <td>Major city</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-square" style="color: #00CED1"></td>\
-                        <td>Water body</td>\
-                    </tr>\
-                ');
-            } else {
-                $("#legendTable").html('\
-                    <tr>\
-                        <td><i class="fa fa-circle" style="color: #F00"></td>\
-                        <td>1 dot = 100 people</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-circle" style="color: #000"></td>\
-                        <td>Major city</td>\
-                    </tr><tr>\
-                        <td><i class="fa fa-square" style="color: #00CED1"></td>\
-                        <td>Water body</td>\
-                    </tr>\
-                ');
-            }
         });
 
         // set as the current layer

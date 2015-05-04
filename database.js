@@ -81,7 +81,32 @@ var themeAnthro = {
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
             'backgroundLayers': [1, 15],
-            'toggleableLayers': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+            'toggleableLayers': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            'legend': [{
+                'icon': 'circle',
+                'color': '#FFC0CB',
+                'text': '1 dot = 3 Norwegians'
+            },
+            {
+                'icon': 'circle',
+                'color': '#00F',
+                'text': '1 dot = 3 Germans'
+            },
+            {
+                'icon': 'circle',
+                'color': '#0F0',
+                'text': '1 dot = 3 Russians'
+            },
+            {
+                'icon': 'circle',
+                'color': '#000',
+                'text': 'Major city'
+            },
+            {
+                'icon': 'square',
+                'color': '#00CED1',
+                'text': 'Water body'
+            }]
         },
         'stories': [{
             'title': 'Before the State: The Dakota Territory',
@@ -294,7 +319,22 @@ var themeHistory = {
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
             'backgroundLayers': [17, 32],
-            'toggleableLayers': [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            'toggleableLayers': [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+            'legend': [{
+                'icon': 'circle',
+                'color': '#F00',
+                'text': '1 dot = 100 people'
+            },
+            {
+                'icon': 'circle',
+                'color': '#000',
+                'text': 'Major city'
+            },
+            {
+                'icon': 'square',
+                'color': '#00CED1',
+                'text': 'Water body'
+            }]
         },
         'stories': [{
             'title': 'Making of the State',
