@@ -84,17 +84,17 @@ var themeAnthro = {
             'toggleableLayers': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
             'legend': [{
                 'icon': 'circle',
-                'color': '#FFC0CB',
+                'color': '#FF7F7F',
                 'text': '1 dot = 3 Norwegians'
             },
             {
                 'icon': 'circle',
-                'color': '#00F',
+                'color': '#0084A8',
                 'text': '1 dot = 3 Germans'
             },
             {
                 'icon': 'circle',
-                'color': '#0F0',
+                'color': '#89CD66',
                 'text': '1 dot = 3 Russians'
             },
             {
@@ -104,7 +104,7 @@ var themeAnthro = {
             },
             {
                 'icon': 'square',
-                'color': '#00CED1',
+                'color': '#97DBF2',
                 'text': 'Water body'
             }]
         },
@@ -332,7 +332,7 @@ var themeHistory = {
             },
             {
                 'icon': 'square',
-                'color': '#00CED1',
+                'color': '#97DBF2',
                 'text': 'Water body'
             }]
         },
