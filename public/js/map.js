@@ -1,6 +1,6 @@
 function resizeNarrative() {
     $('#map,#narrative,#story,#map,body,html,#loadingDiv').css({
-        'height': $(window).height()-50
+        'height': $(window).height()-54
     });
 }
 resizeNarrative();
