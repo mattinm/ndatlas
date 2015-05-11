@@ -1,0 +1,158 @@
+\documentclass[11pt, final, conference, twocolumn]{IEEEtran} 
+%\documentclass[11pt, draftcls, conference, onecolumn]{IEEEtran} 
+
+\usepackage{url}
+\usepackage{latexsym}
+\usepackage{eepic,epsfig,color,bm,array,amsmath}
+
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\eg}{{\it e.g.}}
+\newcommand{\ie}{{\it i.e.}}
+
+\begin{document}
+
+\title{AtlasCMS: Final Report}
+
+\author{
+
+\IEEEauthorblockN{Marshall Mattingly}
+\IEEEauthorblockA{Department of Computer Science,\\
+University of North Dakota\\
+Grand Forks, ND 58202\\
+Email: marshall.p.mattingly@my.und.edu
+}
+
+\and
+
+\IEEEauthorblockN{Michael Marti}
+\IEEEauthorblockA{Department of Computer Science,\\
+University of North Dakota\\
+Grand Forks, ND 58202\\
+Email: michael.marti@my.und.edu
+}
+
+\and
+
+\IEEEauthorblockN{Dr. Travis Desell}
+\IEEEauthorblockA{Department of Computer Science,\\
+University of North Dakota\\
+Grand Forks, ND 58202\\
+Email: tdesell@cs.und.edu
+}
+
+\and
+
+\IEEEauthorblockN{Dr. Michael Niedzielski}
+\IEEEauthorblockA{Department of Geography,\\
+University of North Dakota\\
+Grand Forks, ND 58202\\
+Email: michael.niedzielski@email.und.edu
+}
+
+}
+
+% make the title area
+\maketitle
+
+% add the abstract
+\begin{abstract}
+
+As North Dakota approaches its 125\textsuperscript{th} anniversary of statehood, there is a wealth of demographic, economic, and social data available relating to the diverse religious, ethnic, and social groups within the state. This data is scattered across many fields; however, including anthropology, history, religious studies, sociology, and American Indian studies. It is difficult to make connections without a central location to compile the data. Creating a content management system that allows students from various fields to create digital interactive maps and graphs with accompanying narratives will allow the general public and students alike to learn about different aspects of North Dakota; creating connections between the disciplines that may not have been otherwise apparent. By using a content management system that is integrated with common technologies used to create physical atlases, AtlasCMS allows content managers to reuse created content, greatly simplifying the process of creating interesting and interactive online maps.
+
+\end{abstract}
+
+% peer review title
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+
+There are several examples of interactive atlases or maps online, each with their own unique set of features. For example, Atlas of the Historical Geography of the United States~\cite{us-historical-atlas-2014} utilizes static images as maps.  It allows users to hide the legend, narrative, and table of contents, while also incorporating a slider and animation functionality to move from one year to the next.  The historical geography atlas is an excellent example of an interactive atlas, but struggles with dynamic data because of its use of static images. For a further evaluation of more online atlases, please see the Related Works section of this paper.
+
+Another consideration is the related works discovered appeared to be created and maintained by a web developer. A major goal of AtlasCMS is to create a content management system (CMS), not a hard-coded website. AtlasCMS will allow content managers such as students, rather than professional web developers, to generate and modify the content at any time. This will also allow AtlasCMS to be expanded into other projects that wish to represent geographical data sets with an interactive user experience.
+
+This paper will examine several online atlases and interactive maps in the Related Works section, which explains how other projects overcame the transition from physical atlas to digital atlas. The approach taken during development of AtlasCMS will be discussed in the Approach section, including considerations and rational for the user interface (UI) elements. The Implementation section provides a technical breakdown of the project as a whole, including software design diagrams, algorithms, and specific application programming interfaces (APIs) and frameworks integrated into AtlasCMS.
+
+The paper then transitions into the Results section, which documents how well AtlasCMS accomplishes it goals, primarily of usability for both users and content managers. The Future Work section provides ideas for progression of the project beyond what was completed. Finally, the Conclusion discusses the impact and importance of the results of AtlasCMS.
+
+\section{Related Works}
+During the search for related works, the focus was primarily on websites that present geographic data over periods of time. This led to the discovery of several interactive elements that enhanced the consumption of the maps, creating a clear benefit to a digital atlas compared to a traditional physical atlas. Also noted was how similar websites handled providing basic map information, such as a legend and compass, which lended itself well to comparing and contrasting the different UI design decisions.
+
+There were three main related works that were used when designing AtlasCMS: {\it i}) Atlas of the Historical Geography of the United States~\cite{us-historical-atlas-2014}, an interactive atlas with basic animation functionality and narratives that covers many topics, including presidential elections, state boundaries, and other data; {\it ii}) Urban Layers: Manhattan's Urban Fabric~\cite{urban-layers-2014}, an interactive single map that shows the buildings built in Manhattan during a dynamic, user-defined time period; and {\it iii}) Washington DC: Our Changing City~\cite{dc-changing-2014}, an interactive atlas with more advanced animation functionality and narratives that covers changes in demographics, schools, and housing in Washington DC.
+
+\subsection{Interactive Maps}
+Allowing the user to easily compare similar maps over a period of time, both by animation and manual selection, is paramount to the digital experience of an interactive atlas. The historical geography atlas uses hand-drawn maps, which appear to be taken from figures in a physical atlas, and places them atop a map element layer provided by Leaflet. A slider is provided at the bottom of the map for sections that have multiple reference points, such as presidential elections, letting the user either slide to a specific year or hit a play/pause button.  The play/pause feature pre-caches all of the images for each map within the section and ticks through each year automatically.~\cite{us-historical-atlas-2014} The slider is an intuitive UI element that allows the ability to show multiple maps. Sliders scale well when viewing across different viewpoints and give users responsive feedback. While providing some interactive features, the use of static maps greatly limits the user experience.
+
+The Washington DC atlas primarily uses charts and static geographic maps to present data. There is a map in the Housing section under the title ''Building boom transforming DC neighborhoods``, but by default it is not interactive. The user can press a button to open a fully interactive version in a new window or tab, which automatically animates through several years and updates the map (MapBox plugin). This interactive version allows the user to click a button corresponding to a specific year to pause/resume the animation.~\cite{dc-changing-2014} The buttons are simple and intuitive UI elements to show multiple maps and gives subtle feedback by highlighting the current year's button. A downside is the buttons take up significant space, limiting the amount of data points possible, especially on smaller viewports like mobile devices.
+
+The urban layers map is the least interactive of the maps in the related works, providing no means of animation. Instead of having a slider or buttons that allow a user to select a single data-point, urban layers allows the user to select a date range, filling in the map with all corresponding data between the two dates.~\cite{urban-layers-2014} While the urban layers map does not have any animation functionality, the ability to select a date range using a slider is intuitive and allows for basic filtering. Users are able to to limit the data points to those in which they are interested.
+
+\subsection{Interface Elements}
+There are many elements that make up a typical atlas, including: {\it i}) a legend to define map icons; {\it ii}) a narrative to describe what the map (or collection of maps) represent; {\it iii}) and a table of contents to allow easy navigation to different sections or chapters. The historical geography atlas starts with the legend displayed, floating over the map in the bottom-right corner. The narrative and table of contents are hidden by default. There is a floating toggle in the top-right corner that allows the user to hide the legend, and instead show the narrative or table of contents by clicking the appropriate checkbox. If the user checks either the narrative or table of contents, the corresponding element slides in from the right side, resizing the map to allow the new element to fit.~\cite{us-historical-atlas-2014} Using the toggle and checkboxes are both intuitive, and allows the user to easily turn elements on and off to view a larger map or read the narrative.
+
+The Washington DC atlas presents all of its data by default.  The narrative is shown on the left, while visual elements are shown on the right.  The atlas utilizes a two-column approach where the visual element takes up more space than the textual element. Legends are present on the visual element in the top-right corner and cannot be hidden by the user. There is no full table of contents, but the user is able to click a box in the top-middle of the atlas to change chapters or pages within a chapter. This atlas is more inspired by traditional atlases, presenting in a static format, which hinders the interaction a user can have by limiting how data can be consumed.  It is especially difficult to move from one page within a chapter to another page in a different chapter.
+
+\section{Approach}
+There are several examples of online atlases described in the related works section. A common theme among them all is there is no content management system for online atlases.  This means it is not possible for interactive elements to be created by non-technical persons, rather professional developers are needed to update content. Aside from the usability of the atlas, a big consideration is the usability of the content management system itself.  The ability to allow students to upload content and modify existing content was equally important.
+
+To simplify the codebase and provide a familiar interface, several robust and well-tested open source web frameworks were utilized. jQuery and Bootstrap were chosen and used for clientside development. jQuery is actually a dependency of Bootstrap, but nonetheless they work hand-in-hand well together to create dynamic and interactive experiences for the user.
+
+jQuery is a JavaScript framework that supports the newest web standards, while gracefully falling back to older specifications when a browser does not support them.  It offers excellent cross-browser support and provides an easy way to access and modify DOM elements through CSS and psuedo selectors.  jQuery also offers many shorthand functions for common tasks such as AJAX calls.
+
+Bootstrap is a widely used CSS and JavaScript framework that allows for simple and consistent styling over multiple viewports.  It follows a mobile-first approach that expands automatically to fill up larger viewports such as laptops and desktops. While there are no current plans to create a mobile-specific version of AtlasCMS, utilizing Bootstrap will essentially allow a mobile version to be created without any additional development time needed.
+
+AtlasCMS is built on the Node.js platform. Node is built on Chrome's V8 JavaScript engine.  Node lends itself well to highly scalable web applications becuase of its unique event-driven, non-blocking I/O model, which makes it extremely efficient at handling high concurrent loads.  JavaScript is a familiar programming language for both lead developers, so the learning curve was essentially non-existent.  AtlasCMS utilizes the Express for handling requests, and the templating engine, Jade, for the actual webpages.  This allows for rapid development of the web ages themselves without the need to focus on complex server configurations.
+
+For the design we incorporated several elements from each of the related works and refined them into a new UI that focuses on multiple viewports. There is an upper navigation bar that allows for easy access of the different chapters and sub-chapters and scales well to multiple viewports. The current map takes up the rest of the available space, with a legend floating above the bottom-right of the map.  A slider is present below the map, allowing the user to select a specific date for a series of maps if applicable. To the right of the map is a small column with an arrow pointing inward toward the map. If the user clicks the sidebar with the arrow, the narrative slides in from the right. The map is automatically resized to accompany the narrative. The arrow flips directions to indicate that clicking it again will hide the narrative. While extremely small viewports, such as phones, haven't been fully developed and tested yet, the narrative will instead fill the entire screen.
+
+The slider at the bottom of the page indicates that the map can be animated and is used for maps with multiple datasets or layers that change over time. When a user selects a specific year, the narrative and map will automatically adjust to the context of that year. A user can also click a play button to the left of the slider to automatically animate the map and narrative.  This play feature will behave as if the user had slowly moved the slider from one side to the other. Users can also pause the animation at any time if they would like to spend more time on a given piece of content. Since the slider is associated with the map and narrative, jumping to a new section of the narrative will automatically update the map and slider.  This will ensure the map and narrative are always in sync and provides a consistent and smooth user experience.
+
+While each of the related works cited have elements similar to AtlasCMS, we believe that by tying our maps and narratives together with the animation and slider, AtlasCMS allows for a more immersive user experience. Developing with scalability and multiple viewports in mind will also allow AtlasCMS to remain functional on a wide variety of devices, rather than just traditional laptops and desktops.
+
+To allow non-technical content managers to maintain the system, a simple administration control panel (AdminCP) was created.  The AdminCP will give administrators the ability to create and delete user accounts.  These accounts will then in turn be used by students to add and delete chapters and sections, including the ability to edit existing content on the atlas.  Administrators will also be able to lock down content to certain accounts, so students working on content A can only edit content A, while students working on content B will be able to strictly edit content B.  This will prevent content managers from accidentally editing another content manager's content, and at the same time providing accountabilty and responsibility for the students editing the content.
+
+Content managers can then log into the AdminCP to add, delete, or modify existing pages for which they have permissions. When a content manager creates a new map, they are able to specify whether or not the map is static or dynamic, which means that the map covers multiple years. They then define the name of the map, URL of the map on UND's local ArcGIS server, and insert an optional narrative (in one or multiple sections). They can also create the map-narrative key points (dynamic maps only) that ensure the map and narrative remain in sync. The key points are then further refined to define which layers are turned on and off when the key point is triggered, allowing the map to actually perform the updates. Content managers can also modify any of the above features after its initial creation.
+
+\section{Implementation}
+This section is still in development. Current documentation pending to change.
+
+Originally, development for AtlasCMS started as an extension of DjangoCMS, a content management system written in Django, a Python framework. However, given the time-constraints and unfamiliarity with writing modules in DjangoCMS, it was decided that creating a basic CMS from the ground up using more familiar frameworks would allow for a faster and more consistent development experience. Therefore, Node.js, a JavaScript package manager, is used to integrate several JavaScript packages into AtlasCMS, including a basic web server, database APIs, and templating system.
+
+One of the primary concerns during development was ensuring that the content managers would be able to reuse resources they have already created using ArcGIS, a common geographic data creation tool. During early development, the idea of converting the ArcGIS data to the open source GeoJSON standard was tested. However, during the conversion, only the basic geometric shapes and user-defined variables for the shapes were retained, removing extremely important features such as symbology for legends and colors to distinguish shapes. To use GeoJSON from ArcGIS data would require the content manager to upload the ArcGIS data and then edit the GeoJSON, in a tool that would have to be developed and integrated into AtlasCMS, creating a sizable increase in work load and adding error potential to the content.
+
+To avoid have content managers reenter data in GeoJSON format that has already been created in ArcGIS, it was decided to use connections from AtlasCMS to ArcGIS Server to render the maps. ArcGIS Server is a standalone ArcGIS project that allows content managers to upload their ArcGIS data, with all defined layers, symbology, and legends, to be rendered by the server. External sources, such as AtlasCMS, can then send requests to ArcGIS Server using the JavaScript ArcGIS API to embed the map, including any layer filtering, on webpages. Using ArcGIS Server to render the maps simplifies the process for content developers who are already using ArcGIS dramatically; however, this is an additional cost that must be incurred, and developing support for GeoJSON is a future goal of AtlasCMS to allow it to be used in more projects.
+
+Here we will discuss how we went about allowing the user to create map-narrative key points, and how we used those to filter the layers on the map with the narrative (and vice versa). This feature hasn't been fully implemented and will be added for the final draft.
+
+Here we will discuss the authentication system in place, including basic access control and content management features. This feature hasn't been fully implemented and will be added for the final draft.
+
+Here would be the high-level use-case diagram describing the system in full. Will be added for the final draft.
+
+Here would be the database design. Will be added for the final draft.
+
+\section{Results}
+Results pending.
+
+\section{Future Work}
+A major distinction of AtlasCMS is the ability to scale to multiple viewports. However, given time constraints, the interface and functionality was developed with tablets and laptops in mind. The next step in the design would be to implement the interface and functionality for phones, including rendering to a smaller viewport and more touch-enable features such as swiping.
+
+While AtlasCMS is custom made for a situation in which an ArcGIS server is available, creating an interface that uses fully open standards such as GeoJSON and Open Maps, while allowing the same level of interaction would be ideal. This would allow AtlasCMS to be used be a wider variety of projects at zero cost. However, to incorporate this functionality, a specific set of expected variables in the GeoJSON must be defined by the program and created by the content managers, removing some of the ease-of-use of AtlasCMS. Optionally, a GeoJSON editor can be incorporated directly into AtlasCMS, allowing for the alteration of required variables to the provided data within AtlasCMS itself.
+
+\section{Conclusion}
+Conclusion pending.
+
+\section{TODO}
+
+\begin{enumerate}
+\item Expand the Introduction
+\item Add additional citations for the different APIs, frameworks, and programs used
+\item Complete the Implementation, Results, and Conclusion sections
+\end{enumerate}
+
+\bibliographystyle{IEEEtran.bst}
+\bibliography{IEEEabrv, ./references.bib}
+
+\end{document}
