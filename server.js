@@ -36,14 +36,22 @@ app.get('/', function (req, res) {
     });
 });
 
-/**
 app.get('/toggle', function (req, res) {
     res.render('arcgis', {
         'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-        'chapters': chapters
+        'themes': themes
     });
 });
-**/
+
+app.get('/railroads', function (req, res) {
+    res.render('railroads', {
+        'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        'layer': '39',
+        'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
+        'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
+        'themes': themes
+    });
+});
 
 app.get('/themes/:theme', function (req, res) {
     var theme = null;
@@ -215,4 +223,4 @@ app.post('/api/:action', function(req, res) {
 });
 **/
 
-app.listen(process.env.PORT, process.env.IP);
+app.listen(process.env.PORT || 3000, process.env.IP || '127.0.0.1');
