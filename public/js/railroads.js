@@ -32,8 +32,9 @@ require([
     "esri/renderers/DotDensityRenderer", 
     "esri/renderers/ScaleDependentRenderer",
     "esri/InfoTemplate",
-    "esri/layers/ArcGISTiledMapServiceLayer"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer) {
+    "esri/layers/ArcGISTiledMapServiceLayer",
+    "esri/tasks/query"
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
         //center: [-100.425, 47],
@@ -56,18 +57,22 @@ require([
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
     //layer.setDisableClientCaching(true);
 
-    var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39", {
+    var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/" + getCurrentLayer(), {
           outFields: ["*"]
     });
+    console.log(featureLayer);
 
     // create our slider
     layer.on("load", function(e) {
         values = [];
-        $.each(startYears, function(index, value) {
+        for(i=1886; i<=2015; i++) {
+        //$.each(startYears, function(index, value) {
             //console.log(index);
             //console.log(layer.layerInfos[value]);
-            values.push(value);
-        });
+            values.push(i);
+        //});
+        }
+        console.log(values);
 
         min = values[0];
         max = values[values.length-1];
@@ -83,7 +88,7 @@ require([
         console.log(range);
 
         $("#toggleSlider").noUiSlider({
-            start: startYears[0],
+            start: values[0],
             range: range,
             snap: true
         });
@@ -113,7 +118,7 @@ require([
             });
 
             // find the index of this layer
-            currentLayers.push(getCurrentLayer());
+            //currentLayers.push(getCurrentLayer());
 
             // show the visible layers
             layer.setVisibleLayers(currentLayers);
@@ -139,7 +144,35 @@ require([
             // remove all styling from legendDiv
             $("#legendDiv").attr("style", "");
 
+            // FILTER WITH
+            var iYear = Math.floor($(this).val());
+            var query = new Query();
+            query.where = "BUILT_YR <= " + iYear + " and ABAND_YR > " + iYear;
+            query.returnGeometry = true;
+
+            console.log(iYear);
+            console.log(query);
+
+            featureLayer.queryFeatures(query, function(featureSet) {
+                //remove all graphics on the maps graphics layer
+                map.graphics.clear();
+                console.log(featureSet);
+
+                //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
+                dojo.forEach(featureSet.features, function(feature) {
+                    // add the features
+                    var graphic = feature;
+                    graphic.setSymbol(symbol);
+
+                    //Add graphic to the map graphics layer.
+                    map.graphics.add(graphic);
+                });
+
+                map.graphics.redraw();
+            });
+
             // update the renderer
+            /*
             var field = "Y" + Math.floor($(this).val());
             featureLayer.setInfoTemplate(new InfoTemplate("${NAME}, ND", "Railroads: ${" + field + ":NumberFormat}"));
 
@@ -184,6 +217,8 @@ require([
             });
 
             featureLayer.setRenderer(renderer);
+            */
+            
             featureLayer.refresh();
         });
 
@@ -218,7 +253,7 @@ require([
 
 function getCurrentLayer() {
     // find the index of this layer
-    return 39;
+    return 34;
 }
 
 function ToggleLayer(id) {
