@@ -103,3 +103,17 @@ blockquote footer {
     border-color: #FFF;
     color: #255c2e;
 }
+
+.hideshow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hideshow:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
