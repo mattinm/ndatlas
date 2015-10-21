@@ -69,7 +69,12 @@ require([
         //$.each(startYears, function(index, value) {
             //console.log(index);
             //console.log(layer.layerInfos[value]);
-            values.push(i);
+             if (i == 1886) {
+             values.push(i);
+             }
+             if (i % 5 == 0) {
+                values.push(i);
+             }
         //});
         }
         console.log(values);
