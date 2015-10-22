@@ -62,7 +62,7 @@ require([
     });
     console.log(featureLayer);
 
-    // create our slider
+    // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
         values = [];
         for(i=1886; i<=2015; i++) {
