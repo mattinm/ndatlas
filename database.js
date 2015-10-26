@@ -72,7 +72,7 @@ content.
 
 var themeAnthro = {
     'slug': 'anthropology',
-    'name': 'Anthropology of the State',
+    'name': 'Foreign Born Population',
     'chapters': [{
         'slug': 'map',
         'name': 'Anthropology of the State',
@@ -310,7 +310,7 @@ var themeAnthro = {
 /* HISTORY */
 var themeHistory = {
     'slug': 'history',
-    'name': 'History of the State',
+    'name': 'General History and Population',
     'chapters': [{
         'slug': 'map',
         'name': 'Making of the State to Current',
@@ -636,8 +636,8 @@ var themeHistory = {
 // insert our themes
 nosql.on('load', function() {
     nosql.insert([
-        themeHistory,
-        themeAnthro
+        themeAnthro,
+        themeHistory
     ]);
 });
 
