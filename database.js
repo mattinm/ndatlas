@@ -633,11 +633,107 @@ var themeHistory = {
     }] //chapters
 }; // themeHistory
 
+/* RELIGION */
+var themeReligion = {
+    'slug': 'religion',
+    'name': 'Religious Affiliation History',
+    'chapters': [{
+        'slug': 'map',
+        'name': 'Religious Affiliation History',
+        'blurb': 'Religious Affiliation History',
+        'type': 'map',
+        'map': {
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'backgroundLayers': [58, 63],
+            'toggleableLayers': [62, 61, 60, 59],
+            'legend': [{
+                'icon': 'circle',
+                'color': '#F00',
+                'text': 'Religion1'
+            },
+            {
+                'icon': 'circle',
+                'color': '#00D69E',
+                'text': 'Religion2'
+            },
+            {
+                'icon': 'circle',
+                'color': '#9C00CC',
+                'text': 'Religion3'
+            },
+            {
+                'icon': 'circle',
+                'color': '#C2A83D',
+                'text': 'Religion4'
+            },
+            {
+                'icon': 'circle',
+                'color': '#000',
+                'text': 'Major city'
+            },
+            {
+                'icon': 'square',
+                'color': '#97DBF2',
+                'text': 'Water body'
+            }]
+        },
+        'stories': [{
+            'title': '',
+            'start_year': '1980',
+            'end_year': '1989',
+            'citations': [
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': ''
+            }] // sections
+        },
+        {
+            'title': '',
+            'start_year': '1990',
+            'end_year': '1999',
+            'citations': [
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': ''
+            }] // sections
+        },
+        {
+            'title': '',
+            'start_year': '2000',
+            'end_year': '2009',
+            'citations': [
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': ''
+            }] // sections
+        },
+        {
+            'title': '',
+            'start_year': '2010',
+            'end_year': '2015',
+            'citations': [
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': ''
+            }] // sections
+        }] // stories
+    }] //chapters
+}; // themeReligion
+
 // insert our themes
 nosql.on('load', function() {
     nosql.insert([
         themeAnthro,
-        themeHistory
+        themeHistory,
+        themeReligion
     ]);
 });
 
