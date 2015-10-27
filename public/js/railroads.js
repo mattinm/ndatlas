@@ -33,8 +33,12 @@ require([
     "esri/renderers/ScaleDependentRenderer",
     "esri/InfoTemplate",
     "esri/layers/ArcGISTiledMapServiceLayer",
-    "esri/tasks/query"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query) {
+    "esri/tasks/query",
+    "esri/SpatialReference",
+    "esri/tasks/QueryTask",
+    "esri/graphic",
+    "dojo/domReady!"
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
         //center: [-100.425, 47],
@@ -121,6 +125,7 @@ require([
             $.each(backgroundLayers, function(index, value) {
                 currentLayers.push(value);
             });
+                              console.log(currentLayers);
 
             // find the index of this layer
             //currentLayers.push(getCurrentLayer());
@@ -151,9 +156,9 @@ require([
 
             // FILTER WITH
             var iYear = Math.floor($(this).val());
-            var query = new Query();
-            query.where = "BUILT_YR <= " + iYear + " and ABAND_YR > " + iYear;
+            var query = new esri.tasks.Query();
             query.returnGeometry = true;
+            query.where = "Built3 <= " + iYear + " and ABAND_YR > " + 9999;
 
             console.log(iYear);
             console.log(query);
@@ -176,54 +181,6 @@ require([
                 map.graphics.redraw();
             });
 
-            // update the renderer
-            /*
-            var field = "Y" + Math.floor($(this).val());
-            featureLayer.setInfoTemplate(new InfoTemplate("${NAME}, ND", "Railroads: ${" + field + ":NumberFormat}"));
-
-            console.log(field);
-            console.log(featureLayer);
-
-            var renderer = new ScaleDependentRenderer({
-                rendererInfos: [{
-                    renderer: new DotDensityRenderer({
-                      fields: [{
-                        name: field,
-                        color: new Color("#CC8800")
-                      }],
-                      dotValue: 200,
-                      dotSize: 1
-                    }),
-                    maxScale: 2600000,
-                    minScale: 6000000
-                }, {
-                    renderer: new DotDensityRenderer({
-                      fields: [{
-                        name: field,
-                        color: new Color("#CC8800")
-                      }],
-                      dotValue: 100,
-                      dotSize: 1
-                    }),
-                    maxScale: 1100000,
-                    minScale: 2600000
-                }, {
-                    renderer: new DotDensityRenderer({
-                      fields: [{
-                        name: field,
-                        color: new Color("#CC8800")
-                      }],
-                      dotValue: 50,
-                      dotSize: 1
-                    }),
-                    maxScale: 0,
-                    minScale: 1100000
-                }]
-            });
-
-            featureLayer.setRenderer(renderer);
-            */
-            
             featureLayer.refresh();
         });
 
