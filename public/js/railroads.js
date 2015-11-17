@@ -28,6 +28,7 @@ require([
     "esri/geometry/Extent",
     "esri/dijit/Scalebar",
     "esri/layers/FeatureLayer",
+    "esri/layers/LayerInfo",
     "esri/layers/LayerDrawingOptions",
     "esri/renderers/DotDensityRenderer", 
     "esri/renderers/ScaleDependentRenderer",
@@ -38,7 +39,7 @@ require([
     "esri/tasks/QueryTask",
     "esri/graphic",
     "dojo/domReady!"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic) {
+], function(Color, Map, Extent, Scalebar, FeatureLayer,LayerInfo, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
         //center: [-100.425, 47],
@@ -61,9 +62,10 @@ require([
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
     //layer.setDisableClientCaching(true);
 
-    var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/" + getCurrentLayer(), {
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/" + {id: "nd_railroads_built_aband"}, {
           outFields: ["*"]
     });
+        console.log(getCurrentLayer());
     console.log(featureLayer);
 
     // create our slider to show every 5 years after 1886
@@ -119,19 +121,22 @@ require([
             map.infoWindow.hide();
             map.infoWindow.clearFeatures();
             showLoading();
-
+            /*
             // prepare our layers for filtering
             currentLayers = [];
             $.each(backgroundLayers, function(index, value) {
                 currentLayers.push(value);
             });
-                              console.log(currentLayers);
+             */
+                              //console.log(currentLayers);
 
             // find the index of this layer
             //currentLayers.push(getCurrentLayer());
 
             // show the visible layers
-            layer.setVisibleLayers(currentLayers);
+                              layer.setVisibleLayers(function(LayerInfo) {
+                                                     subLayerIds : "34", "35", "36", "37", "38", "39", "40", "41"
+                                                     });
             
             // see if we should scroll to a new layer
             /*
@@ -156,9 +161,11 @@ require([
 
             // FILTER WITH
             var iYear = Math.floor($(this).val());
-            var query = new esri.tasks.Query();
+            var query = new Query();
+                              query.objectIds = [features[0].attributes.OBJECTID];
+                              query.outFields = ["*"];
             query.returnGeometry = true;
-            query.where = "Built3 <= " + iYear + " and ABAND_YR > " + 9999;
+            query.where = "Built3 = " + iYear;
 
             console.log(iYear);
             console.log(query);
@@ -215,7 +222,7 @@ require([
 
 function getCurrentLayer() {
     // find the index of this layer
-    return 34;
+    return 33;
 }
 
 function ToggleLayer(id) {
