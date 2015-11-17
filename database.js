@@ -648,23 +648,23 @@ var themeReligion = {
             'toggleableLayers': [62, 61, 60, 59],
             'legend': [{
                 'icon': 'circle',
-                'color': '#F00',
-                'text': 'Religion1'
+                'color': '#C2A83D',
+                'text': 'Roman Catholics'
             },
             {
                 'icon': 'circle',
                 'color': '#00D69E',
-                'text': 'Religion2'
+                'text': 'Evangelical Lutherans (ELCA)'
             },
             {
                 'icon': 'circle',
                 'color': '#9C00CC',
-                'text': 'Religion3'
+                'text': 'Lutherans (Missouri Synod)'
             },
             {
                 'icon': 'circle',
-                'color': '#C2A83D',
-                'text': 'Religion4'
+                'color': '#F00',
+                'text': 'United Methodists'
             },
             {
                 'icon': 'circle',
