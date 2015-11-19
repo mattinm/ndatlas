@@ -36,12 +36,13 @@ require([
     "esri/InfoTemplate",
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/tasks/query",
+    "esri/tasks/FeatureSet",
     "esri/SpatialReference",
     "esri/tasks/QueryTask",
     "esri/graphic",
     "dojo/query",
     "dojo/domReady!"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic, query) {
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, SpatialReference, QueryTask, Graphic, query) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
                   basemap: "topo",
@@ -62,15 +63,15 @@ require([
     map.addLayer(streets); 
     */
 
-        var layer = new ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/33", {
-            "id": 33,
+        var layer = new ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/41", {
+            "id": 41,
         });
     
         
         var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
                                             outFields: ["*"],
                                             });
-        layer.show();
+        map.addLayer(layer);
     // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
         values = [];
@@ -113,8 +114,10 @@ require([
         // create a function for when the slider value is set
         $('#toggleSlider').on('set', function() {
             if (!firstSet) {
+                              console.log("Clearing map");
                 map.graphics.clear();
             } else {
+                              console.log("Not Clearing map");
                 firstSet = false;
             }
             map.infoWindow.hide();
@@ -138,32 +141,42 @@ require([
             // FILTER WITH
             var iYear = Math.floor($(this).val());
             var query = new Query();
-                              //query.objectIds = [features[0].attributes.OBJECTID];
-                              //query.outFields = ["*"];
+            //query.objectIds = [features[0].attr.OBJECTIDS];
+            query.outFields =["*"];
             query.returnGeometry = true;
-            query.where = "Built3 > " + iYear;
+            query.where = "Built3 < " + iYear;
+            query.spatialReference = {"wkid":102720};
 
             console.log(iYear);
             console.log(query);
-
-            featureLayer.queryFeatures(query, function(featureSet) {
+                              
+            featureLayer.queryFeatures(query, function(FeatureSet) {
                 //remove all graphics on the maps graphics layer
                 map.graphics.clear();
-                console.log(featureSet);
+                console.log(FeatureSet.features);
+                                       var numFeatures = FeatureSet.features.length;
+                                       for (var x=0; x<numFeatures; x++) {
+                                        var graphic = FeatureSet.features[x];
+                                        map.graphics.add(graphic);
+                                        map.graphics.redraw();
+                                       
+                                       }
+                                       
 
-                //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
-                dojo.forEach(featureSet.features, function(feature) {
+                /*/QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
+                dojo.forEach(FeatureSet.features, function(feature) {
                     // add the features
                     var graphic = feature;
                     graphic.setSymbol(symbol);
 
                     //Add graphic to the map graphics layer.
-                    map.graphics.add(graphic);
+                    map.graphics.draw(graphic);
                 });
 
                 map.graphics.redraw();
+                 */
             });
-
+                              
             featureLayer.refresh();
     });
             
@@ -177,8 +190,7 @@ require([
 
     // add the layer to the map
     map.addLayer(layer);
-    map.addLayers([featureLayer]);
-        
+    map.addLayer(featureLayer);
     // show the scalebar
     var scalebar = new Scalebar({
         map: map,
