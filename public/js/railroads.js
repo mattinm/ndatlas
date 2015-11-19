@@ -28,8 +28,9 @@ require([
     "esri/geometry/Extent",
     "esri/dijit/Scalebar",
     "esri/layers/FeatureLayer",
-    "esri/layers/LayerInfo",
     "esri/layers/LayerDrawingOptions",
+    "esri/layers/DynamicLayerInfo",
+    "esri/layers/ArcGISDynamicMapServiceLayer",
     "esri/renderers/DotDensityRenderer", 
     "esri/renderers/ScaleDependentRenderer",
     "esri/InfoTemplate",
@@ -38,15 +39,17 @@ require([
     "esri/SpatialReference",
     "esri/tasks/QueryTask",
     "esri/graphic",
+    "dojo/query",
     "dojo/domReady!"
-], function(Color, Map, Extent, Scalebar, FeatureLayer,LayerInfo, LayerDrawingOptions, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic) {
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, SpatialReference, QueryTask, Graphic, query) {
     console.log($("#loading").css('left'));
     map = new Map("mapDiv", {
-        //center: [-100.425, 47],
-        //zoom: 8,
-        extent: new Extent({"xmin":-663458,"ymin":924230,"xmax":0,"ymax":1336294,"spatialReference":{"wkid":102003}}),
-        maxScale: 1000000,
-        minScale: 5000000
+                  basemap: "topo",
+        //extent: new Extent({"xmin":1014757.1741241664,"ymin":-1461344.8489687443,"xmax":2970654.1258395016,"ymax":749169.9639166743,"spatialReference":{"wkid":102720}}),
+                  center: [-100.78, 46.80],
+                  zoom: 7,
+        //maxScale: 1000000,
+        //minScale: 5000000
         //basemap: "topo"
     });
 
@@ -59,29 +62,25 @@ require([
     map.addLayer(streets); 
     */
 
-    layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
-    //layer.setDisableClientCaching(true);
-
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/" + {id: "nd_railroads_built_aband"}, {
-          outFields: ["*"]
-    });
-        console.log(getCurrentLayer());
-    console.log(featureLayer);
-
+        var layer = new ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/33", {
+            "id": 33,
+        });
+    
+        
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
+                                            outFields: ["*"],
+                                            });
+        layer.show();
     // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
         values = [];
         for(i=1886; i<=2015; i++) {
-        //$.each(startYears, function(index, value) {
-            //console.log(index);
-            //console.log(layer.layerInfos[value]);
              if (i == 1886) {
              values.push(i);
              }
              if (i % 5 == 0) {
                 values.push(i);
              }
-        //});
         }
         console.log(values);
 
@@ -110,7 +109,7 @@ require([
             values: values,
             stepped: true
         });
-
+        
         // create a function for when the slider value is set
         $('#toggleSlider').on('set', function() {
             if (!firstSet) {
@@ -121,51 +120,28 @@ require([
             map.infoWindow.hide();
             map.infoWindow.clearFeatures();
             showLoading();
-            /*
-            // prepare our layers for filtering
-            currentLayers = [];
-            $.each(backgroundLayers, function(index, value) {
-                currentLayers.push(value);
-            });
-             */
-                              //console.log(currentLayers);
+
 
             // find the index of this layer
             //currentLayers.push(getCurrentLayer());
 
             // show the visible layers
-                              layer.setVisibleLayers(function(LayerInfo) {
-                                                     subLayerIds : "34", "35", "36", "37", "38", "39", "40", "41"
-                                                     });
+            //layer.setVisibleLayers(visible);
             
             // see if we should scroll to a new layer
-            /*
-            for (var iYear = 0; iYear < startYears.length; ++iYear) {
-                if (startYears[iYear] <= $(this).val()) {
-                    if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
-                        // jump to new content
-                        oldLayer = iYear;
-                        console.log("Offset: " + $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54);
-                        $('#story').animate({
-                            scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
-                        }, 'slow');
-                        break;
-                    }
-                }
-            }
-            */
+
             oldYear = $(this).val();
             
             // remove all styling from legendDiv
             $("#legendDiv").attr("style", "");
-
+            
             // FILTER WITH
             var iYear = Math.floor($(this).val());
             var query = new Query();
-                              query.objectIds = [features[0].attributes.OBJECTID];
-                              query.outFields = ["*"];
+                              //query.objectIds = [features[0].attributes.OBJECTID];
+                              //query.outFields = ["*"];
             query.returnGeometry = true;
-            query.where = "Built3 = " + iYear;
+            query.where = "Built3 > " + iYear;
 
             console.log(iYear);
             console.log(query);
@@ -189,35 +165,25 @@ require([
             });
 
             featureLayer.refresh();
-        });
-
+    });
+            
         // set as the current layer
         oldLayer = 0;
         $('#toggleSlider').val(min);
-        
-        //layer.setScaleRange(0, 0);
         layer.setVisibility(true);
     });
-
     // hide the loading icon when the dynamic layer finishes updating
     layer.on("update-end", hideLoading);
 
     // add the layer to the map
     map.addLayer(layer);
     map.addLayers([featureLayer]);
-
+        
     // show the scalebar
     var scalebar = new Scalebar({
         map: map,
         scalebarUnit: "dual"
     });
-
-    /*
-    var legend = new Legend({
-        map: map
-    }, "legendDiv");
-    legend.startup();
-    */
 });
 
 function getCurrentLayer() {
