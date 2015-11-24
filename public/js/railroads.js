@@ -56,6 +56,7 @@ require([
         var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36");
         
         var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
+                                            mode: FeatureLayer.SELECTION,
                                             InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
                                             outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
                                             });
@@ -138,23 +139,36 @@ require([
                               query.where = "Built3 < " + iYear;
                               
                               console.log(query);
+                              //featureLayer.clear();
+                              //featureLayer.selectFeatures(query, FeatureLayer.SELECTION_SUBTRACT);
+                              //featureLayer.refresh();
                               
-                              //featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
                               
                               featureLayer.queryFeatures(query, function(FeatureSet) {
+                                                         featureLayer.clear();
                                                          console.log(FeatureSet.features);
                                                          var feature;
                                                          var features = FeatureSet.features;
                                                          var inBuffer = [];
                                                          for (var i = 0; i < features.length; i++) {
-                                                         feature = features[i];
-                                                         inBuffer.push(feature.attributes[featureLayer.objectIdField]);
+                                                            feature = features[i];
+                                                            inBuffer.push(feature.attributes[featureLayer.objectIdField]);
                                                          }
                                                          
                                                          var query = new Query();
                                                          query.objectIds = inBuffer;
                                                          console.log(inBuffer);
-                                                         featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
+                                                         featureLayer.selectFeatures(query, FeatureLayer.SELECTION_ADD);
+                                                         /*
+                                                         var graphicRails = FeatureLayer.getSelectedFeatures();
+                                                         for (var x = 0; x < graphics.length; x++) {
+                                                            var graphic = graphicRails[x];
+                                                            map.graphics.add(graphic);
+                                                         }
+                                                          */
+                                                         
+                                                         featureLayer.redraw();
+                                                         featureLayer.refresh();
                             });
                               
                               /*
@@ -210,7 +224,7 @@ require([
 
     // add the layer to the map
     //map.addLayer(layer);
-    map.addLayer(featureLayer);
+    //map.addLayer(featureLayer);
     // show the scalebar
     var scalebar = new Scalebar({
         map: map,
