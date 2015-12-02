@@ -678,45 +678,355 @@ var themeReligion = {
             }]
         },
         'stories': [{
-            'title': '',
-            'start_year': '1980',
-            'end_year': '1989',
+            'title': 'Religious Affiliation History',
+            'citations': [
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive, http://www.thearda.com/ (Acessed 12 Sept. 2014).',
+                'Gallup.,Mississippi Most Religious State, Vermont Least Religious.,http://www.gallup.com/poll/167267/mississippi-religious-vermont-least-religious-state.aspx ., (Accessed 14 Sept. 2014).'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'Within the Midwestern United States, and more specifically North Dakota, there is a common misconception that there is little to no religious diversity in this area.  Many people are under the impression that the religious composition consists only of the two major Christian groups, the Catholics and Lutherans. This viewpoint is largely incorrect. While it is true that North Dakota’s largest denominations are indeed the Catholic and Lutheran Churches at around 167,349 and 190,633 adherents{{cite:1}} respectively in 2010, the state does have a range of other religious affiliations that are lesser known to the general public. There is an abundance of other Protestant and Orthodox groups, as well as non-Christian religions such as, Judaism, Buddhism, Islam, Baha’i, and Native American religions that reside in the state, albeit, many in relatively small numbers. An umbrella term such as “Christian” or “Protestant” does little to convey the deep theological importance of these religions. These smaller denomination and affiliations are in no way of lesser importance in regards to an examination of the state.'
+            },
+            {
+                'content': 'Religion has long been a backbone for the people of our state, in 2013 a Gallup poll found that North Dakota was the 17th most religious state in the Union, and that 78% of residents self-identified as being either very religious (46%) or moderately religious (32%){{cite:2}}. Clearly, religion is extremely important to our society and a complete examination is needed, however, an examination of religion cannot be achieved simply by looking at the largest and most influential groups, it must instead be accomplished by adding up each individual piece in order to create a coherent whole.'
+            },
+            {
+                'content': 'Our hope for this project is to create a valuable resource that can be utilized by both students and the general public alike to increase not only their knowledge on where and why certain religious groups are located where they are, but also to give a deeper insight into the theological underpinnings of these religions in order to combat ethnocentrism and a sense of religious ignorance within the community.'
+            },
+            {
+                'content': 'Therefore, below is our best attempt at answering the where and the why, giving the best quantitative data available, as well as giving any other historical information we found to be of particular interest for most of the individual religious groups in the state. The list is in no particular order. The list of religions is by no means exhaustive, and will eventually be expanded to include other religious groups. The data we are using was collected by the Association of Statisticians of American Religious Bodies and retrieved on the Association of Religious Data Archive’s website. By adherents we are using the ASARB’s definition of “ All members, including full members, their children and the estimated number of other participants who are not considered members; for example, the “baptized,” “those not confirmed,” “those not eligible for Communion,” “those regularly attending services,” and the like.” The number of adherents is best because it accounts for all people who subscribe  to a particular faith, but who may not be old enough or fulfilled all of the requirements to be considered a member of the particular church. Unfortunately, the data is not perfect, there is a separate category referred to as “unclaimed” which includes any of the adherents that are not included in one of the 236 groups that the ARDA records. This number should not be considered the “atheists” or “non-religious” category, but these groups of people are certainly included with the term “unclaimed”.'
+            }] // sections
+        },
+        {
+            'title': 'Judaism',
+            'citations': [
+                'Gael Gannon, Finding Aid to WIlliam Sherman’s Jewish Settlement in North Dakota Collection (Fargo: NDSU Libraries), 2.',
+                'Ibid., 2.',
+                'Isadore Papermeister, The History of the North Dakota Jewish Community (Grand Forks,B’nai Israel Synagogue), 13.',
+                'Ibid., 5.',
+                'Ibid., 22.',
+                'Ibid., 18.',
+                'Reform Judaism: The Origins of Reform Judaism, Jewish Virtual Library.',
+                'Papermeister, North Dakota Jewish Community, 27.',
+                'Ibid., 42.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The early history of Judaism in the state is best begun at the arrival of the first Rabbi to the area. Before this time there certainly were other communities of Jewish people, most of them coming from Poland or Russia after experiencing persecution from those in Russia.  Therefore, many of these poor eastern European Jews left and utilized the Homestead Act where they would take up farming, which they weren\'t particularly good at, or locate themselves in larger cities. The first settlement of the farming variety was the Painted Woods colony located approximately 30 miles north of Bismarck that was first populated in 1882 {{cite:1}}. It was a community of approximately 80 families. More colonies popped up in Ramsey, Morton, Burleigh, McIntosh, and Bowman counties {{cite:2}}. Most of these Jews did not stay very long due to their lack of education and practice in farming and instead chose to move into cities where there were jobs better suited to their skill set. These early settlements may be better characterized as groupings of Jewish people than full-fledged Jewish communities because they lived without the services of a rabbi, which is central to the faith. Therefore the real start of organized Judaism in North Dakota isn\'t until the Rabbis came.'
+            },
+            {
+                'content': 'Around the time of the first Rabbi there were approximately 15 Jewish families in Fargo, and another 60 or so in Grand Forks {{cite:3}}, but as stated earlier, just because there were Jewish people in the area does not mean that organized Judaism was in the area. The Fargo area contained mostly German-Jews and extremely poor Jewish people who didn\'t have the interest or the money to bring a Rabbi into the community, and the Grand Forks community was more like a group of Jewish people living together.'
+            },
+            {
+                'content': 'The first Rabbi in this area was Binyomin Papermeister from Kovno, Lithuania. Binyomin was taught Judaism as a child by his father and received his Smicha or ordination in 1878 at the age of 18. Receiving ordination was a common practice for young men during this time, many young men had no real intention of pursuing the Rabbinate professionally {{cite:4}}, although young Papermeister certainly had knack for it and in 1890 was summoned to report to the chief Rabbinate, Isaac Elchanan, in Kovno. While there, Binyomin was asked to accompany a Ukrainian family on their journey to America, more specifically, Fargo, North Dakota and be their teacher. Papermeister hated the Czarist government of his home country and after discussing it with his wife decided to leave, once settled the rest of his family would join him. He, along with the Ukrainian family arrived in New York in early January 1891 and then Fargo in the later portion of that same month.'
+            },
+            {
+                'content': 'According to his son, who wrote his account, Binyomin was greatly disappointed with the community in Fargo. After being informed by Nathan Horwitz of another community in Grand Forks, he set off to check it out. For the most part, he was pleased with what he found, but slightly discouraged because the community was made up of almost exclusively Russians and no one was from his home country of Lithuania. The difference was not only in country of origin, but also in pronunciation of Hebrew and Yiddish dialect {{cite:5}}. After Binyomin’s arrival they decided to incorporate as “The Congregation of the Children of Israel” and the first synagogue and Jewish cemetery in the state was built at the corner of 2nd Avenue South and Girard Street {{cite:6}}. It is important to note that like 90% of the congregations in the United States {{cite:7}}, this was a Reform Judaism congregation and not an Orthodox congregation, which at that time meant much smaller differences than it does now.'
+            },
+            {
+                'content': 'By the early 1900s, there were small numbers of Jews in Hillsboro, Mayville, Larimore, Linton, Grafton, Cavalier, Hamilton, Pembina, Neche as well as a family or two along the Great Northern Railway {{cite:8}}. By 1910 Minot had 30 to 40 Jewish families and by 1915 Williston had 15 families {{cite:9}}.'
+            },
+            {
+                'content': 'Isadore Papermeister believes that this was probably the heyday for Judaism in the state. After this point Judaism went through periods of increase and decrease and currently there are only two active communities in North Dakota that have regular Shabbat services, the B’nai Israel Synagogue in Grand Forks and Temple Beth El in Fargo. Although there are only two active Synagogues, there are other ones that meet occasionally for special events such as a wedding, Bar or Bat Mitzvahs, or Brit Milahs. The Association of Religious Data Archives show that in 2010 there were 176 adherents to the faith but it is very likely that this number could actually be much larger because these numbers were retrieved from the individual synagogues and did not take into account Jews who are still very devout in their faith, but are living in other areas that do not have to the services of a Rabbi. Furthermore this number seems much too small as the number of adherents in 2000 was at a staggering 730. In 1990 it was 493, and in 1980 it was at 269. This pattern shows a gradual increase and then a sharp decline in 2010. Historically, we have found little that would account for such a drastic change in numbers. Therefore, as one can see on correlating map, there are only dots within Grand Forks and Cass counties because Jewish people are really only prevalent in the cities of Grand Forks and Fargo because these are the only two cities with synagogues in them.'
+            }] // sections
+        },
+        {
+            'title': 'Methodists',
+            'citations': [
+                'E.O. Grunstead et al. History of Methodist Church in North Dakota. (Nashville: Parthenon Press), 17.',
+                'Ibid., 43.',
+                'Ibid., 43.',
+                'Ibid., 43.',
+                'Ibid., 44.',
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive, http://www.thearda.com/ (Acessed 12 Sept. 2014).',
+                'Johnson, Benton, Dean Hoge, and Donald Luidens. Mainline Churches: The Real Reason for Decline. First Things 31 (1993): 13-18.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Methodist Church can be thought of as a mainline Christian group. The Methodist movement itself was originally tied with the Anglican Church in England, but during the Revolutionary War this connection died out and continued as its own independent church.'
+            },
+            {
+                'content': 'The Methodist Church in North Dakota was an offshoot of the Methodist Conference that was located in Iowa. After the land was bought by Thomas Jefferson during the Louisiana purchase, the General Conference of the Methodist Church put the Iowa Conference in charge of all of what would become the Dakota Territory and later North Dakota.'
+            },
+            {
+                'content': 'The first missionary to be assigned to this area was Rev. James Gurley, who arrived in 1871 and in that same year held the first ever formal Methodist religious service at Pinkham Hall in Fargo {{cite:1}}. Just three years later in 1874, the first ever Methodist church was built in Fargo. This ignited a relatively rapid expansion to other cities--Grand Forks in 1873, Casselton in 1874, Valley City, Jamestown, and Bismarck all in 1876.  However an even more rapid expansion occurred between 1876 and 1882 when fourteen new Methodists church were opened.'
+            },
+            {
+                'content': 'According to C.A. Armstrong “The Methodists were out to establish churches in every community where their money and leadership would enable them to go.” Since the population centers of the state were closely tied with the Northern Pacific Railroad and the Great Northern Railway, the missionaries followed suit and would proselytize heavily in these same areas because they were able to travel to and from them relatively quickly. This same general pattern can be described for nearly every religion in the state that would seek converts.'
+            },
+            {
+                'content': 'The Methodists, Presbyterians, and Congregationalists started their missionary efforts at approximately the same time. Because of this, they were often fighting for the exact same groups of people, they would open up churches any and everywhere their money would let them. This strategy may seem to be efficient, but it actually ended up backfiring as many of these small town churches ended up closing when populations began to dwindle. The Presbyterians were much better at placing churches and tried to put as many as they could in county seat towns because they knew these towns would have the best odds of population growth. This plan worked out well as many of these churches are still open, while many of the Methodist churches have closed {{cite:2}}. At this same time the Presbyterians and the Congregationalists agreed not to open up churches in the same areas as one another, this led to their churches being stronger in their respective communities {{cite:3}}.'
+            },
+            {
+                'content': 'C.A. Armstrong speculated that the reason the Methodists did not partake in this agreement was strictly for theological reasons. They saw the Presbyterians and Congregationalists as being “less Christian” and therefore not fit to look after the religious community {{cite:4}}. They saw this as job that only the Methodist church could fulfill. The ultimate effect of competing against the other faiths for members was that that Methodists has had to close down 76 churches since 1916 {{cite:5}}.'
+            },
+            {
+                'content': 'The Methodist Church continued in the state and became the United Methodist Church in 1968 when the Evangelical United Brethren Church and the Methodist Church of the United States joined together. According to the 2010 statistics, the United Methodist Church is currently the fourth largest religious denomination in the state behind the Missouri Synod with 17,336 adherents. This is down from 2000 when they had 20,159 as well as 1990 when they had 23,850 and 1980 when their numbers were around 26,959 {{cite:6}}. As one can see this is a pretty large change at -35.7%'
+            },
+            {
+                'content': 'There are a number of reasons that would explain such a significant decrease in adherents among Mainline Christians and particularly the Methodist Church. For one, there are simply not enough children being born into the faith to combat the deaths {{cite:7}}. As long as more people are dying than are being born, the numbers will continue to dwindle. Another reason that has affected nearly every religious group is simply that people are, in general becoming less religious. Many people nowadays have become atheist or agnostic, or have simply decided that church and religious life is not very important to them. It would be extremely difficult to pinpoint the exact reason for decline, but it is more than likely a combination of many different factors.'
+            }] // sections
+        },
+        {
+            'title': 'Hutterites',
+            'citations': [
+                'Rod Janzen and Max Stanton. The Hutterites in North Dakota. (Baltimore: Johns Hopkins University Press, 2010), 11.',
+                'Ibid., 48.',
+                'Ibid.',
+                'Tony Waldner, The History of the Forest River Colony. (Fordville: Forest River Community), 13.',
+                'Rod Janzen and Max Stanton. The Hutterites in North Dakota. 78.',
+                'Ibid., 112.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Hutterites are perhaps the one group of Christians that the vast majority of people know almost nothing about. They are often spotted in our malls and supermarkets donning their very distinctive outfits, sometimes speaking in German or Hutterisch which often delineates them as outsiders when in fact their views are actually very similar to other mainline Protestant Christian groups in their theological ways. The area where they differ the most is in their idea communal living and community of goods. Unlike other Christians, the Hutterites, sometimes called the Hutterite Brethren, live together in communes, or colonies where they attempt to create a utopian society where share nearly everything and have virtually no personal property. They don\'t pay their members and everything that is done is done for the betterment of colony. The Hutterites chose to follow the teachings from the Book of Acts which read:'
+            },
+            {
+                'content': '\"All who believed were together and had all things in common; they would sell their possessions and goods and distribute the proceeds to all, as any had need. Day by day, as they spent much time together in the temple, they broke bread at home and ate their food with glad and generous hearts, praising God and having the goodwill of all the people. And day by day the Lord added to their number those who were being saved.\" -Acts 2:44-47'
+            },
+            {
+                'content': 'By following these teachings the Hutterites have created an incredibly unique society that has been passed down from generation to generation and has created what Max Stanton calls “an intriguing way of life that offers a conspicuous differentiation and alternative to modern Western social and economic paradigms built on the foundation of individualistic capitalism.” {{cite:1}} The Hutterites have created a bastion of consistency in an ever-changing world, and for the most part, it has been extremely successful for them.'
+            },
+            {
+                'content': 'The Hutterites decided to leave (primarily) Russia in 1874 and headed for North America where they hoped they would receive less persecution. Because they made their livelihood mostly by farming they chose to settle in the northern portions of the west and Midwest, primarily in eastern South Dakota, southern Manitoba, central Montana and southern Alberta and Saskatchewan. Oddly enough, they mostly ignored the extremely fertile farmland in North Dakota. For the most part, Hutterites received very little persecution and in reality very little attention in these early years. However, that all changed when World War I came about. One of their core beliefs is pacifism, that is, they believe that all violence is bad, even violence in war. It is no surprise that Americans showed some disdain for German speaking pacifists from Russia. Hutterites that were drafted were humiliated and beaten in training camps, resulting in the death of some {{cite:2}} and those who were not drafted were ridiculed here at home and often experienced robbery and destruction of property {{cite:3}}.'
+            },
+            {
+                'content': 'It wasn\'t until 1950 that North Dakota received its first colony, the Forest River Colony, between the towns of Fordville and Inkster. This first North Dakota colony was established after their mother Colony, the New Rosedale Colony near Portage La Prairie, Manitoba, became too large and needed to branch off. The site near Fordville was purchased from O.C. Bjorneby and already contained some buildings and barns. In 1951, 80 people left the mother colony for new lives in the United States {{cite:4}}.'
+            },
+            {
+                'content': 'Although the Forest RIver Colony is the first and perhaps the best-known colony in the state, there are actually six other colonies in the state. Fairview- near La Moure, Maple River- near Fullerton, Spring Creek- near Forbes, Sundale- near Milnor, Willowbank- near Edgely, and Wollman Ranch- near Elgin. The Forest River Colony being most well known in the eastern part of North Dakota for their eggs and bacon. Each one of these colonies formed in much the same manner as the Forest River colony did. They each have a mother colony that they branched off from, some from other states, primarily South Dakota and the province of Manitoba in Canada.'
+            },
+            {
+                'content': 'Unfortunately there there is little information available in regards to the number of Hutterites in the state. Since the Hutterites themselves do not report it to any overseeing body, and the Association of Religious Data Archives does not collect it, it is hard to know just how many Hutterites live in the United States, let alone North Dakota. It is possible to estimate the total number because according to the Max Stanton, the average colony size is around 100 people {{cite:5}}. With that information we can estimate the total population of Hutterites in the state at somewhere around 700 adherents, perhaps a little lower. Because the Hutterites are a communal society, they all live on the colony grounds, therefore all Hutterites will be found on one of the seven colonies in the state. Since the Hutterites do not proselytize, generally the only way for the for their number to increase is by being born into the system, which is one reason why most colonies only have three or four last names {{cite:6}}. Likewise the most common way for the the numbers to decrease is by death and by people (generally young men) choosing to leave the community not to return. The one thing that is certain for the Hutterites is that even with the rampant persecution they have experienced throughout their history and their opposition to modern advancements, they have continued to survive and in many cases prosper.'
+            }] // sections
+        },
+        {
+            'title': 'Catholics',
+            'citations': [
+                'William Sherman, et al. Scattered Steeples Expanded: A Tribute to the Church in North Dakota. (Bismarck: University of Mary Press, 2006), 31.',
+                'Ibid., 31.',
+                'Terrence Kardong. Beyond Red River: The Diocese of Fargo One Hundred Years 1889-1989. (Fargo: The Diocese of Fargo, 1988) 15.',
+                'Ibid., 16.',
+                'Ibid., 27.',
+                'Ibid., 33.',
+                'Ibid., 39.',
+                'Ibid., 64.',
+                'Ibid.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'Catholicism, in what is now known as North Dakota, can be reliably be traced back to 1818 {{cite:1}}, but had it not been for one important event this date could have been significantly earlier. In 1734 Fr. Jean Pierre Aulneau was instructed to head west out of Fort Saint Charles in Quebec and visit with the Mandan Native Americans. Unfortunately on the very first day of the trip in 1736, the party was attacked by a group of Sioux who were at war with the Cree and Assiniboine, two groups that were allied to the French. The group of Sioux killed all 15 members of the party, leaving no survivors, thus effectively stopping the influx of Catholicism in the state for many years {{cite:2}}.'
+            },
+            {
+                'content': 'The true start of Catholicism in North Dakota is therefore in 1818 when Rev. Joseph Provencher sent Father Dumoulin from Fort Douglas (modern day Winnipeg) to Pembina to help with the religious needs of the colonists there after the crops near Fort Douglas were destroyed by grasshoppers. Dumoulin has the honor of being the first resident priest in the State, however his catechist William Edge arrived before him and set up a school. it is reported that when Dumoulin came in 1818 there was 300 Catholics in the area and around 60 students attending the school {{cite:3}}. Eventually Dumoulin was recalled and George Anthony Belcourt was put in his place, but in the 6 years Dumoulin resided in Pembina he performed 800 baptisms and 120 marriages {{cite:4}}.'
+            },
+            {
+                'content': 'Father Belcourt came in 1848 and was the only priest to do so since Dumoulin. Because Belcourt knew the language of the Native Americans very well he became the state\'s first great Catholic missionary. Belcourt went on for some years preaching and converting, but was ordered to leave his settlements after being accused of sexual assault, which turned out to be untrue {{cite:5}}.'
+            },
+            {
+                'content': 'At the time of the creation of the state in 1861 there were really only two Catholic settlements in the state. Pembina and St. Joseph. It wasn\'t until 1858 that there was a church south of Pembina when Fr. Jean Baptiste Marie Genin arrived in Fort Abercrombie, south of Fargo {{cite:6}}. The growth of Catholicism was relatively slow in the early years. In early 1880 there was only 7 priest working in North Dakota. They were located one each at Bismarck, Walhalla, Pembina, Grand Forks, and Wahpeton, with two at Fort Yates {{cite:7}}. It wasn\'t until the Great Northern Railroad was built across the State that Catholicism had its first wave.'
+            },
+            {
+                'content': 'In 1900, the crops started to improve and the population rose substantially, many were German Catholics coming from Russia {{cite:8}}. In 1907-8, bishop John Shanley dedicated 58 churches {{cite:9}}, which shows just how large this increase really was. The Catholic Church unlike most other denominations in the state was surprisingly unaffected in numbers during 1915-1930 and although the state’s population decreased substantially, the Catholics did not.'
+            },
+            {
+                'content': 'From this point on the Catholic Church continued to grow despite experiencing minor problems related to Vatican II. They continued to place churches in cities all across the state and by 1980 had 292 different congregations.'
+            },
+            {
+                'content': 'Unlike most religions in the state, the numbers of Catholics from 1980-2010 actually changed very little. From 174,046 in 1980, to 173,432 in 1990, to 179,349 in 2000, and 167,349 in 2010. Other than the last decade, where the church lost 6.7% or approximately 12,000 adherents, it appears that Catholicism has been virtually immune from the plagues that had hurt other faiths so much during this same time frame. It is true that they have been losing congregations at a pretty rapid pace. From 1980 to 2010 they have lost 57 congregations, but I think many of these are simply small town churches being closed down as more and more people are moving to bigger cities. The data has shown that Catholicism is proving to be one of the most consistent religions in the state.'
+            }] // sections
+        },
+        {
+            'title': 'Lutheran Church',
+            'citations': [
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'Lutherans, overall, represent the second largest religious body in North Dakota.  However, there are four different major Lutheran denominations that are represented in North Dakota: Evangelical Lutheran Church in America (ELCA), Missouri Synod, Wisconsin Synod, and Lutheran Brethren Synod.  The largest of these in North Dakota is by far the ELCA with approximately 163,000 adherents and about 400 congregations. The next largest of the Lutheran denominations is the Missouri Synod with approximately 22,000 adherents and 85 congregations. The Lutheran Brethren Synod has approximately and 4,100 adherents and 14 congregations. The Wisconsin Synod has approximately 1,300 adherents and 12 congregations {{cite:1}}.'
+            }] // sections
+        },
+        {
+            'title': 'Lutheran Church- Evangelical Church in America',
+            'citations': [
+                '\'Home - Evangelical Lutheran Church in America.\' Home - Evangelical Lutheran Church in America.',
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive.',
+                'Vogts, Rev. Kevin. "Guest Article -- ELCA Has Biggest Split in American Church History." Steadfast Lutherans.',
+                '\'Western North Dakota Synod -.\' Western North Dakota Synod. December 1, 2014. Accessed December 4, 2014. http://wndsynod.org/.',
+                '\'Eastern North Dakota Synod.\' - ELCA.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Evangelical Lutheran Church in America (ELCA) was first formed in 1988.  The formation was a result of three Lutheran churches merging together to form one collective body, the ELCA.  The original churches consisted The American Lutheran Church, the Association of Evangelical Lutheran Churches, and the Lutheran Church in America.  When the ELCA was first formed, there was approximately 5,200,000 members. The ELCA is made up of 65 synods, two of which are in North Dakota.  North Dakota is divided into the Western North Dakota Synod and the Eastern North Dakota Synod {{cite:1}}.'
+            },
+            {
+                'content': 'The number of congregations and adherents has changed quite drastically throughout North Dakota since 1988.    According to The Association of Religion Data Archives, in 1990 there were approximately 488 congregations and 179,711 adherents.  In 2000, there was a decline of 35 congregations and 5,000 adherents, leaving approximately 453 congregations and 174,556 adherents.  It is clear that there was a significant decrease within the ten years leading up to 2000.  However, there was a more drastic decrease over the next ten years.  In 2010, there were approximately 412 congregations and 163,209 adherents.  That is a total loss of 41 congregations and over approximately 11,000 adherents {{cite:2}}.'
+            },
+            {
+                'content': 'The drastic decline between 2000-2010 is a result of the largest denomination split in American church history.  In 2009, the ELCA began to publicly support homosexuality and all there to be homosexual pastors.  This decision caused many Churches to leave the ELCA and many members/adherents to leave the church.  It is proven through many other statistics.  The ELCA lost a total of 1.2 million of its members.  This was 23% of its membership.  It also lost approximately 1,500 (13%) of its congregations.  Another measurable proof of its decline was the ELCA’s donation decrease.  In 2008 the ELCA was receiving approximately $88 million dollars within the year.  However, just three years later in 2011, donations had decreased to $40 million from the year {{cite:3}}.'
+            },
+            {
+                'content': 'Currently, The Western North Dakota Synod has 182 Congregations with approximately 62,035 baptized members, and four Outdoor ministry sites {{cite:4}}. The Eastern North Dakota Synod has approximately 101,602 baptized members and 207 congregations, and two outdoor ministry sites {{cite:5}}.'
+            }] // sections
+        },
+        {
+            'title': 'Lutheran Church- Missouri Synod',
+            'citations': [
+                '\'History.\' Lutheran Church Missouri Synod.',
+                'Ibid.',
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive.',
+                'Ibid.',
+                '\'Lutheran Church- Missouri Synod.\' Home. December 1, 2014. Accessed December 11, 2014.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Lutheran Church- Missouri Synod was first formed in 1847 when Saxon and other immigrants from Germany came to America in search of freedom to practice and follow confessional Lutheranism.  The Lutheran Church- Missouri Synod is made up of 5 regions, Great Lakes, Great Plains, West-Southwest, East-Southeast, and Central Region.  North Dakota is in the Great Plains Region. These 5 regions are also broken down into 35 districts.  North Dakota is its own district, “The North Dakota District.” {{cite:1}}'
+            },
+            {
+                'content': 'The North Dakota District is made up of 6 circuits, or local groupings of congregations: Central, Eastern, Northeast, Northwest, Southeast, and Southwest Circuit {{cite:2}}. Within the North Dakota District, there are approximately 85 congregations and 22,000 adherents {{cite:3}}.'
+            },
+            {
+                'content': 'The change of the Missouri Synod is much less drastic than the ELCA. However, its numbers of congregations and adherents are also declining, much like all of the other religious bodies in North Dakota.  In 1980 there were approximately 100 congregations 27,800 adherents.  There was only a decline of 4 congregations and a little over 2,000 adherents over the next ten years as there were approximately 96 congregations and 25,690 recorded in 1990.  Then, in 2000 there were approximately 94 congregations and 23,720 adherents.  The largest decline happened between the years 2000-2010 because as of 2010, there were approximately 85 congregations and 22,000 adherents.  This was only a 15 congregation and just under 6,000 adherent decrease over the 30 years {{cite:4}}. As of today, the North Dakota District also has four elementary schools and one preschool {{cite:5}}.'
+            }] // sections
+        },
+        {
+            'title': 'Lutheran Church- Wisconsin Synod',
+            'citations': [
+                '\'Wisconsin Evangelical Lutheran Synod.\'',
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Wisconsin Evangelical Lutheran Synod was formed in 1850 when John Muehlhaeuser was sent from Germany to North America. The Wisconsin Evangelical Lutheran Synod is made up of 12 districts.  North Dakota is included in the Dakota-Montana district {{cite:1}}.'
+            },
+            {
+                'content': 'In 1980 the Wisconsin Synod had 12 congregations and 1,896 adherents. in 1990, 12 congregations and 1,775 adherents. In 2000 those numbers changed to 13 congregations and 1,464 adherents. The final year of the survey in 2010 shows 12 congregations and 1,283 adherents. The Wisconsin Synod has not been immune to the decrease in religiousness either, showing a staggering -32.3% change {{cite:2}}.'
+            }] // sections
+        },
+        {
+            'title': 'The Church of the Lutheran Brethren',
+            'citations': [
+                'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'The Church of the Lutheran Brethren was formed by five independent congregations in 1900. Their numbers however have been on a steady rise in the last 40 years. 1980- 1,592. 1990- 3,389. 2000- not collected. 2010- 4,138. These statistics show a huge increase of +159.9%. Fairing by far the best of any Lutheran group, but it should be noted that it only takes a relatively small increase to substantially increase the percentage when the adherent number is already very low{{cite:1}}.'
+            }] // sections
+        },
+        {
+            'title': 'Pentecostalism',
+            'citations': [
+                'Rodgers, Darrin J. Northern Harvest: Pentecostalism in North Dakota.',
+                'Ibid.',
+                'Ibid.'
+            ],
+            'bibliography': [
+            ],
+            'sections': [{
+                'content': 'Unlike other large Christian groups, Pentecostalism is more difficult to understand due diverse forms across the world.  Loosely speaking, a Pentecostal is a Christian who focuses on the personal relationship between oneself and God and also accepts contemporary practices of Biblical spiritual gift, such as those mentioned in 1 Corinthians 12, primarily healing and speaking in tongues.  Pentecostalism is also typically correlated with things such as emotional spirituality, contemporary music, and obedience to holiness codes {{cite:1}}.'
+            },
+            {
+                'content': 'Pentecostalism in the United States started to rise in the twentieth century within the group of “radical evangelicals.” This groups summarized beliefs are known as the “four-fold gospel.”  It consisted of 1) personal, heart-felt salvation, 2) baptism in the Holy Ghost, 3) divine healing, and 4) Christ’s second coming.  These core beliefs are still heavily emphasized within most Pentecostal denominations {{cite:2}}.'
+            },
+            {
+                'content': 'There are multiple denominations that fall under Pentecostalism. Within North Dakota, there are many 16 Pentecostal Denomination Churches, some of which have disbanded. The largest three denominations within North Dakota are Assemblies of God, Independent (Trinitarian), and Church Of God. As of 2002, there were a total of 140 Pentecostal churches or outstations {{cite:3}}.'
+            }] // sections
+        },
+        {
+            'title': 'Bibliography',
             'citations': [
             ],
             'bibliography': [
             ],
             'sections': [{
-                'content': ''
+                'content': '\'Eastern North Dakota Synod.\' - ELCA. October 15, 2014. Accessed December 4, 2014. http://www.eandsynod.org/.'
+            },
+            {
+                'content': 'Gannon, Grael, Finding Aid to WIlliam Sherman’s Jewish Settlement in North Dakota. Collection, 1940s-2002. NDSU Institute for Regional Studies and University Archives. North Dakota State University Libraries. Fargo, North Dakota.'
+            },
+            {
+                'content': 'Grunstead, E.O. et al. History of The Methodist Church in North Dakota. Nashville: Parthenon Press, 1960.'
+            },
+            {
+                'content': 'Hadaway et al., North Dakota State Membership Report, The Association of Religion Data Archive, http://www.thearda.com/ (Acessed 12 Sept. 2014)'
+            },
+            {
+                'content': '\'Home - Evangelical Lutheran Church in America.\' Home - Evangelical Lutheran Church in America. December 1, 2014. Accessed December 11, 2014.'
+            },
+            {
+                'content': 'Janzen, Rod A., and Max Edward Stanton. The Hutterites in North America. Baltimore, Md.: Johns Hopkins University Press, 2010.'
+            },
+            {
+                'content': 'Johnson, Benton, Dean Hoge, and Donald Luidens. "Mainline Churches: The Real Reason for	Decline." First Things 31 (1993): 13-18.'
+            },
+            {
+                'content': 'Kardong, Terrence. Beyond Red River: Diocese of Fargo 1889-1989. Fargo, N.D.: Diocese of Fargo, 1988.'
+            },
+            {
+                'content': '"Lutheran Church- Missouri Synod." Home. December 1, 2014. Accessed December 11, 2014.'
+            },
+            {
+                'content': '\'North Dakota.\' Church of the Lutheran Brethren. December 1, 2013. Accessed December 4, 2014.  http://www.clba.org/church-locations/north-dakota.'
+            },
+            {
+                'content': 'Papermeister, Isadore. History of the North Dakota Jewish Community. Grand Forks: B\'nai Israel Synagogue.'
+            },
+            {
+                'content': '\'Reform Judaism: The Origins of Reform Judaism.\' Jewish Virtual Library. Accessed September 10, 2014.'
+            },
+            {
+                'content': 'Rodgers, Darrin J. Northern Harvest: Pentecostalism in North Dakota. Bismarck, N.D.: North Dakota District Council of the Assemblies of God, 2003.'
+            },
+            {
+                'content': 'Sherman, William, Jerome D. Lamb, Leo Stelten, and Jerry Ruff, eds. Scattered Steeples Expanded: A Tribute to the Church in North Dakota. Bismarck, ND: University of Mary Press, 2006.'
+            },
+            {
+                'content': 'Vogts, Rev. Kevin. \'Guest Article -- ELCA Has Biggest Split in American Church History.\' Steadfast Lutherans. July 12, 2013. Accessed December 3, 2014.'
+            },
+            {
+                'content': 'Waldner, Tony. History of Forest River Community. Fordville: Forest River Community, 1990.'
+            },
+            {
+                'content': '\'Western North Dakota Synod -.\' Western North Dakota Synod. December 1, 2014. Accessed December 4, 2014. http://wndsynod.org/.'
+            },
+            {
+                'content': '\'Wisconsin Evangelical Lutheran Synod.\' Wisconsin Evangelical Lutheran Synod. December 1, 2014. Accessed December 10, 2014.'
             }] // sections
+        }] // stories
+    }] //chapters
+}; // themeReligion
+
+/* COUNTRY CHURCHES */
+var themeChurches = {
+    'slug': 'churches',
+    'name': 'Country Churches',
+    'chapters': [{
+        'slug': 'map',
+        'name': 'Country Churches',
+        'blurb': 'Country Churches',
+        'type': 'map',
+        'map': {
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'backgroundLayers': [1, 45, 55],
+            'toggleableLayers': [56],
+            'legend': [{
+                'icon': 'circle',
+                'color': '#C2A83D',
+                'text': 'Roman Catholics'
+            }]
         },
-        {
+        'stories': [{
             'title': '',
-            'start_year': '1990',
-            'end_year': '1999',
-            'citations': [
-            ],
-            'bibliography': [
-            ],
-            'sections': [{
-                'content': ''
-            }] // sections
-        },
-        {
-            'title': '',
-            'start_year': '2000',
-            'end_year': '2009',
-            'citations': [
-            ],
-            'bibliography': [
-            ],
-            'sections': [{
-                'content': ''
-            }] // sections
-        },
-        {
-            'title': '',
-            'start_year': '2010',
-            'end_year': '2015',
             'citations': [
             ],
             'bibliography': [
@@ -726,7 +1036,7 @@ var themeReligion = {
             }] // sections
         }] // stories
     }] //chapters
-}; // themeReligion
+}; // themeChurches
 
 // insert our themes
 nosql.on('load', function() {
@@ -734,6 +1044,7 @@ nosql.on('load', function() {
         themeAnthro,
         themeHistory,
         themeReligion
+        //themeChurches
     ]);
 });
 
