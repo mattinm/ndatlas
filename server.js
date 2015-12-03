@@ -53,6 +53,8 @@ app.get('/railroads', function (req, res) {
     });
 });
 
+//TODO: add code to load Country Churches theme here
+
 app.get('/themes/:theme', function (req, res) {
     var theme = null;
 

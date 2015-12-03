@@ -57,6 +57,7 @@ require([
             values.push(parseInt(layer.layerInfos[value].name));
         });
 
+        //TODO: add topographic map background
         min = values[0];
         max = values[values.length-1];
         difference = (max - min);

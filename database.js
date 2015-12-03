@@ -634,6 +634,8 @@ var themeHistory = {
 }; // themeHistory
 
 /* RELIGION */
+//Coded by Joseph Gustafson
+//TODO: Check if Judaism needs to be added to legend and if they're being rendered
 var themeReligion = {
     'slug': 'religion',
     'name': 'Religious Affiliation History',
@@ -1007,6 +1009,8 @@ var themeReligion = {
 }; // themeReligion
 
 /* COUNTRY CHURCHES */
+//Coded by Joseph Gustafson
+//TODO: Move themeChurches to seperate file
 var themeChurches = {
     'slug': 'churches',
     'name': 'Country Churches',
