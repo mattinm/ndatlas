@@ -27,15 +27,26 @@ require([
     "esri/map",
     "esri/dijit/Scalebar",
     "esri/InfoTemplate",
-    "esri/layers/ArcGISTiledMapServiceLayer"
-], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer) {
+    "esri/layers/ArcGISTiledMapServiceLayer",
+    "esri/geometry/Point",
+    "esri/SpatialReference",
+    "esri/graphic",
+    "esri/geometry/webMercatorUtils"
+], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer, Point, SpatialReference, graphic, webMercatorUtils) {
     console.log($("#loading").css('left'));
+
     map = new Map("mapDiv", {
-        center: [-100.425, 47],
-        zoom: 8/*,
-        basemap: "topo"*/
+        //center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
+        //zoom: 8,
+        //basemap: "gray"
+        
+        //These numbers are general approximations
+        center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
     });
 
+    var scale = (15000 * (3200 - document.getElementById("mapDiv").offsetWidth)) / 11;
+    map.setScale(scale);
+    
     // add the basemap
     /*
     var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
@@ -113,7 +124,7 @@ require([
                     if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
                         // jump to new content
                         oldLayer = iYear;
-                        console.log("Offset: " + $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54);
+                        console.log("Offset: " + ($('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54));
                         $('#story').animate({
 			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
 		                }, 'slow');
@@ -271,3 +282,18 @@ function showResults(featureSet) {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+//var scroll = false;
+
+//TODO: map scrolls to next year when next chapter is reached
+/*$("#story").scroll(function() {
+  scroll = true;
+});
+
+setInterval(function() {
+    if (scroll) {
+        console.log("scroll");
+        scroll = false;
+        //$('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
+    }
+}, 250);*/
