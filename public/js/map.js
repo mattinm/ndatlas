@@ -180,7 +180,7 @@ require([
         new esri.symbol.SimpleLineSymbol(
             esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
             new dojo.Color([255,0,0]), 2),
-            new dojo.Color([255,255,0,0.5]
+            new dojo.Color([255,255,0,0]
     ));
 });
 
@@ -244,6 +244,7 @@ function executeQueryTask(evt) {
     //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
     //set query geometry = to evt.mapPoint Geometry
     query.geometry = evt.mapPoint;
+    
     console.log("CLICK");
 
     //Execute task and call showResults on completion
@@ -272,6 +273,54 @@ function showResults(featureSet) {
             infoTitle,
             infoText
         );
+        
+        var currentLayer = getCurrentLayer();
+        var currentYear = parseInt($('#toggleSlider').val());
+        
+        //Foreign Born
+        if (currentLayer >= 2 && currentLayer <= 14) {
+            infoTemplate.setTitle("${NAME}${NHGISNAM}${NAME10} County, " + currentYear);
+            if (currentLayer == 10 || currentLayer == 12) {
+                infoTemplate.setContent(
+                    "${DTJ004}${GWA007} Germans<br>" +
+                    "${DTJ020}${GWA021} Russians"
+                );
+            } else {
+                infoTemplate.setContent(
+                    "${Nor" + currentYear + "} Norwegians<br>" +
+                    "${Ger" + currentYear + "} Germans<br>" +
+                    "${Rus" + currentYear + "}${Ukr" + currentYear + "} Russians"
+                );
+            }
+        //County Population
+        } else if (currentLayer >= 18 && currentLayer <= 31) {
+            infoTemplate.setTitle("${NAME} County, " + currentYear);
+            infoTemplate.setContent("${Y" + currentYear + "} people");
+        //Religious Affiliation    
+        } else if (currentLayer >= 59 && currentLayer <= 62) {
+            infoTemplate.setTitle("${NAME} County, " + currentYear);
+            if (currentLayer == 59) {
+                infoTemplate.setContent(
+                    "${CATHOLIC_A} Roman Catholics<br>" +
+                    "${EV_LUTH_CH} Evangelical Lutherans (ELCA)<br>" +
+                    "${F" + currentYear + "_LC_M} Lutherans (Missouri Synod)<br>" +
+                    "${F" + currentYear + "_UMC_} United Methodists<br>" +
+                    "${F" + currentYear + "_JEWI} Jews"
+                );
+            } else {
+                infoTemplate.setContent(
+                    "${F" + currentYear + "_CATH} Roman Catholics<br>" +
+                    "${F" + currentYear + "_ELCA} Evangelical Lutherans (ELCA)<br>" +
+                    "${F" + currentYear + "_LC_M} Lutherans (Missouri Synod)<br>" +
+                    "${F" + currentYear + "_UMC_} United Methodists<br>" +
+                    "${F" + currentYear + "_JEWI} Jews"
+                );
+            }
+        } else {
+            //infoTemplate.setTitle(infoTitle);
+            //infoTemplate.setContent(infoText);
+        }
+        
         graphic.setInfoTemplate(infoTemplate);
 
         //Add graphic to the map graphics layer.
