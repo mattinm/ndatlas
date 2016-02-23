@@ -27,15 +27,26 @@ require([
     "esri/map",
     "esri/dijit/Scalebar",
     "esri/InfoTemplate",
-    "esri/layers/ArcGISTiledMapServiceLayer"
-], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer) {
+    "esri/layers/ArcGISTiledMapServiceLayer",
+    "esri/geometry/Point",
+    "esri/SpatialReference",
+    "esri/graphic",
+    "esri/geometry/webMercatorUtils"
+], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer, Point, SpatialReference, graphic, webMercatorUtils) {
     console.log($("#loading").css('left'));
+
     map = new Map("mapDiv", {
-        center: [-100.425, 47],
-        zoom: 8/*,
-        basemap: "topo"*/
+        //center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
+        //zoom: 8,
+        //basemap: "gray"
+        
+        //These numbers are general approximations
+        center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
     });
 
+    var scale = (15000 * (3200 - document.getElementById("mapDiv").offsetWidth)) / 11;
+    map.setScale(scale);
+    
     // add the basemap
     /*
     var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
@@ -113,7 +124,7 @@ require([
                     if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
                         // jump to new content
                         oldLayer = iYear;
-                        console.log("Offset: " + $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54);
+                        console.log("Offset: " + ($('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54));
                         $('#story').animate({
 			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
 		                }, 'slow');
@@ -169,7 +180,7 @@ require([
         new esri.symbol.SimpleLineSymbol(
             esri.symbol.SimpleLineSymbol.STYLE_DASHDOT,
             new dojo.Color([255,0,0]), 2),
-            new dojo.Color([255,255,0,0.5]
+            new dojo.Color([255,255,0,0]
     ));
 });
 
@@ -233,6 +244,7 @@ function executeQueryTask(evt) {
     //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
     //set query geometry = to evt.mapPoint Geometry
     query.geometry = evt.mapPoint;
+    
     console.log("CLICK");
 
     //Execute task and call showResults on completion
@@ -261,6 +273,54 @@ function showResults(featureSet) {
             infoTitle,
             infoText
         );
+        
+        var currentLayer = getCurrentLayer();
+        var currentYear = parseInt($('#toggleSlider').val());
+        
+        //Foreign Born
+        if (currentLayer >= 2 && currentLayer <= 14) {
+            infoTemplate.setTitle("${NAME}${NHGISNAM}${NAME10} County, " + currentYear);
+            if (currentLayer == 10 || currentLayer == 12) {
+                infoTemplate.setContent(
+                    "${DTJ004}${GWA007} Germans<br>" +
+                    "${DTJ020}${GWA021} Russians"
+                );
+            } else {
+                infoTemplate.setContent(
+                    "${Nor" + currentYear + "} Norwegians<br>" +
+                    "${Ger" + currentYear + "} Germans<br>" +
+                    "${Rus" + currentYear + "}${Ukr" + currentYear + "} Russians"
+                );
+            }
+        //County Population
+        } else if (currentLayer >= 18 && currentLayer <= 31) {
+            infoTemplate.setTitle("${NAME} County, " + currentYear);
+            infoTemplate.setContent("${Y" + currentYear + "} people");
+        //Religious Affiliation    
+        } else if (currentLayer >= 59 && currentLayer <= 62) {
+            infoTemplate.setTitle("${NAME} County, " + currentYear);
+            if (currentLayer == 59) {
+                infoTemplate.setContent(
+                    "${CATHOLIC_A} Roman Catholics<br>" +
+                    "${EV_LUTH_CH} Evangelical Lutherans (ELCA)<br>" +
+                    "${F" + currentYear + "_LC_M} Lutherans (Missouri Synod)<br>" +
+                    "${F" + currentYear + "_UMC_} United Methodists<br>" +
+                    "${F" + currentYear + "_JEWI} Jews"
+                );
+            } else {
+                infoTemplate.setContent(
+                    "${F" + currentYear + "_CATH} Roman Catholics<br>" +
+                    "${F" + currentYear + "_ELCA} Evangelical Lutherans (ELCA)<br>" +
+                    "${F" + currentYear + "_LC_M} Lutherans (Missouri Synod)<br>" +
+                    "${F" + currentYear + "_UMC_} United Methodists<br>" +
+                    "${F" + currentYear + "_JEWI} Jews"
+                );
+            }
+        } else {
+            //infoTemplate.setTitle(infoTitle);
+            //infoTemplate.setContent(infoText);
+        }
+        
         graphic.setInfoTemplate(infoTemplate);
 
         //Add graphic to the map graphics layer.
@@ -271,3 +331,18 @@ function showResults(featureSet) {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+//var scroll = false;
+
+//TODO: map scrolls to next year when next chapter is reached
+/*$("#story").scroll(function() {
+  scroll = true;
+});
+
+setInterval(function() {
+    if (scroll) {
+        console.log("scroll");
+        scroll = false;
+        //$('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
+    }
+}, 250);*/
