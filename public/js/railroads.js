@@ -31,6 +31,9 @@ require([
     "esri/layers/LayerDrawingOptions",
     "esri/layers/DynamicLayerInfo",
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/symbols/SimpleMarkerSymbol",
+    "esri/symbols/SimpleLineSymbol",
+    "esri/renderers/SimpleRenderer",
     "esri/renderers/DotDensityRenderer", 
     "esri/renderers/ScaleDependentRenderer",
     "esri/InfoTemplate",
@@ -42,24 +45,31 @@ require([
     "esri/graphic",
     "dojo/query",
     "dojo/domReady!"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, SpatialReference, QueryTask, Graphic, query) {
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, SpatialReference, QueryTask, Graphic, query) {
     console.log($("#loading").css('left'));
         //Loads in basemap topo instead of county layer
     map = new Map("mapDiv", {
                   basemap: "topo",
                   center: [-100.78, 46.80], //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
-        //maxScale: 1000000,
-        //minScale: 5000000
-        //basemap: "topo"
     });
         var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36"); //First layer is the county
         
         var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
-                                            mode: FeatureLayer.SELECTION,
-                                            InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
-                                            outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
-                                            }); //Layer that contains the rails for the railroad
+                InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
+                outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
+        }); //Layer that contains the rails for the railroad
+        
+        
+        var nullSymbol = new SimpleMarkerSymbol().setSize(0);
+        featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
+        
+        var symbol = new SimpleLineSymbol (
+            SimpleLineSymbol.STYLE_SOLID,
+            new Color([255,0,0]),
+            2
+        );
+        featureLayer.setSelectionSymbol(symbol);
         
         
         map.addLayer(layer);
@@ -138,113 +148,28 @@ require([
                               var query = new Query();
                               query.returnGeometry = true;
                               query.where = "Built3 < " + iYear;
+                              console.log(query);
+                              featureLayer.queryFeatures(query, function(response) {
+                              var feature;
+                              var features = response.features;
+                              console.log(features);
+                              var inBuffer = [];
+                              for (var i = 0; i < features.length; i++) {
+                                feature = features[i];
+                                inBuffer.push(feature.attributes[featureLayer.objectIdField]);
+                              }
+                              console.log(inBuffer);
+                              var query = new Query();
+                              query.objectIds = inBuffer;
+                              featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
                               
-                              console.log(query); //Ensuring a correct query was created
-                              //featureLayer.clear();
-                              //featureLayer.selectFeatures(query, FeatureLayer.SELECTION_SUBTRACT);
-                              //featureLayer.refresh();
-                              
-                              
-                              featureLayer.queryFeatures(query, function(FeatureSet) {
-                                                         console.log("Queried Map!");
-                                                         //Queries through featurelayer based on what the query required
-                                                         //featureLayer.clear();
-                                                         console.log(FeatureSet.features); //view all the features selected
-                                                         var feature;
-                                                         var features = FeatureSet.features;
-                                                         var inBuffer = []; //Retrive all the features and push them into an array
-                                                         for (var i = 0; i < features.length; i++) {
-                                                            feature = features[i];
-                                                            inBuffer.push(feature.attributes[featureLayer.objectIdField]);
-                                                         }
-                                                         console.log("Got features!");
-                                                         
-                                                         var query = new Query();
-                                                         query.objectIds = inBuffer;
-                                                         //Create a new object query based off the ids found from the last query
-                                                         console.log(inBuffer);
-                                                         featureLayer.selectFeatures(query);
-                                                         //select those features to view on the map
-                                                         console.log("Selected features");
-                                                         /*
-                                                         
-                                                         var graphicRails = featureLayer.getSelectedFeatures();
-                                                         for (var x = 0; x < graphicRails.length; x++) {
-                                                            var graphic = graphicRails[x];
-                                                            map.graphics.add(graphic);
-                                                         }
-                                                         console.log("Added Graphics");
-                                                         
-                                                          */
-                                                         featureLayer.redraw();
-                                                         //Redraw feature layer -- not known if needed or not
-                                                         
-                                                         console.log("Map Redraw!");
-                                                         featureLayer.refresh();
-                            });
-                              
-                              
-                              /*
-                               TODOs:
-                                Have the correct features on the layer show on the map
-                                
-                                Have the correct counties for whatever year
-                               
-                                Correctly reload map after a change in year
-                               
-                                Add narritive to the theme
-                               
-                               */
-                              
-                              
-                              /*
-            var query = new Query();
-            //query.objectIds = [features[0].attr.OBJECTIDS];
-            query.outFields =["*"];
-            query.returnGeometry = true;
-            query.where = "Built3 < " + iYear;
-            query.spatialReference = {"wkid":102720};
-
-            console.log(iYear);
-            console.log(query);
-                              
-            featureLayer.queryFeatures(query, function(FeatureSet) {
-                //remove all graphics on the maps graphics layer
-                map.graphics.clear();
-                console.log(FeatureSet.features);
-                               
-                                       var numFeatures = FeatureSet.features.length;
-                                       for (var x=0; x<numFeatures; x++) {
-                                        var graphic = FeatureSet.features[x];
-                                        //console.log(graphic);
-                                        map.graphics.add(graphic);
-                                        map.graphics.redraw();
-                                       
-                                       }
-                               
-
-                //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
-                dojo.forEach(FeatureSet.features, function(feature) {
-                    // add the features
-                    var graphic = feature;
-                    graphic.setSymbol(symbol);
-
-                    //Add graphic to the map graphics layer.
-                    map.graphics.attr(graphic);
-                });
-                map.graphics.redraw();
-                 
-            });
-                              
-            featureLayer.refresh();
-               */
-                              //map.removeLayer(featureLayer);
+                              });
     });
             
         // set as the current layer
         oldLayer = 0;
         $('#toggleSlider').val(min);
-        //layer.setVisibility(true);
+        layer.setVisibility(true);
     });
     // hide the loading icon when the dynamic layer finishes updating
     layer.on("update-end", hideLoading);
@@ -258,6 +183,7 @@ require([
         scalebarUnit: "dual"
     });
 });
+
 
 function getCurrentLayer() {
     // find the index of this layer
