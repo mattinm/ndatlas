@@ -278,9 +278,9 @@ function showResults(featureSet) {
         var currentYear = parseInt($('#toggleSlider').val());
         
         //Foreign Born
-        if (currentLayer >= 2 && currentLayer <= 14) {
+        if (currentLayer >= 5 && currentLayer <= 17) {
             infoTemplate.setTitle("${NAME}${NHGISNAM}${NAME10} County, " + currentYear);
-            if (currentLayer == 10 || currentLayer == 12) {
+            if (currentLayer == 13 || currentLayer == 15) {
                 infoTemplate.setContent(
                     "${DTJ004}${GWA007} Germans<br>" +
                     "${DTJ020}${GWA021} Russians"
@@ -293,13 +293,13 @@ function showResults(featureSet) {
                 );
             }
         //County Population
-        } else if (currentLayer >= 18 && currentLayer <= 31) {
+        } else if (currentLayer >= 21 && currentLayer <= 34) {
             infoTemplate.setTitle("${NAME} County, " + currentYear);
             infoTemplate.setContent("${Y" + currentYear + "} people");
         //Religious Affiliation    
-        } else if (currentLayer >= 59 && currentLayer <= 62) {
+        } else if (currentLayer >= 70 && currentLayer <= 73) {
             infoTemplate.setTitle("${NAME} County, " + currentYear);
-            if (currentLayer == 59) {
+            if (currentLayer == 70) {
                 infoTemplate.setContent(
                     "${CATHOLIC_A} Roman Catholics<br>" +
                     "${EV_LUTH_CH} Evangelical Lutherans (ELCA)<br>" +
