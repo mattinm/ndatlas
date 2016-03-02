@@ -54,11 +54,11 @@
         });
         
         
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/56",{
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/60",{
           infoTemplate: new InfoTemplate("Built: ${Name}", "${*}"),
           outFields: ["Name", "Location", "Date_Org", "Date_Built", "Status", "County", "Denom", "Ethnicity"]
         });
-
+        featureLayer.setScaleRange(0,0);
         // selection symbol used to draw the selected railroad points within the buffer polygon
      
         var symbol = new SimpleMarkerSymbol(
@@ -136,7 +136,7 @@
         function sumPopulation(features) {
           var popTotal = 0;
           for (var x = 0; x < features.length; x++) {
-            popTotal = popTotal + features[x].attributes["Date_Org"];
+            popTotal = popTotal + 1;
           }
           return popTotal;
         }

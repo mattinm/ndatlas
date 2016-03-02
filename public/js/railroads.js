@@ -53,9 +53,9 @@ require([
                   center: [-100.78, 46.80], //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
     });
-        var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36"); //First layer is the county
+        var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39"); //First layer is the county
         
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/38", {
                 InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
                 outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
         }); //Layer that contains the rails for the railroad
@@ -145,6 +145,7 @@ require([
             // FILTER WITH
             var iYear = Math.floor($(this).val());
                               //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
+                              //featureLayer.maxRecordCount = 2000;
                               var query = new Query();
                               query.returnGeometry = true;
                               query.where = "Built3 < " + iYear;
@@ -154,6 +155,7 @@ require([
                               var features = response.features;
                               console.log(features);
                               var inBuffer = [];
+                              console.log(features.length);
                               for (var i = 0; i < features.length; i++) {
                                 feature = features[i];
                                 inBuffer.push(feature.attributes[featureLayer.objectIdField]);
@@ -172,7 +174,7 @@ require([
         layer.setVisibility(true);
     });
     // hide the loading icon when the dynamic layer finishes updating
-    layer.on("update-end", hideLoading);
+    featureLayer.on("selection-complete", hideLoading);
 
     // add the layer to the map
     //map.addLayer(layer);

@@ -54,7 +54,7 @@
         });
         
         
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35",{
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/38",{
           infoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
           outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
         });
@@ -136,7 +136,7 @@
         function sumPopulation(features) {
           var popTotal = 0;
           for (var x = 0; x < features.length; x++) {
-            popTotal = popTotal + features[x].attributes["SOURCE_ID"];
+            popTotal = popTotal + 1;
           }
           return popTotal;
         }
