@@ -65,14 +65,14 @@ require([
         featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
         
         var symbol = new SimpleLineSymbol (
-            SimpleLineSymbol.STYLE_SOLID,
-            new Color([255,0,0]),
+            SimpleLineSymbol.STYLE_SHORTDOT,
+            new Color([93,0,41]),
             2
         );
         featureLayer.setSelectionSymbol(symbol);
         
         
-        map.addLayer(layer);
+        //map.addLayer(layer);
         map.addLayer(featureLayer);
     // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
