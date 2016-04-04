@@ -1008,12 +1008,227 @@ var themeReligion = {
     }] //chapters
 }; // themeReligion
 
+/*RAILROADS*/
+//Coded by Drew Balira
+var themeRailroads = {
+    'slug': 'railroads',
+    'name': '4 Eras of Railroading',
+    'chapters': [{
+        'slug': 'map',
+        'name': '4 Eras of Railroading',
+        'blurb': '4 Eras of Railroading',
+        'type': 'map',
+        'map': {
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        },
+        'stories': [{
+            'title': 'Introduction',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'Of all the human influences on North Dakota\'s landscape, economy and politics, the railroads certainly have been the greatest.'
+            },
+            {
+                'content': 'Railroad companies largely chose sites for the state\'s major cities and most of its smaller towns. Railroads brought settlement, even advertising for immigrants in Europe and then delivering communities -- tied by geography and faith -- to pre-selected spots in the new state. Railroads decided where the grain elevators would be, what the pattern of shipping would be, how much it would cost to ship commodities and where the commodities would go. To a large extent, the railroads even determined what the commodities would be.'
+            },
+            {
+                'content': 'Railroad companies were deeply involved in North Dakota\'s politics as well, helping to determine that there would be two Dakotas instead of only one, then setting out to dominate, and sometimes bully, the government of the northern state. Railroad agents chose candidates, determined the outcome of legislation, sent the state\'s first several U.S. senators to Washington. The railroads weren\'t always successful, but they were always active. Much else in North Dakota politics was a reaction to railroad activity.'
+            },
+            {
+                'content': 'Railroading in North Dakota divides quite neatly into four eras: The Transcontinental Era, The Branch Line Era, The Retrenchment Era, And the Era of Response to specific situations, challenges and opportunities.'
+            },
+            {
+                'content': 'These overlap to some extent, but still they provide a useful framework for understanding the influence of railroads on the state\'s history.'
+            }]
+        },
+        {
+            'title': 'The Transcontinental Era',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'The Era of the Transcontinental Railroads actually began on July 2, 1864. On that day President Abraham Lincoln signed legislation providing an incentive for a northern route to the Pacific Ocean. The effort stalled initially, but after he had successfully bankrolled the Union victory in the Civil War, a Philadelphia financier named Jay Cooke undertook to build the Northern Pacific Railroad.  In all, the NP received more than 45 million acres of land -- a territory the size of North Dakota. It was both the largest grant to any railroad and the largest direct subsidy to a private enterprise in American history.'
+            },
+            {
+                'content': 'The legislation granted the railroad odd-numbered sections for 40 miles either side of the main line in the territories, and 20 miles either side of the track in the states. In Dakota Territory, the grant encompassed to about 7.5 million acres, all of it north of what became the boundary between North and South Dakota. The grant amounted to about 15 percent of the land area of the new state of North Dakota.'
+            },
+            {
+                'content': 'There was a catch, though. Land was granted only as the line was completed. That created a funding challenge for Cooke. He had sold bonds to investors, often in very large denominations, and he offered the lands as surety. When his building program outran his financial resources, Cooke redeemed the bonds for land. This led directly to the Bonanza Farm Era, which brought a remarkable group of entrepreneurs to Dakota Territory. They introduced wheat growing on a tremendous scale.'
+            },
+            {
+                'content': 'The other challenge for Cooke was to keep pushing the railroad westward, in order to earn more of the grant. This dictated an aggressive building program, and it meant that there could be only a single goal: Get to the West Coast as quickly as possible. This meant that Cooke and the NP didn\'t build out a complete network of railways in the state. Instead, they concentrated on the main line.'
+            },
+            {
+                'content': 'James J. Hill drove the second transcontinental railroad across the Northern Plains. He was a visionary capitalist, closely tied to English investors. His approach to railroad building was quite different than Jay Cooke\'s. His line, the Great Northern, didn\'t have a land grant. It also didn\'t have a deadline for reaching the West Coast. Rather than earn a subsidy, Hill had to build a market. To accomplish this, he undertook an aggressive program of branch lines. These soon spread across the northern half of the state, and Hill\'s railroad brought immigrant farmers from across the globe. Unlike Cooke and the NP, he didn\'t care where the new farmers came from. He cared that they grew crops that he could take to markets in the Minneapolis. The growers\' success mattered to Hill, and he sent farm agents along his line and its branches to introduce the latest agricultural practices. Sometimes Hill himself undertook these trips. He also practiced what he preached. Hill started a large farm in the Red River Valley, on Minnesota\'s side of the river.'
+            },
+            {
+                'content': 'In the course of two decades, from 1872, when the NP entered Fargo on the west bank of the Red River, to 1899, when Hill\'s Great Northern reached the Montana border, North Dakota had a kind of watershed of railroads, with Hill\'s line a river with many tributaries, while the NP was largely a single stream. Cooke himself had long since lost control of the NP, but his successors -- men whose names are scattered across the maps of the Northern Plains -- soon realized that Hill\'s business model was better than their own. By the 1890s, the NP had begun building branch lines in the Red River Valley, and in two decades -- up to 1915 -- its network rivaled -- though it never surpassed -- Hill\'s own.'
+            },
+            {
+                'content': 'A third transcontinental railroad line also crossed North Dakota. This was the Chicago, Milwaukee, St. Paul and Pacific, the so-called Milwaukee Road. Its tracks cut diagonally across the southwestern corner of the state and were never more than 30 miles from its southern border. The service was vital to the towns along the line, of course, but the Milwaukee never achieved the dominance of other transcontinental roads. It did help to establish such small cities as Hettinger and Bowman, which have outlived the line. Marmarth, its divisional headquarters, contracted sharply when the Milwaukee shut down.  Once a bustling town of hotels, shops and theaters, Marmarth today is an eclectic collection of antiques -- human and material -- and memories. The Milwaukee\'s dormitory operates as an overnight guest house. The Milwaukee depot has been moved from its historic location and sits, sagging and rather forlorn, at the east end of town.'
+            }]
+        },
+        {
+            'title': 'The influence of the railroads in the Transcontinental Era',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'The transcontinental railroads influenced North Dakota in many ways.'
+            },
+            {
+                'content': 'An often repeated story says that Hill, the GN\'s main man, was refused lodging in Caledonia, a frontier settlement, and consequently rerouted his railroad so that it bypassed to serve a nearby village. Citizens there obligingly named their town "Hillsboro." Hill\'s town became the seat of Traill County, and today it is among North Dakota\'s thriving small cities.'
+            },
+            {
+                'content': 'Caledonia is a ghost town.'
+            },
+            {
+                'content': 'Hill\'s working hypothesis was that there should be a town, with a depot and grain handling facilities, every seven miles, and so it happened. His idea was that this distance -- 14 miles round trip -- was the distance that a farmer, a wagon and a team of horses could cover in a day.'
+            },
+            {
+                'content': 'These were not always ideal town sites. Plenty of GN towns were built on wet ground, windswept hills and infertile soil. Town sites they were, however, and Hill\'s railroad made money serving them -- bringing settlers, hauling away commodities, carrying passengers on shopping trips to larger towns along the line.'
+            },
+            {
+                'content': 'Hill\'s railroad joined raw frontier villages to the United States.'
+            },
+            {
+                'content': 'The Northern Pacific had an even more directive policy toward its settlements. NP land agents sought settlers in Europe, and they often placed groups of like-minded people together on the plains. Thus the NP line west from Bismarck alternatived between Catholic and Protestant towns, between German and Norwegian towns.'
+            },
+            {
+                'content': 'These patterns persist today.'
+            },
+            {
+                'content': 'The transcontinental lines exercised great influence in North Dakota politics and government as well.'
+            },
+            {
+                'content': 'This was especially true of the Northern Pacific, whose agent in Bismarck,  Alexander McKenzie, was sometimes referred to as "the czar of North Dakota." This considerably exaggerates his influence, but there is no question that McKenzie was involved in virtually every aspect of North Dakota politics and government. The state\'s first governor, a Bonanza farmer named John Miller, was his protégé. He chose the state\'s first two U.S. senators,  or at least approved the choices.'
+            },
+            {
+                'content': 'But McKenzie is more important for the opposition he emboldened than he is for the men he sponsored. The 1892 election was won by Populists, who demonized McKenzie. The 1893 Legislature rejected his candidate for the U.S. Senate. Later, some of his choices deserted him.'
+            },
+            {
+                'content': 'McKenzie was a foil for progressive-minded politicians, who used the shibboleth of a railroad czar to advance reforms, including direct election of U.S. senators, recall and referendum and eventually a state-owned mill and elevator and a state-owned bank.'
+            },
+            {
+                'content': 'Perhaps most significantly, McKenzie and the NP helped launch the career of a man named Bill Langer. Langer graduated from UND\'s Law School at age 19, too young to practice law in the state. He attended Columbia University, returned to North Dakota and became state\'s attorney in Morton County. There he brought suit to prove that the NP owed property taxes on its lines, its sidings and the shipping infrastructure it maintained.'
+            },
+            {
+                'content': 'Langer won the suit.'
+            },
+            {
+                'content': 'The NP paid up. Its successor company is still paying.'
+            },
+            {
+                'content': 'Langer went on to become attorney general, governor and United States Senator from North Dakota -- probably the most colorful character in the state\'s political history.'
+            },
+            {
+                'content': 'Still it is McKenzie who is honored on the map. McKenzie is one is one of only a handful of North Dakotans who has both a town and a county named for him.'
+            },
+            {
+                'content': 'His shenanigans became legendary, leading even to a book, "The Spoilers," by Rex Beach. For generations of North Dakotans, McKenzie has been a kind of bogeyman -- despite the fact that he is almost universally described as a big-hearted, generous and jovial hail-fellow-well-met.'
+            },
+            {
+                'content': 'No one ever doubted, though, that McKenzie was the NP\'s man.'
+            }]
+        },
+        {
+            'title': 'The Branch Line Era',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'The Branch Line Era wasn\'t limited to two biggest lines, though. A third company, the Minneapolis, St. Paul and Sault Ste Marie undertook an aggressive building program in the early Twentieth Century. This line, universally known as "The Soo Line," built diagonally across the state and sent a web of branch lines into areas that were otherwise not served. This resulted in a new boom in town building and an increase in competition for grain handling, especially at points were the Soo line tracks met tracks of the Great Northern and the Northern Pacific. The city of Minot is the primary example of this; alone among North Dakota cities, Minot still has two major railroad years, once serving the Soo and the other serving the Great Northern.'
+            },
+            {
+                'content': 'The Great Northern itself undertook a major building project in 1915, its last in the state. The GN\'s purpose wasn\'t to haul grain though, so this project doesn\'t quite fit in the story of the Branch Line Era. Instead, the Great Northern wanted to decrease the distance between Chicago and the West Coast. This was accomplished by building diagonally across the state from Fargo to a point just east of Minot, the town of Surry. The line is therefore known as "The Surry Cut-off."'
+            }]
+        },
+        {
+            'title': 'The Retrenchment Era',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'By 1915, the Branch Line Era had largely closed. This was not so much because the railroad network had been built out. Indeed a number of planned lines were never built. Rather, the railroads had to respond to a national emergency, the First World War. The war and its immediate aftermath brought a range of change to the United States, including in its transportation system. Both the automobile and the air plane became more important in the wake of the war, and railroads began a significant decline.'
+            },
+            {
+                'content': 'The Era of Retrenchment began as early as 1931, and some short lines were unused during the Depression. The process picked up in the 1950s and reached a fever pitch in the 1970s. By that time, trucks had replaced railroads as the major movers of commodities. This began with the branch lines, of course, as growers took their crops to main line towns, where shipping rates were lower.'
+            },
+            {
+                'content': 'Two new subsidies helped doom the railroads.'
+            },
+            {
+                'content': 'One was the completion of the St. Lawrence Seaway, which created a shipping terminal for ocean-going vessels even though it was far inland, at Duluth, Minnesota. It is one of history\'s cruel ironies that Duluth was largely the creation of Jay Cooke, who envisioned Duluth as a kind of "New Chicago" -- the phrase is his -- and began his westward railroad push there.'
+            },
+            {
+                'content': 'The completion of the interstate highway system and the modernization of other highways across made transportation by truck both cheaper and faster than transportation by rail.'
+            },
+            {
+                'content': 'Financial troubles beset the railroad companies, too. The Northern Pacific and the Great Northern were merged with the Santa Fe Railroad, creating the BNSF. The Milwaukee Road went bankrupt and was acquired, largely, by the Soo Line. The Soo Line itself was acquired by the Canadian Pacific.'
+            },
+            {
+                'content': 'By 1990, North Dakota was left with just two major rail companies, the BNSF and the Soo Line.'
+            }]
+        },
+        {
+            'title': 'The Era of Response',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'It would be a mistake to believe that the Era of Retrenchment brought the end of railroading in the state, however. Two unrelated developments helped launch the Era of Response.'
+            },
+            {
+                'content': 'Among these were individual shippers, often with the help of community leaders, who purchased abandoned track age and established short line railroads. By 2000, about a dozen such lines were operating in the state, some of them only a few miles long, some of them with several hundred miles of tracks.'
+            },
+            {
+                'content': 'None of the private railroads carried passengers, however. As part of the retrenchment of rail service, the federal government created Amtrak. Initially Amtrak offered service on both the NP and GN lines. Today, service is on the old Great Northern line only -- but it is still possible to ride the train to the West Coast from seven cities in the state.'
+            },
+            {
+                'content': 'One was the completion of the St. Lawrence Seaway, which created a shipping terminal for ocean-going vessels even though it was far inland, at Duluth, Minnesota. It is one of historys cruel ironies that Duluth was largely the creation of Jay Cooke, who envisioned Duluth as a kind of "New Chicago" -- the phrase is his -- and began his westward railroad push there.'
+            },
+            {
+                'content': 'Specific opportunities lured railroad builders, too.'
+            },
+            {
+                'content': 'Four of these deserve mention, coal mining, stockyard construction, the Air Force bases and the oil boom.'
+            },
+            {
+                'content': 'Each of these required trains to move heavy equipment. Spurs were built to coal mining sites in 1928 and again in the 1970s. The emergence of Union Stockyards in West Fargo as a primary livestock shipping point required additional tracks there. In the 1950s connections were built between the NP main line and routes entering the Fargo area from the north and south.'
+            },
+            {
+                'content': 'The establishment of Air Force Bases in Grand Forks and Minot resulted in spur lines in those areas. These carried construction equipment and, later, weaponry, including intercontinental ballistic missiles.'
+            },
+            {
+                'content': 'The development requiring the biggest response from the railroads is also the most recent, the Bakken Oil Boom. Here the railroads are needed to take oil out of the state. To do that efficiently, shippers built spurs along railroad lines that could handle trains of 100 cars or more. These are large, circular road beds, each about a mile in total. Trucks bring oil to the terminals. Trains take the oil to refineries on both coasts.'
+            },
+            {
+                'content': 'Transporting oil by train has drawn critical attention. A number of derailments have caused damage, including a catastrophe in Lac-Magantic, Quebec. A train that originated at a terminal near New Town, N.D., rolled unattended into the town, exploded and killed 45 people.'
+            },
+            {
+                'content': 'Todays response has been to implement new requirements for rail cars, which will be sturdier, and to improve road beds, which will be safer. Regulations are in place to reduce the volatility of oil, too.'
+            },
+            {
+                'content': 'These responses mark the unfolding of another era in railroading in the state -- a history that now stretches 150 years into the past, to the stroke of a pen in the hand of Abraham Lincoln.'
+            }]//sections
+        }]//stories
+    }]//chapters
+};//themeRailroads
+    
 // insert our themes
 nosql.on('load', function() {
     nosql.insert([
         themeAnthro,
         themeHistory,
-        themeReligion
+        themeReligion,
+        themeRailroads
     ]);
 });
 
