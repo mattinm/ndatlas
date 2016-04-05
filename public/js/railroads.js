@@ -53,9 +53,9 @@ require([
                   center: [-100.78, 46.80], //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
     });
-        var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36"); //First layer is the county
+        var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39"); //First layer is the county
         
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
+        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/38", {
                 InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
                 outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
         }); //Layer that contains the rails for the railroad
@@ -189,7 +189,7 @@ require([
 
 function getCurrentLayer() {
     // find the index of this layer
-    return 35;
+    return 33;
 }
 
 function ToggleLayer(id) {

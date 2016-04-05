@@ -80,8 +80,8 @@ var themeAnthro = {
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [1, 15],
-            'toggleableLayers': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            'backgroundLayers': [4, 18],
+            'toggleableLayers': [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
             'legend': [{
                 'icon': 'circle',
                 'color': '#FF7F7F',
@@ -318,8 +318,8 @@ var themeHistory = {
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [17, 32],
-            'toggleableLayers': [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+            'backgroundLayers': [20, 35],
+            'toggleableLayers': [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
             'legend': [{
                 'icon': 'circle',
                 'color': '#F00',
@@ -635,6 +635,7 @@ var themeHistory = {
 
 /* RELIGION */
 //Coded by Joseph Gustafson
+//TODO: Check if Judaism needs to be added to legend and if they're being rendered
 var themeReligion = {
     'slug': 'religion',
     'name': 'Religious Affiliation History',
@@ -645,8 +646,8 @@ var themeReligion = {
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [66, 71],
-            'toggleableLayers': [70, 69, 68, 67],
+            'backgroundLayers': [69, 74],
+            'toggleableLayers': [73, 72, 71, 70],
             'legend': [{
                 'icon': 'circle',
                 'color': '#C2A83D',
@@ -1011,11 +1012,11 @@ var themeReligion = {
 //Coded by Drew Balira
 var themeRailroads = {
     'slug': 'railroads',
-    'name': 'Four Eras of Railroading',
+    'name': '4 Eras of Railroading',
     'chapters': [{
         'slug': 'map',
-        'name': 'Four Eras of Railroading',
-        'blurb': 'Four Eras of Railroading',
+        'name': '4 Eras of Railroading',
+        'blurb': '4 Eras of Railroading',
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
@@ -1226,8 +1227,8 @@ nosql.on('load', function() {
     nosql.insert([
         themeAnthro,
         themeHistory,
-        themeReligion/*,
-        themeRailroads*/
+        themeReligion,
+        themeRailroads
     ]);
 });
 
