@@ -43,7 +43,7 @@ app.get('/toggle', function (req, res) {
     });
 });
 
-app.get('/railroads', function (req, res) {
+app.get('/theme/railroads/:chapter', function (req, res) {
     res.render('railroads', {
         'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'layer': '39',
@@ -83,6 +83,16 @@ app.get('/themes/:theme/:chapter', function(req, res) {
     // find the theme and corresponding chapter
     for (var i = 0; i < themes.length; ++i) {
         theme = themes[i];
+        if (theme.slug == 'railroads') {
+            res.render('railroads', {
+                'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+                'layer': '39',
+                'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
+                'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
+                'themes': themes
+            });
+        }
+        
 
         if (theme.slug == req.params.theme) {
             for (var j = 0; !foundChapter && j < theme.chapters.length; ++j) {
