@@ -1014,12 +1014,12 @@ var themeRailroads = {
     'slug': 'railroads',
     'name': '4 Eras of Railroading',
     'chapters': [{
-        'slug': 'map',
+        'slug': 'railroads',
         'name': '4 Eras of Railroading',
         'blurb': '4 Eras of Railroading',
-        'type': 'map',
+        'type': 'railroads',
         'map': {
-            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39',
         },
         'stories': [{
             'title': 'Introduction',
