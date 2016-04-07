@@ -37,13 +37,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/toggle', function (req, res) {
+    //console.log(req.params.name);
     res.render('arcgis', {
         'mapurl': 'http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'themes': themes
     });
 });
 
-app.get('/theme/railroads/:chapter', function (req, res) {
+app.get('/railroads', function (req, res) {
     res.render('railroads', {
         'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'layer': '39',
@@ -57,11 +58,10 @@ app.get('/theme/railroads/:chapter', function (req, res) {
 
 app.get('/themes/:theme', function (req, res) {
     var theme = null;
-
     // find the theme and first chapter
     for (var i = 0; i < themes.length; ++i) {
         theme = themes[i];
-
+        
         if (theme.slug == req.params.theme) {
             res.redirect('/themes/' + theme.slug + '/' + theme.chapters[0].slug);
         }
@@ -83,15 +83,6 @@ app.get('/themes/:theme/:chapter', function(req, res) {
     // find the theme and corresponding chapter
     for (var i = 0; i < themes.length; ++i) {
         theme = themes[i];
-        if (theme.slug == 'railroads') {
-            res.render('railroads', {
-                'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-                'layer': '39',
-                'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
-                'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
-                'themes': themes
-            });
-        }
         
 
         if (theme.slug == req.params.theme) {
@@ -144,8 +135,10 @@ app.get('/themes/:theme/:chapter', function(req, res) {
     }
     
     if (chapter.type == 'text') {
+        console.log("ITS JUST TEXT");
         res.render('text', data);
     } else if (chapter.type == 'map') {
+        console.log("ITS A MAP");
         // key up our start and end years array
         data['startYears'] = [];
         data['endYears'] = [];
@@ -161,8 +154,11 @@ app.get('/themes/:theme/:chapter', function(req, res) {
                 break;
             }
         }
-        
-        res.render('map', data);
+        if (req.params.theme == 'railroads') {
+            res.render('railroads', data);
+        } else {
+            res.render('map', data);
+          }
     } else {
         res.status(404).end('Unknown chapter type.');
     }

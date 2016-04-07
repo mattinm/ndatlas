@@ -1016,13 +1016,12 @@ var themeRailroads = {
         'slug': 'railroads',
         'name': '4 Eras of Railroading',
         'blurb': '4 Eras of Railroading',
-        'type': 'railroads',
-        'slug': 'map',
-        'name': 'Four Eras of Railroading',
-        'blurb': 'Four Eras of Railroading',
         'type': 'map',
         'map': {
-            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39',
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/',
+            'layer': '39',
+            'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
+            'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
         },
         'stories': [{
             'title': 'Introduction',
@@ -1230,8 +1229,8 @@ nosql.on('load', function() {
     nosql.insert([
         themeAnthro,
         themeHistory,
-        themeReligion/*,
-        themeRailroads*/
+        themeReligion,
+        themeRailroads
     ]);
 });
 
