@@ -1,3 +1,9 @@
+google.charts.load('current', {packages: ['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+var data;
+var chart;
+var options;
+
 function resizeNarrative() {
     $('#map,#narrative,#story,#map,body,html,#loadingDiv').css({
         'height': $(window).height()-54
@@ -124,9 +130,9 @@ require([
                     if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
                         // jump to new content
                         oldLayer = iYear;
-                        console.log("Offset: " + ($('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54));
+                        console.log("Offset: " + ($('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 254));
                         $('#story').animate({
-			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 54
+			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 254
 		                }, 'slow');
                         break;
                     }
@@ -312,7 +318,7 @@ function showResults(featureSet) {
     //remove all graphics on the maps graphics layer
     map.graphics.clear();
     //map.infoWindow.hide();
-    //map.infoWindow.clearFeatures();
+    map.infoWindow.clearFeatures();
 
     //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
     dojo.forEach(featureSet.features, function(feature) {
@@ -332,6 +338,206 @@ function showResults(featureSet) {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+var fields;
+function drawChart() {
+    var year;
+    chart = new google.visualization.LineChart(document.getElementById('graph'));
+    data = new google.visualization.DataTable();
+    
+    //Build graph options and data columns depending on which theme is displayed
+    //Anthropology
+    if(togglableLayers[0] <= 14) {
+        options = {
+            title: 'Foreign Born Population',
+            vAxis: { viewWindow:{ min: 0 }},
+            hAxis: { showTextEvery: 2},
+            //curveType: 'function',
+            legend: { position: 'bottom' },
+            colors: ['#FF7F7F', '#0084A8', '#89CD66'],
+            backgroundColor: '#f6f6f6'
+        };
+    
+        data.addColumn('string', 'Decade');
+        data.addColumn('number', 'Norwegians');
+        data.addColumn('number', 'Germans');
+        data.addColumn('number', 'Russians');
+
+        year = 1890;
+    //History
+    } else if (togglableLayers[0] >= 18 && togglableLayers[0] <= 31) {
+        options = {
+            title: 'Making of the State to Current',
+            vAxis: { viewWindow:{ min: 0 }},
+            hAxis: { showTextEvery: 2},
+            legend: { position: 'bottom' },
+            colors: ['#F00'],
+            backgroundColor: '#f6f6f6'
+        };
+    
+        data.addColumn('string', 'Decade');
+        data.addColumn('number', 'Population');
+
+        year = 1890;
+    //Religion
+    } else if (togglableLayers[0] >= 67 && togglableLayers[0] <= 70) {
+        options = {
+            title: 'Religious Affiliation History',
+            vAxis: { viewWindow:{ min: 0 }},
+            legend: { position: 'bottom' },
+            colors: ['#C2A83D', '#00D69E', '#9C00CC', '#F00'],
+            backgroundColor: '#f6f6f6'
+        };
+    
+        data.addColumn('string', 'Decade');
+        data.addColumn('number', 'Roman Catholics');
+        data.addColumn('number', 'Evangelical Lutherans (ELCA)');
+        data.addColumn('number', 'Lutherans (Missouri Synod)');
+        data.addColumn('number', 'United Methodists');	
+
+        year = 1980;
+    }
+
+    var layerID;
+    var length = togglableLayers.length;
+    var chartQuery = new esri.tasks.Query();
+    chartQuery.returnGeometry = false;
+    var chartQueryTask;
+    
+    //Loop through layers and prepare queries depending on specific layers
+    for (var i = 0; i < length; i++) {
+        layerID = togglableLayers[i];
+        chartQuery.where = "OBJECTID IS NOT NULL";
+        chartQueryTask = new esri.tasks.QueryTask("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/" + layerID);
+        
+        //Anthropology
+        if (layerID <= 14) {
+            if (year == 1960) {
+                year += 10;
+            }
+            
+            if (layerID == 5) {
+                chartQuery.outFields = [
+                    "Ger" + year, "Rus" + year, "Nor" + year
+                ];
+            } else if (layerID == 10) {
+                chartQuery.outFields = [
+                    "DTJ004", "DTJ020"
+                ];
+            } else if (layerID == 12) {
+                chartQuery.outFields = [
+                    "GWA007", "GWA021"
+                ];
+            } else if (layerID == 13) {
+                chartQuery.outFields = [
+                    "Ger" + year, "Ukr" + year, "Nor" + year
+                ]
+            } else if (layerID == 14) {
+                chartQuery.outFields = [
+                    "Ger" + year, "Ukr" + year, "Nor" + year
+                ];
+            } else {
+                chartQuery.outFields = [
+                    "Ger" + year, "Rus" + year, "Nor" + year
+                ];
+            }
+            
+            if (layerID == 13) {
+                year += 3;
+            } else {
+                year += 10;
+            }
+            
+            fields = 3;
+            chartQueryTask.execute(chartQuery, chartResults);
+        //History
+        } else if (layerID >= 18 && layerID <= 31) {
+            chartQuery.outFields = [
+                "Y" + year
+            ];
+            
+            if (layerID == 30) {
+                year += 3;
+            } else {
+                year += 10;
+            }
+            
+            fields = 2;
+            chartQueryTask.execute(chartQuery, chartResults);
+        //Religion
+        } else if (layerID >= 67 && layerID <= 70) {
+            if (layerID == 67) {
+                chartQuery.outFields = [
+                    "CATHOLIC_A", "EV_LUTH_CH", "F" + year + "_LC_M", "F" + year + "_UMC_", "F" + year + "_JEWI"
+                ];
+            } else {
+                chartQuery.outFields = [
+                    "F" + year + "_CATH", "F" + year + "_ELCA", "F" + year + "_LC_M", "F" + year + "_UMC_", "F" + year + "_JEWI"
+                ];
+            }
+            
+            year += 10;
+            fields = 4;
+            chartQueryTask.execute(chartQuery, chartResults);
+        } else {
+            chartQuery.outFields = [ "*" ];
+        }
+    }
+}
+
+function chartResults(results) {
+    //Initialize array for results and populate it with empty data to allow for int addition
+    var totals = [];
+    for (var i = 0; i < fields; i++) {
+        totals.push(0);
+    }
+    
+    //Loop through every county in results layer
+    var resultCount = results.features.length;
+    for (var j = 0; j < resultCount; j++) {
+        //Grab year value from the decade in the first field's name
+        var countyAttributes = results.features[j].attributes;
+        for (var attribute in countyAttributes) {
+            year = attribute.replace ( /[^\d.]/g, '' );
+            break;
+        }
+        
+        //Loop through every attribute and add the int value to the totals array
+        var k = 0;
+        for (var attribute in countyAttributes) {            
+            totals[k] += parseInt(countyAttributes[attribute]);
+            k++;
+        }
+    }
+    
+    //Fix incorrect years due to database inconsistencies
+    if (year > 2010) {
+        year = '2013';
+    } else if (year == '004' || year == '020') {
+        year = '1980';
+    } else if (year == '007' || year == '021') {
+        year = '2000';
+    } else if (year == '') {
+        year = '2010';
+    }
+    
+    //Add values to chart data table, sort the rows, and draw the chart
+    //Not sure how to add varying number of parameters to a Google charts library method
+    switch(fields) {
+        case 2:
+            data.addRow([year, totals[0]]);
+            break;
+        case 3:
+            data.addRow([year, totals[0], totals[1], totals[2]]);
+            break;
+        case 4:
+            data.addRow([year, totals[0], totals[1], totals[2], totals[3]]);
+            break;
+    }
+    
+    data.sort([{column: 0}]);
+    chart.draw(data, options);
+}
 
 //var scroll = false;
 

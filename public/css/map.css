@@ -7,9 +7,11 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 460px;
+    /*width: 460px;*/
     z-index: 1000;
     background-color: #f6f6f6;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #mainBody {
@@ -19,11 +21,7 @@ body {
     right: 0;
     left: 0;
 }
-#narrative {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+
 #mapWrapper {
     position: absolute;
     top: 0;
@@ -31,6 +29,7 @@ body {
     left: 0;
     right: 460px;
 }
+
 #mapDiv {
     position: absolute;
     top: 0;
@@ -38,13 +37,16 @@ body {
     bottom: 70px;
     width: 100%;
 }
+
 #content {
     margin-top: 10px;
 }
-   
+  
 #story{
     overflow-y: scroll;
+    height: calc(100vh - 251px) !important;
 }
+
 #slider {
     cursor: pointer;
 }
@@ -52,9 +54,11 @@ body {
 .section:nth-child(n+2) {
     margin-top: 15px;
 }
+
 .tooltip-inner {
     max-width: 600px;
 }
+
 #legendDiv {
     position: absolute;
     height: auto;
@@ -68,6 +72,7 @@ body {
     z-index: 50;
     border: 1px solid #000;
 }
+
 #legendDiv h3 {
     font-size: 16px;
     padding: 0;
@@ -75,6 +80,7 @@ body {
     text-align: center;
     background-color: rgba(100,0,0,.8);
 }
+
 #legendTable {
     width: 100%;
     margin: 0 5px;
@@ -83,6 +89,7 @@ body {
 #legendTable td {
     padding: 0 2px;
 }
+
 #loadingDiv {
     height: 100%;
     width: 100%;
@@ -92,6 +99,7 @@ body {
     top: 0;
     z-index: 100;
 }
+
 #mapFooter {
     height: 70px;    
     position: absolute;
@@ -99,10 +107,12 @@ body {
     left: 0;
     right: 0;
 }
+
 .playButton {
     font-size: 30px;
     padding: 1px 4px;
 }
+
 #toggleSlider {
     margin: 0 20px;
     position: absolute;
@@ -111,6 +121,7 @@ body {
     left: 50px;
     right: 0;
 }
+
 #main-footer {
     margin-top: 15px;
     background-color: inherit;
@@ -119,10 +130,12 @@ body {
 .footer-left-block, .footer-right-block {
     text-align: center;
 } 
+
 .footer-right-block, .footer-center-block {
     padding-top: 15px;
     margin-top: 5px;
 }
+
 footer {
     margin-top: 20px;
     padding-top: 10px;
