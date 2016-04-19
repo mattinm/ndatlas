@@ -48,6 +48,7 @@ app.get('/countychurches', function (req, res) {
     res.render('countychurches', {
         'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'layer': '56',
+        'toggleableLayers': [57, 58, 59, 60, 61, 62],
         'themes': themes
     });
 });

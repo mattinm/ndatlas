@@ -33,41 +33,100 @@ require ([
     "esri/symbols/SimpleMarkerSymbol",
     "esri/symbols/SimpleFillSymbol",
     "esri/symbols/SimpleLineSymbol",
+    "esri/symbols/PictureMarkerSymbol",
     "esri/renderers/SimpleRenderer",
+    "esri/renderers/UniqueValueRenderer",
     "esri/config",
     "dojo/dom",
     "dojo/domReady!"
-], function (Color, Map, Extent, FeatureLayer, Query, Graphic, InfoTemplate, SimpleMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleRenderer, esriConfig, dom) {
+], function (Color, Map, Extent, FeatureLayer, Query, Graphic, InfoTemplate, SimpleMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, PictureMarkerSymbol, SimpleRenderer, UniqueValueRenderer, esriConfig, dom) {
         console.log($("#loading").css('left'));
-        
+        ///Using new style 'topo' map for a better website design
         map = new Map("mapDiv", {
                 basemap: "topo",
                 center: [-100.78, 46.80],
                 zoom: 7,
             });
+        var layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
          
+        ///loading in county churches layer 56
         var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/56", {
-                infoTemplate: new InfoTemplate("Built: ${Name}", "${*}"),
-                outFields: ["Name", "Location", "Date_Org", "Date_Built", "Status", "County", "Denom", "Ethnicity"]
+                mode: FeatureLayer.MODE_SELECTION,
+                infoTemplate: new InfoTemplate("County Church", "${*}"),
+                outFields: ["Name"]
             });
          
-        featureLayer.setScaleRange(0,0);
-        var symbol = new SimpleMarkerSymbol(
+        
+        var symbol = new SimpleMarkerSymbol( ///Creating new marker symbol in replacement of the one on the server
             SimpleMarkerSymbol.STYLE_CIRCLE,
-            12,
+            10,
             new SimpleLineSymbol(
                 SimpleLineSymbol.STYLE_SOLID,
-                new Color([255,0,0]),1),
-                new Color([0,255,0,0.5])
+                new Color([0,0,0]),1),
+                new Color([0,0,0,0.5])
             );
-        featureLayer.setSelectionSymbol(symbol);
-        
-        var nullSymbol = new SimpleMarkerSymbol().setSize(0);
-        featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
+        var renderer = new UniqueValueRenderer(symbol, "denom3");
+        renderer.addValue({
+            value: "Assembly of God",
+            symbol: new PictureMarkerSymbol('images/AOG.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Baptist",
+            symbol: new PictureMarkerSymbol('images/Bap.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Catholic",
+            symbol: new PictureMarkerSymbol('images/Cat.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Church of Brethren",
+            symbol: new PictureMarkerSymbol('images/COB.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Congregational",
+            symbol: new PictureMarkerSymbol('images/Con.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Evangelical",
+            symbol: new PictureMarkerSymbol('images/Eva.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Lutheran",
+            symbol: new PictureMarkerSymbol('images/Lut.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Mennonite",
+            symbol: new PictureMarkerSymbol('images/Men.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Methodist",
+            symbol: new PictureMarkerSymbol('images/Met.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Other",
+            symbol: new PictureMarkerSymbol('images/Other.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Presbytarian",
+            symbol: new PictureMarkerSymbol('images/Pre.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Reformed",
+            symbol: new PictureMarkerSymbol('images/Ref.png', 15, 15)
+	    });
+        renderer.addValue({
+            value: "Seventh Day Adventist",
+            symbol: new PictureMarkerSymbol('images/Sev.png', 15, 15)
+	    });
         
         map.addLayer(featureLayer);
         
         featureLayer.on("load", function(e) {
+                counties = [];
+                $.each(togglableLayers, function(index, value) {
+                    counties.push(layer.layerInfos[value].id);
+                });
+        
                 values = [];
                 for (i=1870; i<=2015; i++) {
                     if (i == 1870) {
@@ -114,12 +173,16 @@ require ([
                     showLoading();
                     oldYear = $(this).val();
                     
-                    $("#legendDiv").attr("style", "");
+                    currentLayers = [];
+                    currentLayers.push(getCurrentLayer());
                     
+                    $("#legendDiv").attr("style", "");
+                    layer.setVisibleLayers(currentLayers);
+                    ///Query method used to get selected features
                     var iYear = Math.floor($(this).val());
                     var query = new Query();
                     query.returnGeometry = true;
-                    query.where = "Date_Org < " + iYear;
+                    query.where = "Date_Built <= " + iYear;
                     console.log(query);
                     featureLayer.queryFeatures(query, function(response) {
                         var feature;
@@ -140,15 +203,44 @@ require ([
                 oldLayer = 0;
                 $('#toggleSlider').val(min);
                 featureLayer.setVisibility(true);
+                layer.setVisibility(true);
             });
             
             featureLayer.on("selection-complete", hideLoading);
+            layer.on("update-end", hideLoading);
+            featureLayer.setRenderer(renderer);
+            map.addLayer(layer);
             var scalebar = new Scalebar({
                 map: map,
                 scalebarUnit: "dual"
             });
     });
-        
+
+function getCurrentLayer() {
+    val = $('#toggleSlider').val();
+    console.log(val);
+    if (val < 1870) { //before 1870 Layer 57
+        return counties[0];
+    }
+    else if (val > 1869 && val < 1880) { //1870 to 1880 Layer 58
+        return counties[1];
+    }
+    else if (val > 1879 && val < 1890) { //1880 to 1890 Layer 59
+        return counties[2];
+    }
+    else if (val > 1889 && val < 1910) { //1890 to 1900 Layer 60
+        return counties[3];
+    }
+    else if (val > 1909 && val < 1920) { //1900 to 1910 Layer 61
+        return counties[4];
+    }
+    else {
+        //After 1920 Layer 62
+        return counties[5];
+    }
+}
+
+
 function hideLoading() {
     $("#loadingDiv").hide();
     $("#togglableLayers").removeAttr('disabled');

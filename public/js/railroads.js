@@ -53,7 +53,8 @@ require([
                   center: [-100.78, 46.80], //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
     });
-        var layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36"); //First layer is the county
+    
+        var layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
         
         var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
                 InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
@@ -77,31 +78,36 @@ require([
     // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
         values = [];
+        $.each(togglableLayers, function(index, value) {
+            values.push(layer.layerInfos[value].id);
+        });
+    
+        years = [];
         for(i=1886; i<=2015; i++) {
              if (i == 1886) {
-             values.push(i);
+             years.push(i);
              }
              if (i % 5 == 0) {
-                values.push(i);
+                years.push(i);
              }
         }
         console.log(values);
 
-        min = values[0];
-        max = values[values.length-1];
+        min = years[0];
+        max = years[years.length-1];
         difference = (max - min);
         range = {
             'min': min,
             'max': max
         };
 
-        $.each(values, function(index, value) {
+        $.each(years, function(index, value) {
             range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
         });
         console.log(range);
 
         $("#toggleSlider").noUiSlider({
-            start: values[0],
+            start: years[0],
             range: range,
             snap: true
         });
@@ -109,31 +115,31 @@ require([
         $('#toggleSlider').noUiSlider_pips({
             mode: 'values',
             density: 10,
-            values: values,
+            values: years,
             stepped: true
         });
         
         // create a function for when the slider value is set
         $('#toggleSlider').on('set', function() {
             if (!firstSet) {
-                              console.log("Clearing map");
                 map.graphics.clear();
             } else {
-                              console.log("Not Clearing map");
                 firstSet = false;
             }
                               
             map.infoWindow.hide();
             map.infoWindow.clearFeatures();
             showLoading();
-                               
-
-
+            
+            currentLayers = [];
+            currentLayers.push(getCurrentLayer());
+            //layer.setVisibility(false);
             // find the index of this layer
-            //currentLayers.push(getCurrentLayer());
 
             // show the visible layers
             //layer.setVisibleLayers(visible);
+            
+            //currentLayers.push(getCurrentLayer());
             
             // see if we should scroll to a new layer
 
@@ -142,7 +148,13 @@ require([
             // remove all styling from legendDiv
             $("#legendDiv").attr("style", "");
             
+            //map.addLayer(getCurrentLayer(iYear));
+            
             // FILTER WITH
+            
+            
+            layer.setVisibleLayers(currentLayers);
+            
             var iYear = Math.floor($(this).val());
                               //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
                               //featureLayer.maxRecordCount = 2000;
@@ -171,15 +183,17 @@ require([
         // set as the current layer
         oldLayer = 0;
         $('#toggleSlider').val(min);
+        
         layer.setVisibility(true);
+        //layer.setVisibleLayers(getCurrentLayer($(this).val()));
     });
     // hide the loading icon when the dynamic layer finishes updating
     featureLayer.on("selection-complete", hideLoading);
-
-    // add the layer to the map
-    //map.addLayer(layer);
-    //map.addLayer(featureLayer);
-    // show the scalebar
+    layer.on("update-end", hideLoading);
+    
+    //layer.setVisibleLayers(36);
+    //layer.setVisibility(true);
+    map.addLayer(layer);
     var scalebar = new Scalebar({
         map: map,
         scalebarUnit: "dual"
@@ -188,8 +202,58 @@ require([
 
 
 function getCurrentLayer() {
+    val = $('#toggleSlider').val();
+    console.log(val);
+    if (val < 1870) { //before 1870 Layer 36
+        return values[0];
+    }
+    else if (val > 1869 && val < 1880) { //1870 to 1880 Layer 37
+        return values[1];
+    }
+    else if (val > 1879 && val < 1890) { //1880 to 1890 Layer 38
+        return values[2];
+    }
+    else if (val > 1889 && val < 1910) { //1890 to 1900 Layer 39
+        return values[3];
+    }
+    else if (val > 1909 && val < 1920) { //1900 to 1910 Layer 40
+        return values[4];
+    }
+    else {
+        //After 1920 Layer 41
+        return values[5];
+    }
+
+
+    /*
     // find the index of this layer
-    return 35;
+    //var layer;
+    if (year < 1871) {
+        console.log("Less then year 1871");
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/36");
+        return 36;
+    }
+    else if (year > 1870 && year < 1881) {
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/37");
+        return 37;
+    }
+    else if (year > 1870 && year < 1881) {
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/38");
+        return 38;
+    }
+    else if (year > 1870 && year < 1881) {
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/39");
+        return 39;
+    }
+    else if (year > 1900 && year < 1911) {
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/40");
+        return 40;
+    }
+    else if (year > 1910 && year < 1921) {
+        //layer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/41");
+        return 41;
+    }
+    */
 }
 
 function ToggleLayer(id) {

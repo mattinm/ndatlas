@@ -63,11 +63,11 @@ require([
     layer.on("load", function(e) {
         values = [];
         $.each(togglableLayers, function(index, value) {
-            //console.log(index);
-            //console.log(layer.layerInfos[value]);
+            console.log(index);
+            console.log(layer.layerInfos[value]);
             values.push(parseInt(layer.layerInfos[value].name));
         });
-
+        console.log("LAYERS " + values);
         //TODO: add topographic map background
         min = values[0];
         max = values[values.length-1];

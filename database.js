@@ -1013,7 +1013,7 @@ var themeRailroads = {
     'slug': 'railroads',
     'name': 'Four Eras of Railroading',
     'chapters': [{
-        'slug': 'railroads',
+        'slug': 'map',
         'name': '4 Eras of Railroading',
         'blurb': '4 Eras of Railroading',
         'type': 'map',
@@ -1022,6 +1022,7 @@ var themeRailroads = {
             'layer': '39',
             'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
             'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
+            'toggleableLayers': [36, 37, 38, 39, 40, 41],
         },
         'stories': [{
             'title': 'Introduction',

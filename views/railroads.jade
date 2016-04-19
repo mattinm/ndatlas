@@ -65,11 +65,11 @@ block footer
                     
 block js
     script.
-        mapUrl="#{mapurl}";
+        mapUrl="#{chapter.map.url}";
         mapLayer="#{layer}";
         startYears=[#{startYears}];
         endYears=[#{endYears}];
-        backgroundLayers=[1];
+        togglableLayers=[#{chapter.map.toggleableLayers}];
         infoTitle="Title"
         infoText="${*}"
     script(src="//js.arcgis.com/3.12/")
