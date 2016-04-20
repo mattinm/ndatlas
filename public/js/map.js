@@ -351,14 +351,14 @@ function drawChart() {
             hAxis: { showTextEvery: 2},
             //curveType: 'function',
             legend: { position: 'bottom' },
-            colors: ['#FF7F7F', '#0084A8', '#89CD66'],
+            colors: ['#0084A8', '#89CD66', '#FF7F7F'],
             backgroundColor: '#f6f6f6'
         };
     
         data.addColumn('string', 'Decade');
-        data.addColumn('number', 'Norwegians');
         data.addColumn('number', 'Germans');
         data.addColumn('number', 'Russians');
+        data.addColumn('number', 'Norwegians');
 
         year = 1890;
     //History
@@ -463,7 +463,7 @@ function drawChart() {
             chartQueryTask.execute(chartQuery, chartResults);
         //Religion
         } else if (layerID >= 65 && layerID <= 68) {
-            if (layerID == 67) {
+            if (layerID == 65) {
                 chartQuery.outFields = [
                     "CATHOLIC_A", "EV_LUTH_CH", "F" + year + "_LC_M", "F" + year + "_UMC_", "F" + year + "_JEWI"
                 ];
