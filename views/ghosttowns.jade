@@ -1,0 +1,73 @@
+extends master
+
+block css
+    link(rel="stylesheet", href="//js.arcgis.com/3.12/esri/css/esri.css")
+    link(rel="stylesheet", href="/css/jquery.nouislider.min.css")
+    link(rel="stylesheet", href="/css/jquery.nouislider.pips.min.css")
+    link(href="/css/ghosttowns.css", rel="stylesheet")
+
+
+block body
+    div(id="mainBody")
+        div(id="mapWrapper")
+            div(id="mapDiv")
+                div(id="legendDiv")
+                    h3 Legend
+                    table(id="legendTable")
+                div(id="loadingDiv")
+                    img(src="/images/loading.gif", id="loading", style="position: relative;top: 50%;left: 300px;")
+            div(id="mapFooter")
+                div(id="toggleSlider")
+        div(id="narrative") 
+            div(id="slider", style="display: inline-block; vertical-align: top; width: 40px;padding: 0 5px;padding-top:50%;height:100%", class="expanded")
+                i(class="glyphicon glyphicon-chevron-right", style="font-size: 24pt;")
+            div(id="story", style="display: inline-block; vertical-align: top; width: 415px; padding: 5px;")
+    
+                div(id="main-footer")
+                    div(class="col-sm-12", style="text-align: center;")
+                        p
+                            b Geography Department
+                            br
+                            b 701.777.4246
+                        p(class="address")
+                            |O'Kelly Hall, Room 152
+                            br
+                            |221 Centennial Drive, Stop 9020
+                            br
+                            |Grand Forks, ND 58202-9020
+                    div(class="col-sm-12", style="text-align: center; margin-top: 15px;")
+                        p
+                            b Share this project
+                        p
+                            a(class="btn btn-social-icon btn-twitter", title="Share on Twitter", href="http://twitter.com/?status=Interactive atlas celebrating 125 years of ND statehood: http://ndatlas.und.edu/")
+                                i(class="fa fa-twitter")
+                            a(class="btn btn-social-icon btn-facebook", title="Share on Facebook", href="http://www.facebook.com/sharer/sharer.php?u=http://ndatlas.und.edu/")
+                                i(class="fa fa-facebook")
+                            a(class="btn btn-social-icon btn-google", title="Share on Google+", href="https://plus.google.com/share?url=http://ndatlas.und.edu/")
+                                i(class="fa fa-google")
+                            a(class="btn btn-social-icon btn-reddit", title="Share on Reddit", href="http://reddit.com/submit?url=http://ndatlas.und.edu/")
+                                i(class="fa fa-reddit")
+                            a(class="btn btn-social-icon btn-envelope", title="Share on Reddit", href="mailto: ?subject=Check out this interactive atlas celebrating 125 years of ND statehood&body=http://ndatlas.und.edu/")
+                                i(class="fa fa-envelope")
+                    div(class="col-sm-12", style="text-align: center; margin: 15px 0;")
+                        a(href="http://www.und.edu/")
+                            img(class="center-block hidden-xs hidden-sm img-responsive", src="/images/und_logo_wide.png", alt="Univeristy of North Dakota wide flame logo")
+                            img(class="center-block hidden-md hidden-lg img-responsive", src="/images/und_logo_compact.png", alt="University of North Dakota compact flame logo")
+                        p
+                            b © 2015 University of North Dakota
+
+block footer
+    #empty
+                    
+block js
+    script.
+        mapUrl="#{mapurl}";
+        mapLayer="#{layer}";
+        startYears=[#{startYears}];
+        endYears=[#{endYears}];
+        backgroundLayers=[1];
+        infoTitle="Title"
+        infoText="${*}"
+    script(src="//js.arcgis.com/3.12/")
+    script(src="/js/jquery.nouislider.all.min.js")
+    script(src="/js/ghosttowns.js")

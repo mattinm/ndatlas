@@ -68,6 +68,14 @@ app.get('/countychurches', function (req, res) {
     });
 });
 
+app.get('/ghosttowns', function (req, res) {
+    res.render('ghosttowns', {
+        'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        'layer': '71',
+        'themes': themes
+    });
+});
+
 //TODO: add code to load Country Churches theme here
 
 app.get('/themes/:theme', function (req, res) {
