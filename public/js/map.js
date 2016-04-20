@@ -44,7 +44,7 @@ require([
     map = new Map("mapDiv", {
         center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
         zoom: 7,
-        basemap: "terrain"
+        basemap: "gray"
         
         //These numbers are general approximations
         //center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
