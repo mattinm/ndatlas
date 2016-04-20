@@ -43,15 +43,12 @@ require([
 
     map = new Map("mapDiv", {
         center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
-        zoom: 8,
+        zoom: 7,
         basemap: "terrain"
         
         //These numbers are general approximations
         //center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
     });
-
-    var scale = (15000 * (3200 - document.getElementById("mapDiv").offsetWidth)) / 11;
-    map.setScale(scale);
     
     // add the basemap
     /*
@@ -279,9 +276,9 @@ function executeQueryTask(evt) {
         infoTemplate.setTitle("${NAME} County, " + currentYear);
         infoTemplate.setContent("${Y" + currentYear + "} people");
     //Religious Affiliation    
-    } else if (currentLayer >= 67 && currentLayer <= 70) {
+    } else if (currentLayer >= 65 && currentLayer <= 68) {
         infoTemplate.setTitle("${NAME} County, " + currentYear);
-        if (currentLayer == 67) {
+        if (currentLayer == 65) {
             infoTemplate.setContent(
                 "${CATHOLIC_A} Roman Catholics<br>" +
                 "${EV_LUTH_CH} Evangelical Lutherans (ELCA)<br>" +
@@ -380,7 +377,7 @@ function drawChart() {
 
         year = 1890;
     //Religion
-    } else if (togglableLayers[0] >= 67 && togglableLayers[0] <= 70) {
+    } else if (togglableLayers[0] >= 65 && togglableLayers[0] <= 68) {
         options = {
             title: 'Religious Affiliation History',
             vAxis: { viewWindow:{ min: 0 }},
@@ -465,7 +462,7 @@ function drawChart() {
             fields = 2;
             chartQueryTask.execute(chartQuery, chartResults);
         //Religion
-        } else if (layerID >= 67 && layerID <= 70) {
+        } else if (layerID >= 65 && layerID <= 68) {
             if (layerID == 67) {
                 chartQuery.outFields = [
                     "CATHOLIC_A", "EV_LUTH_CH", "F" + year + "_LC_M", "F" + year + "_UMC_", "F" + year + "_JEWI"
