@@ -49,6 +49,21 @@ app.get('/countychurches', function (req, res) {
         'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'layer': '56',
         'toggleableLayers': [57, 58, 59, 60, 61, 62],
+        'legend': [{
+                'icon': 'circle',
+                'color': '#F00',
+                'text': '1 dot = 100 people'
+            },
+            {
+                'icon': 'circle',
+                'color': '#000',
+                'text': 'Major city'
+            },
+            {
+                'icon': 'square',
+                'color': '#97DBF2',
+                'text': 'Water body'
+            }],
         'themes': themes
     });
 });

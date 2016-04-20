@@ -40,17 +40,19 @@ require([
     "esri/layers/ArcGISTiledMapServiceLayer",
     "esri/tasks/query",
     "esri/tasks/FeatureSet",
+    "esri/geometry/Point",
     "esri/SpatialReference",
     "esri/tasks/QueryTask",
     "esri/graphic",
+    "esri/geometry/webMercatorUtils",
     "dojo/query",
     "dojo/domReady!"
-], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, SpatialReference, QueryTask, Graphic, query) {
+], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, Point, SpatialReference, QueryTask, Graphic, webMercatorUtils, query) {
     console.log($("#loading").css('left'));
         //Loads in basemap topo instead of county layer
     map = new Map("mapDiv", {
-                  basemap: "topo",
-                  center: [-100.78, 46.80], //Longitude and Latitude of where the center of the map will be
+                  basemap: "dark-gray",
+                  center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
     });
     
@@ -67,7 +69,7 @@ require([
         
         var symbol = new SimpleLineSymbol (
             SimpleLineSymbol.STYLE_SHORTDOT,
-            new Color([93,0,41]),
+            new Color([0,255,0]),
             2
         );
         featureLayer.setSelectionSymbol(symbol);
@@ -83,8 +85,8 @@ require([
         });
     
         years = [];
-        for(i=1886; i<=2015; i++) {
-             if (i == 1886) {
+        for(i=1872; i<=2015; i++) {
+             if (i == 1872) {
              years.push(i);
              }
              if (i % 5 == 0) {
@@ -160,7 +162,7 @@ require([
                               //featureLayer.maxRecordCount = 2000;
                               var query = new Query();
                               query.returnGeometry = true;
-                              query.where = "Built3 < " + iYear;
+                              query.where = "Built3 < " + iYear + " AND " + "ABAND_YR > " + iYear;
                               console.log(query);
                               featureLayer.queryFeatures(query, function(response) {
                               var feature;

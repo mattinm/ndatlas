@@ -70,17 +70,17 @@ content.
 
 */
 
-var themeAnthro = {
-    'slug': 'anthropology',
+var themeForeign = {
+    'slug': 'foreign',
     'name': 'Foreign Born Population',
     'chapters': [{
         'slug': 'map',
-        'name': 'Anthropology of the State',
+        'name': 'Foreign Born Population',
         'blurb': 'Visual representation of the anthropology of North Dakota.',
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [1, 15],
+            'backgroundLayers': [15],
             'toggleableLayers': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
             'legend': [{
                 'icon': 'circle',
@@ -364,7 +364,7 @@ var themeHistory = {
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [17, 32],
+            'backgroundLayers': [32],
             'toggleableLayers': [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
             'legend': [{
                 'icon': 'circle',
@@ -691,8 +691,8 @@ var themeReligion = {
         'type': 'map',
         'map': {
             'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
-            'backgroundLayers': [66, 71],
-            'toggleableLayers': [70, 69, 68, 67],
+            'backgroundLayers': [69],
+            'toggleableLayers': [68, 67, 66, 65],
             'legend': [{
                 'icon': 'circle',
                 'color': '#C2A83D',
@@ -1274,7 +1274,7 @@ var themeRailroads = {
 // insert our themes
 nosql.on('load', function() {
     nosql.insert([
-        themeAnthro,
+        themeForeign,
         themeHistory,
         themeReligion,
         themeRailroads

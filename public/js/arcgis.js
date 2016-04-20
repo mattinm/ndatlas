@@ -15,16 +15,16 @@ require([
     "esri/tasks/query"
 ], function(Color, /*Legend,*/ Map, InfoTemplate, Scalebar, Point) {
     // create the map
-    map = new Map("mapDiv", {/*
-        center: [-100.27, 47.29]/*,
-        zoom: 7/*,
-        basemap: "topo"*/
+    map = new Map("mapDiv", {
+        center: [-100.27, 47.29],
+        zoom: 7,
+        basemap: "topo"
     });
 
     console.log(arcmapurl);
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(arcmapurl);
-    layer.setDisableClientCaching(true);
-    layer.setVisibleLayers(visible);
+    //layer.setDisableClientCaching(true);
+    //layer.setVisibleLayers(visible);
     layer.setMinScale(0);
 
     // add the layer info on load

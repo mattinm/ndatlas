@@ -42,12 +42,12 @@ require([
     console.log($("#loading").css('left'));
 
     map = new Map("mapDiv", {
-        //center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
-        //zoom: 8,
-        //basemap: "gray"
+        center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
+        zoom: 8,
+        basemap: "terrain"
         
         //These numbers are general approximations
-        center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
+        //center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
     });
 
     var scale = (15000 * (3200 - document.getElementById("mapDiv").offsetWidth)) / 11;
