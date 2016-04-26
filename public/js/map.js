@@ -39,7 +39,7 @@ require([
     "esri/graphic",
     "esri/geometry/webMercatorUtils"
 ], function(Color, Map, Scalebar, InfoTemplate, ArcGISTiledMapServiceLayer, Point, SpatialReference, graphic, webMercatorUtils) {
-    console.log($("#loading").css('left'));
+    //console.log($("#loading").css('left'));
 
     map = new Map("mapDiv", {
         center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
@@ -66,12 +66,12 @@ require([
     layer.on("load", function(e) {
         values = [];
         $.each(togglableLayers, function(index, value) {
-            console.log(index);
-            console.log(layer.layerInfos[value]);
+            //console.log(index);
+            //console.log(layer.layerInfos[value]);
             values.push(parseInt(layer.layerInfos[value].name));
         });
-        console.log("LAYERS " + values);
-        //TODO: add topographic map background
+        
+        //console.log("LAYERS " + values);
         min = values[0];
         max = values[values.length-1];
         difference = (max - min);
@@ -83,7 +83,7 @@ require([
         $.each(values, function(index, value) {
             range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
         });
-        console.log(range);
+        //console.log(range);
 
         $("#toggleSlider").noUiSlider({
             start: parseInt(layer.layerInfos[togglableLayers[0]].name),
@@ -127,10 +127,10 @@ require([
                     if (endYears[iYear] > $(this).val() && iYear != oldLayer) {
                         // jump to new content
                         oldLayer = iYear;
-                        console.log("Offset: " + ($('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 254));
                         $('#story').animate({
 			                scrollTop: $('#title' + iYear).offset().top + $("#story:not(:animated)").scrollTop() - 254
 		                }, 'slow');
+		                
                         break;
                     }
                 }
@@ -305,7 +305,7 @@ function executeQueryTask(evt) {
     //Execute task and call showResults on completion
     //build query task
     if ($('#toggleSlider').val()) {
-        console.log("Executing task: " + mapUrl + "/" + getCurrentLayer());
+        //console.log("Executing task: " + mapUrl + "/" + getCurrentLayer());
         queryTask = new esri.tasks.QueryTask(mapUrl + "/" + getCurrentLayer());
         queryTask.execute(query, showResults);
     }
@@ -409,15 +409,12 @@ function drawChart() {
         
         //Anthropology
         if (layerID <= 14) {
+            //Skip year 1960
             if (year == 1960) {
                 year += 10;
             }
             
-            if (layerID == 5) {
-                chartQuery.outFields = [
-                    "Ger" + year, "Rus" + year, "Nor" + year
-                ];
-            } else if (layerID == 10) {
+            if (layerID == 10) {
                 chartQuery.outFields = [
                     "DTJ004", "DTJ020"
                 ];
@@ -438,29 +435,15 @@ function drawChart() {
                     "Ger" + year, "Rus" + year, "Nor" + year
                 ];
             }
-            
-            if (layerID == 13) {
-                year += 3;
-            } else {
-                year += 10;
-            }
-            
+                        
             fields = 3;
-            chartQueryTask.execute(chartQuery, chartResults);
         //History
         } else if (layerID >= 18 && layerID <= 31) {
             chartQuery.outFields = [
                 "Y" + year
             ];
-            
-            if (layerID == 30) {
-                year += 3;
-            } else {
-                year += 10;
-            }
-            
+                        
             fields = 2;
-            chartQueryTask.execute(chartQuery, chartResults);
         //Religion
         } else if (layerID >= 65 && layerID <= 68) {
             if (layerID == 65) {
@@ -473,11 +456,20 @@ function drawChart() {
                 ];
             }
             
-            year += 10;
             fields = 4;
-            chartQueryTask.execute(chartQuery, chartResults);
         } else {
             chartQuery.outFields = [ "*" ];
+        }
+        
+        //Execute QueryTask
+        chartQueryTask.execute(chartQuery, chartResults);
+        
+        //Increment year
+        //Jump to 2013 if year is 2010 on Anthropology and Population
+        if (layerID == 13 || layerID == 30) {
+            year += 3;
+        } else {
+            year += 10;
         }
     }
 }
