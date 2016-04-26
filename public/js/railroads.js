@@ -48,35 +48,34 @@ require([
     "dojo/query",
     "dojo/domReady!"
 ], function(Color, Map, Extent, Scalebar, FeatureLayer, LayerDrawingOptions, DynamicLayerInfo, ArcGISDynamicMapServiceLayer, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer, DotDensityRenderer, ScaleDependentRenderer, InfoTemplate, ArcGISTiledMapServiceLayer, Query, FeatureSet, Point, SpatialReference, QueryTask, Graphic, webMercatorUtils, query) {
-    console.log($("#loading").css('left'));
-        //Loads in basemap topo instead of county layer
+    //console.log($("#loading").css('left'));
+    //Loads in basemap topo instead of county layer
     map = new Map("mapDiv", {
-                  basemap: "dark-gray",
-                  center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
-                  zoom: 7,
+        basemap: "gray",
+        center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
+        zoom: 7,
     });
     
-        var layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
+    var layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
         
-        var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
-                InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
-                outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
-        }); //Layer that contains the rails for the railroad
+    var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
+        InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
+        outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
+    }); //Layer that contains the rails for the railroad
+            
+    var nullSymbol = new SimpleMarkerSymbol().setSize(0);
+    featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
         
-        
-        var nullSymbol = new SimpleMarkerSymbol().setSize(0);
-        featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
-        
-        var symbol = new SimpleLineSymbol (
-            SimpleLineSymbol.STYLE_SHORTDOT,
-            new Color([0,255,0]),
-            2
-        );
-        featureLayer.setSelectionSymbol(symbol);
-        
-        
-        //map.addLayer(layer);
-        map.addLayer(featureLayer);
+    var symbol = new SimpleLineSymbol (
+        SimpleLineSymbol.STYLE_SHORTDOT,
+        new Color([128, 128, 128]), 2
+    );
+    
+    featureLayer.setSelectionSymbol(symbol);
+            
+    //map.addLayer(layer);
+    map.addLayer(featureLayer);
+    
     // create our slider to show every 5 years after 1886
     layer.on("load", function(e) {
         values = [];
@@ -86,14 +85,16 @@ require([
     
         years = [];
         for(i=1872; i<=2015; i++) {
-             if (i == 1872) {
-             years.push(i);
-             }
-             if (i % 5 == 0) {
+            if (i == 1872) {
                 years.push(i);
-             }
+            }
+
+            if (i % 5 == 0) {
+                years.push(i);
+            }
         }
-        console.log(values);
+
+        //console.log(values);
 
         min = years[0];
         max = years[years.length-1];
@@ -106,7 +107,8 @@ require([
         $.each(years, function(index, value) {
             range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
         });
-        console.log(range);
+        
+        //console.log(range);
 
         $("#toggleSlider").noUiSlider({
             start: years[0],
@@ -158,29 +160,29 @@ require([
             layer.setVisibleLayers(currentLayers);
             
             var iYear = Math.floor($(this).val());
-                              //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
-                              //featureLayer.maxRecordCount = 2000;
-                              var query = new Query();
-                              query.returnGeometry = true;
-                              query.where = "Built3 < " + iYear + " AND " + "ABAND_YR > " + iYear;
-                              console.log(query);
-                              featureLayer.queryFeatures(query, function(response) {
-                              var feature;
-                              var features = response.features;
-                              console.log(features);
-                              var inBuffer = [];
-                              console.log(features.length);
-                              for (var i = 0; i < features.length; i++) {
-                                feature = features[i];
-                                inBuffer.push(feature.attributes[featureLayer.objectIdField]);
-                              }
-                              console.log(inBuffer);
-                              var query = new Query();
-                              query.objectIds = inBuffer;
-                              featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
-                              
-                              });
-    });
+            //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
+            //featureLayer.maxRecordCount = 2000;
+            var query = new Query();
+            query.returnGeometry = true;
+            query.where = "Built3 < " + iYear + " AND " + "ABAND_YR > " + iYear;
+            //console.log(query);
+            featureLayer.queryFeatures(query, function(response) {
+                var feature;
+                var features = response.features;
+                //console.log(features);
+                var inBuffer = [];
+                //console.log(features.length);
+                for (var i = 0; i < features.length; i++) {
+                    feature = features[i];
+                    inBuffer.push(feature.attributes[featureLayer.objectIdField]);
+                }
+                
+                //console.log(inBuffer);
+                var query = new Query();
+                query.objectIds = inBuffer;
+                featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);              
+            });
+        });
             
         // set as the current layer
         oldLayer = 0;
@@ -189,6 +191,7 @@ require([
         layer.setVisibility(true);
         //layer.setVisibleLayers(getCurrentLayer($(this).val()));
     });
+    
     // hide the loading icon when the dynamic layer finishes updating
     featureLayer.on("selection-complete", hideLoading);
     layer.on("update-end", hideLoading);
@@ -205,27 +208,22 @@ require([
 
 function getCurrentLayer() {
     val = $('#toggleSlider').val();
-    console.log(val);
+    //console.log(val);
+    
     if (val < 1870) { //before 1870 Layer 36
         return values[0];
-    }
-    else if (val > 1869 && val < 1880) { //1870 to 1880 Layer 37
+    } else if (val > 1869 && val < 1880) { //1870 to 1880 Layer 37
         return values[1];
-    }
-    else if (val > 1879 && val < 1890) { //1880 to 1890 Layer 38
+    } else if (val > 1879 && val < 1890) { //1880 to 1890 Layer 38
         return values[2];
-    }
-    else if (val > 1889 && val < 1910) { //1890 to 1900 Layer 39
+    } else if (val > 1889 && val < 1910) { //1890 to 1900 Layer 39
         return values[3];
-    }
-    else if (val > 1909 && val < 1920) { //1900 to 1910 Layer 40
+    } else if (val > 1909 && val < 1920) { //1900 to 1910 Layer 40
         return values[4];
-    }
-    else {
+    } else {
         //After 1920 Layer 41
         return values[5];
     }
-
 
     /*
     // find the index of this layer
@@ -298,11 +296,11 @@ $('#slider').click(function() {
                 map.resize(true);
                 map.reposition(true);
             });
+            
             $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
             resetLoadingLocation();
         });
-    }
-    else {
+    } else {
         $('#narrative').animate({width: 460}, function() {
             $('#slider').addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
             $('#story').fadeIn();
@@ -310,6 +308,7 @@ $('#slider').click(function() {
                 map.resize(true);
                 map.reposition(true);
             });
+            
             resetLoadingLocation();
         });
     }
