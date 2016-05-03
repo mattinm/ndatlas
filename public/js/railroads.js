@@ -1,3 +1,9 @@
+google.charts.load('current', {packages: ['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+var data;
+var chart;
+var options;
+
 function resizeNarrative() {
     $('#map,#narrative,#story,#map,body,html,#loadingDiv').css({
         'height': $(window).height()-54
@@ -317,3 +323,71 @@ $('#slider').click(function() {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+function drawChart() {
+    var year;
+    chart = new google.visualization.LineChart(document.getElementById('graph'));
+    data = new google.visualization.DataTable();
+    data.addColumn('string', 'Decade');
+    data.addColumn('number', 'Miles');
+    
+    options = {
+        title: 'Railroad Mileage',
+        vAxis: { viewWindow:{ min: 0 }},
+        hAxis: { showTextEvery: 4},
+        curveType: 'function',
+        legend: { position: 'bottom' },
+        colors: ['#000000'],
+        backgroundColor: '#f6f6f6'
+    };
+
+    year = 1872;
+
+    var layerID;
+    var length = togglableLayers.length;
+    var chartQuery = new esri.tasks.Query();
+    chartQuery.returnGeometry = false;
+    var chartQueryTask;
+    
+    //Loop through layers and prepare queries depending on specific layers
+    while (year <= 2015) {
+        chartQuery.where = "Built3 < " + year + " AND " + "ABAND_YR > " + year;
+        chartQueryTask = new esri.tasks.QueryTask("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35");
+        
+        chartQuery.outFields = [
+            "miles"
+        ];
+        
+        //Execute QueryTask
+        chartQueryTask.execute(chartQuery, _func(year));
+        
+        if (year % 5 != 0) {
+            year += 3;
+        } else {
+            year += 5;
+        }
+    }
+}
+
+var _func = function(year) {
+    return function(results) {
+        //Initialize array for results and populate it with empty data to allow for int addition
+        var total = 0;
+    
+        //Loop through every county in results layer
+        var resultCount = results.features.length;
+        for (var j = 0; j < resultCount; j++) {
+            //Loop through every attribute and add the int value to the totals array
+            var countyAttributes = results.features[j].attributes;
+            for (var attribute in countyAttributes) {
+                total += parseInt(countyAttributes[attribute]);
+            }
+        }
+    
+        //Add values to chart data table, sort the rows, and draw the chart
+        data.addRow([String(year), total]);        
+        data.sort([{column: 0}]);
+        chart.draw(data, options);
+    };
+};
+
