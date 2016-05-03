@@ -7,7 +7,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 460px;
+    /*width: 460px;*/
     z-index: 1000;
     background-color: #f6f6f6;
     overflow-y: hidden;
