@@ -7,11 +7,10 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    /*width: 460px;*/
+    width: 460px;
     z-index: 1000;
     background-color: #f6f6f6;
     overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 #mainBody {
@@ -28,6 +27,7 @@ body {
     bottom: 0;
     left: 0;
     right: 460px;
+    z-index: 0 !important;
 }
 
 #mapDiv {
@@ -44,10 +44,12 @@ body {
   
 #story{
     overflow-y: scroll;
+    z-index: 1000;
     height: calc(100vh - 251px) !important;
 }
 
 #slider {
+    z-index: 1000;
     cursor: pointer;
 }
     

@@ -1,8 +1,6 @@
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
-var data;
-var chart;
-var options;
+var data, chart, options, fields;
 
 function resizeNarrative() {
     $('#map,#narrative,#story,#map,body,html,#loadingDiv').css({
@@ -45,33 +43,20 @@ require([
         center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})),
         zoom: 7,
         basemap: "gray"
-        
-        //These numbers are general approximations
-        //center: new Point(2000000, 150000, new SpatialReference({wkid: 102720}))
     });
-    
-    // add the basemap
-    /*
-    var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
-        opacity: 0.0,
-        showAttribution: false
-    });  
-    map.addLayer(streets); 
-    */
 
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
+    //var scale = (10000 * (5000 - document.getElementById("mapDiv").offsetWidth)) / 10;
+    //map.setScale(scale);
     //layer.setDisableClientCaching(true);
 
     // create our slider
     layer.on("load", function(e) {
         values = [];
         $.each(togglableLayers, function(index, value) {
-            //console.log(index);
-            //console.log(layer.layerInfos[value]);
             values.push(parseInt(layer.layerInfos[value].name));
         });
-        
-        //console.log("LAYERS " + values);
+
         min = values[0];
         max = values[values.length-1];
         difference = (max - min);
@@ -83,7 +68,6 @@ require([
         $.each(values, function(index, value) {
             range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
         });
-        //console.log(range);
 
         $("#toggleSlider").noUiSlider({
             start: parseInt(layer.layerInfos[togglableLayers[0]].name),
@@ -160,18 +144,8 @@ require([
         scalebarUnit: "dual"
     });
 
-    /*
-    var legend = new Legend({
-        map: map
-    }, "legendDiv");
-    legend.startup();
-    */
-
     //Listen for click event on the map, when the user clicks on the map call executeQueryTask function.
     dojo.connect(map, "onClick", executeQueryTask);
-
-    //Can listen for onComplete event to process results or can use the callback option in the queryTask.execute method.
-    //dojo.connect(queryTask, "onComplete", showResults);
 
     //build query filter
     query = new esri.tasks.Query();
@@ -183,6 +157,7 @@ require([
         infoText
     );
 
+    //Define colors of selected county
     symbol = new esri.symbol.SimpleFillSymbol(
         esri.symbol.SimpleFillSymbol.STYLE_SOLID,
         new esri.symbol.SimpleLineSymbol(
@@ -193,7 +168,7 @@ require([
 });
 
 function getCurrentLayer() {
-    // find the index of this layer
+    //Find the index of this layer
     val = $('#toggleSlider').val();
     for (i = 0; i < values.length; ++i) {
         if (val == values[i]) {
@@ -233,8 +208,7 @@ $('#slider').click(function() {
             $('#slider').removeClass('expanded').find('i').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-left');
             resetLoadingLocation();
         });
-    }
-    else {
+    } else {
         $('#narrative').animate({width: 460}, function() {
             $('#slider').addClass('expanded').find('i').addClass('glyphicon-chevron-right').removeClass('glyphicon-chevron-left');
             $('#story').fadeIn();
@@ -247,6 +221,7 @@ $('#slider').click(function() {
     }
 });
 
+//Handle click on the map to generate formatted infoWindow based on theme
 function executeQueryTask(evt) {
     //onClick event returns the evt point where the user clicked on the map.
     //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
@@ -299,20 +274,17 @@ function executeQueryTask(evt) {
         //infoTemplate.setTitle(infoTitle);
         //infoTemplate.setContent(infoText);
     }
-    
-    //console.log("CLICK");
 
     //Execute task and call showResults on completion
-    //build query task
     if ($('#toggleSlider').val()) {
-        //console.log("Executing task: " + mapUrl + "/" + getCurrentLayer());
         queryTask = new esri.tasks.QueryTask(mapUrl + "/" + getCurrentLayer());
         queryTask.execute(query, showResults);
     }
 }
 
+//Create infowindow and display on the map
 function showResults(featureSet) {
-    //remove all graphics on the maps graphics layer
+    //Remove all graphics on the maps graphics layer
     map.graphics.clear();
     //map.infoWindow.hide();
     map.infoWindow.clearFeatures();
@@ -336,7 +308,7 @@ $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-var fields;
+//Generate queries for every layer displayed on map to build sidebar graph
 function drawChart() {
     var year;
     chart = new google.visualization.LineChart(document.getElementById('graph'));
@@ -349,7 +321,6 @@ function drawChart() {
             title: 'Foreign Born Population',
             vAxis: { viewWindow:{ min: 0 }},
             hAxis: { showTextEvery: 2},
-            //curveType: 'function',
             legend: { position: 'bottom' },
             colors: ['#0084A8', '#89CD66', '#FF7F7F'],
             backgroundColor: '#f6f6f6'
@@ -364,7 +335,7 @@ function drawChart() {
     //History
     } else if (togglableLayers[0] >= 18 && togglableLayers[0] <= 31) {
         options = {
-            title: 'Making of the State to Current',
+            title: 'North Dakota Population',
             vAxis: { viewWindow:{ min: 0 }},
             hAxis: { showTextEvery: 2},
             legend: { position: 'bottom' },
@@ -379,7 +350,7 @@ function drawChart() {
     //Religion
     } else if (togglableLayers[0] >= 65 && togglableLayers[0] <= 68) {
         options = {
-            title: 'Religious Affiliation History',
+            title: 'Religious Affiliations of North Dakota',
             vAxis: { viewWindow:{ min: 0 }},
             legend: { position: 'bottom' },
             colors: ['#C2A83D', '#00D69E', '#9C00CC', '#F00'],
@@ -462,7 +433,7 @@ function drawChart() {
         }
         
         //Execute QueryTask
-        chartQueryTask.execute(chartQuery, chartResults);
+        chartQueryTask.execute(chartQuery, _func(year));
         
         //Increment year
         //Jump to 2013 if year is 2010 on Anthropology and Population
@@ -474,59 +445,46 @@ function drawChart() {
     }
 }
 
-function chartResults(results) {
-    //Initialize array for results and populate it with empty data to allow for int addition
-    var totals = [];
-    for (var i = 0; i < fields; i++) {
-        totals.push(0);
-    }
-    
-    //Loop through every county in results layer
-    var resultCount = results.features.length;
-    for (var j = 0; j < resultCount; j++) {
-        //Grab year value from the decade in the first field's name
-        var countyAttributes = results.features[j].attributes;
-        for (var attribute in countyAttributes) {
-            year = attribute.replace ( /[^\d.]/g, '' );
-            break;
+//Builds function that returns a function rendering the formatted graph
+//This is done in order to pass in the decade that each dataset corresponds to
+var _func = function(year) {
+    return function(results) {
+        //Initialize array for results and populate it with empty data to allow for int addition
+        var totals = [];
+        for (var i = 0; i < fields; i++) {
+            totals.push(0);
         }
-        
-        //Loop through every attribute and add the int value to the totals array
-        var k = 0;
-        for (var attribute in countyAttributes) {            
-            totals[k] += parseInt(countyAttributes[attribute]);
-            k++;
+    
+        //Loop through every county in results layer
+        var resultCount = results.features.length;
+        for (var j = 0; j < resultCount; j++) {
+            //Loop through every attribute and add the int value to the totals array
+            var k = 0;
+            var countyAttributes = results.features[j].attributes;
+            for (var attribute in countyAttributes) {            
+                totals[k] += parseInt(countyAttributes[attribute]);
+                k++;
+            }
         }
-    }
     
-    //Fix incorrect years due to database inconsistencies
-    if (year > 2010) {
-        year = '2013';
-    } else if (year == '004' || year == '020') {
-        year = '1980';
-    } else if (year == '007' || year == '021') {
-        year = '2000';
-    } else if (year == '') {
-        year = '2010';
-    }
+        //Add values to chart data table, sort the rows, and draw the chart
+        //Not sure how to add varying number of parameters to a Google charts library method
+        switch(fields) {
+            case 2:
+                data.addRow([String(year), totals[0]]);
+                break;
+            case 3:
+                data.addRow([String(year), totals[0], totals[1], totals[2]]);
+                break;
+            case 4:
+                data.addRow([String(year), totals[0], totals[1], totals[2], totals[3]]);
+                break;
+        }
     
-    //Add values to chart data table, sort the rows, and draw the chart
-    //Not sure how to add varying number of parameters to a Google charts library method
-    switch(fields) {
-        case 2:
-            data.addRow([year, totals[0]]);
-            break;
-        case 3:
-            data.addRow([year, totals[0], totals[1], totals[2]]);
-            break;
-        case 4:
-            data.addRow([year, totals[0], totals[1], totals[2], totals[3]]);
-            break;
-    }
-    
-    data.sort([{column: 0}]);
-    chart.draw(data, options);
-}
+        data.sort([{column: 0}]);
+        chart.draw(data, options);
+    };
+};
 
 //var scroll = false;
 
