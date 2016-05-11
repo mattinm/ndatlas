@@ -4,7 +4,7 @@ block css
     link(rel="stylesheet", href="//js.arcgis.com/3.12/esri/css/esri.css")
     link(rel="stylesheet", href="/css/jquery.nouislider.min.css")
     link(rel="stylesheet", href="/css/jquery.nouislider.pips.min.css")
-    link(href="/css/countychurches.css", rel="stylesheet")
+    link(href="/css/reservation.css", rel="stylesheet")
 
 
 block body
@@ -65,10 +65,10 @@ block js
         mapLayer="#{layer}";
         startYears=[#{startYears}];
         endYears=[#{endYears}];
-        togglableLayers=[#{toggleableLayers}];
-        backgroundLayers=[1];
+        countyLayers=[#{countyLayers}];
+        reservationLayers=[#{reservationLayers}];
         infoTitle="Title"
         infoText="${*}"
     script(src="//js.arcgis.com/3.12/")
     script(src="/js/jquery.nouislider.all.min.js")
-    script(src="/js/countychurches.js")
+    script(src="/js/reservation.js")

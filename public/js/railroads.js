@@ -51,7 +51,7 @@ require([
     console.log($("#loading").css('left'));
         //Loads in basemap topo instead of county layer
     map = new Map("mapDiv", {
-                  basemap: "dark-gray",
+                  basemap: "terrain",
                   center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
     });
@@ -69,7 +69,7 @@ require([
         
         var symbol = new SimpleLineSymbol (
             SimpleLineSymbol.STYLE_SHORTDOT,
-            new Color([0,255,0]),
+            new Color([0,0,0]),
             2
         );
         featureLayer.setSelectionSymbol(symbol);
@@ -83,40 +83,59 @@ require([
         $.each(togglableLayers, function(index, value) {
             values.push(layer.layerInfos[value].id);
         });
-    
+        /*
+        shownYears = [];
+        $.each(railChanges, function(index, value) {
+            shownYears.push(value);
+        });
+        console.log(shownYears);
         years = [];
-        for(i=1872; i<=2015; i++) {
-             if (i == 1872) {
+        $.each(shownYears, function(index, value) {
+            if (value % 5 == 0) {
+                years.push(value);
+            }
+        })
+        console.log(years);
+        */
+        years = [];
+        for(i=1870; i<=2015; i++) {
+             if (i == 1870) {
              years.push(i);
              }
              if (i % 5 == 0) {
                 years.push(i);
              }
         }
-        console.log(values);
-
-        min = years[0];
-        max = years[years.length-1];
+        shownYears = [];
+        for(i=1870; i<=2015; i++) {
+             shownYears.push(i);
+        }
+        console.log(shownYears);
+        
+        
+        
+        min = shownYears[0];
+        max = shownYears[shownYears.length-1];
         difference = (max - min);
         range = {
             'min': min,
             'max': max
         };
 
-        $.each(years, function(index, value) {
+        $.each(shownYears, function(index, value) {
             range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
         });
         console.log(range);
 
         $("#toggleSlider").noUiSlider({
-            start: years[0],
+            start: shownYears[0],
             range: range,
             snap: true
         });
 
         $('#toggleSlider').noUiSlider_pips({
             mode: 'values',
-            density: 10,
+            density: .5,
             values: years,
             stepped: true
         });
@@ -177,6 +196,7 @@ require([
                               console.log(inBuffer);
                               var query = new Query();
                               query.objectIds = inBuffer;
+                              //symbol.setColor(new Color([255,0,0]));
                               featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
                               
                               });

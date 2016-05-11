@@ -1069,6 +1069,7 @@ var themeRailroads = {
             'startYears': [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2013],
             'endYears': [1929, 1939, 1949, 1959, 1969, 1979, 1989, 1999, 2009, 2012, 2013],
             'toggleableLayers': [36, 37, 38, 39, 40, 41],
+            'railChnages': [1872, 1873, 1879, 1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889, 1890, 1892, 1893, 1896, 1897, 1898, 1899, 1900, 1901, 1902, 1903, 1904, 1905, 1906, 1907, 1908, 1909, 1910, 1912, 1913, 1914, 1916, 1919, 1928, 1936, 1954, 1955, 1958, 1962, 1970, 1972, 1973, 1974, 1976, 1977, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1991, 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013],
         },
         'stories': [{
             'title': 'Introduction',
@@ -1270,14 +1271,105 @@ var themeRailroads = {
         }]//stories
     }]//chapters
 };//themeRailroads
-    
+
+//Coded By Drew Balira
+var themeCountyChurches = {
+    'slug': 'countychurches',
+    'name': 'County Churches',
+    'chapters': [{
+        'slug': 'map',
+        'name': 'County Churches',
+        'blurb': 'County Churches',
+        'type': 'map',
+        'map': {
+            'url': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+            'layer': '56',
+            'toggleableLayers': [57, 58, 59, 60, 61, 62],
+            'legend': [{
+                'icon': 'images/AOG.png',
+                'text': 'Assembly of God'
+            },
+            {
+                'icon': 'images/Bap.png',
+                'text': 'Baptist'
+            },
+            {
+                'icon': 'images/Cat.png',
+                'text': 'Catholic'
+            },
+            {
+                'icon': 'images/COB.png',
+                'text': 'Church of Brethren'
+            },
+            {
+                'icon': 'images/Con.png',
+                'text': 'Congregational'
+            },
+            {
+                'icon': 'images/Eva.png',
+                'text': 'Evangelical'
+            },
+            {
+                'icon': 'images/Lut.png',
+                'text': 'Lutheran'
+            },
+            {
+                'icon': 'images/Men.png',
+                'text': 'Mennonite'
+            },
+            {
+                'icon': 'images/Met.png',
+                'text': 'Methodist'
+            },
+            {
+                'icon': 'images/Other.png',
+                'text': 'Other'
+            },
+            {
+                'icon': 'images/Pre.png',
+                'text': 'Presbytarian'
+            },
+            {
+                'icon': 'images/Ref.png',
+                'text': 'Reformed'
+            },
+            {
+                'icon': 'images/Sev.png',
+                'text': 'Seventh Day Adventist'
+            }]
+        },
+        'stories': [{
+            'title': 'Introduction',
+            'citations': [
+            ],
+            'bibliograpy': [
+            ],
+            'sections': [{
+                'content': 'Of all the human influences on North Dakota\'s landscape, economy and politics, the railroads certainly have been the greatest.'
+            },
+            {
+                'content': 'Railroad companies largely chose sites for the state\'s major cities and most of its smaller towns. Railroads brought settlement, even advertising for immigrants in Europe and then delivering communities -- tied by geography and faith -- to pre-selected spots in the new state. Railroads decided where the grain elevators would be, what the pattern of shipping would be, how much it would cost to ship commodities and where the commodities would go. To a large extent, the railroads even determined what the commodities would be.'
+            },
+            {
+                'content': 'Railroad companies were deeply involved in North Dakota\'s politics as well, helping to determine that there would be two Dakotas instead of only one, then setting out to dominate, and sometimes bully, the government of the northern state. Railroad agents chose candidates, determined the outcome of legislation, sent the state\'s first several U.S. senators to Washington. The railroads weren\'t always successful, but they were always active. Much else in North Dakota politics was a reaction to railroad activity.'
+            },
+            {
+                'content': 'Railroading in North Dakota divides quite neatly into four eras: The Transcontinental Era, The Branch Line Era, The Retrenchment Era, And the Era of Response to specific situations, challenges and opportunities.'
+            },
+            {
+                'content': 'These overlap to some extent, but still they provide a useful framework for understanding the influence of railroads on the state\'s history.'
+            }]
+        }]
+    }]
+};
 // insert our themes
 nosql.on('load', function() {
     nosql.insert([
         themeForeign,
         themeHistory,
         themeReligion,
-        themeRailroads
+        themeRailroads,
+        //themeCountyChurches
     ]);
 });
 

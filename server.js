@@ -50,19 +50,56 @@ app.get('/countychurches', function (req, res) {
         'layer': '56',
         'toggleableLayers': [57, 58, 59, 60, 61, 62],
         'legend': [{
-                'icon': 'circle',
-                'color': '#F00',
-                'text': '1 dot = 100 people'
+                'icon': 'images/AOG.png',
+                'text': 'Assembly of God'
             },
             {
-                'icon': 'circle',
-                'color': '#000',
-                'text': 'Major city'
+                'icon': 'images/Bap.png',
+                'text': 'Baptist'
             },
             {
-                'icon': 'square',
-                'color': '#97DBF2',
-                'text': 'Water body'
+                'icon': 'images/Cat.png',
+                'text': 'Catholic'
+            },
+            {
+                'icon': 'images/COB.png',
+                'text': 'Church of Brethren'
+            },
+            {
+                'icon': 'images/Con.png',
+                'text': 'Congregational'
+            },
+            {
+                'icon': 'images/Eva.png',
+                'text': 'Evangelical'
+            },
+            {
+                'icon': 'images/Lut.png',
+                'text': 'Lutheran'
+            },
+            {
+                'icon': 'images/Men.png',
+                'text': 'Mennonite'
+            },
+            {
+                'icon': 'images/Met.png',
+                'text': 'Methodist'
+            },
+            {
+                'icon': 'images/Other.png',
+                'text': 'Other'
+            },
+            {
+                'icon': 'images/Pre.png',
+                'text': 'Presbytarian'
+            },
+            {
+                'icon': 'images/Ref.png',
+                'text': 'Reformed'
+            },
+            {
+                'icon': 'images/Sev.png',
+                'text': 'Seventh Day Adventist'
             }],
         'themes': themes
     });
@@ -72,6 +109,15 @@ app.get('/ghosttowns', function (req, res) {
     res.render('ghosttowns', {
         'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
         'layer': '71',
+        'themes': themes
+    });
+});
+
+app.get('/reservation', function (req, res) {
+    res.render('reservation', {
+        'mapurl': '//undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer',
+        'countyLayers': [50, 48, 45],
+        'reservationLayers': [49, 47, 46, 44],
         'themes': themes
     });
 });
@@ -178,7 +224,11 @@ app.get('/themes/:theme/:chapter', function(req, res) {
         }
         if (req.params.theme == 'railroads') {
             res.render('railroads', data);
-        } else {
+        }
+        else if (req.params.theme == 'countychurches') {
+            res.render('countychurches', data);
+        }
+        else {
             res.render('map', data);
           }
     } else {

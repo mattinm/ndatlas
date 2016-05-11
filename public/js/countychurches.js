@@ -182,7 +182,7 @@ require ([
                     var iYear = Math.floor($(this).val());
                     var query = new Query();
                     query.returnGeometry = true;
-                    query.where = "Date_Built <= " + iYear;
+                    query.where = "Date_Built <= " + iYear + " AND " + "status3 >= " + iYear;
                     console.log(query);
                     featureLayer.queryFeatures(query, function(response) {
                         var feature;
