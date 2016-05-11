@@ -14,6 +14,11 @@ block body
                 div(id="legendDiv")
                     h3 Legend
                     table(id="legendTable")
+                            - for (var iLegend = 0; iLegend < legend.length; ++iLegend)
+                                tr
+                                    td
+                                        img(src="#{legend[iLegend].icon}", id="icon", sytle="width:10px;height:10px;")
+                                    td= legend[iLegend].text
                 div(id="loadingDiv")
                     img(src="/images/loading.gif", id="loading", style="position: relative;top: 50%;left: 300px;")
             div(id="mapFooter")

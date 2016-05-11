@@ -129,7 +129,6 @@ function getCountyLayer() {
     val = $('#toggleSlider').val();
     console.log(val);
     if (val == 1880.00) { //before 1870 Layer 36
-        console.log("FUCK");
         return counViews[0];
     }
     else if (val == 1890.00) { //1870 to 1880 Layer 37

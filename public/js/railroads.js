@@ -57,7 +57,6 @@ require([
     //console.log($("#loading").css('left'));
     //Loads in basemap topo instead of county layer
     map = new Map("mapDiv", {
-<<<<<<< HEAD
                   basemap: "gray",
                   center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
                   zoom: 7,
@@ -80,29 +79,7 @@ require([
             2
         );
         featureLayer.setSelectionSymbol(symbol);
-=======
-        basemap: "gray",
-        center: new Point(webMercatorUtils.lngLatToXY(-100.425, 47.3), new SpatialReference({wkid: 102100})), //Longitude and Latitude of where the center of the map will be
-        zoom: 7,
-    });
-    
-    var layer = new esri.layers.ArcGISDynamicMapServiceLayer(mapUrl);
->>>>>>> cb7e06023c1c40ceda8c2774d55883582d60870e
         
-    var featureLayer = new FeatureLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer/35", {
-        InfoTemplate: new InfoTemplate("Built: ${Built3}", "${*}"),
-        outFields: ["SOURCE_ID", "RAIL_TYPE", "ABAND_YR", "BUILT_YR", "Built2", "Built3", "miles"]
-    }); //Layer that contains the rails for the railroad
-            
-    var nullSymbol = new SimpleMarkerSymbol().setSize(0);
-    featureLayer.setRenderer(new SimpleRenderer(nullSymbol));
-        
-    var symbol = new SimpleLineSymbol (
-        SimpleLineSymbol.STYLE_SHORTDOT,
-        new Color([128, 128, 128]), 2
-    );
-    
-    featureLayer.setSelectionSymbol(symbol);
             
     //map.addLayer(layer);
     map.addLayer(featureLayer);
@@ -120,7 +97,6 @@ require([
         });
         console.log(shownYears);
         years = [];
-<<<<<<< HEAD
         $.each(shownYears, function(index, value) {
             if (value % 5 == 0) {
                 years.push(value);
@@ -134,18 +110,9 @@ require([
              years.push(i);
              }
              if (i % 5 == 0) {
-=======
-        for(i=1872; i<=2015; i++) {
-            if (i == 1872) {
-                years.push(i);
-            }
-
-            if (i % 5 == 0) {
->>>>>>> cb7e06023c1c40ceda8c2774d55883582d60870e
                 years.push(i);
             }
         }
-<<<<<<< HEAD
         shownYears = [];
         for(i=1870; i<=2015; i++) {
              shownYears.push(i);
@@ -156,13 +123,8 @@ require([
         
         min = shownYears[0];
         max = shownYears[shownYears.length-1];
-=======
 
         //console.log(values);
-
-        min = years[0];
-        max = years[years.length-1];
->>>>>>> cb7e06023c1c40ceda8c2774d55883582d60870e
         difference = (max - min);
         range = {
             'min': min,
@@ -225,32 +187,6 @@ require([
             layer.setVisibleLayers(currentLayers);
             
             var iYear = Math.floor($(this).val());
-<<<<<<< HEAD
-                              //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
-                              //featureLayer.maxRecordCount = 2000;
-                              var query = new Query();
-                              query.returnGeometry = true;
-                              query.where = "Built3 < " + iYear + " AND " + "ABAND_YR > " + iYear;
-                              console.log(query);
-                              featureLayer.queryFeatures(query, function(response) {
-                              var feature;
-                              var features = response.features;
-                              console.log(features);
-                              var inBuffer = [];
-                              console.log(features.length);
-                              for (var i = 0; i < features.length; i++) {
-                                feature = features[i];
-                                inBuffer.push(feature.attributes[featureLayer.objectIdField]);
-                              }
-                              console.log(inBuffer);
-                              var query = new Query();
-                              query.objectIds = inBuffer;
-                              //symbol.setColor(new Color([255,0,0]));
-                              featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
-                              
-                              });
-    });
-=======
             //creating a query that looks for features in the layer that match a return geometry == true and the varibale 'Built3' less than the current year selected on the slider bar
             //featureLayer.maxRecordCount = 2000;
             var query = new Query();
@@ -274,7 +210,6 @@ require([
                 featureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);              
             });
         });
->>>>>>> cb7e06023c1c40ceda8c2774d55883582d60870e
             
         // set as the current layer
         oldLayer = 0;
