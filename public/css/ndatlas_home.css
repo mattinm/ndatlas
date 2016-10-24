@@ -21,8 +21,11 @@ body {
 }
 
 hr {
-	border-color: #a88100;
-	height: 3px;
+	border: 0;
+	background: #a88100;
+	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
+	height: 1px;
+		
 }
 
 #welcome_well {
