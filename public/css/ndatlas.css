@@ -1,0 +1,55 @@
+@font-face {
+	font-family: Raleway;
+	src: url(fonts/Raleway-Light.ttf);
+}
+
+@font-face {
+	font-family: Lato Light;
+	src: url(fonts/Lato-Light.ttf);
+
+}
+
+@font-face {
+	font-family: Lato Hairline;
+	src: url(fonts/Lato-Hairline.ttf);
+}
+
+@font-face {
+	font-family: Existence;
+	src: url(fonts/ExistenceLight.ttf);
+}
+
+body {
+	background-image: url('../images/nd2.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	/*background-color: #404040 70%;
+	background-image: radial-gradient(#404040, #000000);*/
+}
+
+#graph_well {
+	background-color: #A0A0A0;
+	border: #A0A0A0;
+}
+
+#narrative_well {
+	background-color: transparent;
+	border: transparent;
+	color: white;
+	font-family: Existence;
+}
+
+#narrative_well2 {
+	background-color: transparent;
+	border: transparent;
+	color: white;
+	font-family: Raleway;
+}
+
+#narrative_well3 {
+	background-color: transparent;
+	border: transparent;
+	color: white;
+	font-family: Lato Hairline;
+}
