@@ -2,29 +2,35 @@
 	font-family: Sigmar;
 	src: url(fonts/SigmarOne.otf);
 }
+
 @font-face {
 	font-family: Existence;
 	src: url(fonts/ExistenceLight.ttf);
 }
+
 @font-face {
 	font-family: Scriptina;
 	src: url(fonts/Scriptina.ttf);
 }
+
 body {
 	overflow-x: hidden;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
+	background-image: url('../images/nd_background2_f.jpg');
 }
+
 #space {
 	border: 0;
 	background: rgb(255, 255, 255);
 }
+
 hr {
 	border: 0;
 	background: #a88100;
 	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
-	height: 1px;
+	height: 3px;
 }
 
 #title {
@@ -32,7 +38,7 @@ hr {
 	font-size: 60px;
 	line-height: 150%;
 	text-align: center;
-	color: black; 
+	color: white; 
 }
 
 h5 {
@@ -55,8 +61,8 @@ h5 {
 }
 
 .well {
-	background-color: rgba(245, 245, 245, 0);
-	border: 1px solid black;/*#996600;	*/
+	background-color: rgba(245, 245, 245, 0.6);
+	border: 1px solid white;/*#996600;	*/
 }
 
 img {
