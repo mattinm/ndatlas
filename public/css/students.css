@@ -1,85 +1,73 @@
 @font-face {
-font-family: Sigmar;
-src: url(fonts/SigmarOne.otf);
+	font-family: Sigmar;
+	src: url(fonts/SigmarOne.otf);
 }
 @font-face {
-font-family: Existence;
-src: url(fonts/ExistenceLight.ttf);
+	font-family: Existence;
+	src: url(fonts/ExistenceLight.ttf);
 }
 @font-face {
-font-family: Scriptina;
-src: url(fonts/Scriptina.ttf);
+	font-family: Scriptina;
+	src: url(fonts/Scriptina.ttf);
 }
 body {
-overflow-x: hidden;
-background-repeat: no-repeat;
-background-size: 100% 100%;
-background-attachment: fixed;
+	overflow-x: hidden;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
 }
 #space {
-border: 0;
-background: rgb(255, 255, 255);
+	border: 0;
+	background: rgb(255, 255, 255);
 }
 hr {
-border: 0;
-background: #a88100;
-background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
-height: 1px;
+	border: 0;
+	background: #a88100;
+	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
+	height: 1px;
 }
-#welcome_well {
-background-color: rgba(255, 255, 255, 0.6);
-}
-#text_well {
-background-color: rgba(255, 255, 255, 0.6);
-font-family: Existence;
-font-size: 20px;
-font-weight: bold;
-}
+
 #title {
-font-family: Scriptina;
-font-size: 60px;
-line-height: 150%;
-text-align: center;
-color: black; 
+	font-family: Scriptina;
+	font-size: 60px;
+	line-height: 150%;
+	text-align: center;
+	color: black; 
 }
+
 h5 {
 	text-align: center;
 }
+
 #nav_tab {
 	color: black;
 	font-family: Existence;
 	font-weight: bold;
 	font-size: 25px;
 }
+
 .row {
 	text-align: center;
 }
-p {
-	color: black;
-	font-family: Existence;
-	font-size: 20px;
-	font-weight: bold;
-}
+
 #title_well {
 	background-color: rgba(245, 245, 245, 0.0);
 }
+
 .well {
-	background-color: rgba(245, 245, 245, 0.4);
-	border: 3px solid #a88100;/*#996600;	*/
+	background-color: rgba(245, 245, 245, 0);
+	border: 1px solid black;/*#996600;	*/
 }
+
 img {
 	width: 100%;
 	height: auto;
 }
+
 .circle {
 	border-radius: 50%;
 }
+
 #textbox {
 	text-align: center;
-}
-.hidden {
-	display: none;
-}
-.show {
-	display: block;
 }
