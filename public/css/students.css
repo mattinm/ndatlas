@@ -1,11 +1,6 @@
 @font-face {
-	font-family: Sigmar;
-	src: url(fonts/SigmarOne.otf);
-}
-
-@font-face {
-	font-family: Existence;
-	src: url(fonts/ExistenceLight.ttf);
+	font-family: Lato_Italic;
+	src: url(fonts/Lato-Italic.ttf);
 }
 
 @font-face {
@@ -47,7 +42,7 @@ h5 {
 
 #nav_tab {
 	color: black;
-	font-family: Existence;
+	font-family: Lato_Italic;
 	font-weight: bold;
 	font-size: 25px;
 }
@@ -63,6 +58,7 @@ h5 {
 .well {
 	background-color: rgba(245, 245, 245, 0.6);
 	border: 1px solid white;/*#996600;	*/
+	font-family: Lato_Italic; 
 }
 
 img {
