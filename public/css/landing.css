@@ -1,0 +1,96 @@
+@font-face {
+	font-family: Scriptina;
+	src: url(fonts/Scriptina.ttf);
+}
+
+@font-face {
+	font-family: Lato_Light;
+	src: url(fonts/Lato-Light.ttf);
+}
+
+@font-face {
+	font-family: Lato_Heavy;
+	src: url(fonts/Lato-Heavy.ttf);
+}
+
+
+html, body {
+	height: 100%;
+	background-image: url(../images/snowy_trees_f.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+/*	position: absolute;*/
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.a {
+    display: table;
+    width: 100%;
+}
+
+.b {
+    width: 100%;
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
+h1 {
+	text: bold;
+	margin-top: 180px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: Scriptina;
+	font-size: 60px;
+	line-height: 150%;
+	color: white;
+}
+
+h2 {
+	text-align: center;
+	font-family: Lato_Heavy;
+	font-size: 20px;
+	line-height: 150%;
+	color: white;
+}
+/*.a img {
+    height: 50px;
+    opacity: 0;
+    transition: all 500ms;
+    -moz-transition: all 500ms;
+    -webkit-transition: all 500ms;
+    -o-transition: all 500ms;
+}*/
+.move-left {
+    transform: translate(-180px, 0);
+    -moz-transform: translate(-180px, 0);
+    -webkit-transform: translate(-180px, 0)!important;
+    -o-transform: translate(-180px, 0);
+}
+
+.divider {
+	width: 150px;
+	height: auto;
+	display: inline-block;
+}
+
+.btn {
+	color: white;
+	font-family: Lato_Heavy; 
+	border: solid white 2px;
+	background: transparent;
+}
+
+.btn:hover {
+	background: transparent;
+	border: solid black;			
+	color: white;
+}
+
+
+
+

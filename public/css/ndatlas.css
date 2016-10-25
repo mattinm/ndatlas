@@ -20,12 +20,16 @@ body {
 	background-attachment: fixed;
 }
 
+#space {
+	border: 0;
+	background: rgb(255, 255, 255);
+}
+
 hr {
 	border: 0;
 	background: #a88100;
 	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
 	height: 1px;
-		
 }
 
 #welcome_well {
@@ -47,19 +51,19 @@ hr {
 	color: black; 
 }
 
-/*#title2 {
-	font-family: Scriptina;
-	font-size: 100px;
-	line-height: 50%;
-	text-align: right; 
-	color: #008080;
+h5 {
+	text-align: center;
 }
-*/
+
 #nav_tab {
 	color: black;
 	font-family: Existence;
 	font-weight: bold;
 	font-size: 25px;
+}
+
+.row {
+	text-align: center;
 }
 
 p {
@@ -78,8 +82,25 @@ p {
 	border: 3px solid #a88100;/*#996600;	*/
 }
 
-a:link {
-	color: black;
+img {
+	width: 100%;
+	height: auto;
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+#textbox {
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
 }
 
 a:active {
@@ -92,7 +113,8 @@ a:hover {
 
 /*This css refers to how the menu opens*/
 .glyphicon {
-	color: white;
+	color: black;
+	text-align: center;
 }
 
 .animate {
