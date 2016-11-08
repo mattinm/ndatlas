@@ -1,8 +1,0 @@
-# LaTeX compiled files
-*.log
-*.aux
-*.bbl
-*.blg
-*.synctex.gz
-*.*latexmk
-*.fls
