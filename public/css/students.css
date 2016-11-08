@@ -9,11 +9,15 @@
 }
 
 body {
-	overflow-x: hidden;
+/*	overflow-x: hidden;*/
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
 	background-image: url('../images/nd_background2_f.jpg');
+}
+
+.container {
+	padding: 20px;
 }
 
 #space {
