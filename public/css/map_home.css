@@ -9,7 +9,7 @@
 
 body {
 	overflow-x: hidden;
-	background-image: url(../images/nd_background2_f.jpg); 
+	background-image: url(../images/nd_utexas_bw.jpg); 
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
@@ -35,23 +35,12 @@ hr {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-#text_well {
-	background-color: rgba(255, 255, 255, 0.6);
-	font-family: Lato_Italic;
-	font-size: 20px;
-	font-weight: bold;
-}
-
 #title {
 	font-family: Scriptina;
 	font-size: 60px;
 	line-height: 150%;
 	text-align: center;
 	color: white; 
-}
-
-h5 {
-	text-align: center;
 }
 
 #nav_tab {
@@ -61,34 +50,13 @@ h5 {
 	font-size: 25px;
 }
 
-.row {
-	text-align: center;
-}
-
-p {
-	text-indent: 2.0em;
-	padding-left: 1em;
-	padding-right: 1em;
-	color: white;
-	font-family: Lato_Italic;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: left;
-}
-
-#title_well {
-	background-color: rgba(245, 245, 245, 0.0);
-}
-
 .well {
-	padding-left: 1em;
-	padding-right: 1em;
-	background-color: rgba(245, 245, 245, 0.4);
-	border: 3px solid #a88100;/*#996600;	*/
+	background-color: rgba(245, 245, 245, 0.0);
+	border: none;
 	text-align: left;
 }
 
 img {
-	width: 100%;
 	height: auto;
+	width: 100%;
 }
