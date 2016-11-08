@@ -1,6 +1,6 @@
 @font-face {
 	font-family: Lato_Italic;
-	src: url(fonts/Lato-Light.ttf);
+	src: url(fonts/Lato-Italic.ttf);
 }
 @font-face {
 	font-family: Scriptina;
@@ -35,24 +35,15 @@ hr {
 }
 
 #text_well {
+	text-indent: 2.0em;
 	background-color: rgba(255, 255, 255, 0.6);
 	font-family: Lato_Italic;
 	font-size: 20px;
-	font-weight: bold;
 	border: 1px solid #a88100;	
 }
 
 h5 {
 	text-align: center;
-}
-
-p {
-	text-indent: 2.0em;
-		color: black;
-	font-family: Lato_Italic;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: left;
 }
 
 #indent {
