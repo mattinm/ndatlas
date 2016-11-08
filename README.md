@@ -1,4 +1,4 @@
-# nd125
+# ndatlas
 
 This project creates and serves a website for the 125 year anniversary of North
 Dakota. This website is programmed using HTML, CSS, and JavaScript to
