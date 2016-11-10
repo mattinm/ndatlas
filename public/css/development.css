@@ -68,6 +68,11 @@ ul {
     user-select: none;
 }
 
+/*initially hides semester divs*/
+.hideshowDIV {
+	display: none;
+}
+
 .hideshow:hover {
     text-decoration: none;
     cursor: pointer;
