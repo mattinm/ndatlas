@@ -1,4 +1,29 @@
-body {
+#title0 {
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+#story {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	padding: 10px;
+}
+
+#slider {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	padding: 0 5px;
+	padding-top: 50%;
+	height: 100%;
+}
+
+#sidebar {
+	display: inline-block;
+	vertical-align: top;
+	width: 415px;
+	padding: 5px;
 }
 
 #narrative {
@@ -23,7 +48,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: 80px;
     right: 460px;
     z-index: 0 !important;
 }
@@ -33,18 +58,23 @@ body {
     top: 0;
     left: 0;
     bottom: 10px;
-    width: 100%;
+    width: 90%;
+}
+
+#btn_group {
+	left: 10px;	
+}
+
+#buttonDiv {
+	bottom: 10px;
 }
 
 #content {
     margin-top: 10px;
 }
-
-#map {
-}
   
 #story{
     overflow-y: scroll;
     z-index: 1000;
-    height: calc(100vh - 251px) !important;
+    height: 600px !important;
 }
