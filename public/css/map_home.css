@@ -24,11 +24,7 @@ hr {
 	border: 0;
 	background: #a88100;
 	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
-	height: 1px;
-}
-
-#welcome_well {
-	background-color: rgba(255, 255, 255, 0.6);
+	height: 3px;
 }
 
 #title {
@@ -39,17 +35,16 @@ hr {
 	color: white; 
 }
 
-#nav_tab {
-	color: black;
-	font-family: Lato_Italic;
-	font-weight: bold;
-	font-size: 25px;
+.well {
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 1px solid #a88100; 
+	text-align: left;
 }
 
-.well {
-	background-color: rgba(245, 245, 245, 0.4);
-	border: none;
-	text-align: left;
+h4 {
+	font-family: Lato_Italic;
+	color: white;
+	text-align: center;
 }
 
 img {
