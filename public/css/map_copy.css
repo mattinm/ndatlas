@@ -1,0 +1,50 @@
+body {
+}
+
+#narrative {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*width: 460px;*/
+    z-index: 1000;
+    background-color: #f6f6f6;
+    overflow-y: hidden;
+}
+
+#mainBody {
+    position: absolute;
+    top: 54px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#mapWrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 460px;
+    z-index: 0 !important;
+}
+
+#mapDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+}
+
+#content {
+    margin-top: 10px;
+}
+
+#map {
+}
+  
+#story{
+    overflow-y: scroll;
+    z-index: 1000;
+    height: calc(100vh - 251px) !important;
+}
