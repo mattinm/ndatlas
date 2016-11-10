@@ -1,0 +1,26 @@
+/*This is the map page css*/
+@font-face {
+	font-family: Lato_Italic;
+	src: url(fonts/Lato-Italic.ttf);
+}
+
+.thing1 {
+/*	float: left; */
+	display: inline-block;
+	position: bottom;
+}
+
+#map {
+	height: 600px;
+	width: 700px;
+}
+
+.thing2 {
+	display: inline-block;
+	overflow: auto;
+	height: 650px;
+	width: 700px;
+	float: right;
+	font-family: Lato_Italic; 
+
+}

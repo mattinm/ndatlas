@@ -1,0 +1,42 @@
+body {
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+#narrative {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 460px;
+    z-index: 1000;
+    background-color: #f6f6f6;
+    overflow-y: hidden;
+}
+
+#slider {
+	display: inline-block;
+	vertical-align: top;
+	width: 40px;
+	padding:0 5px;
+	padding-top:50%;
+	height: 100%;
+	font-size: 40px;
+}
+
+#sidebar {
+	display: inline-block;
+	vertical-align: top;
+	width: 415px;
+	padding: 5px;
+}
+
+#story {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	padding: 10px;
+}
+
+#mainBody {
+    position: absolute;
+    top: 54px;
