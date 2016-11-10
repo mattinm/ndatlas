@@ -1,0 +1,29 @@
+/*body {
+    margin-top: 50px;
+    margin-bottom: 0;
+}*/
+html, body {
+    height: 100%;
+    width: 100%;
+}
+/*
+#rightPane {
+    width: 20%;
+    float: right;
+}
+#mapDiv {
+    height: 100%;
+    float: left;
+    width: 80%;
+    background: #FFF;
+}
+*/
+#loadingDiv {
+    height: inherit;
+    background:#7f7f7f;
+    background:rgba(0,0,0,0.5);
+}
+#legendDiv {
+    height: 100%;
+    background-color: #DCA;
+}

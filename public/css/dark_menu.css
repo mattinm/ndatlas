@@ -1,0 +1,13 @@
+/*This css is the style sheet for the new ndatlas menu.*/
+@font-face {
+	font-family: Lato_Italic;
+	src: url(fonts/Lato-Italic.ttf);
+}
+
+li a {
+	display: block;
+	color: white;
+	padding: 16px;
+	font-family: Lato_Italic;
+}
+

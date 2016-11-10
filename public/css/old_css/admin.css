@@ -1,0 +1,12 @@
+body {
+    margin-top:100px;
+}
+.glyphicon {
+    top: 2px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#main-footer {
+	margin-top: 30px;
+	background-color: inherit;
+}

@@ -1,0 +1,10 @@
+.section {
+    font-size: 14pt;
+}
+.section:nth-child(n+2) {
+    margin-top: 15px;
+}
+.tooltip-inner {
+    max-width: 600px;
+    font-size: 14pt;
+}

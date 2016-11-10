@@ -1,0 +1,74 @@
+@font-face {
+	font-family: Lato_Italic;
+	src: url(fonts/Lato-Italic.ttf);
+}
+
+@font-face {
+	font-family: Scriptina;
+	src: url(fonts/Scriptina.ttf);
+}
+
+body {
+/*	overflow-x: hidden;*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: fixed;
+	background-image: url('../images/nd_background2_f.jpg');
+	color: white;
+}
+
+hr {
+	border: 0;
+	background: #a88100;
+	background-image: linear-gradient(to right, #a88100, #a88100, #a88100);
+	height: 3px;
+}
+
+#title {
+	font-family: Scriptina;
+	font-size: 60px;
+	line-height: 150%;
+	text-align: center;
+	color: white; 
+}
+
+#nav_tab {
+	color: black;
+	font-family: Lato_Italic;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+#title_well {
+	background-color: rgba(245, 245, 245, 0.0);
+}
+
+h2 {
+	font-family: Lato_Italic;
+}
+
+h3 {
+	font-family: Lato_Italic;
+}
+
+p {
+	font-family: Lato_Italic;
+}
+
+ul {
+	font-family: Lato_Italic;
+}
+
+.hideshow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hideshow:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
