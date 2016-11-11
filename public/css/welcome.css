@@ -35,8 +35,8 @@ hr {
 }
 
 #text_well {
-	text-indent: 2.0em;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(0, 0, 0, 0.4);
+	color: white;
 	font-family: Lato_Italic;
 	font-size: 20px;
 	border: 1px solid #a88100;	

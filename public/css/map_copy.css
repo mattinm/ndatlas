@@ -34,7 +34,7 @@ body {
 #sidebar {
 	display: inline-block;
 	vertical-align: top;
-	width: 480px;
+	width: 460px;
 	padding: 5px;
 }
 
@@ -62,7 +62,7 @@ body {
     top: 0;
     bottom: 0;
     left: 80px;
-    right: 500px;
+    right: 480px;
     z-index: 0 !important;
 }
 
@@ -89,7 +89,7 @@ body {
 #story{
     overflow-y: scroll;
     z-index: 1000;
-    height: 600px !important;
+    height: 650px !important;
 }
 
 .btn {
@@ -102,3 +102,4 @@ body {
 	background-color: gray;
 	border: #cd9b37 solid 2px;
 }
+
