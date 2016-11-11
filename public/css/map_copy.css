@@ -30,7 +30,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    /*width: 460px;*/
     z-index: 1000;
     background-color: #f6f6f6;
     overflow-y: hidden;
@@ -49,7 +48,7 @@
     top: 0;
     bottom: 0;
     left: 80px;
-    right: 460px;
+    right: 500px;
     z-index: 0 !important;
 }
 
@@ -58,7 +57,7 @@
     top: 0;
     left: 0;
     bottom: 10px;
-    width: 90%;
+    width: 100%;
 }
 
 #btn_group {
