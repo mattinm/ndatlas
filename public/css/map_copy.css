@@ -5,6 +5,9 @@
 
 body {
 	font-family: Lato_Italic;
+	background-image: url(../images/backgrounds/bison_bw.JPG);
+	background-size: 100% 100%;
+	background-attachment: fixed;
 }
 
 #title0 {
@@ -31,7 +34,7 @@ body {
 #sidebar {
 	display: inline-block;
 	vertical-align: top;
-	width: 415px;
+	width: 460px;
 	padding: 5px;
 }
 
@@ -40,8 +43,10 @@ body {
     top: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     overflow-y: hidden;
+	color: white;
+	border: black solid 1px;
 }
 
 #mainBody {
@@ -88,13 +93,12 @@ body {
 }
 
 .btn {
-    background-color: white;
-    color: black;
-    border: #cd9b37 solid 1px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: black solid 2px;
 }
 
 .btn:hover {
-	background-color: black;
-	color: gray;
+	background-color: gray;
 	border: #cd9b37 solid 2px;
 }
