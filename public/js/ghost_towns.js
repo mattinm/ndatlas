@@ -9,30 +9,45 @@ $(document).ready(function() {
 		$("#map").attr("src", "images/maps/GT_C1885.png");
 	});
 	$("#a_1900").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1890.png");
+	});
+	$("#a_1895").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1895.png");
+	});
+	$("#a_1900").on("click", function() {
 		$("#map").attr("src", "images/maps/GT_C1900.png");
 	});
+	$("#a_1905").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1905.png");
+	});
+	$("#a_1910").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1910.png");
+	});
+	$("#a_1915").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1915.png");
+	});
+	$("#a_1920").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1920.png");
+	});
 	$("#a_1930").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1930.png");
+		$("#map").attr("src", "images/maps/GT_C1930.png");
 	});
 	$("#a_1940").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1940.png");
+		$("#map").attr("src", "images/maps/GT_C1940.png");
 	});
 	$("#a_1950").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1950.png");
+		$("#map").attr("src", "images/maps/GT_C1950.png");
+	});
+	$("#a_1960").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1960.png");
 	});
 	$("#a_1970").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1970.png");
+		$("#map").attr("src", "images/maps/GT_C1970.png");
 	});
 	$("#a_1980").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1980.png");
+		$("#map").attr("src", "images/maps/GT_C1980.png");
 	});
-	$("#a_1990").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_1990.png");
-	});
-	$("#a_2000").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_2000.png");
-	});
-	$("#a_2013").on("click", function() {
-		$("#map").attr("src", "images/maps/FB_2013.png");
+	$("#a_19880").on("click", function() {
+		$("#map").attr("src", "images/maps/GT_C1988.png");
 	});
 });
