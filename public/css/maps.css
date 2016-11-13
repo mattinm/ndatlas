@@ -74,6 +74,11 @@ body {
     width: 100%;
 }
 
+#map {
+	width: 100%;
+	height: auto;
+}
+
 #btn_group {
 	left: 10px;	
 }
@@ -103,3 +108,7 @@ body {
 	border: #cd9b37 solid 2px;
 }
 
+h2 {
+	font-weight: bold;
+	padding-bottom: 15px;
+}

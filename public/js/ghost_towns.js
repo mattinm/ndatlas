@@ -47,7 +47,7 @@ $(document).ready(function() {
 	$("#a_1980").on("click", function() {
 		$("#map").attr("src", "images/maps/GT_C1980.png");
 	});
-	$("#a_19880").on("click", function() {
+	$("#a_1988").on("click", function() {
 		$("#map").attr("src", "images/maps/GT_C1988.png");
 	});
 });
