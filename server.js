@@ -6,7 +6,6 @@ var app = express();
 app.use(parser());
 app.set('view engine', 'jade');
 app.set('views', __dirname+'/views');
-app.use(express.static(__dirname+'/public'));
 app.locals.pretty = true;
 
 // see if we are using the dev route
@@ -17,6 +16,8 @@ if (dev) {
 } else {
     dev = '/';
 }
+
+app.use(dev, express.static(__dirname+'/public'));
 
 //////////////////////////////////////
 // START OF ROUTES
@@ -53,6 +54,15 @@ app.get('/students', function (req, res) {
     res.render('students', {
         'title': 'North Dakota Atlas | Students',
         'active': 'students',
+        'urlbase': dev,
+        'url': url
+    });
+});
+
+app.get('/development', function (req, res) {
+    res.render('development', {
+        'title': 'North Dakota Atlas | Development',
+        'active': 'development',
         'urlbase': dev,
         'url': url
     });

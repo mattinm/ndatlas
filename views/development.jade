@@ -6,6 +6,9 @@ block theme
 block css
     link(rel="stylesheet" type="text/css" href="css/development.css")
 
+block js
+    script(type="text/javascript" src="js/development.js")
+
 block main
     div(class="row")
         div(class="col-lg-12")		
@@ -17,7 +20,7 @@ block main
                 div(class="col-md-8 col-md-offset-2")
                     div(class="well" id="main_well")
                         p Each Fall semester, several groups are formed combining students taking Dr. Niedzielski’s GEOG471/L Cartography & Visualization course and students from various participating departments taking his A&S499 Interdisciplinary Practicum course. Each group is responsible for telling the story of a chosen theme through maps, graphs and narratives. The project is also supported by a group of students taking Dr. Desell’s Capstone course in Computer Science who work on the technical design of the interactive atlas.
-                        h2(class="Fall2014") Fall 2014 #{a(class="hideshow")+}
+                        h2(class="Fall2014") Fall 2014 #[a(class="hideshow") +]
                         div(id="Fall2014" class="hideshowDIV")
                             div(class="well")
                                 p During the Fall 2014 semester, there were five groups. Four groups worked on themes that are described in detail below. These groups typically consisted of 2 students from A&S499 and 2-4 students from GEOG471. The fifth group consisted of two Computer Science students working on the web design of the atlas.
@@ -50,12 +53,12 @@ block main
                                         li Students from A&S499: Kathryn Kester, Lucas Moen
                                         li Students from GEOG471: Lisa Pimentel, Karl Bauer
                                 h3 Web design of the interactive atlas
-                                p(class="theme-description") We're challenged with creating the interactive, online application for the North Dakota Atlas project. Our primary goals are: (1) to create a clean, intuitive interface for the students gathering the information, maps, and narratives to easily create and maintain the atlas without needing further technical assistance; and (2) allow for the creation of interactive maps from digital data on-the-fly, allowing for the dynamic creation for maps from available data for integration with narratives.#{br}Our biggest challenges will be developing a user interface that is consistent for multiple devices and screen sizes, including phones, tablets, laptops, and desktops and integrating existing technologies and algorithms to allow for the dynamic elements of the atlas.#{br}By creating a content management system, our application can be extended to further projects and allow other schools or organizations to create their own online atlas. We look forward to helping honor North Dakota's 125th anniversary and helping with a project that has great educational and informational potential.
+                                p(class="theme-description") We're challenged with creating the interactive, online application for the North Dakota Atlas project. Our primary goals are: (1) to create a clean, intuitive interface for the students gathering the information, maps, and narratives to easily create and maintain the atlas without needing further technical assistance; and (2) allow for the creation of interactive maps from digital data on-the-fly, allowing for the dynamic creation for maps from available data for integration with narratives.#[br]Our biggest challenges will be developing a user interface that is consistent for multiple devices and screen sizes, including phones, tablets, laptops, and desktops and integrating existing technologies and algorithms to allow for the dynamic elements of the atlas.#[br]By creating a content management system, our application can be extended to further projects and allow other schools or organizations to create their own online atlas. We look forward to helping honor North Dakota's 125th anniversary and helping with a project that has great educational and informational potential.
                                 p(class="theme-members")
                                     ul
                                         li Faculty mentor: Dr. Travis Desell (Computer Science)
                                         li Students from CS492-493: Marshall Mattingly, Michael Marti
-                        h2(class="Spring2015") Spring 2015 #{a(class="hideshow")+}
+                        h2(class="Spring2015") Spring 2015 #[a(class="hideshow") +]
                         div(id="Spring2015" class="hideshowDIV")
                             div(class="well")
                                 p During the Spring 2015 semester, there were five student groups with three groups continuing and expanding on themes from the previous semester. The Computer Science students continued developing the web interface with the initial basic version of the atlas website ready by the end of the semester. A fifth group consisted of two Geography students who worked on a new topic. An additional sixth group, consisting of Michael Niedzielski and Michael Jacobs, worked on mapping railroads growth and contraction over time.
@@ -87,191 +90,154 @@ block main
                                 p(class="theme-description") The goal this semester is to produce a basic working version of the online interactive atlas. We will develop an interface that combines the map and narrative along side each other. Additionally, we will provide an initial graphic design of the atlas.
                                 p(class="theme-members")
                                     ul
-                                    li Faculty mentor: Dr. Travis Desell (Computer Science)</li>
-                                    <li>Students from CS492-493: Marshall Mattingly, Michael Marti</li>
-</ul>
-</p>
-</div>
-</div>
-<h2 class="Summer2015">Summer 2015 <a class="hideshow">+</a></h2>
-<div id="Summer2015" class="hideshowDIV">
-<div class="well">
-<p>During the Summer 2015 semester progress was made on the atlas project on several fronts. First, the Anthropology students, Cheyenne Paris and Patrick Sprague, continued interviewing local residents about their ethnic self-identity, transcribing them and developing a narrative from them. Second, Marshall Mattingly continued work on the web development. Third, Karl Bauer and Jay Sandeen, with assistance from Jacob Garibay, continued work on data collection and map design for the project.</p>
-</div>
-</div>
-<h2 class="Fall2015">Fall 2015 <a class="hideshow">+</a></h2>
-<div id="Fall2015" class="hideshowDIV">
-<div class="well"> 
-<p>During the Fall 2015 semester, there were ten groups. Eight groups worked on themes that are described in detail below. These groups typically composed of a combination of students from A&S499 and GEOG471. The ninth group consisted of two Computer Science students working on the web design of the atlas and the tenth group consisted of two Communications students working on videos of and for the project.</p>
-<h3>Gubernatorial Elections 1889-1932</h3>
-<p class="theme-description">The purpose of this project is to explain the election process of North Dakota governors between 1889 and 1932, and to examine the political intentions and platforms of North Dakota governors, and their opponents. Maps show gubernatorial elections results by county with data gathered from the state archives.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kimberly Porter (History)</li>
-<li>Students from A&S499: Paul Jensen</li>
-<li>Students from GEOG471: Tim Engelsgaard, Tom Twedell</li>
-</ul>
-</p>
-<h3>The Conservation Reserve Program in North Dakota</h3>
-<p class="theme-description">The purpose of this project is to map and describe the extent and impacts of the Conservation Reserve Program in North Dakota. CRP incentives farmers to remove environmentally sensitive land from agricultural production in exchange for a yearly payment. CRP originated with the 1985 Farm Bill. CRP acreage in North Dakota has varied since then following the variation in crop prices.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kimberly Porter (History)</li>
-<li>Students from A&S499: Adam Ratchinski</li>
-<li>Students from GEOG471: Jace Hellman, Dylan Ramstad Skoyles, Benjamin York</li>
-</ul>
-</p>
-<h3>Missile Silos in North Dakota</h3>
-<p class="theme-description">The purpose of this project is to investigate Nuclear Weapons in North Dakota, specifically the 321st and the 91st Missile Wings operating out of Grand Forks and Minot Air Force Base’s respectively, as well as an investigation into North Dakota’s role in the Cold War.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kimberly Porter (History)</li>
-<li>Students from A&S499: Jacob Crane</li>
-<li>Students from GEOG471: Kael Fontaine, Jacob Mattison, Scott Wolff</li>
-</ul>
-</p>
-<h3>Bonanza Farms in North Dakota</h3>
-<p class="theme-description">The purpose of this project is to map and describe Bonanza farms in North Dakota, as part of the broader goal of mapping land ownership change over time in the state. Bonanza farms, over 3,000 acres, were lands that the Northern Pacific Railroad used to pay off investors as a result of its bankruptcy. Many of the Bonanza farm owners innovators and entrepreneurs bringing the latest technology to these farms.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Michael Jacobs</li>
-<li>Students from GEOG471: Eli Sack, Rebecca Sys, Ryan Wheeler</li>
-</ul>
-</p>
-<h3>Endangered Species (Bald Eagles)</h3>
-<p class="theme-description">The purpose of this project is to discuss general demographics of Bald Eagles, the reasons behind the declines in their populations, management efforts to help recover their populations, and the current status of eagles. Maps are provided to show the change in habitat range of Bald Eagles.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Jay Boulanger (Biology)</li>
-<li>Students from A&S499: Shay Erickson</li>
-<li>Students from GEOG471: Samantha Burns, Amanda Hefner, Manna Khan</li>
-</ul>
-</p>
-<h3>North Dakota Hunters and Anglers</h3>
-<p class="theme-description">The purpose of this project is to map and describe the possible reasons behind the increase of hunting and fishing in the state and possible reasons behind any shifts in the spatial distributions of hunters and anglers. The data was contributed by North Dakota Game and Fish.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Jay Boulanger (Biology)</li>
-<li>Students from A&S499: Shay Erickson</li>
-<li>Students from GEOG471: Adam Bjornberg, Maxwell Goligowski, Ryan Hart</li>
-</ul>
-</p>
-<h3>Spatial and Temporal Crop Distributions Across North Dakota</h3>
-<p class="theme-description">The purpose of this project to map the distribution of crops that have been important to the state’s economy. The crops include corn, wheat, barley, oats, soybeans, and sugar beets. The focus was on North Dakota and the Red River Valley part of North Dakota in the period 1910-1945.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Michael Niedzielski (Geography)</li>
-<li>Students from GEOG471: Bradley Andreasen, Jacob Garibay, Jacob Vandervest                            </li>
-</ul>
-</p>
-<h3>Lewis & Clark Along the Missouri River in North Dakota</h3>
-<p class="theme-description">The purpose of this project is to map the route and landing points of Lewis & Clark as they traveled through North Dakota on their epic journey mapping and describing the Louisiana Purchase. The data comes from old topographic maps of the area at the time of statehood and from Lewis & Clark’s notes.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Bradley Rundquist (Geography)</li>
-<li>Students from GEOG 471: Brandyn Heck, Jacob Nordberg</li>
-</ul>
-</p>
-<h3>Web Design of the Interactive Atlas</h3>
-<p class="theme-description">The purpose of this project is to continue with the web development of the atlas. The goals for this semester include adding additional topics (maps and narratives) to the atlas, fixing/updating existing website features and adding new ones.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Travis Desell (Computer Science)</li>
-<li>Students from CS492-493: Drew Balira, Joseph Gustafson</li>
-</ul>
-</p>
-<h3>Promotional Material Design</h3>
-<p class="theme-description">The purpose of this project is to develop promotional materials about the North Dakota Atlas. Specifically, we will create a promotional video describing the North Dakota Atlas, the process behind its creation, the roles played by students and faculty, including interviews with key participants.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Ceri Danes (Communications)</li>
-<li>Students from A&S499: Alexander Aman, William Beaton</li>
-</ul>
-</p>
-</div>
-</div>
-<h2 class="Spring2016">Spring 2016 <a class="hideshow">+</a></h2>
-<div id="Spring2016" class="hideshowDIV">
-<div class="well"> 
-<h3>The Garrison Diversion Project and its Effects</h3>
-<p class="theme-description">The purpose of this venture is to explore the historical progression of the Garrison Diversion Project in North Dakota, the effects it has had on the state, and what the project looks like today. Different narratives regarding the Garrison Diversion project will help shed light on the sensitive issues and controversy historically surrounding it. Maps and a timeline will provide a visual guide for understanding what the Garrison Diversion project was and is about.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Ceri Danes (Communications)</li>
-<li>Student from A&S499: Matt Collings</li>
-</ul>
-</p>
-<h3>Visual Media for Ghost Towns and Missile Silos</h3>
-<p class="theme-description">For the fall 2016 semester I will supplementing the Ghost Towns of North Dakota and Missile Silos in North Dakota sections with visual media. The project will bring visual documentation, along with already established historical information from previous students, to show how time has affected these areas and what they look like now. I will be taking pictures and video of the areas, as well as getting on-film interviews with individuals who either resided in or nearby the towns, and for the silos interviewing the historical society members who run them as well as any individuals who were stationed there that may be contacted.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Ceri Danes (Communications)</li>
-<li>Students from A&S499: Shawn Larson, Chris Knoll</li>
-</ul>
-</p>
-<h3>Film and Television Locations In North Dakota</h3>
-<p class="theme-description">The purpose of this project is to find and locate where films and television shows have been shot in the state of North Dakota. There have been many things shot through out North Dakota with more films and television being shot everyday. The map provides the details and locations throughout the state of what and where Film and Television has been shot.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Ceri Danes (Communications)</li>
-<li>Student from A&S499: Mike Fecadu</li>
-</ul>
-</p>
-<h3>Spatial and Temporal Crop Distributions Across North Dakota</h3>
-<p class="theme-description">The purpose of this project is to map the distribution of crops that have been important to the state’s economy. The crops include corn, wheat, barley, oats, soybeans, and sugar beets. The focus was on North Dakota in the period 1950-2015.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Michael Niedzielski (Geography)</li>
-<li>Students from A&S499: Karl Bauer, Jacob Mattison</li>
-</ul>
-</p>
-<h3>North Dakota's Military Frontier</h3>
-<p class="theme-description">The purpose of this project is to map and describe the history of the early military frontier in the state. The focus is on the early military forts that were established to guard fur traders, military supply wagon trains and other traffic.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kim Porter (History)</li>
-<li>Student from A&S499: Adam Ratchenski</li>
-</ul>
-</p>
-<h3>164th Infantry Regiment</h3>
-<p class="theme-description">The purpose of this project is to map and describe the history of North Dakota's 164th Infantry Regiment. One focus is on mapping the home towns of the each member of the regiment. Other maps might include the regiment's theaters of war in WWI, WWII, and the Korean War.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kim Porter (History)</li>
-<li>Student from A&S499: Jacob Crane</li>
-</ul>
-</p>
-<h3>Roosevelt in North Dakota</h3>
-<p class="theme-description">The purpose of this project is to map and describe Teddy Roosevelt's time in North Dakota.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Kim Porter (History)</li>
-<li>Student from A&S499: Paul Jensen</li>
-</ul>
-</p>
-<h3>Web Design of the Interactive Atlas</h3>
-<p class="theme-description">The purpose of this project is to continue with the web development of the atlas. The goals for this semester include adding additional topics (maps and narratives) to the atlas, fixing/updating existing website features and adding new ones.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Dr. Travis Desell (Computer Science)</li>
-<li>Students from CS492-493: Drew Balira, Joseph Gustafson</li>
-</ul>
-</p>
-<h3>Promotional Material Design</h3>
-<p class="theme-description">The purpose of this project is to develop promotional materials about the North Dakota Atlas. Specifically, we will create a promotional video describing the North Dakota Atlas, the process behind its creation, and the roles played by students and faculty, including interviews with key participants.</p>
-<p class="theme-member">
-<ul>                          
-<li>Faculty mentor: Ceri Danes (Communications)</li>
-<li>Students from A&S499: Alexander Aman, William Beaton, Mike Fecadu</li>
-</ul>
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
-</html>
+                                    li Faculty mentor: Dr. Travis Desell (Computer Science)
+                                    li Students from CS492-493: Marshall Mattingly, Michael Marti
+                        h2(class="Summer2015") Summer 2015 #[a(class="hideshow") +]
+                        div(id="Summer2015" class="hideshowDIV")
+                            div(class="well")
+                                p During the Summer 2015 semester progress was made on the atlas project on several fronts. First, the Anthropology students, Cheyenne Paris and Patrick Sprague, continued interviewing local residents about their ethnic self-identity, transcribing them and developing a narrative from them. Second, Marshall Mattingly continued work on the web development. Third, Karl Bauer and Jay Sandeen, with assistance from Jacob Garibay, continued work on data collection and map design for the project.
+                        h2(class="Fall2015") Fall 2015 #[a(class="hideshow") +]
+                        div(id="Fall2015" class="hideshowDIV")
+                            div(class="well")
+                                p During the Fall 2015 semester, there were ten groups. Eight groups worked on themes that are described in detail below. These groups typically composed of a combination of students from A&S499 and GEOG471. The ninth group consisted of two Computer Science students working on the web design of the atlas and the tenth group consisted of two Communications students working on videos of and for the project.
+
+                                h3 Gubernatorial Elections 1889-1932
+                                p(class="theme-description") The purpose of this project is to explain the election process of North Dakota governors between 1889 and 1932, and to examine the political intentions and platforms of North Dakota governors, and their opponents. Maps show gubernatorial elections results by county with data gathered from the state archives.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Kimberly Porter (History)
+                                        li Students from A&S499: Paul Jensen
+                                        li Students from GEOG471: Tim Engelsgaard, Tom Twedell
+
+                                h3 The Conservation Reserve Program in North Dakota
+                                p(class="theme-description") The purpose of this project is to map and describe the extent and impacts of the Conservation Reserve Program in North Dakota. CRP incentives farmers to remove environmentally sensitive land from agricultural production in exchange for a yearly payment. CRP originated with the 1985 Farm Bill. CRP acreage in North Dakota has varied since then following the variation in crop prices.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Kimberly Porter (History)
+                                        li Students from A&S499: Adam Ratchinski
+                                        li Students from GEOG471: Jace Hellman, Dylan Ramstad Skoyles, Benjamin York
+
+                                h3 Missile Silos in North Dakota
+                                p(class="theme-description") The purpose of this project is to investigate Nuclear Weapons in North Dakota, specifically the 321st and the 91st Missile Wings operating out of Grand Forks and Minot Air Force Base’s respectively, as well as an investigation into North Dakota’s role in the Cold War.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Kimberly Porter (History)
+                                        li Students from A&S499: Jacob Crane
+                                        li Students from GEOG471: Kael Fontaine, Jacob Mattison, Scott Wolff
+
+                                h3 Bonanza Farms in North Dakota
+                                p(class="theme-description") The purpose of this project is to map and describe Bonanza farms in North Dakota, as part of the broader goal of mapping land ownership change over time in the state. Bonanza farms, over 3,000 acres, were lands that the Northern Pacific Railroad used to pay off investors as a result of its bankruptcy. Many of the Bonanza farm owners innovators and entrepreneurs bringing the latest technology to these farms.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Michael Jacobs
+                                        li Students from GEOG471: Eli Sack, Rebecca Sys, Ryan Wheeler
+
+                                h3 Endangered Species (Bald Eagles)
+                                p(class="theme-description") The purpose of this project is to discuss general demographics of Bald Eagles, the reasons behind the declines in their populations, management efforts to help recover their populations, and the current status of eagles. Maps are provided to show the change in habitat range of Bald Eagles.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Jay Boulanger (Biology)
+                                        li Students from A&S499: Shay Erickson
+                                        li Students from GEOG471: Samantha Burns, Amanda Hefner, Manna Khan
+
+                                h3 North Dakota Hunters and Anglers
+                                p(class="theme-description") The purpose of this project is to map and describe the possible reasons behind the increase of hunting and fishing in the state and possible reasons behind any shifts in the spatial distributions of hunters and anglers. The data was contributed by North Dakota Game and Fish.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Jay Boulanger (Biology)
+                                        li Students from A&S499: Shay Erickson
+                                        li Students from GEOG471: Adam Bjornberg, Maxwell Goligowski, Ryan Hart
+
+                                h3 Spatial and Temporal Crop Distributions Across North Dakota
+                                p(class="theme-description") The purpose of this project to map the distribution of crops that have been important to the state’s economy. The crops include corn, wheat, barley, oats, soybeans, and sugar beets. The focus was on North Dakota and the Red River Valley part of North Dakota in the period 1910-1945.
+                                p(class="theme-member")
+                                    ul                          
+                                    li Faculty mentor: Dr. Michael Niedzielski (Geography)
+                                    li Students from GEOG471: Bradley Andreasen, Jacob Garibay, Jacob Vandervest
+
+                                h3 Lewis & Clark Along the Missouri River in North Dakota
+                                p(class="theme-description") The purpose of this project is to map the route and landing points of Lewis & Clark as they traveled through North Dakota on their epic journey mapping and describing the Louisiana Purchase. The data comes from old topographic maps of the area at the time of statehood and from Lewis & Clark’s notes.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Bradley Rundquist (Geography)
+                                        li Students from GEOG 471: Brandyn Heck, Jacob Nordberg
+
+                                h3 Web Design of the Interactive Atlas
+                                p(class="theme-description") The purpose of this project is to continue with the web development of the atlas. The goals for this semester include adding additional topics (maps and narratives) to the atlas, fixing/updating existing website features and adding new ones.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Dr. Travis Desell (Computer Science)
+                                        li Students from CS492-493: Drew Balira, Joseph Gustafson
+
+                                h3 Promotional Material Design
+                                p(class="theme-description") The purpose of this project is to develop promotional materials about the North Dakota Atlas. Specifically, we will create a promotional video describing the North Dakota Atlas, the process behind its creation, the roles played by students and faculty, including interviews with key participants.
+                                p(class="theme-member")
+                                    ul                          
+                                        li Faculty mentor: Ceri Danes (Communications)
+                                        li Students from A&S499: Alexander Aman, William Beaton
+
+                        h2(class="Spring2016") Spring 2016 #[a(class="hideshow") +]
+                        div(id="Spring2016" class="hideshowDIV")
+                            div(class="well")
+                                    h3 The Garrison Diversion Project and its Effects
+                                    p(class="theme-description") The purpose of this venture is to explore the historical progression of the Garrison Diversion Project in North Dakota, the effects it has had on the state, and what the project looks like today. Different narratives regarding the Garrison Diversion project will help shed light on the sensitive issues and controversy historically surrounding it. Maps and a timeline will provide a visual guide for understanding what the Garrison Diversion project was and is about.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Ceri Danes (Communications)
+                                            li Student from A&S499: Matt Collings
+
+                                    h3 Visual Media for Ghost Towns and Missile Silos
+                                    p(class="theme-description") For the fall 2016 semester I will supplementing the Ghost Towns of North Dakota and Missile Silos in North Dakota sections with visual media. The project will bring visual documentation, along with already established historical information from previous students, to show how time has affected these areas and what they look like now. I will be taking pictures and video of the areas, as well as getting on-film interviews with individuals who either resided in or nearby the towns, and for the silos interviewing the historical society members who run them as well as any individuals who were stationed there that may be contacted.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Ceri Danes (Communications)
+                                            li Students from A&S499: Shawn Larson, Chris Knoll
+
+                                    h3 Film and Television Locations In North Dakota
+                                    p(class="theme-description") The purpose of this project is to find and locate where films and television shows have been shot in the state of North Dakota. There have been many things shot through out North Dakota with more films and television being shot everyday. The map provides the details and locations throughout the state of what and where Film and Television has been shot.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Ceri Danes (Communications)
+                                            li Student from A&S499: Mike Fecadu
+
+                                    h3 Spatial and Temporal Crop Distributions Across North Dakota
+                                    p(class="theme-description") The purpose of this project is to map the distribution of crops that have been important to the state’s economy. The crops include corn, wheat, barley, oats, soybeans, and sugar beets. The focus was on North Dakota in the period 1950-2015.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Dr. Michael Niedzielski (Geography)
+                                            li Students from A&S499: Karl Bauer, Jacob Mattison
+
+                                    h3 North Dakota's Military Frontier
+                                    p(class="theme-description") The purpose of this project is to map and describe the history of the early military frontier in the state. The focus is on the early military forts that were established to guard fur traders, military supply wagon trains and other traffic.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Dr. Kim Porter (History)
+                                            li Student from A&S499: Adam Ratchenski
+
+                                    h3 164th Infantry Regiment
+                                    p(class="theme-description") The purpose of this project is to map and describe the history of North Dakota's 164th Infantry Regiment. One focus is on mapping the home towns of the each member of the regiment. Other maps might include the regiment's theaters of war in WWI, WWII, and the Korean War.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Dr. Kim Porter (History)
+                                            li Student from A&S499: Jacob Crane
+
+                                    h3 Roosevelt in North Dakota
+                                    p(class="theme-description") The purpose of this project is to map and describe Teddy Roosevelt's time in North Dakota.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Dr. Kim Porter (History)
+                                            li Student from A&S499: Paul Jensen
+
+                                    h3 Web Design of the Interactive Atlas
+                                    p(class="theme-description") The purpose of this project is to continue with the web development of the atlas. The goals for this semester include adding additional topics (maps and narratives) to the atlas, fixing/updating existing website features and adding new ones.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Dr. Travis Desell (Computer Science)
+                                            li Students from CS492-493: Drew Balira, Joseph Gustafson
+
+                                    h3 Promotional Material Design
+                                    p(class="theme-description") The purpose of this project is to develop promotional materials about the North Dakota Atlas. Specifically, we will create a promotional video describing the North Dakota Atlas, the process behind its creation, and the roles played by students and faculty, including interviews with key participants.
+                                    p(class="theme-member")
+                                        ul                          
+                                            li Faculty mentor: Ceri Danes (Communications)
+                                            li Students from A&S499: Alexander Aman, William Beaton, Mike Fecadu
