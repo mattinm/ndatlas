@@ -1,0 +1,15 @@
+extends master
+
+block css
+    link(rel="stylesheet" type="text/css" href="/css/landing.css")
+
+block main
+    div(id="pan")
+        div(class="a")
+            div(class="b")
+                h1 North Dakota Atlas
+                h2 Explore 125 years of North Dakota's history
+                br
+                a(href="#{url.resolve(urlbase, 'map_home')" type="button" class="btn btn-default pull-center") Maps
+                div(class="divider")
+                a(href="#{url.resolve(urlbase, 'welcome')" type="button" class="btn btn-default pull-center") The Project
