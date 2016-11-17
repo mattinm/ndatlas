@@ -1,10 +1,10 @@
 extends master  
 
 block theme
-    link(rel="stylesheet" type="text/css" href="css/dark_menu.css")
+    link(rel="stylesheet" type="text/css" href="#{geturl('css/dark_menu.css')}")
 
 block css
-    link(rel="stylesheet" type="text/css" href="css/students.css")
+    link(rel="stylesheet" type="text/css" href="#{geturl('css/students.css')}")
 
 block main
     div(class="row")
@@ -42,4 +42,4 @@ block main
                 p Students from GEOG 471/L Cartography & Visualization, A&S 499 Interdisciplinary Practicum, and CS492 Senior Capstone I during Fall 2014 semester.
                 
 block js
-    script(type="text/javascript" src="js/students.js")
+    script(type="text/javascript" src="#{geturl('js/students.js')}")

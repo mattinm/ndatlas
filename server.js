@@ -59,7 +59,6 @@ app.get('/students', function (req, res) {
     });
 });
 
-<<<<<<< HEAD
 app.get('/development', function (req, res) {
     res.render('development', {
         'title': 'North Dakota Atlas | Development',

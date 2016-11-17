@@ -1,10 +1,10 @@
 extends map
 
 block map_css
-	link(rel="stylesheet" type="text/css" href="/css/light_menu.css") 
+	link(rel="stylesheet" type="text/css" href="#{geturl('css/light_menu.css')}") 
 
 block map_div
-	img(src="images/maps/CP_1990.png" id="map")
+	img(src="#{geturl('images/maps/CP_1990.png')}" id="map")
 
 block map_buttons
 	button(type="button" class="btn btn-default" id="a_1890") 1890
@@ -84,5 +84,5 @@ block map_story
 		div(class="section") As a group, we are very interested in the role of self-identity in collecting and interpreting ethnic based data. As time passes and later generations begin to move further from their ancestral roots ideas of self begin to shift and change. There are many factors that contribute to one’s own self-identity: place, religion, schooling, and family traditions, to name a few. Self-identity is not something that is easy to measure because classification can be so person specific. We hope to have a deeper look into self-identity and better understand what informs self-identity for some residents of North Dakota. With the state’s rich history of immigration and with many recent immigrant groups, we see a wealth of potential in this project, which can hopefully be added to long after our work is completed.
 
 block js
-	script(type="text/javascript" src="/js/population.js")
+	script(type="text/javascript" src="#{geturl('js/population.js')}")
 

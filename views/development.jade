@@ -1,13 +1,13 @@
 extends master
 
 block theme
-    link(rel="stylesheet" type="text/css" href="css/dark_menu.css")
+    link(rel="stylesheet" type="text/css" href="#{geturl('css/dark_menu.css')}")
 
 block css
-    link(rel="stylesheet" type="text/css" href="css/development.css")
+    link(rel="stylesheet" type="text/css" href="#{geturl('css/development.css')}")
 
 block js
-    script(type="text/javascript" src="js/development.js")
+    script(type="text/javascript" src="#{geturl('js/development.js')}")
 
 block main
     div(class="row")
