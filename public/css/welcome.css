@@ -1,15 +1,15 @@
 @font-face {
 	font-family: Lato_Italic;
-	src: url(fonts/Lato-Italic.ttf);
+	src: url(/fonts/Lato-Italic.ttf);
 }
 @font-face {
 	font-family: Scriptina;
-	src: url(fonts/Scriptina.ttf);
+	src: url(/fonts/Scriptina.ttf);
 }
 
 body {
 /*	overflow-x: hidden;*/
-	background-image: url(../images/backgrounds/bison_bw.JPG); 
+	background-image: url(/images/backgrounds/bison_bw.JPG); 
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;

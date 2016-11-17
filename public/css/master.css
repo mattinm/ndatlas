@@ -124,3 +124,12 @@ a.disabled {
         background-color: #006600;
     }
 }
+
+#mainBody {
+    position: absolute;
+    top: 54px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
