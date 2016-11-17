@@ -58,6 +58,14 @@ app.get('/students', function (req, res) {
     });
 });
 
+app.get('/population', function (req, res) {
+    res.render('population', {
+        'title': 'Population Map',
+        'active': 'population',
+        'urlbase': dev,
+        'url': url
+    });
+});
 //////////////////////////////////////
 // END OF ROUTES
 //////////////////////////////////////
