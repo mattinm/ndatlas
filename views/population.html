@@ -1,62 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Population</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-social.css" rel="stylesheet">
-    <link rel="stylesheet" href="//js.arcgis.com/3.12/esri/css/esri.css">
-    <link rel="stylesheet" href="/css/jquery.nouislider.min.css">
-    <link rel="stylesheet" href="/css/jquery.nouislider.pips.min.css">
-    <link href="/css/maps.css" rel="stylesheet">
-	<link href="/css/light_menu.css" rel="stylesheet">  
-	<script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="//js.arcgis.com/3.12/"></script>
-	<script src="/js/population.js"></script>
-</head>
-  <body>
-    <ul class="nav nav-tabs">
-      <li role="presentation"><a href="http://localhost:8005/welcome.html#">Welcome</a></li>
-      <li role="presentation"><a href="http://localhost:8005/students.html#">Students</a></li>
-      <li role="presentation"><a href="http://localhost:8005/map_home.html">Maps</a></li>
-      <li role="presentation"><a href="http://localhost:8005/development.html#">Development</a></li>
-    </ul>
-    <div id="mainBody">
-      <div id="mapWrapper">
-        <div id="mapDiv">
-          <img src="images/maps/CP_1990.png" id="map">
-        </div>
-	  </div>
-		<div id="buttonDiv">
-		  <div class="btn-group-vertical" id="btn_group">
-		  <button type="button" class="btn btn-default" id="a_1890">1890</button>
-		  <button type="button" class="btn btn-default" id="a_1900">1900</button>
-		  <button type="button" class="btn btn-default" id="a_1910">1910</button>
-		  <button type="button" class="btn btn-default" id="a_1920">1920</button>
-		  <button type="button" class="btn btn-default" id="a_1930">1930</button>
-		  <button type="button" class="btn btn-default" id="a_1940">1940</button>
-		  <button type="button" class="btn btn-default" id="a_1950">1950</button>
-		  <button type="button" class="btn btn-default" id="a_1960">1960</button>		 
-		  <button type="button" class="btn btn-default" id="a_1970">1970</button>
-		  <button type="button" class="btn btn-default" id="a_1980">1980</button>
-		  <button type="button" class="btn btn-default" id="a_1990">1990</button>
-		  <button type="button" class="btn btn-default" id="a_2000">2000</button>
-		  <button type="button" class="btn btn-default" id="a_2010">2010</button>
-		  <button type="button" class="btn btn-default" id="a_2013">2013</button>
-		  </div>
-      </div>
-      <div id="narrative"> 
-        <div id="sidebar">
-          <!--<div id="graph" style="display: inline-block; vertical-align: top; height: 200px; width: 100%; padding: 5px;"></div>-->
-          <div id="story">
-            <h2 id="title0">Before the State: The Dakota Territory</h2>
-            <div id="content">
-              <div class="section">Before North Dakota ever became a state and even before it was the Dakota Territory, the land that would eventually become a state was originally part of the Louisiana Purchase. When President Thomas Jefferson purchased this land from the French in 1803, he sent for Meriwether Lewis to form an expedition to survey the recently purchased land, create diplomatic relations with the Native American tribes that they met, extend the fur trade network and find the Northwest Passage to the Pacific<a href="#" data-toggle="tooltip" data-placement="left" title="Buckley 2014">[1]</a>. With the help of William Clark they put together a small team of soldiers and set sail along the Missouri River in 1804. Along their journey they eventually came into contact with the Mandan and Hidatsa tribes near present-day Bismarck, North Dakota and hired the help of two interprets, French-Canadian Toussaint Charbonneau and his Shoshone wife Sakakawea, who helped the Lewis and Clark expedition immensely in navigating through a landscape that was completely new to them and helping establish relations with the local tribes they came into contact with<a href="#" data-toggle="tooltip" data-placement="left" title="Buckley 2014">[2]</a>. The expedition came to an end in 1806 and has been considered one of the greatest American exploration endeavors in history. Clark’s maps were published in 1810 and were popularly used for over thirty years by future settlers and adventures looking for a new life in the West.</div>
-              <div class="section">Long before the Europeans started to migrate over into this area there were many American Indian groups that resided in modern-day North Dakota. These groups included the Mandan, Hidatsa, Arikara, the Ojibwe and Cree, and the numerous groups of the Sioux tribe<a href="#" data-toggle="tooltip" data-placement="left" title="Yankton, Yanktonai, Teton, Santee">[3]</a>. A variety of other ethnic groups also migrated to this area with the purpose of staking claim to land. These groups largely consisted of either French-Canadian fur traders that migrated down the Missouri River and from areas of Northern Minnesota, Central Canada, and from the Eastern region of the United States.</div>
+extends master
+
+block css
+	link(rel="stylesheet" type="text/css" href="/css/light_menu.css") 
+
+block map_buttons
+	button (type="button" class="btn btn-default" id="a_1890") 1890
+	button (type="button" class="btn btn-default" id="a_1900") 1900
+	button (type="button" class="btn btn-default" id="a_1910") 1910
+	button (type="button" class="btn btn-default" id="a_1920") 1920
+	button (type="button" class="btn btn-default" id="a_1930") 1930
+	button (type="button" class="btn btn-default" id="a_1940") 1940
+	button (type="button" class="btn btn-default" id="a_1950") 1950
+	button (type="button" class="btn btn-default" id="a_1960") 1960		 
+	button (type="button" class="btn btn-default" id="a_1970") 1970
+	button (type="button" class="btn btn-default" id="a_1980") 1980 
+	button (type="button" class="btn btn-default" id="a_1990") 1990
+	button (type="button" class="btn btn-default" id="a_2000") 2000
+	button (type="button" class="btn btn-default" id="a_2010") 2010
+
+block map_story             
+ <div class="section">Long before the Europeans started to migrate over into this area there were many American Indian groups that resided in modern-day North Dakota. These groups included the Mandan, Hidatsa, Arikara, the Ojibwe and Cree, and the numerous groups of the Sioux tribe<a href="#" data-toggle="tooltip" data-placement="left" title="Yankton, Yanktonai, Teton, Santee">[3]</a>. A variety of other ethnic groups also migrated to this area with the purpose of staking claim to land. These groups largely consisted of either French-Canadian fur traders that migrated down the Missouri River and from areas of Northern Minnesota, Central Canada, and from the Eastern region of the United States.</div>
               <div class="section">The clashing of land claim presented a problem for the American Indians and the recent migrants to the area over who had a right to the farmlands. It is said that these disputes over land, among other political conflicts, led to the Sioux Wars that lasted for almost half a century, where battles such as Little Bighorn and Wounded Knee took place<a href="#" data-toggle="tooltip" data-placement="left" title="Waldman 191">[4]</a>. There were many native casualties due to the use of gun power by militant forces, as well as the spread of diseases, such as small pox. However, this was not a determiner of all battles fought.</div>
               <div class="section">In 1858, General J.B.S Todd, and other members of the United States Army created a treaty that relocated many of the area’s tribes to designated regions. The Mandan, the Hidatsa and the Arikara were relocated to Fort Berthold; many Siouan tribes were relocated to the Standing Rock Indian Reservation, the Santee tribe to the Turtle Mountain Reservation and the Ojibwe to Spirit Lake Reservation.</div>
               <div class="section">Congress created a bill in 1861 that was signed by President James Buchanan, which organized the surrounding lands as the Dakota Territory<a href="#" data-toggle="tooltip" data-placement="left" title="Foster 1928:7-8">[5]</a>. When many new settlers began to migrate towards the area with the prospect of finding gold in areas of Montana and South Dakota, tensions again began to rise between the Native Americans and the new area settlers. This led to the establishment of Army forts along the Missouri River. Then in 1876, Lieutenant Colonel George A. Custer led the 7th Cavalry from Fort Abraham Lincoln, in present-day Mandan, North Dakota, to fight off the Sioux, Arapaho, and Cheyenne tribes in Montana at the Battle of the Little Big Horn. Custer and the entire 7th Calvary were annihilated in the battle and it is still considered one of the greatest victories of the time<a href="#" data-toggle="tooltip" data-placement="left" title="Waldman 191">[6]</a>. The Sioux wars ended in 1890 with the Battle of Wounded Knee in South Dakota. There were a great many American Indian causalities, which led to the end of the wars<a href="#" data-toggle="tooltip" data-placement="left" title="Waldman 196">[7]</a>.</div>
@@ -136,11 +99,7 @@
               </div>
               <div style="text-align: center; margin: 15px 0;" class="col-sm-12"><a href="http://www.und.edu/"><img src="/images/und_logo_wide.png" alt="Univeristy of North Dakota wide flame logo" class="center-block hidden-xs hidden-sm img-responsive"><img src="/images/und_logo_compact.png" alt="University of North Dakota compact flame logo" class="center-block hidden-md hidden-lg img-responsive"></a>
                 <p><b>© 2015 University of North Dakota</b></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+
+block js
+	script(type="text/javascript" src="/js/population.js")
+
