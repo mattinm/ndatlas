@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>ArcGIS Test</title>
+
+        <!-- ESRI css -->
+        <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/jquery.nouislider.min.css">
+        <link rel="stylesheet" href="css/jquery.nouislider.pips.min.css">
+
+        <!-- Simulate database data -->
+        <script type="text/javascript">
+var backgroundLayers = [];
+var togglableLayers = [
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+];
+
+function hideLoading() {
+    $("#loadingDiv").hide();
+}
+
+function showLoading() {
+    $("#loadingDiv").show();
+}
+
+function executeQueryTask(evt) {
+    //onClick event returns the evt point where the user clicked on the map.
+    //This is contains the mapPoint (esri.geometry.point) and the screenPoint (pixel xy where the user clicked).
+    //set query geometry = to evt.mapPoint Geometry
+    query.geometry = evt.mapPoint;
+
+    //Execute task and call showResults on completion
+    //build query task
+    if (toggled.length > 0) {
+        queryTask = new esri.tasks.QueryTask(arcmapurl + "/" + toggled[0]);
+        queryTask.execute(query, showResults);
+    }
+}
+
+function showResults(featureSet) {
+    //remove all graphics on the maps graphics layer
+    map.graphics.clear();
+
+    var year = '';
+    if (toggled.length > 0) {
+        year = layer.layerInfos[toggled[0]].name.substr(0,4);
+    }
+
+    //QueryTask returns a featureSet.  Loop through features in the featureSet and add them to the map.
+    dojo.forEach(featureSet.features, function(feature) {
+        var graphic = feature;
+        graphic.setSymbol(symbol);
+
+        //Set the infoTemplate.
+        //All ${attributeName} will be substituted with the attribute value for current feature.
+        infoTemplate = new esri.InfoTemplate(
+            "Ancestry for ${NAME} County, ${YEAR}",
+            "<b>German:</b> ${Ger" + year + "}<br/>" +
+            "<b>Norweigen:</b> ${Nor" + year + "}<br/>" +
+            "<b>Russian:</b> ${Rus" + year + "}"
+        );
+        graphic.setInfoTemplate(infoTemplate);
+
+        //Add graphic to the map graphics layer.
+        map.graphics.add(graphic);
+    });
+}
+        </script>
+
+        <!-- Basic styling -->
+        <style type="text/css">
+            html, body {
+                padding: 0;
+                margin: 0;
+                min-height: 100%
+            }
+
+            header {
+                height: 40px;
+                background-color: red;
+            }
+
+            .mainBody {
+                position: absolute;
+                top: 40px;
+                bottom: 68px;
+                width:100%;
+            }
+
+            footer {
+                height: 68px;
+                
+                position: absolute;
+                bottom: 0;
+                width:100%;
+            }
+
+            #mapDiv {
+                min-height: 100%;
+                width: 100%;
+            }
+
+            #toggleSlider {
+                margin: 0 50px;
+            }
+
+            #loadingDiv {
+                height: 100%;
+                width: 100%;
+                background:#7f7f7f;
+                background:rgba(0,0,0,0.5);
+                position: absolute;
+                top: 0;
+                z-index: 100;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <header>Header</header>
+            <div class="mainBody">
+                
+                <div id="mapDiv">
+                    <div id="loadingDiv">
+                        <img src="images/loading.gif" id="loading" style="position: relative;top: 50%;left: 50%">
+                    </div>
+                </div>
+                
+            </div>
+            <footer>
+                <div id="toggleSlider"></div>
+            </footer>
+        </div>
+
+        <!-- ESRI js -->
+        <script src="http://js.arcgis.com/3.12/"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.nouislider.all.min.js"></script>
+
+        <!-- Create the map -->
+        <script type="text/javascript">
+            var map;
+            require([
+                "esri/map",
+                "esri/layers/ArcGISTiledMapServiceLayer",
+                "esri/dijit/Scalebar",
+                "dojo/domReady!"
+            ], function(Map, ArcGISTiledMapServiceLayer, Scalebar) {
+                // keep within ND
+                var ext = new esri.geometry.Extent({
+                    "xmin": -11732778.0,
+                    "ymin": 5584030.0,
+                    "xmax": -10632085.0,
+                    "ymax": 6317826.0,
+                    "spatialReference": {
+                        "wkid": 102100
+                    }
+                });
+
+                map = new Map("mapDiv", {
+                    center: [-100.425, 47],
+                    zoom: 8,
+                    extent: ext
+                });
+
+                // add the basemap
+                var streets = new ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {
+                    opacity: 0.0,
+                    showAttribution: false
+                });  
+                map.addLayer(streets); 
+
+                var layer = new esri.layers.ArcGISDynamicMapServiceLayer("http://undgeography.und.edu/geographyund/rest/services/ND125/WebMapND125/MapServer");
+                map.addLayer(layer);
+
+                var scalebar = new Scalebar({
+                    map: map,
+                    scalebarUnit: "dual"
+                });
+
+                // hide the loading icon when the dynamic layer finishes updating
+                layer.on("update-end", hideLoading);
+
+                // create our slider
+                layer.on("load", function(e) {
+                    values = [];
+                    $.each(togglableLayers, function(index, value) {
+                        //console.log(index);
+                        //console.log(layer.layerInfos[value]);
+                        values.push(parseInt(layer.layerInfos[value].name));
+                    });
+
+                    min = values[0];
+                    max = values[values.length-1];
+                    difference = (max - min);
+                    range = {
+                        'min': min,
+                        'max': max
+                    };
+
+                    $.each(values, function(index, value) {
+                        range['' + (100 - ((max - value) / difference * 100.0)) + '%'] = value;
+                    });
+                    console.log(range);
+
+                    $("#toggleSlider").noUiSlider({
+                        start: parseInt(layer.layerInfos[togglableLayers[0]].name),
+                        range: range,
+                        snap: true
+                    });
+
+                    $('#toggleSlider').noUiSlider_pips({
+                        mode: 'values',
+                        density: 10,
+                        values: values,
+                        stepped: true
+                    });
+
+                    // create a function for when the slider value is set
+                    $('#toggleSlider').on('set', function() {
+                        showLoading();
+
+                        // prepare our layers for filtering
+                        currentLayers = [];
+                        $.each(backgroundLayers, function(index, value) {
+                            currentLayers.push(value);
+                        });
+
+                        // find the index of this layer
+                        val = $('#toggleSlider').val();
+                        for (i = 0; i < values.length; ++i) {
+                            if (val == values[i]) {
+                                currentLayers.push(togglableLayers[i]);
+                                break;
+                            }
+                        }
+
+                        // show the visible layers
+                        layer.setVisibleLayers(currentLayers);
+                    });
+
+                    // set as the current layer
+                    $('#toggleSlider').val(min);
+                });
+
+                /*
+                var legend = new esri.dijit.Legend({
+                    map: map
+                }, "legendDiv");
+                legend.startup();*/
+             });
+        </script>
+    </body>
+</html>
