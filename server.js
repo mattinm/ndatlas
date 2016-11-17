@@ -9,28 +9,52 @@ app.set('views', __dirname+'/views');
 app.use(express.static(__dirname+'/public'));
 app.locals.pretty = true;
 
+// see if we are using the dev route
+var url = require('url');
+var dev = process.env.NDATLASDEV || 0;
+if (dev) {
+    dev = '/dev/';
+} else {
+    dev = '/';
+}
+
 //////////////////////////////////////
 // START OF ROUTES
 //////////////////////////////////////
 
 app.get('/', function (req, res) {
-    res.render('welcome', {
+    res.render('landing', {
         'title': 'North Dakota Atlas',
-        'active': 'welcome'
+        'active': 'landing',
+        'urlbase': dev,
+        'url': url
+    });
+});
+
+app.get('/welcome', function (req, res) {
+    res.render('welcome', {
+        'title': 'North Dakota Atlas | Welcome',
+        'active': 'welcome',
+        'urlbase': dev,
+        'url': url
     });
 });
 
 app.get('/churches', function (req, res) {
     res.render('country_churches', {
         'title': 'North Dakota Atlas | Country Churches',
-        'active': 'churches'
+        'active': 'churches',
+        'urlbase': dev,
+        'url': url
     });
 });
 
 app.get('/students', function (req, res) {
     res.render('students', {
         'title': 'North Dakota Atlas | Students',
-        'active': 'students'
+        'active': 'students',
+        'urlbase': dev,
+        'url': url
     });
 });
 
